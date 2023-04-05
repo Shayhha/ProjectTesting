@@ -47,7 +47,7 @@
             LogIn_button.TabIndex = 0;
             LogIn_button.Text = "Log In";
             LogIn_button.UseVisualStyleBackColor = false;
-            LogIn_button.Click += button_Click;
+            LogIn_button.Click += LogIn_button_Click;
             // 
             // UserName_textbox
             // 
