@@ -97,6 +97,7 @@
             SignIn_label.Size = new Size(240, 54);
             SignIn_label.TabIndex = 5;
             SignIn_label.Text = "Sign In";
+            
             // 
             // SignUp_button
             // 
