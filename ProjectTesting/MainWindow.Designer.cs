@@ -1,6 +1,6 @@
 ﻿namespace ProjectTesting
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -97,7 +97,6 @@
             SignIn_label.Size = new Size(240, 54);
             SignIn_label.TabIndex = 5;
             SignIn_label.Text = "Sign In";
-            
             // 
             // SignUp_button
             // 
@@ -113,7 +112,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1052, 517);
+            ClientSize = new Size(1073, 536);
             Controls.Add(SignUp_button);
             Controls.Add(SignIn_label);
             Controls.Add(textBox1);
