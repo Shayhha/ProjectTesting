@@ -84,6 +84,13 @@ namespace ProjectTesting
             Save();
         }
 
+        //public void WriteRange(int starti, int starty, int endi, int endy, string[] writeString)
+        //{
+        //    _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+        //    range.Value = writeString.Select(s => new[] { s }).ToArray();
+        //    Save();
+        //}
+
         public void Save()
         {
             wb.Save();
