@@ -53,8 +53,8 @@ namespace ProjectTesting
 
             //excel.WriteRange(5, 1, 5, 2, myArray);
 
-            int last = excel.GetLastRow();
-            excel.WriteCell("A" + last.ToString(), "something");
+            //int last = excel.GetLastRow();
+            //excel.WriteCell("A" + last.ToString(), "something");
 
             excel.Quit();
         }
