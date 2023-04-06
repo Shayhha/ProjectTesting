@@ -6,6 +6,8 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
+        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -24,15 +26,17 @@ namespace ProjectTesting
 
         private void readExcel()
         {
-            string filePath = "..\\Database.xlsx";
-            //Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook wb;
-            Worksheet ws;
-            wb = excel.Workbooks.Open(filePath);
-            ws = wb.Worksheets[1];
-            MessageBox.Show(Convert.ToString(ws.Cells[1, 1].Value));
+            Excel excel = new Excel("users", "Sheet1");
 
+            //MessageBox.Show(excel.ReadCell("A2"));
+
+            string[,] stuff = excel.ReadRange(1, 1, 3, 3);
+
+            foreach (string res in stuff)
+            {
+                MessageBox.Show(res);
+            }
         }
+        
     }
 }
