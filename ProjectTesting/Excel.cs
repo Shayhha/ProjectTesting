@@ -15,7 +15,7 @@ namespace ProjectTesting
         Workbook wb;
         Worksheet ws;
 
-        private static string USERS_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
+        private static string USERS_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Users.xlsx";
         private static string DATABASE_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
 
         /// <summary>
