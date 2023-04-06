@@ -1,4 +1,10 @@
 ﻿using Microsoft.Office.Interop.Excel;
+using System;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+using static System.Windows.Forms.AxHost;
 using _Excel = Microsoft.Office.Interop.Excel;
 
 namespace ProjectTesting
@@ -36,18 +42,16 @@ namespace ProjectTesting
             ws = wb.Sheets[sheetName];
         }
 
-        public string ReadCell(string cell) //"A2"
+        public string ReadCell(string cell) // cell = "A2"
         {
             string content = "";
             if (ws.Range[cell].Value != null)
             {
                 content = ws.Range[cell].Value;
             }
-
-            wb.Close(false);
-            excel.Quit();
             return content;
         }
+
 
         public string[,] ReadRange(int starti, int starty, int endi, int endy)
         {
@@ -61,9 +65,44 @@ namespace ProjectTesting
                     returnstring[p - 1, q - 1] = holder[p, q].ToString();
                 }
             }
-            wb.Close(false);
-            excel.Quit();
             return returnstring;
         }
+
+        public void WriteCell(string cell, string value)
+        {
+            ws.Range[cell].Value2 = value;
+            Save();
+        }
+
+        public void WriteRange(int starti, int starty, int endi, int endy, string[,] writeString)
+        {
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            range.Value = writeString;
+            Save();
+        }
+
+        public void Save()
+        {
+            wb.Save();
+        }
+
+        public void Quit()
+        {
+            excel.Quit();
+        }
+
+        public void CreateNewSheet(string sheetName)
+        {
+            var lastSheet = wb.Sheets[wb.Sheets.Count];
+            Worksheet tempSheet = wb.Worksheets.Add(After: lastSheet);
+            tempSheet.Name = sheetName;
+            Save();
+        }
+
+        public void SelectWorkSheet(string sheetName)
+        {
+            this.ws = wb.Worksheets[sheetName];
+        }
+     
     }
 }
