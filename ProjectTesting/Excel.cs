@@ -38,31 +38,15 @@ namespace ProjectTesting
             ws = wb.Sheets[sheetName];
         }
 
-        public string ReadCell(string cell) //"A2"
+        public string ReadCell(string cell) // cell = "A2"
         {
             string content = "";
             if (ws.Range[cell].Value != null) {
                 content = ws.Range[cell].Value;
             }
-
-            wb.Close(false);
-            excel.Quit();
             return content;
         }
 
-        //public _Excel.Range ReadRange(string cellRange) //"A2:B2" // 1,1,1,2
-        //{
-        //    _Excel.Range content = null;
-        //    if (ws.Range[cellRange].Value != null)
-        //    {
-        //        if (cellRange != null)
-        //            content = ws.Range[cellRange].Value;
-        //    }
-
-        //    wb.Close(false);
-        //    excel.Quit();
-        //    return content;
-        //}
 
         public string[,] ReadRange(int starti, int starty, int endi, int endy)
         {
@@ -75,17 +59,13 @@ namespace ProjectTesting
                     returnstring[p - 1, q - 1] = holder[p, q].ToString();
                 }
             }
-            wb.Close(false);
-            excel.Quit();
             return returnstring;
         }
 
         public void WriteCell(string cell, string value)
         {
-            ws.Range[cell].Value = value;
+            ws.Range[cell].Value2 = value;
             Save();
-            wb.Close();
-            excel.Quit();
         }
 
         public void Save()
@@ -93,6 +73,10 @@ namespace ProjectTesting
             wb.Save();
         }
 
+        public void Quit()
+        {
+            excel.Quit();
+        }
      
     }
 }
