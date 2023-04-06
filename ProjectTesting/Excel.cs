@@ -56,15 +56,13 @@ namespace ProjectTesting
         {
             _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd + 1]];
             object[,] holder = range.Value2;
-            string[,] returnstring = new string[row - row + 1, colEnd + 1  - colStart];
+            string[,] returnstring = new string[1, colEnd + 1  - colStart];
 
-            for (int p = 1; p <= row - row + 1; p++)
+            for (int q = 1; q <= colEnd + 1 - colStart; q++)
             {
-                for (int q = 1; q <= colEnd + 1 - colStart; q++)
-                {
-                    returnstring[p - 1, q - 1] = holder[p,q].ToString();
-                }
+                returnstring[0, q - 1] = holder[1,q].ToString();
             }
+            
             return returnstring;
         }
 
