@@ -29,7 +29,7 @@ namespace ProjectTesting
         {
             Excel excel = new Excel("users", "Sheet1");
 
-            //MessageBox.Show(excel.ReadCell("A2"));
+            MessageBox.Show(excel.ReadCell("A2"));
 
             //string[,] stuff = excel.ReadRange(1, 1, 3, 3);
 
