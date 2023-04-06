@@ -1,7 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
-using System.Reflection;
 using _Excel = Microsoft.Office.Interop.Excel;
-using System.IO;
 
 namespace ProjectTesting
 {
@@ -12,9 +10,6 @@ namespace ProjectTesting
         Workbook wb;
         Worksheet ws;
         
-
-        //private static string USERS_PATH = Directory.GetFiles(Directory.GetCurrentDirectory(), @"Excel\Users.xlsx", SearchOption.AllDirectories)[0];
-
         private static string USERS_PATH = Directory.GetCurrentDirectory().Split("bin")[0] + "Excel\\Users.xlsx";
         private static string DATABASE_PATH = Directory.GetCurrentDirectory().Split("bin")[0] + "Excel\\Database.xlsx";
 
