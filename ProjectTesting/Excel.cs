@@ -79,5 +79,20 @@ namespace ProjectTesting
             excel.Quit();
             return returnstring;
         }
+
+        public void WriteCell(string cell, string value)
+        {
+            ws.Range[cell].Value = value;
+            Save();
+            wb.Close();
+            excel.Quit();
+        }
+
+        public void Save()
+        {
+            wb.Save();
+        }
+
+     
     }
 }

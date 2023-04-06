@@ -20,7 +20,7 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            UserName_textbox.Text = "Clicked!";
+            UserName_textbox.Text = "Yes!";
             readExcel();
         }
 
@@ -28,14 +28,6 @@ namespace ProjectTesting
         {
             Excel excel = new Excel("users", "Sheet1");
 
-            //MessageBox.Show(excel.ReadCell("A2"));
-
-            string[,] stuff = excel.ReadRange(1, 1, 3, 3);
-
-            foreach (string res in stuff)
-            {
-                MessageBox.Show(res);
-            }
         }
         
     }
