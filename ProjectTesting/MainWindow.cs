@@ -29,7 +29,7 @@ namespace ProjectTesting
         {
             Excel excel = new Excel("users", "Sheet1");
 
-            //MessageBox.Show(excel.ReadCell("A2"));
+            MessageBox.Show(excel.ReadCell("A2"));
 
             //string[,] stuff = excel.ReadRange(1, 1, 3, 3);
 
@@ -53,8 +53,8 @@ namespace ProjectTesting
 
             //excel.WriteRange(5, 1, 5, 2, myArray);
 
-            int last = excel.GetLastRow();
-            excel.WriteCell("A" + last.ToString(), "something");
+            //int last = excel.GetLastRow();
+            //excel.WriteCell("A" + last.ToString(), "something");
 
             excel.Quit();
         }
