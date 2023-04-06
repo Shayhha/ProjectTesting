@@ -103,6 +103,11 @@ namespace ProjectTesting
         {
             this.ws = wb.Worksheets[sheetName];
         }
-     
+
+        public int GetLastRow()
+        {
+            int lastRow = ws.Cells.SpecialCells(_Excel.XlCellType.xlCellTypeLastCell).Row;
+            return lastRow + 1;
+        }
     }
 }
