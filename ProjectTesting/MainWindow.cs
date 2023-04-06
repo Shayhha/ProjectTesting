@@ -1,4 +1,7 @@
 using Microsoft.Office.Interop.Excel;
+using System.IO;
+using System.Reflection.Metadata;
+
 namespace ProjectTesting
 
 {
@@ -28,12 +31,29 @@ namespace ProjectTesting
 
             //MessageBox.Show(excel.ReadCell("A2"));
 
-            string[,] stuff = excel.ReadRange(1, 1, 3, 3);
+            //string[,] stuff = excel.ReadRange(1, 1, 3, 3);
 
-            foreach (string res in stuff)
+            //foreach (string res in stuff)
+            //{
+            //    MessageBox.Show(res);
+            //}
+
+            //excel.WriteCell("A6", "Maxim");
+            //MessageBox.Show(excel.ReadCell("A6"));
+
+            //excel.CreateNewSheet("NewSheet");
+
+            //excel.SelectWorkSheet("NewSheet");
+            //excel.WriteCell("B2", "Hey");
+
+            string[,] myArray = new string[1, 2]
             {
-                MessageBox.Show(res);
-            }
+                {"max","123321"},
+            };
+
+            excel.WriteRange(5, 1, 5, 2, myArray);
+
+            excel.Quit();
         }
         
     }
