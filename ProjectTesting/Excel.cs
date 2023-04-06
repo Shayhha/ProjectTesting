@@ -15,8 +15,8 @@ namespace ProjectTesting
         Workbook wb;
         Worksheet ws;
 
-        private static string USERS_PATH = "C:\\Users\\Biscuits\\source\\repos\\ProjectTesting\\ProjectTesting\\Excel\\Users.xlsx";
-        private static string DATABASE_PATH = "C:\\Users\\Biscuits\\source\\repos\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
+        private static string USERS_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
+        private static string DATABASE_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
 
         /// <summary>
         /// A constructor for class Excel, it anables us to open a file and do stuff with it like read and write
@@ -49,20 +49,6 @@ namespace ProjectTesting
             excel.Quit();
             return content;
         }
-
-        //public _Excel.Range ReadRange(string cellRange) //"A2:B2" // 1,1,1,2
-        //{
-        //    _Excel.Range content = null;
-        //    if (ws.Range[cellRange].Value != null)
-        //    {
-        //        if (cellRange != null)
-        //            content = ws.Range[cellRange].Value;
-        //    }
-
-        //    wb.Close(false);
-        //    excel.Quit();
-        //    return content;
-        //}
 
         public string[,] ReadRange(int starti, int starty, int endi, int endy)
         {
