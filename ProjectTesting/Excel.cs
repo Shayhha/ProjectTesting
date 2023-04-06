@@ -54,16 +54,17 @@ namespace ProjectTesting
         }
 
 
-        public string[,] ReadRange(int starti, int starty, int endi, int endy)//reads multiple lines in excel file and returns array
+        public string[,] ReadRange(int row, int colStart, int colEnd)//reads multiple lines in excel file and returns array
         {
-            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd + 1]];
             object[,] holder = range.Value2;
-            string[,] returnstring = new string[endi - starti, endy - starty];
-            for (int p = 1; p <= endi - starti; p++)
+            string[,] returnstring = new string[row - row + 1, colEnd + 1  - colStart];
+
+            for (int p = 1; p <= row - row + 1; p++)
             {
-                for (int q = 1; q <= endy - starty; q++)
+                for (int q = 1; q <= colEnd + 1 - colStart; q++)
                 {
-                    returnstring[p - 1, q - 1] = holder[p, q].ToString();
+                    returnstring[p - 1, q - 1] = holder[p,q].ToString();
                 }
             }
             return returnstring;
@@ -75,9 +76,9 @@ namespace ProjectTesting
             Save();
         }
 
-        public void WriteRange(int starti, int starty, int endi, int endy, string[,] writeString) //write to multiple cells
+        public void WriteRange(int row, int colStart, int colEnd, string[] writeString) //write to multiple cells
         {
-            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd]];
             range.Value = writeString;
             Save();
         }

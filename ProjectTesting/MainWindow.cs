@@ -29,9 +29,9 @@ namespace ProjectTesting
         {
             Excel excel = new Excel("users", "Sheet1");
 
-            MessageBox.Show(excel.ReadCell("A2"));
+            //MessageBox.Show(excel.ReadCell("A2"));
 
-            //string[,] stuff = excel.ReadRange(1, 1, 3, 3);
+            //string[,] stuff = excel.ReadRange(4, 1, 2);
 
             //foreach (string res in stuff)
             //{
@@ -40,9 +40,9 @@ namespace ProjectTesting
 
 
 
-            string[,] myArray = new string[1, 2] {{"max","123321"}};
+            string[] myArray = {"max","123321"};
             
-            excel.WriteRange(5, 1, 5, 2, myArray);
+            excel.WriteRange(5, 1, 2, myArray);
 
             excel.Quit();
         }
