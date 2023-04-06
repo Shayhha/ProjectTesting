@@ -16,8 +16,8 @@ namespace ProjectTesting
         Workbook wb;
         Worksheet ws;
 
-        private static string USERS_PATH = "C:\\Users\\Biscuits\\source\\repos\\ProjectTesting\\ProjectTesting\\Excel\\Users.xlsx";
-        private static string DATABASE_PATH = "C:\\Users\\Biscuits\\source\\repos\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
+        private static string USERS_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Users.xlsx";
+        private static string DATABASE_PATH = "C:\\Users\\shayh\\Documents\\Visual Studio 2022\\Projects\\ProjectTesting\\ProjectTesting\\Excel\\Database.xlsx";
 
         /// <summary>
         /// A constructor for class Excel, it anables us to open a file and do stuff with it like read and write
