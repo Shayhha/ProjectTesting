@@ -10,6 +10,8 @@ namespace ProjectTesting
         Workbook wb;
         Worksheet ws;
         
+
+
         private static string USERS_PATH = Directory.GetCurrentDirectory().Split("bin")[0] + "Excel\\Users.xlsx";
         private static string DATABASE_PATH = Directory.GetCurrentDirectory().Split("bin")[0] + "Excel\\Database.xlsx";
 
@@ -18,54 +20,63 @@ namespace ProjectTesting
         /// </summary>
         /// <param name="fileName">Enter "users" for the users file and "database" for the database file, any other strings will not work</param>
         /// <param name="sheetName">Enter the name of the sheet you want to access</param>
-        public Excel(string fileName, string sheetName)
+        public Excel(string fileName, string sheetName) //ctor for Excel 
         {
-            if (fileName == "users") {
-                this.path = USERS_PATH;
-            } 
-            else if (fileName == "database") {
-                this.path = DATABASE_PATH;
-            } 
-            else {
-                this.path = USERS_PATH; //this needs to be an error
+            try{
+                if (fileName == "users"){
+                    this.path = USERS_PATH;
+                }
+                else if (fileName == "database"){
+                    this.path = DATABASE_PATH;
+                }
+                else{
+                    throw new Exception("Failed to open file..");
+                }
+                wb = excel.Workbooks.Open(path);
+                ws = wb.Sheets[sheetName];
             }
-            wb = excel.Workbooks.Open(path);
-            ws = wb.Sheets[sheetName];
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
-        public string ReadCell(string cell) // cell = "A2"
+        public string ReadCell(string cell) // reads single cell in file
         {
             string content = "";
-            if (ws.Range[cell].Value != null) {
+            if (ws.Range[cell].Value != null)
+            {
                 content = ws.Range[cell].Value;
             }
             return content;
         }
 
 
-        public string[,] ReadRange(int starti, int starty, int endi, int endy)
+        public string[,] ReadRange(int row, int colStart, int colEnd)//reads multiple lines in excel file and returns array
         {
-            _Excel.Range range = (_Excel.Range) ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd + 1]];
             object[,] holder = range.Value2;
-            string[,] returnstring = new string[endi - starti, endy - starty];
-            for (int p = 1; p <= endi - starti; p++)
+            string[,] returnstring = new string[row - row + 1, colEnd + 1  - colStart];
+
+            for (int p = 1; p <= row - row + 1; p++)
             {
-                for (int q = 1; q <= endy - starty; q++) {
-                    returnstring[p - 1, q - 1] = holder[p, q].ToString();
+                for (int q = 1; q <= colEnd + 1 - colStart; q++)
+                {
+                    returnstring[p - 1, q - 1] = holder[p,q].ToString();
                 }
             }
             return returnstring;
         }
 
-        public void WriteCell(string cell, string value)
+        public void WriteCell(string cell, string value) //write to specific cell
         {
             ws.Range[cell].Value2 = value;
             Save();
         }
 
-        public void WriteRange(int starti, int starty, int endi, int endy, string[,] writeString)
+        public void WriteRange(int row, int colStart, int colEnd, string[] writeString) //write to multiple cells
         {
-            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd]];
             range.Value = writeString;
             Save();
         }

@@ -4,7 +4,7 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
-        
+
 
         public MainWindow()
         {
@@ -13,7 +13,7 @@ namespace ProjectTesting
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-           // MessageBox.Show("Works", "Windows 11 ");
+            // MessageBox.Show("Works", "Windows 11 ");
         }
 
         private void LogIn_button_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace ProjectTesting
 
             //MessageBox.Show(excel.ReadCell("A2"));
 
-            //string[,] stuff = excel.ReadRange(1, 1, 3, 3);
+            //string[,] stuff = excel.ReadRange(4, 1, 2);
 
             //foreach (string res in stuff)
             //{
@@ -43,18 +43,18 @@ namespace ProjectTesting
             //excel.SelectWorkSheet("NewSheet");
             //excel.WriteCell("B2", "Hey");
 
-            //string[,] myArray = new string[1, 2]
-            //{
-            //    {"max","123321"},
-            //};
+            //string[] myArray = { "max", "123321" };
 
-            //excel.WriteRange(5, 1, 5, 2, myArray);
+            //excel.WriteRange(6, 1, 2, myArray);
+
+            //MessageBox.Show(excel.ReadCell("A6"));
+            //MessageBox.Show(excel.ReadCell("B6"));
 
             //int last = excel.GetLastRow();
             //excel.WriteCell("A" + last.ToString(), "something");
 
             excel.Quit();
         }
-        
+
     }
 }
