@@ -24,7 +24,7 @@ namespace ProjectTesting
         /// </summary>
         /// <param name="fileName">Enter "users" for the users file and "database" for the database file, any other strings will not work</param>
         /// <param name="sheetName">Enter the name of the sheet you want to access</param>
-        public Excel(string fileName, string sheetName) //ctor for excel 
+        public Excel(string fileName, string sheetName) //ctor for Excel 
         {
             try{
                 if (fileName == "users"){
