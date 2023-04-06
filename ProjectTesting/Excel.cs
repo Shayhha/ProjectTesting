@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.AxHost;
 using _Excel = Microsoft.Office.Interop.Excel;
 
-namespace ProjectTesting
+namespace ProjectTesting.Excel
 {
     class Excel
     {
@@ -25,14 +25,17 @@ namespace ProjectTesting
         /// <param name="sheetName">Enter the name of the sheet you want to access</param>
         public Excel(string fileName, string sheetName)
         {
-            if (fileName == "users") {
-                this.path = USERS_PATH;
-            } 
-            else if (fileName == "database") {
-                this.path = DATABASE_PATH;
-            } 
-            else {
-                this.path = USERS_PATH; //this needs to be an error
+            if (fileName == "users")
+            {
+                path = USERS_PATH;
+            }
+            else if (fileName == "database")
+            {
+                path = DATABASE_PATH;
+            }
+            else
+            {
+                path = USERS_PATH; //this needs to be an error
             }
             wb = excel.Workbooks.Open(path);
             ws = wb.Sheets[sheetName];
@@ -41,7 +44,8 @@ namespace ProjectTesting
         public string ReadCell(string cell) //"A2"
         {
             string content = "";
-            if (ws.Range[cell].Value != null) {
+            if (ws.Range[cell].Value != null)
+            {
                 content = ws.Range[cell].Value;
             }
 
@@ -52,12 +56,13 @@ namespace ProjectTesting
 
         public string[,] ReadRange(int starti, int starty, int endi, int endy)
         {
-            _Excel.Range range = (_Excel.Range) ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
             object[,] holder = range.Value2;
             string[,] returnstring = new string[endi - starti, endy - starty];
             for (int p = 1; p <= endi - starti; p++)
             {
-                for (int q = 1; q <= endy - starty; q++) {
+                for (int q = 1; q <= endy - starty; q++)
+                {
                     returnstring[p - 1, q - 1] = holder[p, q].ToString();
                 }
             }
