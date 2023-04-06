@@ -1,6 +1,4 @@
 using Microsoft.Office.Interop.Excel;
-using System.IO;
-
 namespace ProjectTesting
 
 {
@@ -24,7 +22,7 @@ namespace ProjectTesting
 
         private void readExcel()
         {
-            string filePath = "..\\Database.xlsx";
+            string filePath = PATH;
             //Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             Workbook wb;
