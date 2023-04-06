@@ -1,7 +1,7 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using _Excel = Microsoft.Office.Interop.Excel;
 
-namespace ProjectTesting.Excel
+namespace ProjectTesting
 {
     class Excel
     {
