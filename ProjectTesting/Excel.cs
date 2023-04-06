@@ -1,7 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
-using System.Reflection;
 using _Excel = Microsoft.Office.Interop.Excel;
-using System.IO;
 
 namespace ProjectTesting
 {
@@ -54,15 +52,15 @@ namespace ProjectTesting
         }
 
 
-        public string[,] ReadRange(int row, int colStart, int colEnd)//reads multiple lines in excel file and returns array
+        public string[] ReadRange(int row, int colStart, int colEnd)//reads multiple lines in excel file and returns array
         {
             _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[row, colStart], ws.Cells[row, colEnd + 1]];
             object[,] holder = range.Value2;
-            string[,] returnstring = new string[1, colEnd + 1  - colStart];
+            string[] returnstring = new string[colEnd + 1  - colStart];
 
             for (int q = 1; q <= colEnd + 1 - colStart; q++)
             {
-                returnstring[0, q - 1] = holder[1,q].ToString();
+                returnstring[q - 1] = holder[1,q].ToString();
             }
             
             return returnstring;

@@ -1,6 +1,3 @@
-using Microsoft.Office.Interop.Excel;
-using System.IO;
-using System.Reflection.Metadata;
 
 namespace ProjectTesting
 
@@ -31,7 +28,7 @@ namespace ProjectTesting
 
             //MessageBox.Show(excel.ReadCell("A2"));
 
-            //string[,] stuff = excel.ReadRange(4, 1, 2);
+            //string[] stuff = excel.ReadRange(4, 1, 2);
 
             //foreach (string res in stuff)
             //{
