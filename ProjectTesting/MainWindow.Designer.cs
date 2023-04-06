@@ -108,7 +108,7 @@
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -121,8 +121,8 @@
             Controls.Add(label1);
             Controls.Add(UserName_textbox);
             Controls.Add(LogIn_button);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "MainWindow";
+            Text = "MainWindow";
             ResumeLayout(false);
             PerformLayout();
         }
