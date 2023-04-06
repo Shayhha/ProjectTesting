@@ -1,5 +1,6 @@
 using Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Reflection.Metadata;
 
 namespace ProjectTesting
 
@@ -37,8 +38,20 @@ namespace ProjectTesting
             //    MessageBox.Show(res);
             //}
 
-            excel.WriteCell("A6", "Maxim");
-            MessageBox.Show(excel.ReadCell("A6"));
+            //excel.WriteCell("A6", "Maxim");
+            //MessageBox.Show(excel.ReadCell("A6"));
+
+            //excel.CreateNewSheet("NewSheet");
+
+            //excel.SelectWorkSheet("NewSheet");
+            //excel.WriteCell("B2", "Hey");
+
+            string[,] myArray = new string[1, 2]
+            {
+                {"max","123321"},
+            };
+
+            excel.WriteRange(5, 1, 5, 2, myArray);
 
             excel.Quit();
         }

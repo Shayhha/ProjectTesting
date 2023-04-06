@@ -3,6 +3,7 @@ using System;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using static System.Windows.Forms.AxHost;
 using _Excel = Microsoft.Office.Interop.Excel;
 
@@ -68,6 +69,13 @@ namespace ProjectTesting
             Save();
         }
 
+        public void WriteRange(int starti, int starty, int endi, int endy, string[,] writeString)
+        {
+            _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
+            range.Value = writeString;
+            Save();
+        }
+
         public void Save()
         {
             wb.Save();
@@ -76,6 +84,19 @@ namespace ProjectTesting
         public void Quit()
         {
             excel.Quit();
+        }
+
+        public void CreateNewSheet(string sheetName)
+        {
+            var lastSheet = wb.Sheets[wb.Sheets.Count];
+            Worksheet tempSheet = wb.Worksheets.Add(After: lastSheet);
+            tempSheet.Name = sheetName;
+            Save();
+        }
+
+        public void SelectWorkSheet(string sheetName)
+        {
+            this.ws = wb.Worksheets[sheetName];
         }
      
     }
