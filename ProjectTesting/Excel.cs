@@ -112,11 +112,7 @@ namespace ProjectTesting
 
         public int GetLastRow()
         {
-            //int lastRow = ws.Cells.SpecialCells(_Excel.XlCellType.xlCellTypeLastCell).Row;
-            //Console.WriteLine("test");
-            //return lastRow + 1;
             int i = 1;
-
             while (ws.Cells[1, i].Value != null)
             {
                 i++;
