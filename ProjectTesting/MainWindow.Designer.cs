@@ -33,7 +33,7 @@
             label1 = new Label();
             UserName_label = new Label();
             Pasword_label = new Label();
-            textBox1 = new TextBox();
+            Password_textbox = new TextBox();
             SignIn_label = new Label();
             SignUp_button = new Button();
             SignUp1 = new SignUp();
@@ -56,7 +56,6 @@
             UserName_textbox.Name = "UserName_textbox";
             UserName_textbox.Size = new Size(180, 23);
             UserName_textbox.TabIndex = 1;
-            UserName_textbox.TextChanged += textBox_TextChanged;
             // 
             // label1
             // 
@@ -83,12 +82,12 @@
             Pasword_label.TabIndex = 3;
             Pasword_label.Text = "Password:";
             // 
-            // textBox1
+            // Password_textbox
             // 
-            textBox1.Location = new Point(689, 180);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(182, 23);
-            textBox1.TabIndex = 4;
+            Password_textbox.Location = new Point(689, 180);
+            Password_textbox.Name = "Password_textbox";
+            Password_textbox.Size = new Size(182, 23);
+            Password_textbox.TabIndex = 4;
             // 
             // SignIn_label
             // 
@@ -113,7 +112,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(-11, 0);
+            SignUp1.Location = new Point(0, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -127,7 +126,7 @@
             Controls.Add(SignUp1);
             Controls.Add(SignUp_button);
             Controls.Add(SignIn_label);
-            Controls.Add(textBox1);
+            Controls.Add(Password_textbox);
             Controls.Add(Pasword_label);
             Controls.Add(UserName_label);
             Controls.Add(label1);
@@ -146,7 +145,7 @@
         private Label label1;
         private Label UserName_label;
         private Label Pasword_label;
-        private TextBox textBox1;
+        private TextBox Password_textbox;
         private Label SignIn_label;
         private Button SignUp_button;
         private SignUp SignUp1;
