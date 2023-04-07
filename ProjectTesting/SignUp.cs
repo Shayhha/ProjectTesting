@@ -28,24 +28,29 @@ namespace ProjectTesting
             Excel ex = new Excel("users", "Sheet1");
             string[] temp = null;
             int flag = 0;
-            //if(id.Length != 6)
-            //{
-            //    MessageBox.Show("ID length must be 6 characters.");
-            //    flag = 1;
-            //}
-            //if (UsernameValidate(username) == false)
-            //    flag = 1;
+            int size = ex.GetLastRow();
 
-            for (int i = 1; i < ex.GetLastRow(); i++)
+            if (id.Length != 6)
+            {
+                MessageBox.Show("ID length must be 6 characters.");
+                flag = 1;
+            }
+
+            if (UsernameValidate(username) == false)
+                flag = 1;
+
+            for (int i = 1; i < size; i++)
             { //we check if we have a user with same username or ID
                 temp = ex.ReadRange(i, 1, 3);
+                MessageBox.Show(i.ToString());
                 if (temp[0] == username) //if we found one that matches we open a messagebox and break
                 {
                     MessageBox.Show("Username is already taken!", "ERROR");
                     flag = 1;
                     break;
                 }
-                if (temp[2]==id) {
+                if (temp[2] == id)
+                {
                     MessageBox.Show("ID is already registered!", "ERROR");
                     flag = 1;
                     break;
@@ -55,10 +60,10 @@ namespace ProjectTesting
             if (flag == 0 && PasswordValidate(pass) == true) //if everything went right we add the user to file and send welcome message
             {
                 ex.WriteRange(ex.GetLastRow(), 1, 3, info);
-                ex.Quit();
                 MessageBox.Show("You've successfully signed up to system!", "Welocme");
                 this.Hide(); //return to previous window
             }
+            ex.Quit();
         }
 
         public bool UsernameValidate(string user)
