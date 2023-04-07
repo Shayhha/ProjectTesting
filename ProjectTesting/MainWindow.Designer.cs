@@ -36,6 +36,7 @@
             textBox1 = new TextBox();
             SignIn_label = new Label();
             SignUp_button = new Button();
+            SignUp1 = new SignUp();
             SuspendLayout();
             // 
             // LogIn_button
@@ -107,12 +108,22 @@
             SignUp_button.TabIndex = 6;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
+            SignUp_button.Click += SignUp_button_Click;
+            // 
+            // SignUp1
+            // 
+            SignUp1.Location = new Point(0, 0);
+            SignUp1.Name = "SignUp1";
+            SignUp1.Size = new Size(1089, 575);
+            SignUp1.TabIndex = 7;
+            SignUp1.Visible = false;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1073, 536);
+            Controls.Add(SignUp1);
             Controls.Add(SignUp_button);
             Controls.Add(SignIn_label);
             Controls.Add(textBox1);
@@ -137,5 +148,6 @@
         private TextBox textBox1;
         private Label SignIn_label;
         private Button SignUp_button;
+        private SignUp SignUp1;
     }
 }

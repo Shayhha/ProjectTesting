@@ -16,5 +16,12 @@ namespace ProjectTesting
         {
             InitializeComponent();
         }
+
+        private void SIgnUp_button_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //return to previous window
+        }
+
+
     }
 }
