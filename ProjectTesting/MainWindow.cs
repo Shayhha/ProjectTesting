@@ -5,7 +5,6 @@ namespace ProjectTesting
     public partial class MainWindow : Form
     {
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -18,7 +17,7 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            UserName_textbox.Text = "Clicked!";
+            UserName_textbox.Text = "Has Been Clicked!";
             readExcel();
         }
 
@@ -35,26 +34,23 @@ namespace ProjectTesting
             //    MessageBox.Show(res);
             //}
 
-            //excel.WriteCell("A6", "Maxim");
-            //MessageBox.Show(excel.ReadCell("A6"));
 
-            //excel.CreateNewSheet("NewSheet");
 
-            //excel.SelectWorkSheet("NewSheet");
-            //excel.WriteCell("B2", "Hey");
+            string[] myArray = { "max", "123321" };
 
-            //string[] myArray = { "max", "123321" };
-
-            //excel.WriteRange(6, 1, 2, myArray);
-
-            //MessageBox.Show(excel.ReadCell("A6"));
-            //MessageBox.Show(excel.ReadCell("B6"));
-
-            //int last = excel.GetLastRow();
-            //excel.WriteCell("A" + last.ToString(), "something");
+            excel.WriteRange(5, 1, 2, myArray);
 
             excel.Quit();
         }
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            SignUp1.Hide();
+        }
+
+        private void SignUp_button_Click(object sender, EventArgs e)
+        {
+            SignUp1.Show();
+        }
     }
 }
