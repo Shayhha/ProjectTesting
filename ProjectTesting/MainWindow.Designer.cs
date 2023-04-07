@@ -36,12 +36,13 @@
             textBox1 = new TextBox();
             SignIn_label = new Label();
             SignUp_button = new Button();
+            SignUp1 = new SignUp();
             SuspendLayout();
             // 
             // LogIn_button
             // 
             LogIn_button.BackColor = SystemColors.ActiveCaption;
-            LogIn_button.Location = new Point(331, 284);
+            LogIn_button.Location = new Point(428, 264);
             LogIn_button.Name = "LogIn_button";
             LogIn_button.Size = new Size(162, 44);
             LogIn_button.TabIndex = 0;
@@ -51,7 +52,7 @@
             // 
             // UserName_textbox
             // 
-            UserName_textbox.Location = new Point(313, 203);
+            UserName_textbox.Location = new Point(410, 183);
             UserName_textbox.Name = "UserName_textbox";
             UserName_textbox.Size = new Size(180, 23);
             UserName_textbox.TabIndex = 1;
@@ -67,7 +68,7 @@
             // UserName_label
             // 
             UserName_label.AutoSize = true;
-            UserName_label.Location = new Point(239, 206);
+            UserName_label.Location = new Point(336, 186);
             UserName_label.Name = "UserName_label";
             UserName_label.Size = new Size(68, 15);
             UserName_label.TabIndex = 2;
@@ -76,7 +77,7 @@
             // Pasword_label
             // 
             Pasword_label.AutoSize = true;
-            Pasword_label.Location = new Point(526, 203);
+            Pasword_label.Location = new Point(623, 183);
             Pasword_label.Name = "Pasword_label";
             Pasword_label.Size = new Size(60, 15);
             Pasword_label.TabIndex = 3;
@@ -84,7 +85,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(592, 200);
+            textBox1.Location = new Point(689, 180);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(182, 23);
             textBox1.TabIndex = 4;
@@ -92,7 +93,7 @@
             // SignIn_label
             // 
             SignIn_label.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            SignIn_label.Location = new Point(469, 66);
+            SignIn_label.Location = new Point(543, 38);
             SignIn_label.Name = "SignIn_label";
             SignIn_label.Size = new Size(240, 54);
             SignIn_label.TabIndex = 5;
@@ -101,18 +102,29 @@
             // SignUp_button
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
-            SignUp_button.Location = new Point(564, 284);
+            SignUp_button.Location = new Point(661, 264);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(162, 44);
             SignUp_button.TabIndex = 6;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
+            SignUp_button.Click += SignUp_button_Click;
+            // 
+            // SignUp1
+            // 
+            SignUp1.BackColor = Color.LightCyan;
+            SignUp1.Location = new Point(-11, 0);
+            SignUp1.Name = "SignUp1";
+            SignUp1.Size = new Size(1280, 720);
+            SignUp1.TabIndex = 7;
+            SignUp1.Visible = false;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1073, 536);
+            ClientSize = new Size(1264, 681);
+            Controls.Add(SignUp1);
             Controls.Add(SignUp_button);
             Controls.Add(SignIn_label);
             Controls.Add(textBox1);
@@ -137,5 +149,6 @@
         private TextBox textBox1;
         private Label SignIn_label;
         private Button SignUp_button;
+        private SignUp SignUp1;
     }
 }
