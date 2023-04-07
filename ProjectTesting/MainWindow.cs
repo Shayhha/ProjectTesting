@@ -18,7 +18,7 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            UserName_textbox.Text = "Clicked!";
+            UserName_textbox.Text = "Has Been Clicked!";
             readExcel();
         }
 
