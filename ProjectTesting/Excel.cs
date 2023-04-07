@@ -5,10 +5,10 @@ namespace ProjectTesting
 {
     class Excel
     {
-        string path = "";
-        _Application excel = new _Excel.Application();
-        Workbook wb;
-        Worksheet ws;
+        private string path = "";
+        private _Application excel = new _Excel.Application();
+        private Workbook wb;
+        private Worksheet ws;
         
 
 
@@ -37,6 +37,7 @@ namespace ProjectTesting
             }
             catch(Exception e){
                 Console.WriteLine(e.Message);
+                
             }
             
         }

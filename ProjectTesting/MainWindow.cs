@@ -5,7 +5,6 @@ namespace ProjectTesting
     public partial class MainWindow : Form
     {
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -37,12 +36,21 @@ namespace ProjectTesting
 
 
 
-            string[] myArray = {"max","123321"};
-            
+            string[] myArray = { "max", "123321" };
+
             excel.WriteRange(5, 1, 2, myArray);
 
             excel.Quit();
         }
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            SignUp1.Hide();
+        }
+
+        private void SignUp_button_Click(object sender, EventArgs e)
+        {
+            SignUp1.Show();
+        }
     }
 }
