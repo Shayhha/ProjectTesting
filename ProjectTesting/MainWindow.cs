@@ -29,14 +29,14 @@ namespace ProjectTesting
                 {
                     flag = 1;
                 }
-                else if(temp[0] == info[0] && temp[1] == info[1])
+                else if (temp[0] == info[0] && temp[1] == info[1])
                 {
                     MessageBox.Show("Wrong password!", "Password Error");
                 }
             }
             if (flag == 0)
             {
-                MessageBox.Show("No matching user \"" + username+ "\"","User Error");
+                MessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
         }
 
@@ -71,5 +71,6 @@ namespace ProjectTesting
         {
             SignUp1.Show();
         }
+
     }
 }

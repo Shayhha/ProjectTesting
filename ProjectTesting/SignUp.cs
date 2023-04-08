@@ -39,7 +39,7 @@ namespace ProjectTesting
             if (UsernameValidate(username) == false)
                 flag = 1;
 
-            if(PasswordValidate(pass) == false)
+            if (PasswordValidate(pass) == false)
                 flag = 1;
 
             for (int i = 1; i < size; i++)
@@ -76,7 +76,7 @@ namespace ProjectTesting
 
         public bool UsernameValidate(string user)
         {
-            var hasTwoNumbers = new Regex(@"^(?=(?:\D*\d){0,2}\D*$)[a-zA-Z0-9]*$"); 
+            var hasTwoNumbers = new Regex(@"^(?=(?:\D*\d){0,2}\D*$)[a-zA-Z0-9]*$");
             var hasMiniMaxChars = new Regex(@"^.{6,8}$");
             var isAlphaNumeric = new Regex(@"^[a-zA-Z0-9_]+$"); // ^[a-zA-Z]+^[0-9]{1,2}$
 
