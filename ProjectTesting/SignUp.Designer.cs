@@ -39,6 +39,7 @@
             panel1 = new Panel();
             ID_textbox = new TextBox();
             ID_label = new Label();
+            Cancel_button = new Button();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -47,9 +48,9 @@
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            SignUp_button.Location = new Point(188, 249);
+            SignUp_button.Location = new Point(98, 253);
             SignUp_button.Name = "SignUp_button";
-            SignUp_button.Size = new Size(197, 39);
+            SignUp_button.Size = new Size(168, 39);
             SignUp_button.TabIndex = 0;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
@@ -105,6 +106,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SkyBlue;
+            panel1.Controls.Add(Cancel_button);
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(ID_label);
             panel1.Controls.Add(SignUp_button);
@@ -137,6 +139,18 @@
             ID_label.TabIndex = 22;
             ID_label.Text = "ID:";
             // 
+            // Cancel_button
+            // 
+            Cancel_button.BackColor = SystemColors.ActiveCaption;
+            Cancel_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Cancel_button.Location = new Point(314, 253);
+            Cancel_button.Name = "Cancel_button";
+            Cancel_button.Size = new Size(168, 39);
+            Cancel_button.TabIndex = 23;
+            Cancel_button.Text = "Cancel";
+            Cancel_button.UseVisualStyleBackColor = false;
+            Cancel_button.Click += Cancel_button_Click;
+            // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -164,5 +178,6 @@
         private Panel panel1;
         private TextBox ID_textbox;
         private Label ID_label;
+        private Button Cancel_button;
     }
 }
