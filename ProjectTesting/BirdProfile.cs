@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectTesting
 {
@@ -17,7 +18,7 @@ namespace ProjectTesting
         {
             InitializeComponent();
             setImages();
-            initLabels();
+            initLabels(); // this function needs to run when we use the .Show() method on this object
         }
 
         private void setImages()
@@ -52,7 +53,33 @@ namespace ProjectTesting
 
         private void initLabels()
         {
-            string USERNAME = "Max"; // This will be a global username that the function could reference when the window is loaded
+            string BIRD_ID = "97235"; // This function will recive a birds id in some way shape or form
+            string USER_NAME = "default"; // This function will have access to the username of the current user
+
+            Excel ex = new Excel("database", USER_NAME);
+            int size = ex.GetLastRow();
+            string tempId = "";
+            string[] databaseInfo = null;
+
+            for (int i = 2; i < size; i++)
+            {
+                tempId = ex.ReadCell("G" + i.ToString());
+                if (tempId == BIRD_ID) //if we found one that matches we open a messagebox and break
+                {
+                    databaseInfo = ex.ReadRange(i, 7, 14);
+                    idLabel.Text = databaseInfo[0];
+                    typeLabel.Text = databaseInfo[1];
+                    subTypeLabel.Text = databaseInfo[2];
+                    dateLabel.Text = databaseInfo[3];
+                    genderLabel.Text = databaseInfo[4];
+                    cageIdLabel.Text = databaseInfo[5];
+                    dadIdLabel.Text = databaseInfo[6];
+                    momIdLabel.Text = databaseInfo[7];
+                    break;
+                }
+            }
+
+            ex.Quit();
         }
 
 
@@ -63,6 +90,14 @@ namespace ProjectTesting
 
         private void button1_Click(object sender, EventArgs e)
         {
+            idLabel.Text = "";
+            typeLabel.Text = "";
+            subTypeLabel.Text = "";
+            dateLabel.Text = "";
+            genderLabel.Text = "";
+            cageIdLabel.Text = "";
+            dadIdLabel.Text = "";
+            momIdLabel.Text = "";
             this.Hide();
         }
     }
