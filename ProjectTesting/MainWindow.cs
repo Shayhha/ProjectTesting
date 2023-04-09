@@ -69,9 +69,11 @@ namespace ProjectTesting
         }
 
 
+
         private void SignUp_button_Click(object sender, EventArgs e)
         {
-            SignUp1.Show();
+            //SignUp1.Show();
+            //birdProfile1.Show();
         }
 
 
