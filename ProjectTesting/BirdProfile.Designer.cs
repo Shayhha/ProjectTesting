@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox6 = new PictureBox();
+            mainPic = new PictureBox();
+            offspringPic3 = new PictureBox();
+            offspringPic5 = new PictureBox();
+            offspringPic4 = new PictureBox();
+            offspringPic2 = new PictureBox();
+            offspringPic1 = new PictureBox();
             nameLabel = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -44,69 +44,77 @@
             label7 = new Label();
             label8 = new Label();
             panel1 = new Panel();
+            momIdLabel = new Label();
+            dadIdLabel = new Label();
+            genderLabel = new Label();
+            cageIdLabel = new Label();
+            dateLabel = new Label();
+            subTypeLabel = new Label();
+            typeLabel = new Label();
+            idLabel = new Label();
             button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // mainPic
             // 
-            pictureBox1.Location = new Point(692, 83);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(425, 425);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            mainPic.Location = new Point(692, 83);
+            mainPic.Name = "mainPic";
+            mainPic.Size = new Size(425, 425);
+            mainPic.SizeMode = PictureBoxSizeMode.Zoom;
+            mainPic.TabIndex = 0;
+            mainPic.TabStop = false;
             // 
-            // pictureBox3
+            // offspringPic3
             // 
-            pictureBox3.Location = new Point(852, 552);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(100, 100);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 2;
-            pictureBox3.TabStop = false;
+            offspringPic3.Location = new Point(852, 552);
+            offspringPic3.Name = "offspringPic3";
+            offspringPic3.Size = new Size(100, 100);
+            offspringPic3.SizeMode = PictureBoxSizeMode.Zoom;
+            offspringPic3.TabIndex = 2;
+            offspringPic3.TabStop = false;
             // 
-            // pictureBox4
+            // offspringPic5
             // 
-            pictureBox4.Location = new Point(1119, 552);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(100, 100);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 4;
-            pictureBox4.TabStop = false;
+            offspringPic5.Location = new Point(1119, 552);
+            offspringPic5.Name = "offspringPic5";
+            offspringPic5.Size = new Size(100, 100);
+            offspringPic5.SizeMode = PictureBoxSizeMode.Zoom;
+            offspringPic5.TabIndex = 4;
+            offspringPic5.TabStop = false;
             // 
-            // pictureBox5
+            // offspringPic4
             // 
-            pictureBox5.Location = new Point(987, 552);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(100, 100);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 3;
-            pictureBox5.TabStop = false;
+            offspringPic4.Location = new Point(987, 552);
+            offspringPic4.Name = "offspringPic4";
+            offspringPic4.Size = new Size(100, 100);
+            offspringPic4.SizeMode = PictureBoxSizeMode.Zoom;
+            offspringPic4.TabIndex = 3;
+            offspringPic4.TabStop = false;
             // 
-            // pictureBox2
+            // offspringPic2
             // 
-            pictureBox2.Location = new Point(720, 552);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(100, 100);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            offspringPic2.Location = new Point(720, 552);
+            offspringPic2.Name = "offspringPic2";
+            offspringPic2.Size = new Size(100, 100);
+            offspringPic2.SizeMode = PictureBoxSizeMode.Zoom;
+            offspringPic2.TabIndex = 1;
+            offspringPic2.TabStop = false;
             // 
-            // pictureBox6
+            // offspringPic1
             // 
-            pictureBox6.Location = new Point(590, 552);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(100, 100);
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.TabIndex = 5;
-            pictureBox6.TabStop = false;
+            offspringPic1.Location = new Point(590, 552);
+            offspringPic1.Name = "offspringPic1";
+            offspringPic1.Size = new Size(100, 100);
+            offspringPic1.SizeMode = PictureBoxSizeMode.Zoom;
+            offspringPic1.TabIndex = 5;
+            offspringPic1.TabStop = false;
             // 
             // nameLabel
             // 
@@ -201,6 +209,14 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(momIdLabel);
+            panel1.Controls.Add(dadIdLabel);
+            panel1.Controls.Add(genderLabel);
+            panel1.Controls.Add(cageIdLabel);
+            panel1.Controls.Add(dateLabel);
+            panel1.Controls.Add(subTypeLabel);
+            panel1.Controls.Add(typeLabel);
+            panel1.Controls.Add(idLabel);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(nameLabel);
             panel1.Controls.Add(label4);
@@ -209,10 +225,90 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(108, 83);
+            panel1.Location = new Point(116, 98);
             panel1.Name = "panel1";
             panel1.Size = new Size(397, 388);
             panel1.TabIndex = 15;
+            // 
+            // momIdLabel
+            // 
+            momIdLabel.AutoSize = true;
+            momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            momIdLabel.Location = new Point(163, 324);
+            momIdLabel.Name = "momIdLabel";
+            momIdLabel.Size = new Size(52, 25);
+            momIdLabel.TabIndex = 21;
+            momIdLabel.Text = "John";
+            // 
+            // dadIdLabel
+            // 
+            dadIdLabel.AutoSize = true;
+            dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dadIdLabel.Location = new Point(152, 281);
+            dadIdLabel.Name = "dadIdLabel";
+            dadIdLabel.Size = new Size(52, 25);
+            dadIdLabel.TabIndex = 20;
+            dadIdLabel.Text = "John";
+            // 
+            // genderLabel
+            // 
+            genderLabel.AutoSize = true;
+            genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            genderLabel.Location = new Point(147, 197);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new Size(52, 25);
+            genderLabel.TabIndex = 19;
+            genderLabel.Text = "John";
+            // 
+            // cageIdLabel
+            // 
+            cageIdLabel.AutoSize = true;
+            cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cageIdLabel.Location = new Point(147, 240);
+            cageIdLabel.Name = "cageIdLabel";
+            cageIdLabel.Size = new Size(52, 25);
+            cageIdLabel.TabIndex = 18;
+            cageIdLabel.Text = "John";
+            // 
+            // dateLabel
+            // 
+            dateLabel.AutoSize = true;
+            dateLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLabel.Location = new Point(194, 157);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(116, 25);
+            dateLabel.TabIndex = 17;
+            dateLabel.Text = "dd/mm/yyyy";
+            // 
+            // subTypeLabel
+            // 
+            subTypeLabel.AutoSize = true;
+            subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            subTypeLabel.Location = new Point(165, 114);
+            subTypeLabel.Name = "subTypeLabel";
+            subTypeLabel.Size = new Size(52, 25);
+            subTypeLabel.TabIndex = 16;
+            subTypeLabel.Text = "John";
+            // 
+            // typeLabel
+            // 
+            typeLabel.AutoSize = true;
+            typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            typeLabel.Location = new Point(122, 73);
+            typeLabel.Name = "typeLabel";
+            typeLabel.Size = new Size(52, 25);
+            typeLabel.TabIndex = 15;
+            typeLabel.Text = "John";
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            idLabel.Location = new Point(89, 30);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(52, 25);
+            idLabel.TabIndex = 14;
+            idLabel.Text = "John";
             // 
             // button1
             // 
@@ -234,20 +330,20 @@
             Controls.Add(button1);
             Controls.Add(panel1);
             Controls.Add(label8);
-            Controls.Add(pictureBox6);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
+            Controls.Add(offspringPic1);
+            Controls.Add(offspringPic5);
+            Controls.Add(offspringPic4);
+            Controls.Add(offspringPic3);
+            Controls.Add(offspringPic2);
+            Controls.Add(mainPic);
             Name = "BirdProfile";
             Size = new Size(1280, 720);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mainPic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)offspringPic1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -256,12 +352,12 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox6;
+        private PictureBox mainPic;
+        private PictureBox offspringPic3;
+        private PictureBox offspringPic5;
+        private PictureBox offspringPic4;
+        private PictureBox offspringPic2;
+        private PictureBox offspringPic1;
         private Label nameLabel;
         private Label label1;
         private Label label2;
@@ -273,5 +369,13 @@
         private Label label8;
         private Panel panel1;
         private Button button1;
+        private Label momIdLabel;
+        private Label dadIdLabel;
+        private Label genderLabel;
+        private Label cageIdLabel;
+        private Label dateLabel;
+        private Label subTypeLabel;
+        private Label typeLabel;
+        private Label idLabel;
     }
 }
