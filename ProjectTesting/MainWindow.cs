@@ -47,6 +47,7 @@ namespace ProjectTesting
             {
                 MessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
+            ex.Quit();
         }
 
         private void readExcel()
@@ -78,7 +79,6 @@ namespace ProjectTesting
             SignUp1.Show();
             //birdProfile1.Show();
         }
-
 
     }
 }

@@ -41,7 +41,6 @@
             homePage1 = new HomePage();
             searchBird1 = new SearchBird();
             panel1.SuspendLayout();
-            birdProfile1 = new BirdProfile();
             SuspendLayout();
             // 
             // LogIn_button
@@ -96,6 +95,7 @@
             Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.Location = new Point(174, 89);
             Password_textbox.Name = "Password_textbox";
+            Password_textbox.PasswordChar = '*';
             Password_textbox.Size = new Size(180, 27);
             Password_textbox.TabIndex = 4;
             // 
@@ -123,7 +123,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(-19, 0);
+            SignUp1.Location = new Point(0, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -151,7 +151,6 @@
             homePage1.TabIndex = 9;
             homePage1.Visible = false;
             // 
-
             // searchBird1
             // 
             searchBird1.BackColor = Color.LightCyan;
@@ -160,15 +159,6 @@
             searchBird1.Size = new Size(1280, 720);
             searchBird1.TabIndex = 10;
             searchBird1.Visible = false;
-
-            // birdProfile1
-            // 
-            birdProfile1.Location = new Point(-11, 0);
-            birdProfile1.Name = "birdProfile1";
-            birdProfile1.Size = new Size(1280, 720);
-            birdProfile1.TabIndex = 11;
-            birdProfile1.Visible = false;
-
             // 
             // MainWindow
             // 
@@ -178,7 +168,6 @@
             ClientSize = new Size(1264, 681);
             Controls.Add(searchBird1);
             Controls.Add(homePage1);
-            Controls.Add(birdProfile1);
             Controls.Add(SignUp1);
             Controls.Add(panel1);
             Controls.Add(SignIn_label);
@@ -203,7 +192,7 @@
         private SignUp SignUp1;
         private Panel panel1;
         private HomePage homePage1;
-        public static SearchBird searchBird1;
         private BirdProfile birdProfile1;
+        public static SearchBird searchBird1;
     }
 }
