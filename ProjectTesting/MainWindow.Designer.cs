@@ -157,6 +157,7 @@
             searchBird1.Name = "searchBird1";
             searchBird1.Size = new Size(1280, 720);
             searchBird1.TabIndex = 10;
+            searchBird1.Visible = false;
             // 
             // MainWindow
             // 
