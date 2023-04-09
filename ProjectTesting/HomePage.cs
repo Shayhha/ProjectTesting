@@ -16,5 +16,11 @@ namespace ProjectTesting
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainWindow.searchBird1.Show();
+        }
     }
 }
