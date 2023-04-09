@@ -99,7 +99,7 @@
             // SignIn_label
             // 
             SignIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            SignIn_label.Location = new Point(560, 26);
+            SignIn_label.Location = new Point(560, 50);
             SignIn_label.Name = "SignIn_label";
             SignIn_label.Size = new Size(204, 86);
             SignIn_label.TabIndex = 5;
@@ -120,7 +120,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(0, -33);
+            SignUp1.Location = new Point(0, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -135,7 +135,7 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Pasword_label);
-            panel1.Location = new Point(348, 115);
+            panel1.Location = new Point(353, 188);
             panel1.Name = "panel1";
             panel1.Size = new Size(588, 306);
             panel1.TabIndex = 8;

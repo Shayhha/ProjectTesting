@@ -140,6 +140,12 @@ namespace ProjectTesting
             return true;
         }
 
-
+        private void Cancel_button_Click(object sender, EventArgs e) //returns to sign in
+        {
+            Password_textbox.Text = "";
+            UserName_textbox.Text = "";
+            ID_textbox.Text = "";
+            this.Hide();
+        }
     }
 }
