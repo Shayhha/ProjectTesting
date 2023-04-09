@@ -45,13 +45,14 @@
             // 
             // SignUp_button
             // 
+            SignUp_button.BackColor = SystemColors.ActiveCaption;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             SignUp_button.Location = new Point(188, 249);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(197, 39);
             SignUp_button.TabIndex = 0;
             SignUp_button.Text = "Sign Up";
-            SignUp_button.UseVisualStyleBackColor = true;
+            SignUp_button.UseVisualStyleBackColor = false;
             SignUp_button.Click += SignUp_button_Click;
             // 
             // Password_textbox
