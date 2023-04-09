@@ -28,63 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "", "lol lmao" }, -1);
-            listBox1 = new ListBox();
+            birdList = new ListBox();
             button1 = new Button();
-            listView1 = new ListView();
-            Bird_Id = new ColumnHeader();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
-            // listBox1
+            // birdList
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "something", "more things", "last thing" });
-            listBox1.Location = new Point(93, 75);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(1172, 184);
-            listBox1.TabIndex = 0;
+            birdList.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            birdList.FormattingEnabled = true;
+            birdList.ItemHeight = 32;
+            birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
+            birdList.Location = new Point(114, 222);
+            birdList.Name = "birdList";
+            birdList.Size = new Size(1073, 356);
+            birdList.TabIndex = 0;
             // 
             // button1
             // 
             button1.BackColor = Color.IndianRed;
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(1160, 29);
+            button1.Location = new Point(1127, 25);
             button1.Name = "button1";
             button1.Size = new Size(90, 40);
             button1.TabIndex = 1;
             button1.Text = "Log-out";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // listView1
+            // textBox1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Bird_Id });
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1 });
-            listView1.Location = new Point(110, 287);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(573, 231);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
+            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(489, 133);
+            textBox1.Name = "textBox1";
+            textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.Size = new Size(350, 33);
+            textBox1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(405, 136);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 25);
+            label1.TabIndex = 3;
+            label1.Text = "Search: ";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(356, 179);
+            label2.Name = "label2";
+            label2.Size = new Size(616, 15);
+            label2.TabIndex = 4;
+            label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
             // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
-            Controls.Add(listView1);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
             Controls.Add(button1);
-            Controls.Add(listBox1);
+            Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox birdList;
         private Button button1;
-        private ListView listView1;
-        private ColumnHeader Bird_Id;
+        private TextBox textBox1;
+        private Label label1;
+        private Label label2;
     }
 }

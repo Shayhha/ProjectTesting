@@ -14,6 +14,9 @@ namespace ProjectTesting
         private void MainWindow_Load(object sender, EventArgs e)
         {
             SignUp1.Hide();
+            searchBird1.Hide();
+            homePage1.Hide();
+            birdProfile1.Hide();
         }
 
         private void LogIn_button_Click(object sender, EventArgs e)
@@ -72,7 +75,7 @@ namespace ProjectTesting
 
         private void SignUp_button_Click(object sender, EventArgs e)
         {
-            //SignUp1.Show();
+            SignUp1.Show();
             //birdProfile1.Show();
         }
 
