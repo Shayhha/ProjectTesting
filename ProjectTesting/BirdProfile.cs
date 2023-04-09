@@ -43,7 +43,7 @@ namespace ProjectTesting
             this.offspringPic5.Image = offspring5;
         }
 
-        public Image getRandomImage()
+        private Image getRandomImage()
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 6);
@@ -51,7 +51,7 @@ namespace ProjectTesting
             return temp;
         }
 
-        private void initLabels()
+        public void initLabels()
         {
             string BIRD_ID = "97235"; // This function will recive a birds id in some way shape or form
             string USER_NAME = "default"; // This function will have access to the username of the current user
