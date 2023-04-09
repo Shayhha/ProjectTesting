@@ -30,10 +30,11 @@
         {
             birdList = new ListBox();
             button1 = new Button();
-            textBox1 = new TextBox();
+            Search_textbox = new TextBox();
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
+            Search_button = new Button();
             SuspendLayout();
             // 
             // birdList
@@ -58,16 +59,15 @@
             button1.TabIndex = 1;
             button1.Text = "Log-out";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
-            // textBox1
+            // Search_textbox
             // 
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(489, 133);
-            textBox1.Name = "textBox1";
-            textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(350, 33);
-            textBox1.TabIndex = 2;
+            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textbox.Location = new Point(489, 133);
+            Search_textbox.Name = "Search_textbox";
+            Search_textbox.ScrollBars = ScrollBars.Vertical;
+            Search_textbox.Size = new Size(350, 33);
+            Search_textbox.TabIndex = 2;
             // 
             // label1
             // 
@@ -98,15 +98,27 @@
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
             // 
+            // Search_button
+            // 
+            Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_button.Location = new Point(845, 133);
+            Search_button.Name = "Search_button";
+            Search_button.Size = new Size(156, 35);
+            Search_button.TabIndex = 6;
+            Search_button.Text = "Search Results";
+            Search_button.UseVisualStyleBackColor = true;
+            Search_button.Click += Search_button_Click;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(Search_button);
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(Search_textbox);
             Controls.Add(button1);
             Controls.Add(birdList);
             Name = "SearchBird";
@@ -119,9 +131,10 @@
 
         private ListBox birdList;
         private Button button1;
-        private TextBox textBox1;
+        private TextBox Search_textbox;
         private Label label1;
         private Label label2;
         private Button backButton;
+        private Button Search_button;
     }
 }
