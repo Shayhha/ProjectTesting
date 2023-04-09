@@ -33,15 +33,21 @@
             label1 = new Label();
             UserName_label = new Label();
             Pasword_label = new Label();
-            textBox1 = new TextBox();
+            Password_textbox = new TextBox();
             SignIn_label = new Label();
             SignUp_button = new Button();
+            SignUp1 = new SignUp();
+            panel1 = new Panel();
+            homePage1 = new HomePage();
+            panel1.SuspendLayout();
+            birdProfile1 = new BirdProfile();
             SuspendLayout();
             // 
             // LogIn_button
             // 
             LogIn_button.BackColor = SystemColors.ActiveCaption;
-            LogIn_button.Location = new Point(331, 284);
+            LogIn_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LogIn_button.Location = new Point(96, 185);
             LogIn_button.Name = "LogIn_button";
             LogIn_button.Size = new Size(162, 44);
             LogIn_button.TabIndex = 0;
@@ -51,11 +57,11 @@
             // 
             // UserName_textbox
             // 
-            UserName_textbox.Location = new Point(313, 203);
+            UserName_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            UserName_textbox.Location = new Point(174, 42);
             UserName_textbox.Name = "UserName_textbox";
-            UserName_textbox.Size = new Size(180, 23);
+            UserName_textbox.Size = new Size(180, 27);
             UserName_textbox.TabIndex = 1;
-            UserName_textbox.TextChanged += textBox_TextChanged;
             // 
             // label1
             // 
@@ -67,64 +73,108 @@
             // UserName_label
             // 
             UserName_label.AutoSize = true;
-            UserName_label.Location = new Point(239, 206);
+            UserName_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            UserName_label.Location = new Point(31, 33);
             UserName_label.Name = "UserName_label";
-            UserName_label.Size = new Size(68, 15);
+            UserName_label.Size = new Size(137, 32);
             UserName_label.TabIndex = 2;
             UserName_label.Text = "User Name:";
             // 
             // Pasword_label
             // 
             Pasword_label.AutoSize = true;
-            Pasword_label.Location = new Point(526, 203);
+            Pasword_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Pasword_label.Location = new Point(40, 80);
             Pasword_label.Name = "Pasword_label";
-            Pasword_label.Size = new Size(60, 15);
+            Pasword_label.Size = new Size(116, 32);
             Pasword_label.TabIndex = 3;
             Pasword_label.Text = "Password:";
             // 
-            // textBox1
+            // Password_textbox
             // 
-            textBox1.Location = new Point(592, 200);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(182, 23);
-            textBox1.TabIndex = 4;
+            Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_textbox.Location = new Point(174, 89);
+            Password_textbox.Name = "Password_textbox";
+            Password_textbox.Size = new Size(180, 27);
+            Password_textbox.TabIndex = 4;
             // 
             // SignIn_label
             // 
-            SignIn_label.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            SignIn_label.Location = new Point(469, 66);
+            SignIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            SignIn_label.Location = new Point(560, 50);
             SignIn_label.Name = "SignIn_label";
-            SignIn_label.Size = new Size(240, 54);
+            SignIn_label.Size = new Size(204, 86);
             SignIn_label.TabIndex = 5;
             SignIn_label.Text = "Sign In";
             // 
             // SignUp_button
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
-            SignUp_button.Location = new Point(564, 284);
+            SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            SignUp_button.Location = new Point(335, 185);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(162, 44);
             SignUp_button.TabIndex = 6;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
+            SignUp_button.Click += SignUp_button_Click;
+            // 
+            // SignUp1
+            // 
+            SignUp1.BackColor = Color.LightCyan;
+            SignUp1.Location = new Point(0, 0);
+            SignUp1.Name = "SignUp1";
+            SignUp1.Size = new Size(1280, 720);
+            SignUp1.TabIndex = 7;
+            SignUp1.Visible = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SkyBlue;
+            panel1.Controls.Add(Password_textbox);
+            panel1.Controls.Add(LogIn_button);
+            panel1.Controls.Add(SignUp_button);
+            panel1.Controls.Add(UserName_textbox);
+            panel1.Controls.Add(UserName_label);
+            panel1.Controls.Add(Pasword_label);
+            panel1.Location = new Point(353, 188);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(588, 306);
+            panel1.TabIndex = 8;
+            // 
+            // homePage1
+            // 
+            homePage1.Location = new Point(-13, 0);
+            homePage1.Name = "homePage1";
+            homePage1.Size = new Size(1280, 720);
+            homePage1.TabIndex = 9;
+            homePage1.Visible = false;
+            // 
+            // birdProfile1
+            // 
+            birdProfile1.Location = new Point(-11, 0);
+            birdProfile1.Name = "birdProfile1";
+            birdProfile1.Size = new Size(1280, 720);
+            birdProfile1.TabIndex = 10;
+            birdProfile1.Visible = false;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1073, 536);
-            Controls.Add(SignUp_button);
+            BackColor = Color.LightCyan;
+            ClientSize = new Size(1264, 681);
+            Controls.Add(homePage1);
+            Controls.Add(birdProfile1);
+            Controls.Add(SignUp1);
+            Controls.Add(panel1);
             Controls.Add(SignIn_label);
-            Controls.Add(textBox1);
-            Controls.Add(Pasword_label);
-            Controls.Add(UserName_label);
             Controls.Add(label1);
-            Controls.Add(UserName_textbox);
-            Controls.Add(LogIn_button);
             Name = "MainWindow";
             Text = "MainWindow";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -134,8 +184,12 @@
         private Label label1;
         private Label UserName_label;
         private Label Pasword_label;
-        private TextBox textBox1;
+        private TextBox Password_textbox;
         private Label SignIn_label;
         private Button SignUp_button;
+        private SignUp SignUp1;
+        private Panel panel1;
+        private HomePage homePage1;
+        private BirdProfile birdProfile1;
     }
 }

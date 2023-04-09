@@ -4,22 +4,41 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
-
+        private string UserSheet = ""; //this represents the logged in user sheet name
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
-        {
-            // MessageBox.Show("Works", "Windows 11 ");
-        }
-
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            UserName_textbox.Text = "Clicked!";
-            readExcel();
+            string username = UserName_textbox.Text;
+            string password = Password_textbox.Text;
+            string[] info = { username, password };
+            Excel ex = new Excel("users", "default");
+            int size = ex.GetLastRow();
+            string[] temp = null;
+            int flag = 0;
+
+            for (int i = 1; i < size; i++)
+            {
+                temp = ex.ReadRange(i, 1, 3);
+                if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
+                {
+                    flag = 1; //needs hoempage
+                    this.UserSheet = username; //gives usersheet the current users name
+                    homePage1.Show();
+                }
+                else if (temp[0] == info[0] && temp[1] == info[1])
+                {
+                    MessageBox.Show("Wrong password!", "Password Error");
+                }
+            }
+            if (flag == 0)
+            {
+                MessageBox.Show("No matching user \"" + username + "\"", "User Error");
+            }
         }
 
         private void readExcel()
@@ -35,25 +54,25 @@ namespace ProjectTesting
             //    MessageBox.Show(res);
             //}
 
-            //excel.WriteCell("A6", "Maxim");
-            //MessageBox.Show(excel.ReadCell("A6"));
 
-            //excel.CreateNewSheet("NewSheet");
 
-            //excel.SelectWorkSheet("NewSheet");
-            //excel.WriteCell("B2", "Hey");
+            string[] myArray = { "max", "123321" };
 
-            //string[] myArray = { "max", "123321" };
-
-            //excel.WriteRange(6, 1, 2, myArray);
-
-            //MessageBox.Show(excel.ReadCell("A6"));
-            //MessageBox.Show(excel.ReadCell("B6"));
-
-            //int last = excel.GetLastRow();
-            //excel.WriteCell("A" + last.ToString(), "something");
+            excel.WriteRange(5, 1, 2, myArray);
 
             excel.Quit();
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            SignUp1.Hide();
+            birdProfile1.Hide();
+        }
+
+        private void SignUp_button_Click(object sender, EventArgs e)
+        {
+            //SignUp1.Show();
+            //birdProfile1.Show();
         }
 
     }
