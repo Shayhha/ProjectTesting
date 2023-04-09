@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace ProjectTesting
 {
-    public partial class HomePage : UserControl
+    public partial class SearchBird : UserControl
     {
-        public HomePage()
+        public SearchBird()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainWindow.searchBird1.Show();
+            //this.Hide();
+            //MainWindow.homePage1.Show();
         }
     }
 }

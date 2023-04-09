@@ -39,6 +39,7 @@
             SignUp1 = new SignUp();
             panel1 = new Panel();
             homePage1 = new HomePage();
+            searchBird1 = new SearchBird();
             panel1.SuspendLayout();
             birdProfile1 = new BirdProfile();
             SuspendLayout();
@@ -122,7 +123,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(0, 0);
+            SignUp1.Location = new Point(-19, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -144,19 +145,30 @@
             // 
             // homePage1
             // 
-            homePage1.Location = new Point(-13, 0);
+            homePage1.Location = new Point(0, 0);
             homePage1.Name = "homePage1";
             homePage1.Size = new Size(1280, 720);
             homePage1.TabIndex = 9;
             homePage1.Visible = false;
             // 
+
+            // searchBird1
+            // 
+            searchBird1.BackColor = Color.LightCyan;
+            searchBird1.Location = new Point(0, 0);
+            searchBird1.Name = "searchBird1";
+            searchBird1.Size = new Size(1280, 720);
+            searchBird1.TabIndex = 10;
+            searchBird1.Visible = false;
+
             // birdProfile1
             // 
             birdProfile1.Location = new Point(-11, 0);
             birdProfile1.Name = "birdProfile1";
             birdProfile1.Size = new Size(1280, 720);
-            birdProfile1.TabIndex = 10;
+            birdProfile1.TabIndex = 11;
             birdProfile1.Visible = false;
+
             // 
             // MainWindow
             // 
@@ -164,6 +176,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(searchBird1);
             Controls.Add(homePage1);
             Controls.Add(birdProfile1);
             Controls.Add(SignUp1);
@@ -190,6 +203,7 @@
         private SignUp SignUp1;
         private Panel panel1;
         private HomePage homePage1;
+        public static SearchBird searchBird1;
         private BirdProfile birdProfile1;
     }
 }

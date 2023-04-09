@@ -47,7 +47,7 @@ namespace ProjectTesting
             string content = "";
             if (ws.Range[cell].Value != null)
             {
-                content = ws.Range[cell].Value;
+                content = ws.Range[cell].Value.ToString();
             }
             return content;
         }
