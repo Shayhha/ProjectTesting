@@ -203,7 +203,7 @@
         private SignUp SignUp1;
         private Panel panel1;
         private HomePage homePage1;
-        private SearchBird searchBird1;
+        public static SearchBird searchBird1;
         private BirdProfile birdProfile1;
     }
 }
