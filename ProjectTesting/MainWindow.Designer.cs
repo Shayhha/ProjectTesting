@@ -39,6 +39,7 @@
             SignUp1 = new SignUp();
             panel1 = new Panel();
             homePage1 = new HomePage();
+            searchBird1 = new SearchBird();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -121,7 +122,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(0, 0);
+            SignUp1.Location = new Point(-19, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -143,11 +144,19 @@
             // 
             // homePage1
             // 
-            homePage1.Location = new Point(-13, 0);
+            homePage1.Location = new Point(0, 0);
             homePage1.Name = "homePage1";
             homePage1.Size = new Size(1280, 720);
             homePage1.TabIndex = 9;
             homePage1.Visible = false;
+            // 
+            // searchBird1
+            // 
+            searchBird1.BackColor = Color.LightCyan;
+            searchBird1.Location = new Point(0, 0);
+            searchBird1.Name = "searchBird1";
+            searchBird1.Size = new Size(1280, 720);
+            searchBird1.TabIndex = 10;
             // 
             // MainWindow
             // 
@@ -155,6 +164,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(searchBird1);
             Controls.Add(homePage1);
             Controls.Add(SignUp1);
             Controls.Add(panel1);
@@ -180,5 +190,6 @@
         private SignUp SignUp1;
         private Panel panel1;
         private HomePage homePage1;
+        private SearchBird searchBird1;
     }
 }
