@@ -33,6 +33,7 @@
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            backButton = new Button();
             SuspendLayout();
             // 
             // birdList
@@ -87,11 +88,22 @@
             label2.TabIndex = 4;
             label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
             // 
+            // backButton
+            // 
+            backButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            backButton.Location = new Point(59, 25);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(90, 40);
+            backButton.TabIndex = 5;
+            backButton.Text = "Back";
+            backButton.UseVisualStyleBackColor = true;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
@@ -110,5 +122,6 @@
         private TextBox textBox1;
         private Label label1;
         private Label label2;
+        private Button backButton;
     }
 }

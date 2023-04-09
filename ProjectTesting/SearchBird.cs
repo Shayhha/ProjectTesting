@@ -19,8 +19,8 @@ namespace ProjectTesting
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainWindow.homePage1.Show();
+            //this.Hide();
+            //MainWindow.homePage1.Show();
         }
     }
 }

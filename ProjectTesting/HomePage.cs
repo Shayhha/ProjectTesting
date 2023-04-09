@@ -20,8 +20,7 @@ namespace ProjectTesting
         private void button1_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            //SearchBird s = new SearchBird();
-            //s.Show();
+            //MainWindow.searchBird1.Show();
         }
     }
 }
