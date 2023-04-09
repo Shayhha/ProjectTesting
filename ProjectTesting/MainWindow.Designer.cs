@@ -38,6 +38,7 @@
             SignUp_button = new Button();
             SignUp1 = new SignUp();
             panel1 = new Panel();
+            homePage1 = new HomePage();
             panel1.SuspendLayout();
             birdProfile1 = new BirdProfile();
             SuspendLayout();
@@ -100,7 +101,7 @@
             // SignIn_label
             // 
             SignIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            SignIn_label.Location = new Point(560, 26);
+            SignIn_label.Location = new Point(560, 50);
             SignIn_label.Name = "SignIn_label";
             SignIn_label.Size = new Size(204, 86);
             SignIn_label.TabIndex = 5;
@@ -121,7 +122,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(0, -33);
+            SignUp1.Location = new Point(0, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -136,17 +137,25 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Pasword_label);
-            panel1.Location = new Point(348, 115);
+            panel1.Location = new Point(353, 188);
             panel1.Name = "panel1";
             panel1.Size = new Size(588, 306);
             panel1.TabIndex = 8;
+            // 
+            // homePage1
+            // 
+            homePage1.Location = new Point(-13, 0);
+            homePage1.Name = "homePage1";
+            homePage1.Size = new Size(1280, 720);
+            homePage1.TabIndex = 9;
+            homePage1.Visible = false;
             // 
             // birdProfile1
             // 
             birdProfile1.Location = new Point(-11, 0);
             birdProfile1.Name = "birdProfile1";
             birdProfile1.Size = new Size(1280, 720);
-            birdProfile1.TabIndex = 9;
+            birdProfile1.TabIndex = 10;
             birdProfile1.Visible = false;
             // 
             // MainWindow
@@ -155,6 +164,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(homePage1);
             Controls.Add(birdProfile1);
             Controls.Add(SignUp1);
             Controls.Add(panel1);
@@ -179,6 +189,7 @@
         private Button SignUp_button;
         private SignUp SignUp1;
         private Panel panel1;
+        private HomePage homePage1;
         private BirdProfile birdProfile1;
     }
 }

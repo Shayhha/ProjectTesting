@@ -21,7 +21,7 @@ namespace ProjectTesting
             initLabels(); // this function needs to run when we use the .Show() method on this object
         }
 
-        private void setImages()
+        public void setImages()
         {
             string dirc = Directory.GetCurrentDirectory().Split("bin")[0];
 
@@ -43,7 +43,7 @@ namespace ProjectTesting
             this.offspringPic5.Image = offspring5;
         }
 
-        private Image getRandomImage()
+        public Image getRandomImage()
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 6);
