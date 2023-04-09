@@ -44,6 +44,7 @@
             label7 = new Label();
             label8 = new Label();
             panel1 = new Panel();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -55,49 +56,55 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(693, 56);
+            pictureBox1.Location = new Point(692, 83);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(450, 450);
+            pictureBox1.Size = new Size(425, 425);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(860, 559);
+            pictureBox3.Location = new Point(852, 552);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(100, 100);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            pictureBox4.Location = new Point(1127, 559);
+            pictureBox4.Location = new Point(1119, 552);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(100, 100);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 4;
             pictureBox4.TabStop = false;
             // 
             // pictureBox5
             // 
-            pictureBox5.Location = new Point(995, 559);
+            pictureBox5.Location = new Point(987, 552);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(100, 100);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 3;
             pictureBox5.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(728, 559);
+            pictureBox2.Location = new Point(720, 552);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(100, 100);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox6
             // 
-            pictureBox6.Location = new Point(598, 559);
+            pictureBox6.Location = new Point(590, 552);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(100, 100);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 5;
             pictureBox6.TabStop = false;
             // 
@@ -185,7 +192,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label8.Location = new Point(481, 559);
+            label8.Location = new Point(590, 524);
             label8.Name = "label8";
             label8.Size = new Size(111, 25);
             label8.TabIndex = 14;
@@ -202,15 +209,29 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(135, 99);
+            panel1.Location = new Point(108, 83);
             panel1.Name = "panel1";
             panel1.Size = new Size(397, 388);
             panel1.TabIndex = 15;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.IndianRed;
+            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(20, 19);
+            button1.Name = "button1";
+            button1.Size = new Size(90, 40);
+            button1.TabIndex = 16;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // BirdProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(panel1);
             Controls.Add(label8);
             Controls.Add(pictureBox6);
@@ -251,5 +272,6 @@
         private Label label7;
         private Label label8;
         private Panel panel1;
+        private Button button1;
     }
 }

@@ -37,6 +37,7 @@
             SignIn_label = new Label();
             SignUp_button = new Button();
             SignUp1 = new SignUp();
+            birdProfile1 = new BirdProfile();
             SuspendLayout();
             // 
             // LogIn_button
@@ -119,11 +120,20 @@
             SignUp1.TabIndex = 7;
             SignUp1.Visible = false;
             // 
+            // birdProfile1
+            // 
+            birdProfile1.Location = new Point(-11, 0);
+            birdProfile1.Name = "birdProfile1";
+            birdProfile1.Size = new Size(1280, 720);
+            birdProfile1.TabIndex = 8;
+            birdProfile1.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1264, 681);
+            Controls.Add(birdProfile1);
             Controls.Add(SignUp1);
             Controls.Add(SignUp_button);
             Controls.Add(SignIn_label);
@@ -150,5 +160,6 @@
         private Label SignIn_label;
         private Button SignUp_button;
         private SignUp SignUp1;
+        private BirdProfile birdProfile1;
     }
 }
