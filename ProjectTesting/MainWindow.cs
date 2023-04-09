@@ -4,11 +4,16 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
-        private string UserSheet = ""; //this represents the logged in user sheet name
+        public static string UserSheet = ""; //this represents the logged in user sheet name
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            SignUp1.Hide();
         }
 
         private void LogIn_button_Click(object sender, EventArgs e)
@@ -27,7 +32,7 @@ namespace ProjectTesting
                 if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
                 {
                     flag = 1; //needs hoempage
-                    this.UserSheet = username; //gives usersheet the current users name
+                    UserSheet = username; //gives usersheet the current users name
                     homePage1.Show();
                 }
                 else if (temp[0] == info[0] && temp[1] == info[1])
@@ -63,17 +68,14 @@ namespace ProjectTesting
             excel.Quit();
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            SignUp1.Hide();
-            birdProfile1.Hide();
-        }
+
 
         private void SignUp_button_Click(object sender, EventArgs e)
         {
             //SignUp1.Show();
             //birdProfile1.Show();
         }
+
 
     }
 }
