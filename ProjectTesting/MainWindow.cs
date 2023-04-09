@@ -27,6 +27,7 @@ namespace ProjectTesting
                 if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
                 {
                     flag = 1; //needs hoempage
+                    this.UserSheet = username; //gives usersheet the current users name
                     homePage1.Show();
                 }
                 else if (temp[0] == info[0] && temp[1] == info[1])
