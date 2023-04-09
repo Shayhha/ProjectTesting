@@ -28,7 +28,7 @@ namespace ProjectTesting
                 temp = ex.ReadRange(i, 1, 3);
                 if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
                 {
-                    flag = 1;
+                    flag = 1; //needs hoempage
                 }
                 else if (temp[0] == info[0] && temp[1] == info[1])
                 {
