@@ -4,6 +4,7 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
+        private string UserSheet = ""; //this represents the logged in user sheet name
 
         public MainWindow()
         {
@@ -12,9 +13,6 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-
-            //UserName_textbox.Text = "Clicked!";
-            //readExcel();
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
             string[] info = { username, password };
@@ -29,6 +27,7 @@ namespace ProjectTesting
                 if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
                 {
                     flag = 1; //needs hoempage
+                    homePage1.Show();
                 }
                 else if (temp[0] == info[0] && temp[1] == info[1])
                 {

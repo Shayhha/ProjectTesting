@@ -38,6 +38,7 @@
             SignUp_button = new Button();
             SignUp1 = new SignUp();
             panel1 = new Panel();
+            homePage1 = new HomePage();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -140,12 +141,21 @@
             panel1.Size = new Size(588, 306);
             panel1.TabIndex = 8;
             // 
+            // homePage1
+            // 
+            homePage1.Location = new Point(-13, 0);
+            homePage1.Name = "homePage1";
+            homePage1.Size = new Size(1280, 720);
+            homePage1.TabIndex = 9;
+            homePage1.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(homePage1);
             Controls.Add(SignUp1);
             Controls.Add(panel1);
             Controls.Add(SignIn_label);
@@ -169,5 +179,6 @@
         private Button SignUp_button;
         private SignUp SignUp1;
         private Panel panel1;
+        private HomePage homePage1;
     }
 }
