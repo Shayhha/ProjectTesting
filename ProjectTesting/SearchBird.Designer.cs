@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             birdList = new ListBox();
+            button1 = new Button();
+            Search_textbox = new TextBox();
             LogOut_button = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
+            Search_button = new Button();
             comboBox = new ComboBox();
             Cage_label = new Label();
             Bird_label = new Label();
@@ -52,6 +55,15 @@
             // 
             // LogOut_button
             // 
+            button1.BackColor = Color.IndianRed;
+            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(1127, 25);
+            button1.Name = "button1";
+            button1.Size = new Size(90, 40);
+            button1.TabIndex = 1;
+            button1.Text = "Log-out";
+            button1.UseVisualStyleBackColor = false;
             LogOut_button.BackColor = Color.IndianRed;
             LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LogOut_button.ForeColor = Color.White;
@@ -63,8 +75,14 @@
             LogOut_button.UseVisualStyleBackColor = false;
             LogOut_button.Click += button1_Click;
             // 
-            // textBox1
+            // Search_textbox
             // 
+            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textbox.Location = new Point(489, 133);
+            Search_textbox.Name = "Search_textbox";
+            Search_textbox.ScrollBars = ScrollBars.Vertical;
+            Search_textbox.Size = new Size(350, 33);
+            Search_textbox.TabIndex = 2;
             textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(489, 95);
             textBox1.Name = "textBox1";
@@ -102,6 +120,17 @@
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
             // 
+            // Search_button
+            // 
+            Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_button.Location = new Point(845, 133);
+            Search_button.Name = "Search_button";
+            Search_button.Size = new Size(156, 35);
+            Search_button.TabIndex = 6;
+            Search_button.Text = "Search Results";
+            Search_button.UseVisualStyleBackColor = true;
+            Search_button.Click += Search_button_Click;
+            // 
             // comboBox
             // 
             comboBox.FormattingEnabled = true;
@@ -136,12 +165,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(Search_button);
             Controls.Add(Cage_label);
             Controls.Add(Bird_label);
             Controls.Add(comboBox);
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(Search_textbox);
+            Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(LogOut_button);
             Controls.Add(birdList);
@@ -154,11 +186,14 @@
         #endregion
 
         private ListBox birdList;
+        private Button button1;
+        private TextBox Search_textbox;
         private Button LogOut_button;
         private TextBox textBox1;
         private Label label1;
         private Label label2;
         private Button backButton;
+        private Button Search_button;
         private ComboBox comboBox;
         private Label Cage_label;
         private Label Bird_label;
