@@ -73,7 +73,6 @@
             LogOut_button.TabIndex = 1;
             LogOut_button.Text = "Log-out";
             LogOut_button.UseVisualStyleBackColor = false;
-            LogOut_button.Click += button1_Click;
             // 
             // Search_textbox
             // 
