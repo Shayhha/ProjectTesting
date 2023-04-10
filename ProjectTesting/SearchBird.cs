@@ -19,30 +19,61 @@ namespace ProjectTesting
 
 
 
-        public void Search(string name, string combo)
+        public bool Search(string name, string combo)
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
-            MessageBox.Show(combo);
             int size = ex.GetLastRow(7);
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
-
-            for (int i = 1; i < size; i++)
+            if (combo == "" && name == "")
             {
-                temp = ex.ReadRange(i, 7, 14);
-                if (temp.Contains(name))
+                MessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
+                flag = 1;
+                return false;
+            }
+            else if(combo == "")
+            {
+                MessageBox.Show("Error, choose search type!", "Type Error");
+                flag = 1;
+                return false;
+            }
+            else
+            {
+                if (combo == "Bird")
                 {
-                    string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
-                    birdList.Items.Add(newStr);
-                    flag = 1;
+                    for (int i = 1; i < size; i++)
+                    {
+                        temp = ex.ReadRange(i, 7, 14);
+                        if (temp.Contains(name))
+                        {
+                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            birdList.Items.Add(newStr);
+                            flag = 1;
+                        }
+                    }
+                }
+                else if (combo == "Cage")
+                {
+                    for (int i = 1; i < size; i++)
+                    {
+                        temp = ex.ReadRange(i, 7, 14);
+                        if (temp.Contains(name))
+                        {
+                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            birdList.Items.Add(newStr);
+                            flag = 1;
+                        }
+                    }
                 }
             }
             ex.Quit();
             if (flag == 0)
             {
-                MessageBox.Show("Error, no matching results for " + name);
+                MessageBox.Show("Error, no matching results for " + name, "Search Error");
+                return false;
             }
+            return true;
         }
 
         private void Search_button_Click(object sender, EventArgs e)

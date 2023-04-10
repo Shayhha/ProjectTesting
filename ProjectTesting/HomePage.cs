@@ -22,9 +22,11 @@ namespace ProjectTesting
             string name = Search_textbox.Text;
             MainWindow.searchBird1.ClearList();
             string combo = comboBox.Text;
-            MainWindow.searchBird1.Search(name, combo);
-            MainWindow.searchBird1.Show();
-            this.Hide();
+            if (MainWindow.searchBird1.Search(name, combo) == true)
+            {
+                MainWindow.searchBird1.Show();
+                this.Hide();
+            }
         }
 
         private void HomePage_Load(object sender, EventArgs e)
