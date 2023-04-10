@@ -30,9 +30,8 @@
         {
             birdList = new ListBox();
             button1 = new Button();
-            Search_textbox = new TextBox();
             LogOut_button = new Button();
-            textBox1 = new TextBox();
+            Search_textBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
@@ -53,7 +52,7 @@
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
             // 
-            // LogOut_button
+            // button1
             // 
             button1.BackColor = Color.IndianRed;
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -64,6 +63,9 @@
             button1.TabIndex = 1;
             button1.Text = "Log-out";
             button1.UseVisualStyleBackColor = false;
+            // 
+            // LogOut_button
+            // 
             LogOut_button.BackColor = Color.IndianRed;
             LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LogOut_button.ForeColor = Color.White;
@@ -74,20 +76,14 @@
             LogOut_button.Text = "Log-out";
             LogOut_button.UseVisualStyleBackColor = false;
             // 
-            // Search_textbox
+            // Search_textBox
             // 
-            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(489, 133);
-            Search_textbox.Name = "Search_textbox";
-            Search_textbox.ScrollBars = ScrollBars.Vertical;
-            Search_textbox.Size = new Size(350, 33);
-            Search_textbox.TabIndex = 2;
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(489, 95);
-            textBox1.Name = "textBox1";
-            textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(350, 33);
-            textBox1.TabIndex = 2;
+            Search_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textBox.Location = new Point(489, 95);
+            Search_textBox.Name = "Search_textBox";
+            Search_textBox.ScrollBars = ScrollBars.Vertical;
+            Search_textBox.Size = new Size(350, 33);
+            Search_textBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -122,7 +118,7 @@
             // Search_button
             // 
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_button.Location = new Point(845, 133);
+            Search_button.Location = new Point(845, 98);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(156, 35);
             Search_button.TabIndex = 6;
@@ -171,9 +167,8 @@
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(Search_textbox);
             Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(Search_textBox);
             Controls.Add(LogOut_button);
             Controls.Add(birdList);
             Name = "SearchBird";
@@ -188,7 +183,7 @@
         private Button button1;
         private TextBox Search_textbox;
         private Button LogOut_button;
-        private TextBox textBox1;
+        private TextBox Search_textBox;
         private Label label1;
         private Label label2;
         private Button backButton;
