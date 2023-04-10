@@ -46,8 +46,8 @@
             label3 = new Label();
             label5 = new Label();
             label9 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            addButton = new Button();
+            cancelButton = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel1.SuspendLayout();
@@ -232,27 +232,27 @@
             label9.TabIndex = 1;
             label9.Text = "Add a Bird:";
             // 
-            // button1
+            // addButton
             // 
-            button1.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(159, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 75);
-            button1.TabIndex = 1;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            addButton.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addButton.Location = new Point(159, 3);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(150, 75);
+            addButton.TabIndex = 1;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += button1_Click;
             // 
-            // button2
+            // cancelButton
             // 
-            button2.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 75);
-            button2.TabIndex = 2;
-            button2.Text = "Cancel";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            cancelButton.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelButton.Location = new Point(3, 3);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(150, 75);
+            cancelButton.TabIndex = 2;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += button2_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -268,8 +268,8 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Controls.Add(button2);
-            flowLayoutPanel2.Controls.Add(button1);
+            flowLayoutPanel2.Controls.Add(cancelButton);
+            flowLayoutPanel2.Controls.Add(addButton);
             flowLayoutPanel2.Location = new Point(3, 429);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(337, 91);
@@ -310,8 +310,8 @@
         private Label label3;
         private Label label5;
         private Label label9;
-        private Button button1;
-        private Button button2;
+        private Button addButton;
+        private Button cancelButton;
         private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
     }
