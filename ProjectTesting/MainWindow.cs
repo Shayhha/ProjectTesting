@@ -17,6 +17,7 @@ namespace ProjectTesting
             searchBird1.Hide();
             homePage1.Hide();
             birdProfile1.Hide();
+            addBird1.Hide();
         }
 
         private void LogIn_button_Click(object sender, EventArgs e)

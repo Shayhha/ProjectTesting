@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBird));
             birdList = new ListBox();
-            button1 = new Button();
             LogOut_button = new Button();
             Search_textBox = new TextBox();
             label1 = new Label();
@@ -39,6 +39,7 @@
             comboBox = new ComboBox();
             Cage_label = new Label();
             Bird_label = new Label();
+
             SuspendLayout();
             // 
             // birdList
@@ -52,20 +53,9 @@
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.IndianRed;
-            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(1127, 25);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 40);
-            button1.TabIndex = 1;
-            button1.Text = "Log-out";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // LogOut_button
             // 
+
             LogOut_button.BackColor = Color.IndianRed;
             LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LogOut_button.ForeColor = Color.White;
@@ -167,12 +157,12 @@
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
             Controls.Add(Search_textBox);
             Controls.Add(LogOut_button);
             Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,7 +170,6 @@
         #endregion
 
         private ListBox birdList;
-        private Button button1;
         private TextBox Search_textbox;
         private Button LogOut_button;
         private TextBox Search_textBox;
@@ -191,5 +180,6 @@
         private ComboBox comboBox;
         private Label Cage_label;
         private Label Bird_label;
+
     }
 }
