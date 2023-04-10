@@ -19,7 +19,7 @@ namespace ProjectTesting
 
         private void getInfoFromUser()
         {
-            
+
             string[] birdInfo = new string[8];
 
             birdInfo[0] = idBox.Text.ToString();

@@ -261,7 +261,7 @@
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(401, 67);
+            flowLayoutPanel1.Location = new Point(386, 59);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(505, 569);
             flowLayoutPanel1.TabIndex = 3;
