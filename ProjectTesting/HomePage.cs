@@ -20,6 +20,9 @@ namespace ProjectTesting
         private void Search_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+            string name = Search_textbox.Text;
+            MainWindow.searchBird1.ClearList();
+            MainWindow.searchBird1.Search(name);
             MainWindow.searchBird1.Show();
         }
 
@@ -33,5 +36,29 @@ namespace ProjectTesting
 
             this.Hide();
         }
+
+        private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
+            {
+                SizeF textSize = e.Graphics.MeasureString("Click To Add Cage", myFont);
+                int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2;
+                int y = Cage_pictureBox.Height - (int)textSize.Height;
+                e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.White, new Point(x, y));
+            }
+        }
+
+        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
+            {
+                SizeF textSize = e.Graphics.MeasureString("Click To Add Bird", myFont);
+                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2;
+                int y = Bird_pictureBox.Height - (int)textSize.Height;
+                e.Graphics.DrawString("Click To Add Bird", myFont, Brushes.White, new Point(x, y));
+            }
+        }
+
+
     }
 }

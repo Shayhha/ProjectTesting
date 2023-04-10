@@ -47,8 +47,25 @@ namespace ProjectTesting
         private void Search_button_Click(object sender, EventArgs e)
         {
             string name = Search_textbox.Text;
-            birdList.Items.Clear();
+            ClearList();
             Search(name);
+        }
+        public void ClearList() //clears all items in list 
+        {
+            birdList.Items.Clear();
+        }
+
+        private void LogOut_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            //MainWindow.homePage1.Hide();
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            Search_textbox.Text = "";
+            this.Hide();
+            //MainWindow.homePage1.Show();
         }
     }
 }
