@@ -19,11 +19,12 @@ namespace ProjectTesting
 
         private void Search_button_Click(object sender, EventArgs e)
         {
-            this.Hide();
             string name = Search_textbox.Text;
             MainWindow.searchBird1.ClearList();
-            MainWindow.searchBird1.Search(name);
+            string combo = comboBox.Text;
+            MainWindow.searchBird1.Search(name, combo);
             MainWindow.searchBird1.Show();
+            this.Hide();
         }
 
         private void HomePage_Load(object sender, EventArgs e)

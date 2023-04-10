@@ -19,9 +19,10 @@ namespace ProjectTesting
 
 
 
-        public void Search(string name)
+        public void Search(string name, string combo)
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
+            MessageBox.Show(combo);
             int size = ex.GetLastRow(7);
             string[] temp = null;
             int flag = 0;
@@ -48,7 +49,8 @@ namespace ProjectTesting
         {
             string name = Search_textbox.Text;
             ClearList();
-            Search(name);
+            string combo = comboBox.Text;
+            Search(name,combo);
         }
         public void ClearList() //clears all items in list 
         {
