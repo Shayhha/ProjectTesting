@@ -14,13 +14,41 @@ namespace ProjectTesting
     {
         public SearchBird()
         {
-            InitializeComponent();
+            InitializeComponent();//
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        public void Search(string name)
         {
-            //this.Hide();
-            //MainWindow.homePage1.Show();
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            int size = ex.GetLastRow(7);
+            string[] temp = null;
+            int flag = 0;
+            birdList.Items.Clear(); // deleting all of the previous items from the list
+
+            for (int i = 1; i < size; i++)
+            {
+                temp = ex.ReadRange(i, 7, 14);
+                if (temp.Contains(name))
+                {
+                    string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                    birdList.Items.Add(newStr);
+                    flag = 1;
+                }
+            }
+            ex.Quit();
+            if (flag == 0)
+            {
+                MessageBox.Show("Error, no matching results for " + name);
+            }
+        }
+
+        private void Search_button_Click(object sender, EventArgs e)
+        {
+            string name = Search_textbox.Text;
+            birdList.Items.Clear();
+            Search(name);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ProjectTesting
             Excel ex = new Excel("users", "default");
             string[] temp = null;
             int flag = 0;
-            int size = ex.GetLastRow();
+            int size = ex.GetLastRow();//
 
             if (id.Length != 6)
             {

@@ -110,15 +110,21 @@ namespace ProjectTesting
             this.ws = wb.Worksheets[sheetName];
         }
 
-        public int GetLastRow()
+        public int GetLastRow(int num = 1)
         {
+            if(num > 14 || num < 7) //if we recevie a wrong number we give it default value and coninue
+            {
+                num = 1;
+            }
+
             int i = 1;
-            while (ws.Cells[1, i].Value != null)
+            while (ws.Cells[i, num].Value != null)
             {
                 i++;
             }
 
-            return i+1;
+            return i;
         }
+
     }
 }

@@ -48,6 +48,10 @@ namespace ProjectTesting
             {
                 MessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
+            //after we logged in we close users excel
+            UserName_textbox.Text = "";
+            Password_textbox.Text = "";
+            ex.Quit();
         }
 
         private void readExcel()
@@ -77,9 +81,8 @@ namespace ProjectTesting
         private void SignUp_button_Click(object sender, EventArgs e)
         {
             SignUp1.Show();
-            //birdProfile1.Show();
-        }
 
+        }
 
     }
 }

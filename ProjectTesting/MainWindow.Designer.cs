@@ -96,6 +96,7 @@
             Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.Location = new Point(174, 89);
             Password_textbox.Name = "Password_textbox";
+            Password_textbox.PasswordChar = '*';
             Password_textbox.Size = new Size(180, 27);
             Password_textbox.TabIndex = 4;
             // 
@@ -123,7 +124,7 @@
             // SignUp1
             // 
             SignUp1.BackColor = Color.LightCyan;
-            SignUp1.Location = new Point(-19, 0);
+            SignUp1.Location = new Point(0, 0);
             SignUp1.Name = "SignUp1";
             SignUp1.Size = new Size(1280, 720);
             SignUp1.TabIndex = 7;
@@ -145,6 +146,7 @@
             // 
             // homePage1
             // 
+            homePage1.BackColor = Color.LightCyan;
             homePage1.Location = new Point(0, 0);
             homePage1.Name = "homePage1";
             homePage1.Size = new Size(1280, 720);
