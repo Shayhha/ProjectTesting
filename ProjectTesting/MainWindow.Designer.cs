@@ -40,6 +40,7 @@
             panel1 = new Panel();
             homePage1 = new HomePage();
             searchBird1 = new SearchBird();
+            addBird1 = new AddBird();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -161,12 +162,21 @@
             searchBird1.TabIndex = 10;
             searchBird1.Visible = false;
             // 
+            // addBird1
+            // 
+            addBird1.Location = new Point(0, 0);
+            addBird1.Name = "addBird1";
+            addBird1.Size = new Size(1280, 720);
+            addBird1.TabIndex = 11;
+            addBird1.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(addBird1);
             Controls.Add(searchBird1);
             Controls.Add(homePage1);
             Controls.Add(SignUp1);
@@ -194,6 +204,7 @@
         private Panel panel1;
         private HomePage homePage1;
         private BirdProfile birdProfile1;
+        public static AddBird addBird1;
         public static SearchBird searchBird1;
     }
 }

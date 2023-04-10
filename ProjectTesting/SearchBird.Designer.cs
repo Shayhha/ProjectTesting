@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBird));
             birdList = new ListBox();
+            LogOut_button = new Button();
             Search_textBox = new TextBox();
             Search_label = new Label();
             label2 = new Label();
@@ -37,7 +39,7 @@
             comboBox = new ComboBox();
             Cage_label = new Label();
             Bird_label = new Label();
-            LogOut_button = new Button();
+
             SuspendLayout();
             // 
             // birdList
@@ -51,6 +53,7 @@
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
             // 
+
             // Search_textBox
             // 
             Search_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -155,10 +158,12 @@
             Controls.Add(Back_Button);
             Controls.Add(label2);
             Controls.Add(Search_label);
+            Controls.Add(label1);
             Controls.Add(Search_textBox);
             Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,6 +181,6 @@
         private ComboBox comboBox;
         private Label Cage_label;
         private Label Bird_label;
-        
+
     }
 }
