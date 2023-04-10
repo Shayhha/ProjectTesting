@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             birdList = new ListBox();
-            button1 = new Button();
+            LogOut_button = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
             comboBox = new ComboBox();
+            Cage_label = new Label();
+            Bird_label = new Label();
             SuspendLayout();
             // 
             // birdList
@@ -48,18 +50,18 @@
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
             // 
-            // button1
+            // LogOut_button
             // 
-            button1.BackColor = Color.IndianRed;
-            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(1127, 25);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 40);
-            button1.TabIndex = 1;
-            button1.Text = "Log-out";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            LogOut_button.BackColor = Color.IndianRed;
+            LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            LogOut_button.ForeColor = Color.White;
+            LogOut_button.Location = new Point(1127, 25);
+            LogOut_button.Name = "LogOut_button";
+            LogOut_button.Size = new Size(90, 40);
+            LogOut_button.TabIndex = 1;
+            LogOut_button.Text = "Log-out";
+            LogOut_button.UseVisualStyleBackColor = false;
+            LogOut_button.Click += button1_Click;
             // 
             // textBox1
             // 
@@ -109,17 +111,39 @@
             comboBox.Size = new Size(147, 23);
             comboBox.TabIndex = 6;
             // 
+            // Cage_label
+            // 
+            Cage_label.AutoSize = true;
+            Cage_label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Cage_label.Location = new Point(963, 35);
+            Cage_label.Name = "Cage_label";
+            Cage_label.Size = new Size(59, 20);
+            Cage_label.TabIndex = 10;
+            Cage_label.Text = "Cage: X";
+            // 
+            // Bird_label
+            // 
+            Bird_label.AutoSize = true;
+            Bird_label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Bird_label.Location = new Point(1034, 35);
+            Bird_label.Name = "Bird_label";
+            Bird_label.Size = new Size(57, 20);
+            Bird_label.TabIndex = 9;
+            Bird_label.Text = "Brids: Y";
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(Cage_label);
+            Controls.Add(Bird_label);
             Controls.Add(comboBox);
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(LogOut_button);
             Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
@@ -130,11 +154,13 @@
         #endregion
 
         private ListBox birdList;
-        private Button button1;
+        private Button LogOut_button;
         private TextBox textBox1;
         private Label label1;
         private Label label2;
         private Button backButton;
         private ComboBox comboBox;
+        private Label Cage_label;
+        private Label Bird_label;
     }
 }
