@@ -34,6 +34,7 @@
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
+            comboBox = new ComboBox();
             SuspendLayout();
             // 
             // birdList
@@ -63,7 +64,7 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(489, 133);
+            textBox1.Location = new Point(489, 95);
             textBox1.Name = "textBox1";
             textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(350, 33);
@@ -73,7 +74,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(405, 136);
+            label1.Location = new Point(405, 98);
             label1.Name = "label1";
             label1.Size = new Size(79, 25);
             label1.TabIndex = 3;
@@ -82,9 +83,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(356, 179);
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(268, 181);
             label2.Name = "label2";
-            label2.Size = new Size(616, 15);
+            label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
             label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
             // 
@@ -98,11 +100,21 @@
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
             // 
+            // comboBox
+            // 
+            comboBox.FormattingEnabled = true;
+            comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
+            comboBox.Location = new Point(584, 134);
+            comboBox.Name = "comboBox";
+            comboBox.Size = new Size(147, 23);
+            comboBox.TabIndex = 6;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(comboBox);
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -123,5 +135,6 @@
         private Label label1;
         private Label label2;
         private Button backButton;
+        private ComboBox comboBox;
     }
 }
