@@ -14,7 +14,7 @@ namespace ProjectTesting
     {
         public SearchBird()
         {
-            InitializeComponent();
+            InitializeComponent();//
         }
 
 
