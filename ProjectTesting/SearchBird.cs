@@ -22,26 +22,27 @@ namespace ProjectTesting
         public bool Search(string name, string combo)
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
-            int size = ex.GetLastRow(7);
+            int size = 0;
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
             if (combo == "" && name == "")
             {
                 MessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
-                flag = 1;
+                ex.Quit();
                 return false;
             }
             else if(combo == "")
             {
                 MessageBox.Show("Error, choose search type!", "Type Error");
-                flag = 1;
+                ex.Quit();
                 return false;
             }
             else
             {
                 if (combo == "Bird")
                 {
+                    size = ex.GetLastRow(7);
                     for (int i = 1; i < size; i++)
                     {
                         temp = ex.ReadRange(i, 7, 14);
@@ -55,24 +56,27 @@ namespace ProjectTesting
                 }
                 else if (combo == "Cage")
                 {
+                    size = ex.GetLastRow(1);
                     for (int i = 1; i < size; i++)
                     {
-                        temp = ex.ReadRange(i, 7, 14);
+                        temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
                     }
                 }
             }
-            ex.Quit();
+            
             if (flag == 0)
             {
                 MessageBox.Show("Error, no matching results for " + name, "Search Error");
+                ex.Quit();
                 return false;
             }
+            ex.Quit();
             return true;
         }
 
