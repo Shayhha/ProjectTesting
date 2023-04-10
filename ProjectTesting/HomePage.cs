@@ -17,10 +17,21 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Search_button_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainWindow.searchBird1.Show();
+        }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogOut_button_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
         }
     }
 }
