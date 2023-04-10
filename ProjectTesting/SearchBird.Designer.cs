@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBird));
             birdList = new ListBox();
             button1 = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
             backButton = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // birdList
@@ -62,9 +65,12 @@
             // 
             // textBox1
             // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Cursor = Cursors.Hand;
             textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(489, 133);
             textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "for example: 93754";
             textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(350, 33);
             textBox1.TabIndex = 2;
@@ -98,11 +104,23 @@
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(883, 116);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(50, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(pictureBox1);
             Controls.Add(backButton);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -111,6 +129,7 @@
             Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,5 +142,6 @@
         private Label label1;
         private Label label2;
         private Button backButton;
+        private PictureBox pictureBox1;
     }
 }
