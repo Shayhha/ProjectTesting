@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBird));
             birdList = new ListBox();
             LogOut_button = new Button();
-            Search_textBox = new TextBox();
+            Search_textbox = new TextBox();
             Search_label = new Label();
             label2 = new Label();
             Back_Button = new Button();
@@ -39,7 +38,6 @@
             comboBox = new ComboBox();
             Cage_label = new Label();
             Bird_label = new Label();
-
             SuspendLayout();
             // 
             // birdList
@@ -53,15 +51,27 @@
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
             // 
-
-            // Search_textBox
+            // LogOut_button
             // 
-            Search_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textBox.Location = new Point(489, 95);
-            Search_textBox.Name = "Search_textBox";
-            Search_textBox.ScrollBars = ScrollBars.Vertical;
-            Search_textBox.Size = new Size(350, 33);
-            Search_textBox.TabIndex = 2;
+            LogOut_button.BackColor = Color.IndianRed;
+            LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            LogOut_button.ForeColor = Color.White;
+            LogOut_button.Location = new Point(1127, 25);
+            LogOut_button.Name = "LogOut_button";
+            LogOut_button.Size = new Size(90, 40);
+            LogOut_button.TabIndex = 11;
+            LogOut_button.Text = "Log-Out";
+            LogOut_button.UseVisualStyleBackColor = false;
+            LogOut_button.Click += LogOut_button_Click;
+            // 
+            // Search_textbox
+            // 
+            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textbox.Location = new Point(489, 95);
+            Search_textbox.Name = "Search_textbox";
+            Search_textbox.ScrollBars = ScrollBars.Vertical;
+            Search_textbox.Size = new Size(350, 33);
+            Search_textbox.TabIndex = 2;
             // 
             // Search_label
             // 
@@ -92,6 +102,7 @@
             Back_Button.TabIndex = 5;
             Back_Button.Text = "Back";
             Back_Button.UseVisualStyleBackColor = true;
+            Back_Button.Click += Back_Button_Click;
             // 
             // Search_button
             // 
@@ -133,18 +144,6 @@
             Bird_label.TabIndex = 9;
             Bird_label.Text = "Brids: Y";
             // 
-            // LogOut_button
-            // 
-            LogOut_button.BackColor = Color.IndianRed;
-            LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LogOut_button.ForeColor = Color.White;
-            LogOut_button.Location = new Point(1127, 25);
-            LogOut_button.Name = "LogOut_button";
-            LogOut_button.Size = new Size(90, 40);
-            LogOut_button.TabIndex = 11;
-            LogOut_button.Text = "Log-Out";
-            LogOut_button.UseVisualStyleBackColor = false;
-            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -158,12 +157,10 @@
             Controls.Add(Back_Button);
             Controls.Add(label2);
             Controls.Add(Search_label);
-            Controls.Add(label1);
-            Controls.Add(Search_textBox);
+            Controls.Add(Search_textbox);
             Controls.Add(birdList);
             Name = "SearchBird";
             Size = new Size(1280, 720);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,7 +170,6 @@
         private ListBox birdList;
         private TextBox Search_textbox;
         private Button LogOut_button;
-        private TextBox Search_textBox;
         private Label Search_label;
         private Label label2;
         private Button Back_Button;

@@ -20,6 +20,9 @@ namespace ProjectTesting
         private void Search_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+            string name = Search_textbox.Text;
+            MainWindow.searchBird1.ClearList();
+            MainWindow.searchBird1.Search(name);
             MainWindow.searchBird1.Show();
         }
 
@@ -55,6 +58,7 @@ namespace ProjectTesting
                 e.Graphics.DrawString("Click To Add Bird", myFont, Brushes.White, new Point(x, y));
             }
         }
+
 
     }
 }

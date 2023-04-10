@@ -38,7 +38,7 @@
             comboBox = new ComboBox();
             label2 = new Label();
             Search_label = new Label();
-            Search_textBox = new TextBox();
+            Search_textbox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)Cage_pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).BeginInit();
             SuspendLayout();
@@ -68,6 +68,7 @@
             // 
             // Cage_pictureBox
             // 
+            Cage_pictureBox.Cursor = Cursors.Hand;
             Cage_pictureBox.Image = (Image)resources.GetObject("Cage_pictureBox.Image");
             Cage_pictureBox.Location = new Point(219, 281);
             Cage_pictureBox.Name = "Cage_pictureBox";
@@ -76,10 +77,11 @@
             Cage_pictureBox.TabIndex = 6;
             Cage_pictureBox.TabStop = false;
             Cage_pictureBox.Tag = "";
-            Cage_pictureBox.Paint += new PaintEventHandler(Cage_pictureBox_Paint);
+            Cage_pictureBox.Paint += Cage_pictureBox_Paint;
             // 
             // Bird_pictureBox
             // 
+            Bird_pictureBox.Cursor = Cursors.Hand;
             Bird_pictureBox.Image = (Image)resources.GetObject("Bird_pictureBox.Image");
             Bird_pictureBox.Location = new Point(792, 281);
             Bird_pictureBox.Name = "Bird_pictureBox";
@@ -88,7 +90,7 @@
             Bird_pictureBox.TabIndex = 7;
             Bird_pictureBox.TabStop = false;
             Bird_pictureBox.Tag = "";
-            Bird_pictureBox.Paint += new PaintEventHandler(Bird_pictureBox_Paint);
+            Bird_pictureBox.Paint += Bird_pictureBox_Paint;
             // 
             // Cage_label
             // 
@@ -109,6 +111,7 @@
             Search_button.TabIndex = 12;
             Search_button.Text = "Search Results";
             Search_button.UseVisualStyleBackColor = true;
+            Search_button.Click += Search_button_Click;
             // 
             // comboBox
             // 
@@ -139,14 +142,15 @@
             Search_label.TabIndex = 10;
             Search_label.Text = "Search: ";
             // 
-            // Search_textBox
+            // Search_textbox
             // 
-            Search_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textBox.Location = new Point(495, 98);
-            Search_textBox.Name = "Search_textBox";
-            Search_textBox.ScrollBars = ScrollBars.Vertical;
-            Search_textBox.Size = new Size(350, 33);
-            Search_textBox.TabIndex = 9;
+            Search_textbox.Cursor = Cursors.Hand;
+            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textbox.Location = new Point(495, 98);
+            Search_textbox.Name = "Search_textbox";
+            Search_textbox.ScrollBars = ScrollBars.Vertical;
+            Search_textbox.Size = new Size(350, 33);
+            Search_textbox.TabIndex = 9;
             // 
             // HomePage
             // 
@@ -157,7 +161,7 @@
             Controls.Add(comboBox);
             Controls.Add(label2);
             Controls.Add(Search_label);
-            Controls.Add(Search_textBox);
+            Controls.Add(Search_textbox);
             Controls.Add(Cage_label);
             Controls.Add(Bird_pictureBox);
             Controls.Add(Cage_pictureBox);
@@ -182,6 +186,6 @@
         private ComboBox comboBox;
         private Label label2;
         private Label Search_label;
-        private TextBox Search_textBox;
+        private TextBox Search_textbox;
     }
 }
