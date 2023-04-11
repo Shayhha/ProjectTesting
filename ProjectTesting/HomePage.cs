@@ -39,20 +39,16 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 2).ToString());
                 ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 2).ToString());
-            } else
+            }
+            else
             {
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
                 ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
             }
-            
             ex.Quit();
+            ((MainWindow)this.Parent.Parent).showTopBar();
         }
 
-        private void LogOut_button_Click(object sender, EventArgs e)
-        {
-
-            this.Hide();
-        }
 
         private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
         {
