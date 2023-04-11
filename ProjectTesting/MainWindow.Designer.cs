@@ -104,7 +104,7 @@
             addBird1.TabIndex = 3;
             addBird1.Visible = false;
             // 
-            // homePage1
+            // signUp1
             // 
             homePage1.BackColor = Color.LightCyan;
             homePage1.Location = new Point(0, 0);
