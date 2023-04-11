@@ -19,16 +19,20 @@ namespace ProjectTesting
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public void ShowMessage(string message, string title) //sets the message box 
+        public void ShowMessage(string message, string title, bool cross) //sets the message box 
         {
+            if (cross == false) //if we want to hide the cross we check if cross if false 
+            {
+                Error_picture.Hide();
+            }
             Text = title;
             Message_label.Text = message;
         }
 
-        public static void Show(string message, string title)
+        public static void Show(string message, string title, bool cross = true)
         {
             CustomMessageBox messageBox = new CustomMessageBox();
-            messageBox.ShowMessage(message, title);
+            messageBox.ShowMessage(message, title,cross);
             messageBox.ShowDialog();
         }
 
