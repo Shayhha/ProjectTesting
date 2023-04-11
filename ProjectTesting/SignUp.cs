@@ -80,6 +80,7 @@ namespace ProjectTesting
                 Password_textbox.Text = "";
                 UserName_textbox.Text = "";
                 ID_textbox.Text = "";
+                ((MainWindow)this.Parent.Parent).logIn1.Show();
                 this.Hide(); //return to previous window
             }
             ex.Quit();

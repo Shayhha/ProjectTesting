@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectTesting
 {
@@ -46,10 +47,8 @@ namespace ProjectTesting
                     if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
                     {
                         MainWindow.UserSheet = username; //gives usersheet the current users name
+                        LoggedIn();
                         flag = 1;
-                        ((MainWindow)this.Parent.Parent).homePage1.Show();
-                        UserName_textbox.Text = "";
-                        Password_textbox.Text = "";
                         break;
 
                     }
@@ -65,8 +64,24 @@ namespace ProjectTesting
             {
                CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
-            //after we logged in we close users excel
-            ex.Quit();
+            ex.Quit(); //after we logged in we close users excel
+        }
+
+        private void LoggedIn() //opens the 
+        {
+            Excel ex = new Excel("database",MainWindow.UserSheet);
+            if (ex.ReadCell("A1") == "")
+            {
+                ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
+                ((MainWindow)this.Parent.Parent).addCage1.Show();
+            }
+            else
+            {
+                ((MainWindow)this.Parent.Parent).homePage1.Show();
+            }
+            ex.Quit();//closes the database excel
+            UserName_textbox.Text = "";
+            Password_textbox.Text = "";
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)

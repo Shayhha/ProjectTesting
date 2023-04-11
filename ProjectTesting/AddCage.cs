@@ -49,6 +49,7 @@ namespace ProjectTesting
             getInfoFromUser();
             cleanTextBoxes();
             ((MainWindow)this.Parent.Parent).homePage1.Show();
+            setWelcome_lable(false);
             this.Hide();
         }
 
@@ -56,7 +57,22 @@ namespace ProjectTesting
         {
             cleanTextBoxes();
             ((MainWindow)this.Parent.Parent).homePage1.Show();
+            setWelcome_lable(false);
             this.Hide();
+        }
+
+        public void setWelcome_lable(bool temp) //sets the welcome lable to visible/hidden
+        {
+            if (temp == true)
+            {
+                Welcome_label.Show();
+                cancelButton.Hide();
+            }
+            else
+            {
+                Welcome_label.Hide();
+                cancelButton.Show();
+            }
         }
     }
 }
