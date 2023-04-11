@@ -35,6 +35,7 @@ namespace ProjectTesting
                 CustomMessageBox.Show("Field are empty!", "ERROR");
                 flag = 1;
             }
+
             else //else fields are'nt empty so we check their validity
             {
                 if (id.Length != 6)
@@ -55,7 +56,7 @@ namespace ProjectTesting
                 for (int i = 1; i < size; i++)
                 { //we check if we have a user with same username or ID
                     temp = ex.ReadRange(i, 1, 3);
-                    if (temp[0] == username) //if we found one that matches we open a messagebox and break
+                    if (temp[0] == username || temp[0].ToLower() == username.ToLower()) //if we found one that matches we open a messagebox and break
                     {
                         CustomMessageBox.Show("Username is already taken!", "ERROR");
                         flag = 1;
@@ -76,7 +77,7 @@ namespace ProjectTesting
                 Excel ex2 = new Excel("database", "default");
                 ex2.CreateNewSheet(username);
                 ex2.Quit();
-                CustomMessageBox.Show("You've successfully signed up to system!", "Welocme");
+                CustomMessageBox.Show("You've successfully signed up to system!", "Welocme", false);
                 Password_textbox.Text = "";
                 UserName_textbox.Text = "";
                 ID_textbox.Text = "";
