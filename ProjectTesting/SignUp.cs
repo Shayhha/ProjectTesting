@@ -32,7 +32,7 @@ namespace ProjectTesting
 
             if (pass == "" && username == "" && id == "") //if fields are empty we give an error
             {
-                CustomMessageBox.Show("Field are empty!", "ERROR");
+                CustomMessageBox.Show("Fields are empty!", "ERROR");
                 flag = 1;
             }
 
