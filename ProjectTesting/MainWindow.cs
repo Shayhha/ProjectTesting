@@ -28,5 +28,24 @@ namespace ProjectTesting
             signUp1.Show();
         }
 
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            logIn1.Show();
+            homePage1.Hide();
+            searchBird1.Hide();
+            addBird1.Hide();
+            addCage1.Hide();
+            moreDetails1.Hide();
+
+        }
+
+        public void setBirdsLabel(string number)
+        {
+            Bird_label.Text = "Birds: " + number;
+        }
+        public void setCagesLabel(string number)
+        {
+            Cage_label.Text = "Cages: " + number;
+        }
     }
 }
