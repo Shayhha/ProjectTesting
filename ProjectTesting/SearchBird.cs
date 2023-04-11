@@ -58,7 +58,7 @@ namespace ProjectTesting
         private void LogOut_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //MainWindow.homePage1.Hide();
+            ((MainWindow)this.Parent).homePage1.Hide();
         }
 
         private void Back_Button_Click(object sender, EventArgs e)
