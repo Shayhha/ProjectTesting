@@ -14,7 +14,7 @@ namespace ProjectTesting
     {
         public SearchBird()
         {
-            InitializeComponent();//
+            InitializeComponent();
         }
 
 
@@ -102,7 +102,6 @@ namespace ProjectTesting
         {
             Search_textbox.Text = "";
             this.Hide();
-            //MainWindow.homePage1.Show();
             ((MainWindow)this.Parent.Parent).homePage1.Show();
         }
     }
