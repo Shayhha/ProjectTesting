@@ -213,7 +213,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(flowLayoutPanel1);
             Name = "AddCage";
-            Size = new Size(1280, 720);
+            Size = new Size(1264, 611);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);

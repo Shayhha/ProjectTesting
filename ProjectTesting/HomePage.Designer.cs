@@ -70,7 +70,7 @@
             // 
             Cage_pictureBox.Cursor = Cursors.Hand;
             Cage_pictureBox.Image = (Image)resources.GetObject("Cage_pictureBox.Image");
-            Cage_pictureBox.Location = new Point(219, 281);
+            Cage_pictureBox.Location = new Point(221, 230);
             Cage_pictureBox.Name = "Cage_pictureBox";
             Cage_pictureBox.Size = new Size(300, 300);
             Cage_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -83,7 +83,7 @@
             // 
             Bird_pictureBox.Cursor = Cursors.Hand;
             Bird_pictureBox.Image = (Image)resources.GetObject("Bird_pictureBox.Image");
-            Bird_pictureBox.Location = new Point(792, 281);
+            Bird_pictureBox.Location = new Point(794, 230);
             Bird_pictureBox.Name = "Bird_pictureBox";
             Bird_pictureBox.Size = new Size(300, 300);
             Bird_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -168,7 +168,7 @@
             Controls.Add(Bird_label);
             Controls.Add(LogOut_button);
             Name = "HomePage";
-            Size = new Size(1280, 720);
+            Size = new Size(1264, 611);
             Load += HomePage_Load;
             ((System.ComponentModel.ISupportInitialize)Cage_pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).EndInit();
