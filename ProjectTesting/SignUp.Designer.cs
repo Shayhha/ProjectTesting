@@ -37,9 +37,9 @@
             UserName_textbox = new TextBox();
             SignUp_label = new Label();
             panel1 = new Panel();
+            Cancel_button = new Button();
             ID_textbox = new TextBox();
             ID_label = new Label();
-            Cancel_button = new Button();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -120,6 +120,18 @@
             panel1.Size = new Size(560, 312);
             panel1.TabIndex = 20;
             // 
+            // Cancel_button
+            // 
+            Cancel_button.BackColor = SystemColors.ActiveCaption;
+            Cancel_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Cancel_button.Location = new Point(314, 253);
+            Cancel_button.Name = "Cancel_button";
+            Cancel_button.Size = new Size(168, 39);
+            Cancel_button.TabIndex = 23;
+            Cancel_button.Text = "Cancel";
+            Cancel_button.UseVisualStyleBackColor = false;
+            Cancel_button.Click += Cancel_button_Click;
+            // 
             // ID_textbox
             // 
             ID_textbox.BackColor = SystemColors.ButtonFace;
@@ -139,18 +151,6 @@
             ID_label.TabIndex = 22;
             ID_label.Text = "ID:";
             // 
-            // Cancel_button
-            // 
-            Cancel_button.BackColor = SystemColors.ActiveCaption;
-            Cancel_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Cancel_button.Location = new Point(314, 253);
-            Cancel_button.Name = "Cancel_button";
-            Cancel_button.Size = new Size(168, 39);
-            Cancel_button.TabIndex = 23;
-            Cancel_button.Text = "Cancel";
-            Cancel_button.UseVisualStyleBackColor = false;
-            Cancel_button.Click += Cancel_button_Click;
-            // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -159,7 +159,7 @@
             Controls.Add(panel1);
             Controls.Add(SignUp_label);
             Name = "SignUp";
-            Size = new Size(1280, 720);
+            Size = new Size(1264, 611);
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

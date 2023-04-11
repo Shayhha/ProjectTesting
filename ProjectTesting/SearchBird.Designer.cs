@@ -46,7 +46,7 @@
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
-            birdList.Location = new Point(114, 222);
+            birdList.Location = new Point(111, 196);
             birdList.Name = "birdList";
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
@@ -87,7 +87,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(268, 181);
+            label2.Location = new Point(268, 164);
             label2.Name = "label2";
             label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
@@ -160,7 +160,7 @@
             Controls.Add(Search_textbox);
             Controls.Add(birdList);
             Name = "SearchBird";
-            Size = new Size(1280, 720);
+            Size = new Size(1264, 611);
             ResumeLayout(false);
             PerformLayout();
         }

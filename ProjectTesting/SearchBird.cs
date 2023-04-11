@@ -32,7 +32,7 @@ namespace ProjectTesting
                 ex.Quit();
                 return false;
             }
-            else if(combo == "")
+            else if (combo == "")
             {
                 MessageBox.Show("Error, choose search type!", "Type Error");
                 ex.Quit();
@@ -69,7 +69,7 @@ namespace ProjectTesting
                     }
                 }
             }
-            
+
             if (flag == 0)
             {
                 MessageBox.Show("Error, no matching results for " + name, "Search Error");
@@ -85,7 +85,7 @@ namespace ProjectTesting
             string name = Search_textbox.Text;
             ClearList();
             string combo = comboBox.Text;
-            Search(name,combo);
+            Search(name, combo);
         }
         public void ClearList() //clears all items in list 
         {

@@ -75,7 +75,7 @@
             // 
             moreDetails1.Location = new Point(0, 0);
             moreDetails1.Name = "moreDetails1";
-            moreDetails1.Size = new Size(1280, 720);
+            moreDetails1.Size = new Size(1264, 611);
             moreDetails1.TabIndex = 6;
             moreDetails1.Visible = false;
             // 
@@ -84,7 +84,7 @@
             searchBird1.BackColor = Color.LightCyan;
             searchBird1.Location = new Point(0, 0);
             searchBird1.Name = "searchBird1";
-            searchBird1.Size = new Size(1280, 720);
+            searchBird1.Size = new Size(1264, 611);
             searchBird1.TabIndex = 5;
             searchBird1.Visible = false;
             // 
@@ -92,7 +92,7 @@
             // 
             addCage1.Location = new Point(0, 0);
             addCage1.Name = "addCage1";
-            addCage1.Size = new Size(1280, 720);
+            addCage1.Size = new Size(1264, 611);
             addCage1.TabIndex = 4;
             addCage1.Visible = false;
             // 
@@ -100,7 +100,7 @@
             // 
             addBird1.Location = new Point(0, 0);
             addBird1.Name = "addBird1";
-            addBird1.Size = new Size(1280, 720);
+            addBird1.Size = new Size(1264, 611);
             addBird1.TabIndex = 3;
             addBird1.Visible = false;
             // 
@@ -109,7 +109,7 @@
             homePage1.BackColor = Color.LightCyan;
             homePage1.Location = new Point(0, 0);
             homePage1.Name = "homePage1";
-            homePage1.Size = new Size(1280, 720);
+            homePage1.Size = new Size(1264, 611);
             homePage1.TabIndex = 2;
             homePage1.Visible = false;
             // 
@@ -118,7 +118,7 @@
             signUp1.BackColor = Color.LightCyan;
             signUp1.Location = new Point(0, 0);
             signUp1.Name = "signUp1";
-            signUp1.Size = new Size(1280, 720);
+            signUp1.Size = new Size(1264, 611);
             signUp1.TabIndex = 1;
             signUp1.Visible = false;
             // 
@@ -126,7 +126,7 @@
             // 
             logIn1.Location = new Point(0, 0);
             logIn1.Name = "logIn1";
-            logIn1.Size = new Size(1280, 720);
+            logIn1.Size = new Size(1264, 611);
             logIn1.TabIndex = 0;
             // 
             // MainWindow

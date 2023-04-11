@@ -26,7 +26,7 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent).searchBird1.Show();
                 this.Hide();
-            }                      
+            }
 
             //MainWindow mainWindow = (MainWindow)this.ParentForm;
             //mainWindow.Controls.Remove(this);

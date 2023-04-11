@@ -261,7 +261,7 @@
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(386, 59);
+            flowLayoutPanel1.Location = new Point(381, 19);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(505, 569);
             flowLayoutPanel1.TabIndex = 3;
@@ -281,7 +281,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(flowLayoutPanel1);
             Name = "AddBird";
-            Size = new Size(1280, 720);
+            Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
