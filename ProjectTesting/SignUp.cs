@@ -28,34 +28,45 @@ namespace ProjectTesting
             Excel ex = new Excel("users", "default");
             string[] temp = null;
             int flag = 0;
-            int size = ex.GetLastRow();//
+            int size = ex.GetLastRow();
 
-            if (id.Length != 6)
+            if (pass == "" && username == "" && id == "") //if fields are empty we give an error
             {
-                MessageBox.Show("ID length must be 6 characters.");
+                CustomMessageBox.Show("Field are empty!", "ERROR");
                 flag = 1;
             }
-
-            if (UsernameValidate(username) == false)
-                flag = 1;
-
-            if (PasswordValidate(pass) == false)
-                flag = 1;
-
-            for (int i = 1; i < size; i++)
-            { //we check if we have a user with same username or ID
-                temp = ex.ReadRange(i, 1, 3);
-                if (temp[0] == username) //if we found one that matches we open a messagebox and break
+            else //else fields are'nt empty so we check their validity
+            {
+                if (id.Length != 6)
                 {
-                    MessageBox.Show("Username is already taken!", "ERROR");
+                    CustomMessageBox.Show("ID length must be 6 characters.", "ERROR");
                     flag = 1;
-                    break;
                 }
-                if (temp[2] == id)
-                {
-                    MessageBox.Show("ID is already registered!", "ERROR");
+
+                if (UsernameValidate(username) == false)
                     flag = 1;
-                    break;
+
+                if (PasswordValidate(pass) == false)
+                    flag = 1;
+            }
+
+            if (flag == 0) //if no errors occurred we check if the user exists in our data base
+            {
+                for (int i = 1; i < size; i++)
+                { //we check if we have a user with same username or ID
+                    temp = ex.ReadRange(i, 1, 3);
+                    if (temp[0] == username) //if we found one that matches we open a messagebox and break
+                    {
+                        CustomMessageBox.Show("Username is already taken!", "ERROR");
+                        flag = 1;
+                        break;
+                    }
+                    if (temp[2] == id)
+                    {
+                        CustomMessageBox.Show("ID is already registered!", "ERROR");
+                        flag = 1;
+                        break;
+                    }
                 }
             }
 
@@ -65,10 +76,11 @@ namespace ProjectTesting
                 Excel ex2 = new Excel("database", "default");
                 ex2.CreateNewSheet(username);
                 ex2.Quit();
-                MessageBox.Show("You've successfully signed up to system!", "Welocme");
+                CustomMessageBox.Show("You've successfully signed up to system!", "Welocme");
                 Password_textbox.Text = "";
                 UserName_textbox.Text = "";
                 ID_textbox.Text = "";
+                ((MainWindow)this.Parent.Parent).logIn1.Show();
                 this.Hide(); //return to previous window
             }
             ex.Quit();
@@ -82,17 +94,17 @@ namespace ProjectTesting
 
             if (!hasTwoNumbers.IsMatch(user))
             {
-                MessageBox.Show("Error, username can have maximum of two numbers", "ERROR");
+                CustomMessageBox.Show("Error, username can have maximum of two numbers", "ERROR");
                 return false;
             }
             if (!hasMiniMaxChars.IsMatch(user))
             {
-                MessageBox.Show("Error, username must contain between 6 to 8 characters!", "ERROR");
+                CustomMessageBox.Show("Error, username must contain between 6 to 8 characters!", "ERROR");
                 return false;
             }
             if (!isAlphaNumeric.IsMatch(user))
             {
-                MessageBox.Show("Error, password must contain only letters and numbers!", "ERROR");
+                CustomMessageBox.Show("Error, password must contain only letters and numbers!", "ERROR");
                 return false;
             }
             return true;
@@ -107,33 +119,33 @@ namespace ProjectTesting
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
             if (pass == "")
             {
-                MessageBox.Show("Error, password cannot be empty!");
+                CustomMessageBox.Show("Error, password cannot be empty!", "Password Error");
             }
             else
             {
                 if (!hasNumber.IsMatch(pass))
                 {
-                    MessageBox.Show("Error, password must contain at least one number!", "ERROR");
+                    CustomMessageBox.Show("Error, password must contain at least one number!", "ERROR");
                     return false;
                 }
                 if (!hasUpperChar.IsMatch(pass))
                 {
-                    MessageBox.Show("Error, password must contain at least one upper case letter!", "ERROR");
+                    CustomMessageBox.Show("Error, password must contain at least one upper case letter!", "ERROR");
                     return false;
                 }
                 if (!hasMiniMaxChars.IsMatch(pass))
                 {
-                    MessageBox.Show("Error, password must be between 8 to 10 characters!", "ERROR");
+                    CustomMessageBox.Show("Error, password must be between 8 to 10 characters!", "ERROR");
                     return false;
                 }
                 if (!hasLowerChar.IsMatch(pass))
                 {
-                    MessageBox.Show("Error, password must contain at least one lower case letter!", "ERROR");
+                    CustomMessageBox.Show("Error, password must contain at least one lower case letter!", "ERROR");
                     return false;
                 }
                 if (!hasSymbols.IsMatch(pass))
                 {
-                    MessageBox.Show("Error, password must contain at least symbol!", "ERROR");
+                    CustomMessageBox.Show("Error, password must contain at least symbol!", "ERROR");
                     return false;
                 }
             }
@@ -145,6 +157,7 @@ namespace ProjectTesting
             Password_textbox.Text = "";
             UserName_textbox.Text = "";
             ID_textbox.Text = "";
+            ((MainWindow)this.Parent.Parent).logIn1.Show();
             this.Hide();
         }
     }

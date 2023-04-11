@@ -64,13 +64,15 @@
             // 
             // backButton
             // 
+            backButton.BackColor = Color.IndianRed;
             backButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            backButton.Location = new Point(65, 49);
+            backButton.ForeColor = Color.White;
+            backButton.Location = new Point(29, 25);
             backButton.Name = "backButton";
             backButton.Size = new Size(90, 40);
             backButton.TabIndex = 0;
             backButton.Text = "Back";
-            backButton.UseVisualStyleBackColor = true;
+            backButton.UseVisualStyleBackColor = false;
             backButton.Click += backButton_Click;
             // 
             // panel1

@@ -9,6 +9,8 @@ namespace ProjectTesting
         public MainWindow()
         {
             InitializeComponent();
+            this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -19,31 +21,6 @@ namespace ProjectTesting
             //addBird1.Hide();
             //addCage1.Hide();
         }
-
-
-
-        private void readExcel()
-        {
-            Excel excel = new Excel("users", "Sheet1");
-
-            //MessageBox.Show(excel.ReadCell("A2"));
-
-            //string[] stuff = excel.ReadRange(4, 1, 2);
-
-            //foreach (string res in stuff)
-            //{
-            //    MessageBox.Show(res);
-            //}
-
-
-
-            string[] myArray = { "max", "123321" };
-
-            excel.WriteRange(5, 1, 2, myArray);
-
-            excel.Quit();
-        }
-
 
         public void loginToSignUp()
         {

@@ -44,6 +44,7 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             cancelButton = new Button();
             addButton = new Button();
+            Welcome_label = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -56,7 +57,7 @@
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(388, 76);
+            flowLayoutPanel1.Location = new Point(388, 113);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(505, 417);
             flowLayoutPanel1.TabIndex = 4;
@@ -209,10 +210,21 @@
             addButton.UseVisualStyleBackColor = true;
             addButton.Click += addButton_Click;
             // 
+            // Welcome_label
+            // 
+            Welcome_label.Font = new Font("Comic Sans MS", 24F, FontStyle.Underline, GraphicsUnit.Point);
+            Welcome_label.Location = new Point(321, 34);
+            Welcome_label.Name = "Welcome_label";
+            Welcome_label.Size = new Size(660, 64);
+            Welcome_label.TabIndex = 5;
+            Welcome_label.Text = "Welcome new user! please add a new cage";
+            Welcome_label.Visible = false;
+            // 
             // AddCage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Welcome_label);
             Controls.Add(flowLayoutPanel1);
             Name = "AddCage";
             Size = new Size(1264, 611);
@@ -242,5 +254,6 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private Button cancelButton;
         private Button addButton;
+        private Label Welcome_label;
     }
 }
