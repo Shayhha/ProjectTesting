@@ -41,6 +41,7 @@
             homePage1 = new HomePage();
             searchBird1 = new SearchBird();
             addBird1 = new AddBird();
+            addCage1 = new AddCage();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -170,12 +171,21 @@
             addBird1.TabIndex = 11;
             addBird1.Visible = false;
             // 
+            // addCage1
+            // 
+            addCage1.Location = new Point(0, 0);
+            addCage1.Name = "addCage1";
+            addCage1.Size = new Size(1280, 720);
+            addCage1.TabIndex = 12;
+            addCage1.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1264, 681);
+            Controls.Add(addCage1);
             Controls.Add(addBird1);
             Controls.Add(searchBird1);
             Controls.Add(homePage1);
@@ -202,9 +212,11 @@
         private Button SignUp_button;
         private SignUp SignUp1;
         private Panel panel1;
-        private HomePage homePage1;
-        private BirdProfile birdProfile1;
+        public HomePage homePage1;
+        private AddCage addCage1;
         public static AddBird addBird1;
-        public static SearchBird searchBird1;
+        public SearchBird searchBird1;
+
+        // maybe do some set and get functions or regular methods that allow us to for example hide homePage1 and show searchBird1
     }
 }

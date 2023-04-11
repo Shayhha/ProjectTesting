@@ -19,11 +19,16 @@ namespace ProjectTesting
 
         private void Search_button_Click(object sender, EventArgs e)
         {
-            this.Hide();
             string name = Search_textbox.Text;
-            MainWindow.searchBird1.ClearList();
-            MainWindow.searchBird1.Search(name);
-            MainWindow.searchBird1.Show();
+            ((MainWindow)this.Parent).searchBird1.ClearList();
+            ((MainWindow)this.Parent).searchBird1.Search(name);
+            ((MainWindow)this.Parent).searchBird1.Show();
+            this.Hide();
+
+
+            //MainWindow mainWindow = (MainWindow)this.ParentForm;
+            //mainWindow.Controls.Remove(this);
+
         }
 
         private void HomePage_Load(object sender, EventArgs e)

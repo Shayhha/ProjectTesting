@@ -66,6 +66,7 @@ namespace ProjectTesting
             Search_textbox.Text = "";
             this.Hide();
             //MainWindow.homePage1.Show();
+            ((MainWindow)this.Parent).homePage1.Show();
         }
     }
 }
