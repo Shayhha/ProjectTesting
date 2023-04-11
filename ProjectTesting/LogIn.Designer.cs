@@ -35,7 +35,7 @@
             UserName_textbox = new TextBox();
             UserName_label = new Label();
             Pasword_label = new Label();
-            SignIn_label = new Label();
+            LogIn_label = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Pasword_label);
-            panel1.Location = new Point(187, 226);
+            panel1.Location = new Point(332, 192);
             panel1.Name = "panel1";
             panel1.Size = new Size(588, 306);
             panel1.TabIndex = 10;
@@ -114,21 +114,22 @@
             Pasword_label.TabIndex = 3;
             Pasword_label.Text = "Password:";
             // 
-            // SignIn_label
+            // LogIn_label
             // 
-            SignIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            SignIn_label.Location = new Point(394, 88);
-            SignIn_label.Name = "SignIn_label";
-            SignIn_label.Size = new Size(204, 86);
-            SignIn_label.TabIndex = 9;
-            SignIn_label.Text = "Sign In";
+            LogIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            LogIn_label.Location = new Point(539, 54);
+            LogIn_label.Name = "LogIn_label";
+            LogIn_label.Size = new Size(204, 86);
+            LogIn_label.TabIndex = 9;
+            LogIn_label.Text = "Log In";
             // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightCyan;
             Controls.Add(panel1);
-            Controls.Add(SignIn_label);
+            Controls.Add(LogIn_label);
             Name = "LogIn";
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
@@ -145,6 +146,6 @@
         private TextBox UserName_textbox;
         private Label UserName_label;
         private Label Pasword_label;
-        private Label SignIn_label;
+        private Label LogIn_label;
     }
 }

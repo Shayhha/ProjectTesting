@@ -30,9 +30,6 @@ namespace ProjectTesting
                 this.Hide();
             }
 
-            //MainWindow mainWindow = (MainWindow)this.ParentForm;
-            //mainWindow.Controls.Remove(this);
-
         }
 
         private void HomePage_Load(object sender, EventArgs e)
