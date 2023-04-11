@@ -29,24 +29,28 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             SignUp_button = new Button();
             bindingSource1 = new BindingSource(components);
             Password_textbox = new TextBox();
-            Pasword_label = new Label();
+            Password_label = new Label();
             UserName_label = new Label();
             UserName_textbox = new TextBox();
             SignUp_label = new Label();
             panel1 = new Panel();
+            Question_pictureBox = new PictureBox();
             Cancel_button = new Button();
             ID_textbox = new TextBox();
             ID_label = new Label();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Question_pictureBox).BeginInit();
             SuspendLayout();
             // 
             // SignUp_button
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
+            SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             SignUp_button.Location = new Point(98, 253);
             SignUp_button.Name = "SignUp_button";
@@ -62,18 +66,19 @@
             Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.Location = new Point(194, 172);
             Password_textbox.Name = "Password_textbox";
+            Password_textbox.PlaceholderText = "Between 8 - 10 characters";
             Password_textbox.Size = new Size(180, 27);
             Password_textbox.TabIndex = 8;
             // 
-            // Pasword_label
+            // Password_label
             // 
-            Pasword_label.AutoSize = true;
-            Pasword_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            Pasword_label.Location = new Point(61, 167);
-            Pasword_label.Name = "Pasword_label";
-            Pasword_label.Size = new Size(116, 32);
-            Pasword_label.TabIndex = 7;
-            Pasword_label.Text = "Password:";
+            Password_label.AutoSize = true;
+            Password_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_label.Location = new Point(61, 167);
+            Password_label.Name = "Password_label";
+            Password_label.Size = new Size(116, 32);
+            Password_label.TabIndex = 7;
+            Password_label.Text = "Password:";
             // 
             // UserName_label
             // 
@@ -91,6 +96,7 @@
             UserName_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserName_textbox.Location = new Point(194, 65);
             UserName_textbox.Name = "UserName_textbox";
+            UserName_textbox.PlaceholderText = "Between 6 - 8 characters";
             UserName_textbox.Size = new Size(180, 27);
             UserName_textbox.TabIndex = 5;
             // 
@@ -106,6 +112,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SkyBlue;
+            panel1.Controls.Add(Question_pictureBox);
             panel1.Controls.Add(Cancel_button);
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(ID_label);
@@ -113,16 +120,28 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Password_textbox);
-            panel1.Controls.Add(Pasword_label);
+            panel1.Controls.Add(Password_label);
             panel1.ForeColor = SystemColors.ActiveCaptionText;
             panel1.Location = new Point(355, 202);
             panel1.Name = "panel1";
             panel1.Size = new Size(560, 312);
             panel1.TabIndex = 20;
             // 
+            // Question_pictureBox
+            // 
+            Question_pictureBox.Cursor = Cursors.Help;
+            Question_pictureBox.Image = (Image)resources.GetObject("Question_pictureBox.Image");
+            Question_pictureBox.Location = new Point(511, 7);
+            Question_pictureBox.Name = "Question_pictureBox";
+            Question_pictureBox.Size = new Size(43, 45);
+            Question_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            Question_pictureBox.TabIndex = 24;
+            Question_pictureBox.TabStop = false;
+            // 
             // Cancel_button
             // 
             Cancel_button.BackColor = SystemColors.ActiveCaption;
+            Cancel_button.Cursor = Cursors.Hand;
             Cancel_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Cancel_button.Location = new Point(314, 253);
             Cancel_button.Name = "Cancel_button";
@@ -138,6 +157,7 @@
             ID_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             ID_textbox.Location = new Point(194, 117);
             ID_textbox.Name = "ID_textbox";
+            ID_textbox.PlaceholderText = "6 digit number";
             ID_textbox.Size = new Size(180, 27);
             ID_textbox.TabIndex = 21;
             // 
@@ -163,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Question_pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -171,7 +192,7 @@
         private Button SignUp_button;
         private BindingSource bindingSource1;
         private TextBox Password_textbox;
-        private Label Pasword_label;
+        private Label Password_label;
         private Label UserName_label;
         private TextBox UserName_textbox;
         private Label SignUp_label;
@@ -179,5 +200,6 @@
         private TextBox ID_textbox;
         private Label ID_label;
         private Button Cancel_button;
+        private PictureBox Question_pictureBox;
     }
 }

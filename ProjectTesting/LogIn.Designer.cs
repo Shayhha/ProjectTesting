@@ -65,6 +65,7 @@
             // LogIn_button
             // 
             LogIn_button.BackColor = SystemColors.ActiveCaption;
+            LogIn_button.Cursor = Cursors.Hand;
             LogIn_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             LogIn_button.Location = new Point(96, 185);
             LogIn_button.Name = "LogIn_button";
@@ -77,6 +78,7 @@
             // SignUp_button
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
+            SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             SignUp_button.Location = new Point(335, 185);
             SignUp_button.Name = "SignUp_button";

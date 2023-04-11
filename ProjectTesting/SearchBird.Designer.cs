@@ -35,13 +35,15 @@
             label2 = new Label();
             Back_Button = new Button();
             Search_button = new Button();
-            comboBox = new ComboBox();
             Cage_label = new Label();
             Bird_label = new Label();
+            colorDialog1 = new ColorDialog();
+            comboBox = new ComboBox();
             SuspendLayout();
             // 
             // birdList
             // 
+            birdList.Cursor = Cursors.Hand;
             birdList.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
@@ -50,10 +52,12 @@
             birdList.Name = "birdList";
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
+            birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
             // LogOut_button
             // 
             LogOut_button.BackColor = Color.IndianRed;
+            LogOut_button.Cursor = Cursors.Hand;
             LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LogOut_button.ForeColor = Color.White;
             LogOut_button.Location = new Point(1127, 25);
@@ -69,6 +73,7 @@
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(489, 95);
             Search_textbox.Name = "Search_textbox";
+            Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
             Search_textbox.Size = new Size(350, 33);
             Search_textbox.TabIndex = 2;
@@ -95,6 +100,7 @@
             // 
             // Back_Button
             // 
+            Back_Button.Cursor = Cursors.Hand;
             Back_Button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Back_Button.Location = new Point(59, 25);
             Back_Button.Name = "Back_Button";
@@ -106,6 +112,7 @@
             // 
             // Search_button
             // 
+            Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_button.Location = new Point(845, 95);
             Search_button.Name = "Search_button";
@@ -114,15 +121,6 @@
             Search_button.Text = "Search Results";
             Search_button.UseVisualStyleBackColor = true;
             Search_button.Click += Search_button_Click;
-            // 
-            // comboBox
-            // 
-            comboBox.FormattingEnabled = true;
-            comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(584, 134);
-            comboBox.Name = "comboBox";
-            comboBox.Size = new Size(147, 23);
-            comboBox.TabIndex = 6;
             // 
             // Cage_label
             // 
@@ -144,16 +142,26 @@
             Bird_label.TabIndex = 9;
             Bird_label.Text = "Brids: Y";
             // 
+            // comboBox
+            // 
+            comboBox.Cursor = Cursors.Hand;
+            comboBox.FormattingEnabled = true;
+            comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
+            comboBox.Location = new Point(586, 134);
+            comboBox.Name = "comboBox";
+            comboBox.Size = new Size(147, 23);
+            comboBox.TabIndex = 14;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(comboBox);
             Controls.Add(LogOut_button);
             Controls.Add(Search_button);
             Controls.Add(Cage_label);
             Controls.Add(Bird_label);
-            Controls.Add(comboBox);
             Controls.Add(Back_Button);
             Controls.Add(label2);
             Controls.Add(Search_label);
@@ -174,9 +182,9 @@
         private Label label2;
         private Button Back_Button;
         private Button Search_button;
-        private ComboBox comboBox;
         private Label Cage_label;
         private Label Bird_label;
-
+        private ColorDialog colorDialog1;
+        private ComboBox comboBox;
     }
 }

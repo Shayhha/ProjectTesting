@@ -62,14 +62,14 @@ namespace ProjectTesting
             }
             if (flag == 0)
             {
-               CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
+                CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
             ex.Quit(); //after we logged in we close users excel
         }
 
         private void LoggedIn() //opens the 
         {
-            Excel ex = new Excel("database",MainWindow.UserSheet);
+            Excel ex = new Excel("database", MainWindow.UserSheet);
             if (ex.ReadCell("A1") == "")
             {
                 ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);

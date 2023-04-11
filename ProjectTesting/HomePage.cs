@@ -15,6 +15,7 @@ namespace ProjectTesting
         public HomePage()
         {
             InitializeComponent();
+            comboBox.SelectedIndex = 0;
         }
 
         private void Search_button_Click(object sender, EventArgs e)
