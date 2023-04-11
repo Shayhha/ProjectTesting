@@ -50,16 +50,18 @@ namespace ProjectTesting
             momBox.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
             getInfoFromUser();
             cleanTextBoxes();
+            ((MainWindow)this.Parent.Parent).homePage1.Show();
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             cleanTextBoxes();
+            ((MainWindow)this.Parent.Parent).homePage1.Show();
             this.Hide();
         }
     }

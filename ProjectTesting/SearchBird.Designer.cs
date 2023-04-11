@@ -46,7 +46,7 @@
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
-            birdList.Location = new Point(111, 196);
+            birdList.Location = new Point(96, 196);
             birdList.Name = "birdList";
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
