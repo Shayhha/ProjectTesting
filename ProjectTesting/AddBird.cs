@@ -64,7 +64,7 @@ namespace ProjectTesting
                 else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5])) 
                 {
-                    MessageBox.Show("The cage id you have typed does not belong to you, enter a cage id that you own.");
+                    CustomMessageBox.Show("The cage id you have typed does not belong to you, enter a cage id that you own.","Error");
                     return false;
                 }
                 else if (!checkBirdId(birdInfo[0])) { return false; }
@@ -89,7 +89,7 @@ namespace ProjectTesting
 
             if (flag == 1)
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             } else 
             {
@@ -123,7 +123,7 @@ namespace ProjectTesting
                 idValue = ex.ReadCell("G" + i);
                 if (idValue == birdId)
                 {
-                    MessageBox.Show("The bird you are trying to add already exists in the database, try a different id.");
+                    CustomMessageBox.Show("The bird you are trying to add already exists in the database, try a different id.", "Error");
                     ex.Quit();
                     return false;
                 }
@@ -137,7 +137,7 @@ namespace ProjectTesting
         {
             if (type != "American Gouldian" && type != "European Gouldian" && type != "Australian Gouldian") 
             { 
-                MessageBox.Show("Error, the bird's type is incorrect, try again.");
+                CustomMessageBox.Show("Error, the bird's type is incorrect, try again.","Error");
                 return false;
             }
             return true;
@@ -154,7 +154,7 @@ namespace ProjectTesting
                     (subType != "Center Australia" && subType != "Coastal Cities") ) 
                 )
             {
-                MessageBox.Show("Error, the sub type is incorrect. It must match the main type of the bird.");
+                CustomMessageBox.Show("Error, the sub type is incorrect. It must match the main type of the bird.", "Error");
                 return false;
             }
             
@@ -165,7 +165,7 @@ namespace ProjectTesting
         {
             if (gender != "Male" && gender != "Female")
             {
-                MessageBox.Show("Error, gender is incorrect.");
+                CustomMessageBox.Show("Error, gender is incorrect.", "Error");
                 return false;
             }
             return true;

@@ -66,13 +66,13 @@ namespace ProjectTesting
 
             if (flag == 1)
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
 
             if (!checkCageId(cageInfo[0])) 
             {
-                MessageBox.Show("The cage you are trying to add already exists in the database, try a different id.");
+                CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
                 return false; 
             }
             else
@@ -124,7 +124,7 @@ namespace ProjectTesting
 
             if (flag == 1)
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
 
