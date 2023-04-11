@@ -28,13 +28,13 @@ namespace ProjectTesting
             birdList.Items.Clear(); // deleting all of the previous items from the list
             if (combo == "" && name == "")
             {
-                MessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
+                CustomMessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
                 ex.Quit();
                 return false;
             }
             else if (combo == "")
             {
-                MessageBox.Show("Error, choose search type!", "Type Error");
+                CustomMessageBox.Show("Error, choose search type!", "Type Error");
                 ex.Quit();
                 return false;
             }
@@ -72,7 +72,7 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                MessageBox.Show("Error, no matching results for " + name, "Search Error");
+                CustomMessageBox.Show("Error, no matching results for " + name, "Search Error");
                 ex.Quit();
                 return false;
             }
