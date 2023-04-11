@@ -65,6 +65,16 @@ namespace ProjectTesting
             }
         }
 
+        private void Cage_pictureBox_Click(object sender, EventArgs e)
+        {
+            ((MainWindow)this.Parent.Parent).addCage1.Show();
+            this.Hide();
+        }
 
+        private void Bird_pictureBox_Click(object sender, EventArgs e)
+        {
+            ((MainWindow)this.Parent.Parent).addBird1.Show();
+            this.Hide();
+        }
     }
 }

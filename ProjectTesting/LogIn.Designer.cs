@@ -48,7 +48,7 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Pasword_label);
-            panel1.Location = new Point(332, 192);
+            panel1.Location = new Point(343, 192);
             panel1.Name = "panel1";
             panel1.Size = new Size(588, 306);
             panel1.TabIndex = 10;
@@ -117,7 +117,7 @@
             // LogIn_label
             // 
             LogIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            LogIn_label.Location = new Point(539, 54);
+            LogIn_label.Location = new Point(550, 54);
             LogIn_label.Name = "LogIn_label";
             LogIn_label.Size = new Size(204, 86);
             LogIn_label.TabIndex = 9;

@@ -77,6 +77,7 @@
             Cage_pictureBox.TabIndex = 6;
             Cage_pictureBox.TabStop = false;
             Cage_pictureBox.Tag = "";
+            Cage_pictureBox.Click += Cage_pictureBox_Click;
             Cage_pictureBox.Paint += Cage_pictureBox_Paint;
             // 
             // Bird_pictureBox
@@ -90,6 +91,7 @@
             Bird_pictureBox.TabIndex = 7;
             Bird_pictureBox.TabStop = false;
             Bird_pictureBox.Tag = "";
+            Bird_pictureBox.Click += Bird_pictureBox_Click;
             Bird_pictureBox.Paint += Bird_pictureBox_Paint;
             // 
             // Cage_label

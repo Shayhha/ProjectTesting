@@ -241,7 +241,7 @@
             addButton.TabIndex = 1;
             addButton.Text = "Add";
             addButton.UseVisualStyleBackColor = true;
-            addButton.Click += button1_Click;
+            addButton.Click += addButton_Click;
             // 
             // cancelButton
             // 
@@ -252,7 +252,7 @@
             cancelButton.TabIndex = 2;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += button2_Click;
+            cancelButton.Click += cancelButton_Click;
             // 
             // flowLayoutPanel1
             // 
