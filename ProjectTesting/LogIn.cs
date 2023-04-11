@@ -17,6 +17,10 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        private void SignUp1_Load(object sender, EventArgs e)
+        {
+
+        }
 
 
         private void LogIn_button_Click(object sender, EventArgs e)
@@ -29,47 +33,40 @@ namespace ProjectTesting
             string[] temp = null;
             int flag = 0;
 
-            for (int i = 1; i < size; i++)
+            if (username == "" && password == "")
             {
-                temp = ex.ReadRange(i, 1, 3);
-                if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
+                CustomMessageBox.Show("Field are empty!", "Error");
+                flag = 1;
+            }
+            else
+            {
+                for (int i = 1; i < size; i++)
                 {
-                    flag = 1; //needs hoempage
-                    MainWindow.UserSheet = username; //gives usersheet the current users name
+                    temp = ex.ReadRange(i, 1, 3);
+                    if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
+                    {
+                        MainWindow.UserSheet = username; //gives usersheet the current users name
+                        flag = 1;
+                        ((MainWindow)this.Parent.Parent).homePage1.Show();
+                        UserName_textbox.Text = "";
+                        Password_textbox.Text = "";
+                        break;
 
-                    //Control parent = this.Parent;
-                    //while (parent != null && !(parent is MainWindow))
-                    //{
-                    //    parent = parent.Parent;
-                    //}
-
-                    //if (parent is MainWindow mainWindow)
-                    //{
-                    //    mainWindow.homePage1.Show();
-                    //}
-
-                    ((MainWindow)this.Parent.Parent).homePage1.Show();
-                }
-                else if (temp[0] == info[0] && temp[1] == info[1])
-                {
-                    MessageBox.Show("Wrong password!", "Password Error");
+                    }
+                    else if (temp[0] == info[0] && temp[1] != info[1])
+                    {
+                        CustomMessageBox.Show("Wrong password!", "Password Error");
+                        flag = 1;
+                        break;
+                    }
                 }
             }
             if (flag == 0)
             {
-                MessageBox.Show("No matching user \"" + username + "\"", "User Error");
+               CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
             //after we logged in we close users excel
-            UserName_textbox.Text = "";
-            Password_textbox.Text = "";
             ex.Quit();
-        }
-
-
-
-        private void SignUp1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)

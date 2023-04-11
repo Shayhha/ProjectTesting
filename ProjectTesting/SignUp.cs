@@ -28,34 +28,45 @@ namespace ProjectTesting
             Excel ex = new Excel("users", "default");
             string[] temp = null;
             int flag = 0;
-            int size = ex.GetLastRow();//
+            int size = ex.GetLastRow();
 
-            if (id.Length != 6)
+            if (pass == "" && username == "" && id == "") //if fields are empty we give an error
             {
-                MessageBox.Show("ID length must be 6 characters.");
+                MessageBox.Show("Field are empty!", "ERROR");
                 flag = 1;
             }
-
-            if (UsernameValidate(username) == false)
-                flag = 1;
-
-            if (PasswordValidate(pass) == false)
-                flag = 1;
-
-            for (int i = 1; i < size; i++)
-            { //we check if we have a user with same username or ID
-                temp = ex.ReadRange(i, 1, 3);
-                if (temp[0] == username) //if we found one that matches we open a messagebox and break
+            else //else fields are'nt empty so we check their validity
+            {
+                if (id.Length != 6)
                 {
-                    MessageBox.Show("Username is already taken!", "ERROR");
+                    MessageBox.Show("ID length must be 6 characters.", "ERROR");
                     flag = 1;
-                    break;
                 }
-                if (temp[2] == id)
-                {
-                    MessageBox.Show("ID is already registered!", "ERROR");
+
+                if (UsernameValidate(username) == false)
                     flag = 1;
-                    break;
+
+                if (PasswordValidate(pass) == false)
+                    flag = 1;
+            }
+
+            if (flag == 0) //if no errors occurred we check if the user exists in our data base
+            {
+                for (int i = 1; i < size; i++)
+                { //we check if we have a user with same username or ID
+                    temp = ex.ReadRange(i, 1, 3);
+                    if (temp[0] == username) //if we found one that matches we open a messagebox and break
+                    {
+                        MessageBox.Show("Username is already taken!", "ERROR");
+                        flag = 1;
+                        break;
+                    }
+                    if (temp[2] == id)
+                    {
+                        MessageBox.Show("ID is already registered!", "ERROR");
+                        flag = 1;
+                        break;
+                    }
                 }
             }
 
@@ -145,6 +156,7 @@ namespace ProjectTesting
             Password_textbox.Text = "";
             UserName_textbox.Text = "";
             ID_textbox.Text = "";
+            ((MainWindow)this.Parent.Parent).logIn1.Show();
             this.Hide();
         }
     }

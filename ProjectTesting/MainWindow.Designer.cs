@@ -40,6 +40,8 @@
             logIn1 = new LogIn();
             contentPanel.SuspendLayout();
             SuspendLayout();
+            this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\duke.ico");
+            this.StartPosition = FormStartPosition.CenterScreen;
             // 
             // label1
             // 
