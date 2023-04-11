@@ -26,6 +26,7 @@ namespace ProjectTesting
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
+            string[] DefaultCombo = { "Bird", "Cage" };//we will use this array to check combo
             if (combo == "" && name == "")
             {
                 CustomMessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
@@ -35,6 +36,12 @@ namespace ProjectTesting
             else if (combo == "")
             {
                 CustomMessageBox.Show("Error, choose search type!", "Type Error");
+                ex.Quit();
+                return false;
+            }
+            else if (!DefaultCombo.Contains(combo))
+            {
+                CustomMessageBox.Show("There's no search type named \"" + combo + "\"","Error");
                 ex.Quit();
                 return false;
             }

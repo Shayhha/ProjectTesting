@@ -46,6 +46,7 @@
             // LogOut_button
             // 
             LogOut_button.BackColor = Color.IndianRed;
+            LogOut_button.Cursor = Cursors.Hand;
             LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LogOut_button.ForeColor = Color.White;
             LogOut_button.Location = new Point(1127, 25);
@@ -106,6 +107,7 @@
             // 
             // Search_button
             // 
+            Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_button.Location = new Point(851, 96);
             Search_button.Name = "Search_button";
@@ -117,6 +119,7 @@
             // 
             // comboBox
             // 
+            comboBox.Cursor = Cursors.Hand;
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
             comboBox.Location = new Point(590, 137);
@@ -146,7 +149,6 @@
             // 
             // Search_textbox
             // 
-            Search_textbox.Cursor = Cursors.Hand;
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(495, 98);
             Search_textbox.Name = "Search_textbox";

@@ -47,6 +47,7 @@
             // SignUp_button
             // 
             SignUp_button.BackColor = SystemColors.ActiveCaption;
+            SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             SignUp_button.Location = new Point(98, 253);
             SignUp_button.Name = "SignUp_button";
@@ -123,6 +124,7 @@
             // Cancel_button
             // 
             Cancel_button.BackColor = SystemColors.ActiveCaption;
+            Cancel_button.Cursor = Cursors.Hand;
             Cancel_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Cancel_button.Location = new Point(314, 253);
             Cancel_button.Name = "Cancel_button";
