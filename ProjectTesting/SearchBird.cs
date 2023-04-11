@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectTesting
 {
@@ -15,6 +17,8 @@ namespace ProjectTesting
         public SearchBird()
         {
             InitializeComponent();
+            //comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            //comboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem1);
         }
 
 
@@ -41,7 +45,7 @@ namespace ProjectTesting
             }
             else if (!DefaultCombo.Contains(combo))
             {
-                CustomMessageBox.Show("There's no search type named \"" + combo + "\"","Error");
+                CustomMessageBox.Show("There's no search type named \"" + combo + "\" \n(Please choose a search type from the box with the arrow)", "Error");
                 ex.Quit();
                 return false;
             }
@@ -110,6 +114,27 @@ namespace ProjectTesting
             Search_textbox.Text = "";
             this.Hide();
             ((MainWindow)this.Parent.Parent).homePage1.Show();
+        }
+
+        private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
+        {
+            MessageBox.Show("yes");
+            //Form2 newForm = new Form2();
+            //newForm.Show();
+        }
+
+        private void comboBox_DrawItem1(object sender, DrawItemEventArgs e) //needs more works later(doesn't work)
+        {
+            if (e.Index == -1)
+            {
+                e.Graphics.DrawString("Select an item", e.Font, Brushes.Gray, e.Bounds);
+            }
+            else
+            {
+                e.DrawBackground();
+                e.Graphics.DrawString(comboBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
+                e.DrawFocusRectangle();
+            }
         }
     }
 }

@@ -51,6 +51,7 @@
             birdList.Name = "birdList";
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
+            birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
             // LogOut_button
             // 
@@ -122,11 +123,12 @@
             // comboBox
             // 
             comboBox.Cursor = Cursors.Hand;
+            comboBox.DrawMode = DrawMode.OwnerDrawVariable;
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
             comboBox.Location = new Point(584, 134);
             comboBox.Name = "comboBox";
-            comboBox.Size = new Size(147, 23);
+            comboBox.Size = new Size(147, 24);
             comboBox.TabIndex = 6;
             // 
             // Cage_label
