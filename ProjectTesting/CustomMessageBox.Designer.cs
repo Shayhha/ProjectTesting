@@ -58,7 +58,7 @@
             // Error_picture
             // 
             Error_picture.Image = (Image)resources.GetObject("Error_picture.Image");
-            Error_picture.Location = new Point(11, 46);
+            Error_picture.Location = new Point(11, 36);
             Error_picture.Name = "Error_picture";
             Error_picture.Size = new Size(77, 53);
             Error_picture.SizeMode = PictureBoxSizeMode.Zoom;

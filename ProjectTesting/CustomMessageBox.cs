@@ -15,7 +15,7 @@ namespace ProjectTesting
         public CustomMessageBox()
         {
             InitializeComponent();
-            //this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\duke.ico");
+            this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\duke.ico");
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
@@ -32,7 +32,7 @@ namespace ProjectTesting
         public static void Show(string message, string title, bool cross = true)
         {
             CustomMessageBox messageBox = new CustomMessageBox();
-            messageBox.ShowMessage(message, title,cross);
+            messageBox.ShowMessage(message, title, cross);
             messageBox.ShowDialog();
         }
 

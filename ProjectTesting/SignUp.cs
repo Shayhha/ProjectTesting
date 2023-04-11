@@ -21,7 +21,10 @@ namespace ProjectTesting
             passwordRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
             passwordRequirementsToolTip.Draw += PasswordRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
             passwordRequirementsToolTip.Popup += PasswordRequirementsToolTip_Popup;
-            passwordRequirementsToolTip.SetToolTip(Password_label, "Your password requirements here");
+            string text = "1. Name must contain only letters and at max 2 numbers\n2. ID must be 6 numbers\n" +
+                "3. Passsword must contain at least one capital case letter and one" +
+                " lower case letter, also needs to contain at least one symbol\n";
+            passwordRequirementsToolTip.SetToolTip(Question_pictureBox, text);
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)
@@ -168,7 +171,7 @@ namespace ProjectTesting
             this.Hide();
         }
 
-        private void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e)
+        private void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e) //sets font size of ToolTip and the background
         {
             // Set the font size of the text in the ToolTip
             Font font = new Font(e.Font.FontFamily, 12);
@@ -181,10 +184,9 @@ namespace ProjectTesting
             e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds);
         }
 
-        private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e)
+        private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            // Set the size of the ToolTip
-            e.ToolTipSize = new Size(200, 100);
+            e.ToolTipSize = new Size(500, 120);
         }
     }
 }

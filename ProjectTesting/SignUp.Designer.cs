@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             SignUp_button = new Button();
             bindingSource1 = new BindingSource(components);
             Password_textbox = new TextBox();
@@ -37,11 +38,13 @@
             UserName_textbox = new TextBox();
             SignUp_label = new Label();
             panel1 = new Panel();
+            Question_pictureBox = new PictureBox();
             Cancel_button = new Button();
             ID_textbox = new TextBox();
             ID_label = new Label();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Question_pictureBox).BeginInit();
             SuspendLayout();
             // 
             // SignUp_button
@@ -109,6 +112,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SkyBlue;
+            panel1.Controls.Add(Question_pictureBox);
             panel1.Controls.Add(Cancel_button);
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(ID_label);
@@ -122,6 +126,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(560, 312);
             panel1.TabIndex = 20;
+            // 
+            // Question_pictureBox
+            // 
+            Question_pictureBox.Cursor = Cursors.Help;
+            Question_pictureBox.Image = (Image)resources.GetObject("Question_pictureBox.Image");
+            Question_pictureBox.Location = new Point(511, 7);
+            Question_pictureBox.Name = "Question_pictureBox";
+            Question_pictureBox.Size = new Size(43, 45);
+            Question_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            Question_pictureBox.TabIndex = 24;
+            Question_pictureBox.TabStop = false;
             // 
             // Cancel_button
             // 
@@ -168,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Question_pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -184,5 +200,6 @@
         private TextBox ID_textbox;
         private Label ID_label;
         private Button Cancel_button;
+        private PictureBox Question_pictureBox;
     }
 }
