@@ -74,8 +74,8 @@ namespace ProjectTesting
 
         private void SignUp_button_Click(object sender, EventArgs e)
         {
-            //SignUp1.Show();
-            ((MainWindow)this.Parent.Parent).loginToSignUp();
+            ((MainWindow)this.Parent.Parent).logIn1.Hide();
+            ((MainWindow)this.Parent.Parent).signUp1.Show();
         }
     }
 }

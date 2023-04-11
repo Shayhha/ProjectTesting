@@ -20,11 +20,13 @@ namespace ProjectTesting
         private void Search_button_Click(object sender, EventArgs e)
         {
             string name = Search_textbox.Text;
-            ((MainWindow)this.Parent).searchBird1.ClearList();
+            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
             string combo = comboBox.Text;
-            if (((MainWindow)this.Parent).searchBird1.Search(name, combo) == true)
+            if (((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo) == true)
             {
-                ((MainWindow)this.Parent).searchBird1.Show();
+                ((MainWindow)this.Parent.Parent).searchBird1.Show();
+                Search_textbox.Text = "";
+                comboBox.Text = "";
                 this.Hide();
             }
 

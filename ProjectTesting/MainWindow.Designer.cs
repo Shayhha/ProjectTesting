@@ -148,14 +148,13 @@
         private Label label1;
         private Panel headlinePanel;
         private Panel contentPanel;
-        private MoreDetails moreDetails1;
+        public MoreDetails moreDetails1;
         public SearchBird searchBird1;
-        private AddCage addCage1;
-        private AddBird addBird1;
+        public AddCage addCage1;
+        public AddBird addBird1;
         public HomePage homePage1;
-        private SignUp signUp1;
-        private LogIn logIn1;
+        public SignUp signUp1;
+        public LogIn logIn1;
 
-        // maybe do some set and get functions or regular methods that allow us to for example hide homePage1 and show searchBird1
     }
 }
