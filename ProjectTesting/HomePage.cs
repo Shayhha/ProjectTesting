@@ -27,7 +27,7 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
                 Search_textbox.Text = "";
-                comboBox.Text = "";
+                comboBox.SelectedIndex = 0;
                 this.Hide();
             }
 
