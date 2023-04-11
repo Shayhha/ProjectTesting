@@ -21,10 +21,12 @@ namespace ProjectTesting
         {
             string name = Search_textbox.Text;
             ((MainWindow)this.Parent).searchBird1.ClearList();
-            ((MainWindow)this.Parent).searchBird1.Search(name);
-            ((MainWindow)this.Parent).searchBird1.Show();
-            this.Hide();
-
+            string combo = comboBox.Text;
+            if (((MainWindow)this.Parent).searchBird1.Search(name, combo) == true)
+            {
+                ((MainWindow)this.Parent).searchBird1.Show();
+                this.Hide();
+            }                      
 
             //MainWindow mainWindow = (MainWindow)this.ParentForm;
             //mainWindow.Controls.Remove(this);
