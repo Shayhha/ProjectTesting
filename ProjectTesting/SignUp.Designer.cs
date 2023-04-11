@@ -32,7 +32,7 @@
             SignUp_button = new Button();
             bindingSource1 = new BindingSource(components);
             Password_textbox = new TextBox();
-            Pasword_label = new Label();
+            Password_label = new Label();
             UserName_label = new Label();
             UserName_textbox = new TextBox();
             SignUp_label = new Label();
@@ -63,18 +63,19 @@
             Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.Location = new Point(194, 172);
             Password_textbox.Name = "Password_textbox";
+            Password_textbox.PlaceholderText = "Between 8 - 10 characters";
             Password_textbox.Size = new Size(180, 27);
             Password_textbox.TabIndex = 8;
             // 
-            // Pasword_label
+            // Password_label
             // 
-            Pasword_label.AutoSize = true;
-            Pasword_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            Pasword_label.Location = new Point(61, 167);
-            Pasword_label.Name = "Pasword_label";
-            Pasword_label.Size = new Size(116, 32);
-            Pasword_label.TabIndex = 7;
-            Pasword_label.Text = "Password:";
+            Password_label.AutoSize = true;
+            Password_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_label.Location = new Point(61, 167);
+            Password_label.Name = "Password_label";
+            Password_label.Size = new Size(116, 32);
+            Password_label.TabIndex = 7;
+            Password_label.Text = "Password:";
             // 
             // UserName_label
             // 
@@ -92,6 +93,7 @@
             UserName_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserName_textbox.Location = new Point(194, 65);
             UserName_textbox.Name = "UserName_textbox";
+            UserName_textbox.PlaceholderText = "Between 6 - 8 characters";
             UserName_textbox.Size = new Size(180, 27);
             UserName_textbox.TabIndex = 5;
             // 
@@ -114,7 +116,7 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Password_textbox);
-            panel1.Controls.Add(Pasword_label);
+            panel1.Controls.Add(Password_label);
             panel1.ForeColor = SystemColors.ActiveCaptionText;
             panel1.Location = new Point(355, 202);
             panel1.Name = "panel1";
@@ -140,6 +142,7 @@
             ID_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             ID_textbox.Location = new Point(194, 117);
             ID_textbox.Name = "ID_textbox";
+            ID_textbox.PlaceholderText = "6 digit number";
             ID_textbox.Size = new Size(180, 27);
             ID_textbox.TabIndex = 21;
             // 
@@ -173,7 +176,7 @@
         private Button SignUp_button;
         private BindingSource bindingSource1;
         private TextBox Password_textbox;
-        private Label Pasword_label;
+        private Label Password_label;
         private Label UserName_label;
         private TextBox UserName_textbox;
         private Label SignUp_label;

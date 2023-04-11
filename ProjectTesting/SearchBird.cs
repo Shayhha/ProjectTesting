@@ -17,8 +17,7 @@ namespace ProjectTesting
         public SearchBird()
         {
             InitializeComponent();
-            //comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            //comboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem1);
+            comboBox.SelectedIndex = 0;
         }
 
 
@@ -123,18 +122,6 @@ namespace ProjectTesting
             //newForm.Show();
         }
 
-        private void comboBox_DrawItem1(object sender, DrawItemEventArgs e) //needs more works later(doesn't work)
-        {
-            if (e.Index == -1)
-            {
-                e.Graphics.DrawString("Select an item", e.Font, Brushes.Gray, e.Bounds);
-            }
-            else
-            {
-                e.DrawBackground();
-                e.Graphics.DrawString(comboBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
-                e.DrawFocusRectangle();
-            }
-        }
+
     }
 }

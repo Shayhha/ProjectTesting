@@ -16,6 +16,12 @@ namespace ProjectTesting
         public SignUp()
         {
             InitializeComponent();
+            ToolTip passwordRequirementsToolTip = new ToolTip();
+            passwordRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
+            passwordRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
+            passwordRequirementsToolTip.Draw += PasswordRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
+            passwordRequirementsToolTip.Popup += PasswordRequirementsToolTip_Popup;
+            passwordRequirementsToolTip.SetToolTip(Password_label, "Your password requirements here");
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)
@@ -160,6 +166,25 @@ namespace ProjectTesting
             ID_textbox.Text = "";
             ((MainWindow)this.Parent.Parent).logIn1.Show();
             this.Hide();
+        }
+
+        private void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            // Set the font size of the text in the ToolTip
+            Font font = new Font(e.Font.FontFamily, 12);
+
+            // Draw the background and border of the ToolTip
+            e.DrawBackground();
+            e.DrawBorder();
+
+            // Draw the text in the ToolTip using the specified font
+            e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds);
+        }
+
+        private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e)
+        {
+            // Set the size of the ToolTip
+            e.ToolTipSize = new Size(200, 100);
         }
     }
 }
