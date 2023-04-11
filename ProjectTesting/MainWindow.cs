@@ -9,6 +9,8 @@ namespace ProjectTesting
         public MainWindow()
         {
             InitializeComponent();
+            this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void MainWindow_Load(object sender, EventArgs e)

@@ -15,6 +15,8 @@ namespace ProjectTesting
         public CustomMessageBox()
         {
             InitializeComponent();
+            this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\duke.ico");
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void ShowMessage(string message, string title) //sets the message box 
