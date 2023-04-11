@@ -64,7 +64,7 @@
             // 
             Password_textbox.BackColor = SystemColors.ButtonFace;
             Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Password_textbox.Location = new Point(194, 172);
+            Password_textbox.Location = new Point(194, 165);
             Password_textbox.Name = "Password_textbox";
             Password_textbox.PlaceholderText = "Between 8 - 10 characters";
             Password_textbox.Size = new Size(180, 27);
@@ -74,7 +74,7 @@
             // 
             Password_label.AutoSize = true;
             Password_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            Password_label.Location = new Point(61, 167);
+            Password_label.Location = new Point(61, 160);
             Password_label.Name = "Password_label";
             Password_label.Size = new Size(116, 32);
             Password_label.TabIndex = 7;
@@ -84,7 +84,7 @@
             // 
             UserName_label.AutoSize = true;
             UserName_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            UserName_label.Location = new Point(49, 60);
+            UserName_label.Location = new Point(49, 53);
             UserName_label.Name = "UserName_label";
             UserName_label.Size = new Size(137, 32);
             UserName_label.TabIndex = 6;
@@ -94,7 +94,7 @@
             // 
             UserName_textbox.BackColor = SystemColors.ButtonFace;
             UserName_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            UserName_textbox.Location = new Point(194, 65);
+            UserName_textbox.Location = new Point(194, 58);
             UserName_textbox.Name = "UserName_textbox";
             UserName_textbox.PlaceholderText = "Between 6 - 8 characters";
             UserName_textbox.Size = new Size(180, 27);
@@ -155,7 +155,7 @@
             // 
             ID_textbox.BackColor = SystemColors.ButtonFace;
             ID_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            ID_textbox.Location = new Point(194, 117);
+            ID_textbox.Location = new Point(194, 110);
             ID_textbox.Name = "ID_textbox";
             ID_textbox.PlaceholderText = "6 digit number";
             ID_textbox.Size = new Size(180, 27);
@@ -165,7 +165,7 @@
             // 
             ID_label.AutoSize = true;
             ID_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            ID_label.Location = new Point(98, 112);
+            ID_label.Location = new Point(98, 105);
             ID_label.Name = "ID_label";
             ID_label.Size = new Size(42, 32);
             ID_label.TabIndex = 22;

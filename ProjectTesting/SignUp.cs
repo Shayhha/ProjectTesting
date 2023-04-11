@@ -186,7 +186,7 @@ namespace ProjectTesting
 
         private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            e.ToolTipSize = new Size(500, 120);
+            e.ToolTipSize = new Size(440, 120);
         }
     }
 }
