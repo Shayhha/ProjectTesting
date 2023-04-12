@@ -36,7 +36,7 @@ namespace ProjectTesting
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -47,7 +47,7 @@ namespace ProjectTesting
                 SizeF textSize = e.Graphics.MeasureString("Click To Add Cage", myFont);
                 int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2;
                 int y = Cage_pictureBox.Height - (int)textSize.Height;
-                e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.White, new Point(x, y));
+                e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.Black, new Point(x, y));
             }
         }
 
@@ -58,7 +58,7 @@ namespace ProjectTesting
                 SizeF textSize = e.Graphics.MeasureString("Click To Add Bird", myFont);
                 int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2;
                 int y = Bird_pictureBox.Height - (int)textSize.Height;
-                e.Graphics.DrawString("Click To Add Bird", myFont, Brushes.White, new Point(x, y));
+                e.Graphics.DrawString("Click To Add Bird", myFont, Brushes.Black, new Point(x, y));
             }
         }
 

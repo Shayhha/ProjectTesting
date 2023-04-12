@@ -46,7 +46,7 @@
             Cage_pictureBox.Image = (Image)resources.GetObject("Cage_pictureBox.Image");
             Cage_pictureBox.Location = new Point(238, 217);
             Cage_pictureBox.Name = "Cage_pictureBox";
-            Cage_pictureBox.Size = new Size(300, 300);
+            Cage_pictureBox.Size = new Size(306, 327);
             Cage_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             Cage_pictureBox.TabIndex = 6;
             Cage_pictureBox.TabStop = false;
@@ -58,9 +58,9 @@
             // 
             Bird_pictureBox.Cursor = Cursors.Hand;
             Bird_pictureBox.Image = (Image)resources.GetObject("Bird_pictureBox.Image");
-            Bird_pictureBox.Location = new Point(730, 217);
+            Bird_pictureBox.Location = new Point(648, 217);
             Bird_pictureBox.Name = "Bird_pictureBox";
-            Bird_pictureBox.Size = new Size(300, 300);
+            Bird_pictureBox.Size = new Size(359, 327);
             Bird_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             Bird_pictureBox.TabIndex = 7;
             Bird_pictureBox.TabStop = false;
