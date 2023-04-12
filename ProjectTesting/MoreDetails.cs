@@ -51,8 +51,9 @@ namespace ProjectTesting
         public void initLabels(string birdId)
         {
             setImages();
+            cleanLabels();
             Excel ex = new Excel("database", MainWindow.UserSheet);
-            int size = ex.GetLastRow();
+            int size = ex.GetLastRow(7);
             string tempId = "";
             string[] databaseInfo = null;
 
@@ -78,6 +79,12 @@ namespace ProjectTesting
 
         private void backButton_Click(object sender, EventArgs e)
         {
+            cleanLabels();
+            this.Hide();
+        }
+
+        private void cleanLabels()
+        {
             idLabel.Text = "";
             typeLabel.Text = "";
             subTypeLabel.Text = "";
@@ -86,7 +93,6 @@ namespace ProjectTesting
             cageIdLabel.Text = "";
             dadIdLabel.Text = "";
             momIdLabel.Text = "";
-            this.Hide();
         }
     }
 }
