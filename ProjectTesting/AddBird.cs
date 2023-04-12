@@ -21,7 +21,6 @@ namespace ProjectTesting
 
         private bool getInfoFromUser()
         {
-
             string[] birdInfo = new string[9];
 
             birdInfo[0] = idBox.Text.ToString();
@@ -65,7 +64,7 @@ namespace ProjectTesting
                 else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5])) 
                 {
-                    CustomMessageBox.Show("The cage id you have typed does not belong to you, enter a cage id that you own.","Error");
+                    CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try one of these: " + findValidCageIds(), "Error");
                     return false;
                 }
                 else if (!checkBirdId(birdInfo[0])) { return false; }
@@ -171,6 +170,24 @@ namespace ProjectTesting
                 return false;
             }
             return true;
+        }
+
+        private string findValidCageIds()
+        {
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            int row = ex.GetLastRow();
+            string returnString = "";
+
+            for (int i = 1; i < row; i++)
+            {
+                returnString += ex.ReadCell("A" + i.ToString()).ToString();
+                if (i < row - 1)
+                    returnString += ", ";
+                else
+                    returnString += ".";
+            }
+            ex.Quit();
+            return returnString;
         }
 
         private void addButton_Click(object sender, EventArgs e)
