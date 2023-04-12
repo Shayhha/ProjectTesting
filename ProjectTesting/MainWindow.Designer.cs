@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             headlinePanel = new Panel();
+            Back_Button = new Button();
+            Cage_label = new Label();
+            Bird_label = new Label();
+            logOutButton = new Button();
             contentPanel = new Panel();
             moreDetails1 = new MoreDetails();
             searchBird1 = new SearchBird();
@@ -38,23 +41,70 @@
             homePage1 = new HomePage();
             signUp1 = new SignUp();
             logIn1 = new LogIn();
+            headlinePanel.SuspendLayout();
             contentPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 23);
-            label1.TabIndex = 0;
             // 
             // headlinePanel
             // 
             headlinePanel.BackColor = Color.DarkSlateGray;
+            headlinePanel.Controls.Add(Back_Button);
+            headlinePanel.Controls.Add(Cage_label);
+            headlinePanel.Controls.Add(Bird_label);
+            headlinePanel.Controls.Add(logOutButton);
             headlinePanel.Location = new Point(0, 0);
             headlinePanel.Name = "headlinePanel";
             headlinePanel.Size = new Size(1264, 70);
             headlinePanel.TabIndex = 1;
+            // 
+            // Back_Button
+            // 
+            Back_Button.Cursor = Cursors.Hand;
+            Back_Button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Back_Button.Location = new Point(12, 14);
+            Back_Button.Name = "Back_Button";
+            Back_Button.Size = new Size(90, 40);
+            Back_Button.TabIndex = 11;
+            Back_Button.Text = "Back";
+            Back_Button.UseVisualStyleBackColor = true;
+            Back_Button.Visible = false;
+            Back_Button.Click += Back_Button_Click;
+            // 
+            // Cage_label
+            // 
+            Cage_label.AutoSize = true;
+            Cage_label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Cage_label.ForeColor = Color.White;
+            Cage_label.Location = new Point(965, 25);
+            Cage_label.Name = "Cage_label";
+            Cage_label.Size = new Size(65, 21);
+            Cage_label.TabIndex = 10;
+            Cage_label.Text = "Cage: X";
+            // 
+            // Bird_label
+            // 
+            Bird_label.AutoSize = true;
+            Bird_label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Bird_label.ForeColor = Color.White;
+            Bird_label.Location = new Point(1048, 25);
+            Bird_label.Name = "Bird_label";
+            Bird_label.Size = new Size(64, 21);
+            Bird_label.TabIndex = 9;
+            Bird_label.Text = "Brids: Y";
+            // 
+            // logOutButton
+            // 
+            logOutButton.BackColor = Color.IndianRed;
+            logOutButton.Cursor = Cursors.Hand;
+            logOutButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            logOutButton.ForeColor = Color.White;
+            logOutButton.Location = new Point(1162, 14);
+            logOutButton.Name = "logOutButton";
+            logOutButton.Size = new Size(90, 40);
+            logOutButton.TabIndex = 0;
+            logOutButton.Text = "Log-out";
+            logOutButton.UseVisualStyleBackColor = false;
+            logOutButton.Click += logOutButton_Click;
             // 
             // contentPanel
             // 
@@ -104,7 +154,7 @@
             addBird1.TabIndex = 3;
             addBird1.Visible = false;
             // 
-            // signUp1
+            // homePage1
             // 
             homePage1.BackColor = Color.LightCyan;
             homePage1.Location = new Point(0, 0);
@@ -124,6 +174,7 @@
             // 
             // logIn1
             // 
+            logIn1.BackColor = Color.LightCyan;
             logIn1.Location = new Point(0, 0);
             logIn1.Name = "logIn1";
             logIn1.Size = new Size(1264, 611);
@@ -137,15 +188,15 @@
             ClientSize = new Size(1264, 681);
             Controls.Add(contentPanel);
             Controls.Add(headlinePanel);
-            Controls.Add(label1);
             Name = "MainWindow";
             Text = "MainWindow";
+            headlinePanel.ResumeLayout(false);
+            headlinePanel.PerformLayout();
             contentPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Label label1;
         private Panel headlinePanel;
         private Panel contentPanel;
         public MoreDetails moreDetails1;
@@ -155,6 +206,9 @@
         public HomePage homePage1;
         public SignUp signUp1;
         public LogIn logIn1;
-
+        private Button logOutButton;
+        private Label Cage_label;
+        private Label Bird_label;
+        public Button Back_Button;
     }
 }

@@ -102,29 +102,12 @@ namespace ProjectTesting
             birdList.Items.Clear();
         }
 
-        private void LogOut_button_Click(object sender, EventArgs e)
-        {
-            Search_textbox.Text = "";
-            comboBox.SelectedIndex = 0;
-            this.Hide();
-            ((MainWindow)this.Parent.Parent).homePage1.Hide();
-        }
-
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            Search_textbox.Text = "";
-            comboBox.SelectedIndex = 0;
-            this.Hide();
-            ((MainWindow)this.Parent.Parent).homePage1.Show();
-        }
-
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
             MessageBox.Show("yes");
             //Form2 newForm = new Form2();
             //newForm.Show();
         }
-
 
     }
 }

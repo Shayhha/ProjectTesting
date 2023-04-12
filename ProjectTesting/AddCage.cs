@@ -34,7 +34,7 @@ namespace ProjectTesting
             cageInfo[4] = materialBox.Text.ToString();
 
             int flag = 0;
-            string idValue, errorMessage = "";
+            string errorMessage = "";
             string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number
 
             for (int j = 0; j < 5; j++)

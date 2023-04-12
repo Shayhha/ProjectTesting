@@ -11,6 +11,10 @@ namespace ProjectTesting
             InitializeComponent();
             this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
             this.StartPosition = FormStartPosition.CenterScreen;
+            Back_Button.Hide();
+            logOutButton.Hide();
+            Bird_label.Hide();
+            Cage_label.Hide();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -28,5 +32,54 @@ namespace ProjectTesting
             signUp1.Show();
         }
 
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            logIn1.Show();
+            homePage1.Hide();
+            searchBird1.Hide();
+            addBird1.Hide();
+            addCage1.Hide();
+            moreDetails1.Hide();
+            hideTopBar();
+            hideBackBtn();
+            //Back_Button.Hide();
+        }
+
+        public void showTopBar()
+        {
+            logOutButton.Show();
+            Bird_label.Show();
+            Cage_label.Show();
+        }
+
+        public void hideTopBar()
+        {
+            logOutButton.Hide();
+            Bird_label.Hide();
+            Cage_label.Hide();
+        }
+
+        public void showBackBtn() { Back_Button.Show(); }
+        public void hideBackBtn() { Back_Button.Hide(); }
+
+        public void setBirdsLabel(string number)
+        {
+            Bird_label.Text = "Birds: " + number;
+        }
+        public void setCagesLabel(string number)
+        {
+            Cage_label.Text = "Cages: " + number;
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            if (searchBird1.Visible == true)
+            {
+                if (searchBird1.Search_textbox.Text != "") { searchBird1.Search_textbox.Text = ""; }
+                searchBird1.Hide();
+                hideBackBtn();
+                homePage1.Show();
+            }
+        }
     }
 }

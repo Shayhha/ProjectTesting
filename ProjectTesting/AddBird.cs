@@ -34,7 +34,7 @@ namespace ProjectTesting
             birdInfo[7] = momBox.Text.ToString();
 
             int flag = 0;
-            string idValue, errorMessage = "";
+            string errorMessage = "";
             string idPattern = "^[0-9]+$";
 
             for (int j = 0; j < 6; j++)

@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
-            LogOut_button = new Button();
-            Bird_label = new Label();
             Cage_pictureBox = new PictureBox();
             Bird_pictureBox = new PictureBox();
-            Cage_label = new Label();
             Search_button = new Button();
             comboBox = new ComboBox();
             label2 = new Label();
@@ -43,35 +40,11 @@
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).BeginInit();
             SuspendLayout();
             // 
-            // LogOut_button
-            // 
-            LogOut_button.BackColor = Color.IndianRed;
-            LogOut_button.Cursor = Cursors.Hand;
-            LogOut_button.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LogOut_button.ForeColor = Color.White;
-            LogOut_button.Location = new Point(1127, 25);
-            LogOut_button.Name = "LogOut_button";
-            LogOut_button.Size = new Size(90, 40);
-            LogOut_button.TabIndex = 2;
-            LogOut_button.Text = "Log-out";
-            LogOut_button.UseVisualStyleBackColor = false;
-            LogOut_button.Click += LogOut_button_Click;
-            // 
-            // Bird_label
-            // 
-            Bird_label.AutoSize = true;
-            Bird_label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Bird_label.Location = new Point(1024, 35);
-            Bird_label.Name = "Bird_label";
-            Bird_label.Size = new Size(57, 20);
-            Bird_label.TabIndex = 3;
-            Bird_label.Text = "Brids: Y";
-            // 
             // Cage_pictureBox
             // 
             Cage_pictureBox.Cursor = Cursors.Hand;
             Cage_pictureBox.Image = (Image)resources.GetObject("Cage_pictureBox.Image");
-            Cage_pictureBox.Location = new Point(221, 230);
+            Cage_pictureBox.Location = new Point(238, 217);
             Cage_pictureBox.Name = "Cage_pictureBox";
             Cage_pictureBox.Size = new Size(300, 300);
             Cage_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -85,7 +58,7 @@
             // 
             Bird_pictureBox.Cursor = Cursors.Hand;
             Bird_pictureBox.Image = (Image)resources.GetObject("Bird_pictureBox.Image");
-            Bird_pictureBox.Location = new Point(794, 230);
+            Bird_pictureBox.Location = new Point(730, 217);
             Bird_pictureBox.Name = "Bird_pictureBox";
             Bird_pictureBox.Size = new Size(300, 300);
             Bird_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -95,21 +68,11 @@
             Bird_pictureBox.Click += Bird_pictureBox_Click;
             Bird_pictureBox.Paint += Bird_pictureBox_Paint;
             // 
-            // Cage_label
-            // 
-            Cage_label.AutoSize = true;
-            Cage_label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Cage_label.Location = new Point(953, 35);
-            Cage_label.Name = "Cage_label";
-            Cage_label.Size = new Size(59, 20);
-            Cage_label.TabIndex = 8;
-            Cage_label.Text = "Cage: X";
-            // 
             // Search_button
             // 
             Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_button.Location = new Point(851, 96);
+            Search_button.Location = new Point(787, 71);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(156, 35);
             Search_button.TabIndex = 12;
@@ -122,7 +85,7 @@
             comboBox.Cursor = Cursors.Hand;
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(590, 137);
+            comboBox.Location = new Point(544, 112);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(147, 23);
             comboBox.TabIndex = 13;
@@ -131,7 +94,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(274, 184);
+            label2.Location = new Point(238, 147);
             label2.Name = "label2";
             label2.Size = new Size(769, 20);
             label2.TabIndex = 11;
@@ -141,7 +104,7 @@
             // 
             Search_label.AutoSize = true;
             Search_label.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Search_label.Location = new Point(411, 101);
+            Search_label.Location = new Point(347, 76);
             Search_label.Name = "Search_label";
             Search_label.Size = new Size(79, 25);
             Search_label.TabIndex = 10;
@@ -150,7 +113,7 @@
             // Search_textbox
             // 
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(495, 98);
+            Search_textbox.Location = new Point(431, 73);
             Search_textbox.Name = "Search_textbox";
             Search_textbox.PlaceholderText = "Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
@@ -167,11 +130,8 @@
             Controls.Add(label2);
             Controls.Add(Search_label);
             Controls.Add(Search_textbox);
-            Controls.Add(Cage_label);
             Controls.Add(Bird_pictureBox);
             Controls.Add(Cage_pictureBox);
-            Controls.Add(Bird_label);
-            Controls.Add(LogOut_button);
             Name = "HomePage";
             Size = new Size(1264, 611);
             Load += HomePage_Load;
@@ -182,11 +142,8 @@
         }
 
         #endregion
-        private Button LogOut_button;
-        private Label Bird_label;
         private PictureBox Cage_pictureBox;
         private PictureBox Bird_pictureBox;
-        private Label Cage_label;
         private Button Search_button;
         private ComboBox comboBox;
         private Label label2;

@@ -26,6 +26,7 @@ namespace ProjectTesting
             if (((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo) == true)
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
+                ((MainWindow)this.Parent.Parent).showBackBtn();
                 Search_textbox.Text = "";
                 comboBox.SelectedIndex = 0;
                 this.Hide();
@@ -35,14 +36,21 @@ namespace ProjectTesting
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            if (MainWindow.UserSheet == "Shay")
+            {
+                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 2).ToString());
+                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 2).ToString());
+            }
+            else
+            {
+                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
+                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+            }
+            ex.Quit();
+            ((MainWindow)this.Parent.Parent).showTopBar();
         }
 
-        private void LogOut_button_Click(object sender, EventArgs e)
-        {
-
-            this.Hide();
-        }
 
         private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
         {
