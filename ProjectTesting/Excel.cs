@@ -80,13 +80,6 @@ namespace ProjectTesting
             Save();
         }
 
-        //public void WriteRange(int starti, int starty, int endi, int endy, string[] writeString)
-        //{
-        //    _Excel.Range range = (_Excel.Range)ws.Range[ws.Cells[starti, starty], ws.Cells[endi, endy]];
-        //    range.Value = writeString.Select(s => new[] { s }).ToArray();
-        //    Save();
-        //}
-
         public void Save()
         {
             wb.Save();
@@ -112,7 +105,7 @@ namespace ProjectTesting
 
         public int GetLastRow(int num = 1)
         {
-            if(num > 14 || num < 7) //if we recevie a wrong number we give it default value and coninue
+            if(num > 15 || num < 7) //if we recevie a wrong number we give it default value and coninue
             {
                 num = 1;
             }
