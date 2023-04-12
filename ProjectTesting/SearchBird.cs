@@ -92,17 +92,5 @@ namespace ProjectTesting
             birdList.Items.Clear();
         }
 
-        private void LogOut_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ((MainWindow)this.Parent.Parent).homePage1.Hide();
-        }
-
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            Search_textbox.Text = "";
-            this.Hide();
-            ((MainWindow)this.Parent.Parent).homePage1.Show();
-        }
     }
 }
