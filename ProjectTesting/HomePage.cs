@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,25 +41,53 @@ namespace ProjectTesting
         }
 
 
+        //private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
+        //{
+        //    using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
+        //    {
+        //        SizeF textSize = e.Graphics.MeasureString("Click To Add Cage", myFont);
+        //        int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2;
+        //        int y = Cage_pictureBox.Height - (int)textSize.Height;
+        //        e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.Black, new Point(x, y));
+        //    }
+        //}
         private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
+            using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
-                SizeF textSize = e.Graphics.MeasureString("Click To Add Cage", myFont);
-                int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2;
-                int y = Cage_pictureBox.Height - (int)textSize.Height;
-                e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.Black, new Point(x, y));
+                string text = "Click To Add Cage";
+                SizeF textSize = e.Graphics.MeasureString(text, myFont);
+                int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2 + 35;
+                int y = (Cage_pictureBox.Height - (int)textSize.Height) + 5 ;
+
+                GraphicsPath path = new GraphicsPath();
+                path.AddString(text, myFont.FontFamily, (int)myFont.Style, myFont.Size, new Point(x, y), StringFormat.GenericDefault);
+
+                Pen pen = new Pen(Color.Black, 3);
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.DrawPath(pen, path);
+                e.Graphics.FillPath(Brushes.White, path);
             }
         }
 
         private void Bird_pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
+            using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
-                SizeF textSize = e.Graphics.MeasureString("Click To Add Bird", myFont);
-                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2;
-                int y = Bird_pictureBox.Height - (int)textSize.Height;
-                e.Graphics.DrawString("Click To Add Bird", myFont, Brushes.Black, new Point(x, y));
+                string text = "Click To Add Bird";
+                SizeF textSize = e.Graphics.MeasureString(text, myFont);
+                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2 + 44;
+                int y = (Bird_pictureBox.Height - (int)textSize.Height) + 5;
+
+                GraphicsPath path = new GraphicsPath();
+                path.AddString(text, myFont.FontFamily, (int)myFont.Style, myFont.Size, new Point(x, y), StringFormat.GenericDefault);
+
+                Pen pen = new Pen(Color.Black, 3);
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.DrawPath(pen, path);
+                e.Graphics.FillPath(Brushes.White, path);
             }
         }
 
