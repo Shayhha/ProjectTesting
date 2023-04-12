@@ -49,7 +49,8 @@ namespace ProjectTesting
             if (birdInfo[4] == "m" || birdInfo[4] == "male")
             {
                 birdInfo[4] = "Male";
-            } else if (birdInfo[4] == "f" || birdInfo[4] == "female")
+            }
+            else if (birdInfo[4] == "f" || birdInfo[4] == "female")
             {
                 birdInfo[4] = "Female";
             }
@@ -62,7 +63,7 @@ namespace ProjectTesting
                     flag = 1;
                 }
                 else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
-                else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5])) 
+                else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
                     CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try one of these: " + findValidCageIds(), "Error");
                     return false;
@@ -91,7 +92,8 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
-            } else 
+            }
+            else
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 ex.WriteRange(ex.GetLastRow(7), 7, 15, birdInfo);
@@ -136,9 +138,9 @@ namespace ProjectTesting
 
         private bool checkType(string type)
         {
-            if (type != "American Gouldian" && type != "European Gouldian" && type != "Australian Gouldian") 
-            { 
-                CustomMessageBox.Show("Error, the bird's type is incorrect, try again.","Error");
+            if (type != "American Gouldian" && type != "European Gouldian" && type != "Australian Gouldian")
+            {
+                CustomMessageBox.Show("Error, the bird's type is incorrect, try again.", "Error");
                 return false;
             }
             return true;
@@ -147,18 +149,18 @@ namespace ProjectTesting
         private bool checkSubType(string type, string subType)
         {
             if (
-                ( type == "American Gouldian" && 
-                    (subType != "North America" && subType != "Center America" && subType != "South America") ) ||
-                ( type == "Europe Gouldian" &&
-                    (subType != "East European" && subType != "West European") ) ||
-                ( type == "Australian Gouldian" && 
-                    (subType != "Center Australia" && subType != "Coastal Cities") ) 
+                (type == "American Gouldian" &&
+                    (subType != "North America" && subType != "Center America" && subType != "South America")) ||
+                (type == "Europe Gouldian" &&
+                    (subType != "East European" && subType != "West European")) ||
+                (type == "Australian Gouldian" &&
+                    (subType != "Center Australia" && subType != "Coastal Cities"))
                 )
             {
                 CustomMessageBox.Show("Error, the sub type is incorrect. It must match the main type of the bird.", "Error");
                 return false;
             }
-            
+
             return true;
         }
 
@@ -198,13 +200,29 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
                 this.Hide();
             }
-            
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            if (AddBird_label.Text == "Add an Offspring:")
+            {
+                ((MainWindow)this.Parent.Parent).moreDetails1.Show();
+                AddBird_label.Text = "Add a Bird:";
+                ((MainWindow)this.Parent.Parent).addBird1.typeBox.ReadOnly = false;
+                ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.ReadOnly = false;
+                ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.ReadOnly = false;
+
+                if(((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly == true)
+                    ((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly = false;
+                else
+                    ((MainWindow)this.Parent.Parent).addBird1.momBox.ReadOnly = false;
+            }
+            else
+            {
+                ((MainWindow)this.Parent.Parent).homePage1.Show();
+            }
             cleanTextBoxes();
-            ((MainWindow)this.Parent.Parent).homePage1.Show();
             this.Hide();
         }
     }
