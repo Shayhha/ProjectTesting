@@ -36,19 +36,7 @@ namespace ProjectTesting
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            if (MainWindow.UserSheet == "Shay")
-            {
-                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 2).ToString());
-                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 2).ToString());
-            }
-            else
-            {
-                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
-            }
-            ex.Quit();
-            ((MainWindow)this.Parent.Parent).showTopBar();
+            
         }
 
 

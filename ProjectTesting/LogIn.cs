@@ -69,6 +69,9 @@ namespace ProjectTesting
 
         private void LoggedIn() //opens the 
         {
+
+            
+
             Excel ex = new Excel("database", MainWindow.UserSheet);
             if (ex.ReadCell("A1") == "")
             {
@@ -79,6 +82,19 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
             }
+
+            if (MainWindow.UserSheet == "Shay")
+            {
+                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 2).ToString());
+                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 2).ToString());
+            }
+            else
+            {
+                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
+                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+            }
+            ((MainWindow)this.Parent.Parent).showTopBar();
+
             ex.Quit();//closes the database excel
             UserName_textbox.Text = "";
             Password_textbox.Text = "";

@@ -129,7 +129,7 @@
         private Label Search_label;
         private Label label2;
         private Button Search_button;
-        private ColorDialog colorDialog1;
+        private ColorDialog colorDialog1; // what is this? *****************
         private ComboBox comboBox;
     }
 }
