@@ -48,18 +48,20 @@
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(UserName_label);
             panel1.Controls.Add(Pasword_label);
-            panel1.Location = new Point(343, 192);
+            panel1.Location = new Point(351, 91);
             panel1.Name = "panel1";
-            panel1.Size = new Size(588, 306);
+            panel1.Size = new Size(507, 359);
             panel1.TabIndex = 10;
             // 
             // Password_textbox
             // 
-            Password_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Password_textbox.Location = new Point(174, 89);
+            Password_textbox.BorderStyle = BorderStyle.FixedSingle;
+            Password_textbox.Cursor = Cursors.Hand;
+            Password_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_textbox.Location = new Point(219, 131);
             Password_textbox.Name = "Password_textbox";
             Password_textbox.PasswordChar = '*';
-            Password_textbox.Size = new Size(180, 27);
+            Password_textbox.Size = new Size(180, 33);
             Password_textbox.TabIndex = 4;
             // 
             // LogIn_button
@@ -67,7 +69,7 @@
             LogIn_button.BackColor = SystemColors.ActiveCaption;
             LogIn_button.Cursor = Cursors.Hand;
             LogIn_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LogIn_button.Location = new Point(96, 185);
+            LogIn_button.Location = new Point(66, 221);
             LogIn_button.Name = "LogIn_button";
             LogIn_button.Size = new Size(162, 44);
             LogIn_button.TabIndex = 0;
@@ -80,7 +82,7 @@
             SignUp_button.BackColor = SystemColors.ActiveCaption;
             SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            SignUp_button.Location = new Point(335, 185);
+            SignUp_button.Location = new Point(279, 221);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(162, 44);
             SignUp_button.TabIndex = 6;
@@ -90,38 +92,40 @@
             // 
             // UserName_textbox
             // 
-            UserName_textbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            UserName_textbox.Location = new Point(174, 42);
+            UserName_textbox.BorderStyle = BorderStyle.FixedSingle;
+            UserName_textbox.Cursor = Cursors.Hand;
+            UserName_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            UserName_textbox.Location = new Point(219, 83);
             UserName_textbox.Name = "UserName_textbox";
-            UserName_textbox.Size = new Size(180, 27);
+            UserName_textbox.Size = new Size(180, 33);
             UserName_textbox.TabIndex = 1;
             // 
             // UserName_label
             // 
             UserName_label.AutoSize = true;
-            UserName_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            UserName_label.Location = new Point(31, 33);
+            UserName_label.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            UserName_label.Location = new Point(89, 85);
             UserName_label.Name = "UserName_label";
-            UserName_label.Size = new Size(137, 32);
+            UserName_label.Size = new Size(124, 30);
             UserName_label.TabIndex = 2;
             UserName_label.Text = "User Name:";
             // 
             // Pasword_label
             // 
             Pasword_label.AutoSize = true;
-            Pasword_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            Pasword_label.Location = new Point(40, 80);
+            Pasword_label.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Pasword_label.Location = new Point(105, 134);
             Pasword_label.Name = "Pasword_label";
-            Pasword_label.Size = new Size(116, 32);
+            Pasword_label.Size = new Size(108, 30);
             Pasword_label.TabIndex = 3;
             Pasword_label.Text = "Password:";
             // 
             // LogIn_label
             // 
             LogIn_label.Font = new Font("Comic Sans MS", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            LogIn_label.Location = new Point(550, 54);
+            LogIn_label.Location = new Point(523, 2);
             LogIn_label.Name = "LogIn_label";
-            LogIn_label.Size = new Size(204, 86);
+            LogIn_label.Size = new Size(180, 86);
             LogIn_label.TabIndex = 9;
             LogIn_label.Text = "Log In";
             // 
