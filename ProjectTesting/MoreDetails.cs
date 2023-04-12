@@ -75,10 +75,12 @@ namespace ProjectTesting
                     if (databaseInfo[8] == "yes")
                     {
                         offspringsPanel.Hide();
+                        fledglingLabel.Show();
                     }
                     else if (databaseInfo[8] == "no")
                     {
                         offspringsPanel.Show();
+                        fledglingLabel.Hide();
                     }
                     break;
                 }

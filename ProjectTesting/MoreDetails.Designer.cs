@@ -51,6 +51,7 @@
             offspringList = new ListBox();
             addOffspringButton = new Button();
             offspringsPanel = new Panel();
+            fledglingLabel = new Label();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
@@ -69,7 +70,7 @@
             panel1.Controls.Add(typeLabel);
             panel1.Controls.Add(idLabel);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(215, 40);
+            panel1.Location = new Point(215, 34);
             panel1.Name = "panel1";
             panel1.Size = new Size(372, 223);
             panel1.TabIndex = 16;
@@ -260,7 +261,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label8.Location = new Point(26, 11);
+            label8.Location = new Point(26, 3);
             label8.Name = "label8";
             label8.Size = new Size(111, 25);
             label8.TabIndex = 23;
@@ -280,7 +281,7 @@
             offspringList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             offspringList.FormattingEnabled = true;
             offspringList.ItemHeight = 25;
-            offspringList.Location = new Point(26, 39);
+            offspringList.Location = new Point(26, 32);
             offspringList.Name = "offspringList";
             offspringList.Size = new Size(630, 204);
             offspringList.TabIndex = 24;
@@ -288,7 +289,7 @@
             // addOffspringButton
             // 
             addOffspringButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addOffspringButton.Location = new Point(486, 249);
+            addOffspringButton.Location = new Point(486, 242);
             addOffspringButton.Name = "addOffspringButton";
             addOffspringButton.Size = new Size(170, 40);
             addOffspringButton.TabIndex = 25;
@@ -301,15 +302,26 @@
             offspringsPanel.Controls.Add(offspringList);
             offspringsPanel.Controls.Add(addOffspringButton);
             offspringsPanel.Controls.Add(label8);
-            offspringsPanel.Location = new Point(50, 269);
+            offspringsPanel.Location = new Point(50, 283);
             offspringsPanel.Name = "offspringsPanel";
-            offspringsPanel.Size = new Size(680, 294);
+            offspringsPanel.Size = new Size(680, 285);
             offspringsPanel.TabIndex = 26;
+            // 
+            // fledglingLabel
+            // 
+            fledglingLabel.AutoSize = true;
+            fledglingLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            fledglingLabel.Location = new Point(312, 270);
+            fledglingLabel.Name = "fledglingLabel";
+            fledglingLabel.Size = new Size(181, 25);
+            fledglingLabel.TabIndex = 27;
+            fledglingLabel.Text = "I am still a fledgling";
             // 
             // MoreDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(fledglingLabel);
             Controls.Add(offspringsPanel);
             Controls.Add(mainPic);
             Controls.Add(panel1);
@@ -323,6 +335,7 @@
             offspringsPanel.ResumeLayout(false);
             offspringsPanel.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -349,5 +362,6 @@
         private ListBox offspringList;
         private Button addOffspringButton;
         public Panel offspringsPanel;
+        public Label fledglingLabel;
     }
 }
