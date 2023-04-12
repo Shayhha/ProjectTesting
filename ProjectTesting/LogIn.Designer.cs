@@ -71,7 +71,7 @@
             LogIn_button.Location = new Point(66, 221);
             LogIn_button.Name = "LogIn_button";
             LogIn_button.Size = new Size(162, 44);
-            LogIn_button.TabIndex = 0;
+            LogIn_button.TabIndex = 6;
             LogIn_button.Text = "Log In";
             LogIn_button.UseVisualStyleBackColor = false;
             LogIn_button.Click += LogIn_button_Click;
@@ -84,7 +84,7 @@
             SignUp_button.Location = new Point(279, 221);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(162, 44);
-            SignUp_button.TabIndex = 6;
+            SignUp_button.TabIndex = 7;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
             SignUp_button.Click += SignUp_button_Click;
