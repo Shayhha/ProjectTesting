@@ -15,7 +15,7 @@ namespace ProjectTesting
         public MoreDetails()
         {
             InitializeComponent();
-            
+
         }
 
         public void setImages()
@@ -71,11 +71,11 @@ namespace ProjectTesting
                     cageIdLabel.Text = databaseInfo[5];
                     dadIdLabel.Text = databaseInfo[6];
                     momIdLabel.Text = databaseInfo[7];
-                    
+
                     if (databaseInfo[8] == "yes")
                     {
                         offspringsPanel.Hide();
-                    } 
+                    }
                     else if (databaseInfo[8] == "no")
                     {
                         offspringsPanel.Show();
@@ -102,6 +102,11 @@ namespace ProjectTesting
             cageIdLabel.Text = "";
             dadIdLabel.Text = "";
             momIdLabel.Text = "";
+        }
+
+        private void addOffspringButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

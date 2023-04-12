@@ -294,6 +294,7 @@
             addOffspringButton.TabIndex = 25;
             addOffspringButton.Text = "Add an Offspring";
             addOffspringButton.UseVisualStyleBackColor = true;
+            addOffspringButton.Click += addOffspringButton_Click;
             // 
             // offspringsPanel
             // 
