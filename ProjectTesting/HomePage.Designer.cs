@@ -83,11 +83,12 @@
             // comboBox
             // 
             comboBox.Cursor = Cursors.Hand;
+            comboBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(544, 112);
+            comboBox.Location = new Point(603, 110);
             comboBox.Name = "comboBox";
-            comboBox.Size = new Size(147, 23);
+            comboBox.Size = new Size(87, 28);
             comboBox.TabIndex = 13;
             // 
             // label2
@@ -103,15 +104,16 @@
             // Search_label
             // 
             Search_label.AutoSize = true;
-            Search_label.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Search_label.Location = new Point(347, 76);
+            Search_label.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Search_label.Location = new Point(431, 112);
             Search_label.Name = "Search_label";
-            Search_label.Size = new Size(79, 25);
+            Search_label.Size = new Size(166, 23);
             Search_label.TabIndex = 10;
-            Search_label.Text = "Search: ";
+            Search_label.Text = "choose search type: ";
             // 
             // Search_textbox
             // 
+            Search_textbox.BorderStyle = BorderStyle.FixedSingle;
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(431, 73);
             Search_textbox.Name = "Search_textbox";

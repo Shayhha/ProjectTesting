@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dateBox = new DateTimePicker();
             momBox = new TextBox();
             dadBox = new TextBox();
             cageIdBox = new TextBox();
             genderBox = new TextBox();
-            dateBox = new TextBox();
             subTypeBox = new TextBox();
             typeBox = new TextBox();
             idBox = new TextBox();
@@ -57,11 +57,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(dateBox);
             panel1.Controls.Add(momBox);
             panel1.Controls.Add(dadBox);
             panel1.Controls.Add(cageIdBox);
             panel1.Controls.Add(genderBox);
-            panel1.Controls.Add(dateBox);
             panel1.Controls.Add(subTypeBox);
             panel1.Controls.Add(typeBox);
             panel1.Controls.Add(idBox);
@@ -77,6 +77,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(418, 370);
             panel1.TabIndex = 0;
+            // 
+            // dateBox
+            // 
+            dateBox.CalendarFont = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateBox.Cursor = Cursors.Hand;
+            dateBox.CustomFormat = "dd/MM/yyyy";
+            dateBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateBox.Format = DateTimePickerFormat.Custom;
+            dateBox.Location = new Point(150, 146);
+            dateBox.Name = "dateBox";
+            dateBox.Size = new Size(250, 33);
+            dateBox.TabIndex = 25;
             // 
             // momBox
             // 
@@ -110,14 +122,6 @@
             genderBox.Size = new Size(250, 33);
             genderBox.TabIndex = 25;
             // 
-            // dateBox
-            // 
-            dateBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dateBox.Location = new Point(150, 147);
-            dateBox.Name = "dateBox";
-            dateBox.Size = new Size(250, 33);
-            dateBox.TabIndex = 24;
-            // 
             // subTypeBox
             // 
             subTypeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -146,7 +150,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(55, 195);
+            label7.Location = new Point(60, 192);
             label7.Name = "label7";
             label7.Size = new Size(89, 25);
             label7.TabIndex = 18;
@@ -156,7 +160,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(39, 322);
+            label4.Location = new Point(44, 319);
             label4.Name = "label4";
             label4.Size = new Size(105, 25);
             label4.TabIndex = 21;
@@ -166,7 +170,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(104, 28);
+            label1.Location = new Point(109, 25);
             label1.Name = "label1";
             label1.Size = new Size(40, 25);
             label1.TabIndex = 14;
@@ -176,7 +180,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(8, 155);
+            label8.Location = new Point(13, 152);
             label8.Name = "label8";
             label8.Size = new Size(136, 25);
             label8.TabIndex = 17;
@@ -186,7 +190,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(55, 238);
+            label6.Location = new Point(60, 235);
             label6.Name = "label6";
             label6.Size = new Size(89, 25);
             label6.TabIndex = 19;
@@ -196,7 +200,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(80, 71);
+            label2.Location = new Point(85, 68);
             label2.Name = "label2";
             label2.Size = new Size(64, 25);
             label2.TabIndex = 15;
@@ -206,7 +210,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(37, 112);
+            label3.Location = new Point(42, 109);
             label3.Name = "label3";
             label3.Size = new Size(107, 25);
             label3.TabIndex = 16;
@@ -216,7 +220,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(50, 279);
+            label5.Location = new Point(55, 276);
             label5.Name = "label5";
             label5.Size = new Size(94, 25);
             label5.TabIndex = 20;
@@ -297,7 +301,6 @@
         public TextBox dadBox;
         public TextBox cageIdBox;
         private TextBox genderBox;
-        private TextBox dateBox;
         public TextBox subTypeBox;
         public TextBox typeBox;
         private TextBox idBox;
@@ -314,5 +317,6 @@
         private Button cancelButton;
         private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
+        private DateTimePicker dateBox;
     }
 }
