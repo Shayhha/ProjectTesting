@@ -32,13 +32,19 @@ namespace ProjectTesting
             string[] DefaultCombo = { "Bird", "Cage" };//we will use this array to check combo
             if (combo == "" && name == "")
             {
-                CustomMessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
+                CustomMessageBox.Show("You have to write somthing in search box and choose search type!", "Search Error");
                 ex.Quit();
                 return false;
             }
             else if (combo == "")
             {
-                CustomMessageBox.Show("Error, choose search type!", "Type Error");
+                CustomMessageBox.Show("Choose search type!", "Type Error");
+                ex.Quit();
+                return false;
+            }
+            else if(name == "")
+            {
+                CustomMessageBox.Show("Search field empty!", "Search Error");
                 ex.Quit();
                 return false;
             }
@@ -82,7 +88,7 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                CustomMessageBox.Show("Error, no matching results for " + name, "Search Error");
+                CustomMessageBox.Show("No matching results for \"" + name+ "\"" , "Search Error");
                 ex.Quit();
                 return false;
             }
