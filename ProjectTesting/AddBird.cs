@@ -19,7 +19,7 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private bool getInfoFromUser()
+        private bool getInfoFromUser(string isOffspring)
         {
             string[] birdInfo = new string[9];
 
@@ -31,7 +31,7 @@ namespace ProjectTesting
             birdInfo[5] = cageIdBox.Text.ToString();
             birdInfo[6] = dadBox.Text.ToString();
             birdInfo[7] = momBox.Text.ToString();
-            birdInfo[8] = "no";
+            birdInfo[8] = isOffspring; // can be "yes" or "no"
 
             int flag = 0;
             string errorMessage = "";
@@ -194,13 +194,16 @@ namespace ProjectTesting
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (getInfoFromUser())
+            string isOffspring = "no"; //default is no for addBird
+            if(AddBird_label.Text == "Add an Offspring:") //if we add offspring we change it to yes
+                isOffspring = "yes";
+            
+            if (getInfoFromUser(isOffspring))
             {
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
                 this.Hide();
             }
-
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
