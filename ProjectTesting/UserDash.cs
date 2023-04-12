@@ -25,9 +25,9 @@ namespace ProjectTesting
             string[] temp;
             string newStr;
 
-            usernameLabel.Text = MainWindow.UserSheet;
+            usernameLabel.Text = "Hello " + MainWindow.UserSheet;
             birdsLabel.Text = "You have " + (ex.GetLastRow(7) - 1).ToString() + " birds:";
-            cagesLabel.Text = "You have " + (ex.GetLastRow(0) - 1).ToString() + " birds:";
+            cagesLabel.Text = "You have " + (ex.GetLastRow(0) - 1).ToString() + " cages:";
 
             for (int i = 1; i < ex.GetLastRow(); i++)
             {
