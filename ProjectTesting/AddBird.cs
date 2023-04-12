@@ -190,6 +190,7 @@ namespace ProjectTesting
         {
             if (AddBird_label.Text == "Add an Offspring:")
             {
+                ((MainWindow)this.Parent.Parent).showBackBtn();
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
                 AddBird_label.Text = "Add a Bird:";
                 ((MainWindow)this.Parent.Parent).addBird1.typeBox.ReadOnly = false;

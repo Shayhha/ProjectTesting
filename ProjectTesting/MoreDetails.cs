@@ -125,6 +125,7 @@ namespace ProjectTesting
             }
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             this.Hide();
+            ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
     }
 }
