@@ -62,7 +62,7 @@ namespace ProjectTesting
                 tempId = ex.ReadCell("G" + i.ToString());
                 if (tempId == birdId) //if we found one that matches we open a messagebox and break
                 {
-                    databaseInfo = ex.ReadRange(i, 7, 14);
+                    databaseInfo = ex.ReadRange(i, 7, 15);
                     idLabel.Text = databaseInfo[0];
                     typeLabel.Text = databaseInfo[1];
                     subTypeLabel.Text = databaseInfo[2];
@@ -71,6 +71,15 @@ namespace ProjectTesting
                     cageIdLabel.Text = databaseInfo[5];
                     dadIdLabel.Text = databaseInfo[6];
                     momIdLabel.Text = databaseInfo[7];
+                    
+                    if (databaseInfo[8] == "yes")
+                    {
+                        offspringsPanel.Hide();
+                    } 
+                    else if (databaseInfo[8] == "no")
+                    {
+                        offspringsPanel.Show();
+                    }
                     break;
                 }
             }
