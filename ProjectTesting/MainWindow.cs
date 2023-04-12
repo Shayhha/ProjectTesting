@@ -49,6 +49,7 @@ namespace ProjectTesting
             logOutButton.Show();
             Bird_label.Show();
             Cage_label.Show();
+            dashboardButton.Show();
         }
 
         public void hideTopBar()
@@ -56,6 +57,7 @@ namespace ProjectTesting
             logOutButton.Hide();
             Bird_label.Hide();
             Cage_label.Hide();
+            dashboardButton.Hide();
         }
 
         public void showTopPanel() { headlinePanel.Show(); }
@@ -81,11 +83,19 @@ namespace ProjectTesting
                 searchBird1.Hide();
                 hideBackBtn();
                 homePage1.Show();
-            } else if (moreDetails1.Visible == true)
+            }
+            else if (moreDetails1.Visible == true)
             {
                 moreDetails1.Hide();
                 searchBird1.Show();
             }
+        }
+
+        private void dashboardButton_Click(object sender, EventArgs e)
+        {
+            UserDash dash = new UserDash();
+            dash.initDash();
+            dash.Show();
         }
     }
 }
