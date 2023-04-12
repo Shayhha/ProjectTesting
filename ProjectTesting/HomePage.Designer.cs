@@ -70,6 +70,7 @@
             // 
             // Search_button
             // 
+            Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_button.Location = new Point(787, 71);
             Search_button.Name = "Search_button";
@@ -81,6 +82,7 @@
             // 
             // comboBox
             // 
+            comboBox.Cursor = Cursors.Hand;
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
             comboBox.Location = new Point(544, 112);
@@ -110,10 +112,10 @@
             // 
             // Search_textbox
             // 
-            Search_textbox.Cursor = Cursors.Hand;
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(431, 73);
             Search_textbox.Name = "Search_textbox";
+            Search_textbox.PlaceholderText = "Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
             Search_textbox.Size = new Size(350, 33);
             Search_textbox.TabIndex = 9;

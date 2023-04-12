@@ -15,6 +15,7 @@ namespace ProjectTesting
         public HomePage()
         {
             InitializeComponent();
+            comboBox.SelectedIndex = 0;
         }
 
         private void Search_button_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 Search_textbox.Text = "";
-                comboBox.Text = "";
+                comboBox.SelectedIndex = 0;
                 this.Hide();
             }
 

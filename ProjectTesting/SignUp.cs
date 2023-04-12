@@ -16,6 +16,15 @@ namespace ProjectTesting
         public SignUp()
         {
             InitializeComponent();
+            ToolTip passwordRequirementsToolTip = new ToolTip();
+            passwordRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
+            passwordRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
+            passwordRequirementsToolTip.Draw += PasswordRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
+            passwordRequirementsToolTip.Popup += PasswordRequirementsToolTip_Popup;
+            string text = "1. Name must contain only letters and at max 2 numbers\n2. ID must be 6 numbers\n" +
+                "3. Passsword must contain at least one capital case letter and one" +
+                " lower case letter, also needs to contain at least one symbol\n";
+            passwordRequirementsToolTip.SetToolTip(Question_pictureBox, text);
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)
@@ -160,6 +169,24 @@ namespace ProjectTesting
             ID_textbox.Text = "";
             ((MainWindow)this.Parent.Parent).logIn1.Show();
             this.Hide();
+        }
+
+        private void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e) //sets font size of ToolTip and the background
+        {
+            // Set the font size of the text in the ToolTip
+            Font font = new Font(e.Font.FontFamily, 12);
+
+            // Draw the background and border of the ToolTip
+            e.DrawBackground();
+            e.DrawBorder();
+
+            // Draw the text in the ToolTip using the specified font
+            e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds);
+        }
+
+        private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
+        {
+            e.ToolTipSize = new Size(440, 120);
         }
     }
 }

@@ -33,11 +33,15 @@
             Search_label = new Label();
             label2 = new Label();
             Search_button = new Button();
+
+            colorDialog1 = new ColorDialog();
+
             comboBox = new ComboBox();
             SuspendLayout();
             // 
             // birdList
             // 
+            birdList.Cursor = Cursors.Hand;
             birdList.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
@@ -46,12 +50,14 @@
             birdList.Name = "birdList";
             birdList.Size = new Size(1073, 356);
             birdList.TabIndex = 0;
+            birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
             // Search_textbox
             // 
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(489, 95);
             Search_textbox.Name = "Search_textbox";
+            Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
             Search_textbox.Size = new Size(350, 33);
             Search_textbox.TabIndex = 2;
@@ -78,6 +84,7 @@
             // 
             // Search_button
             // 
+            Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_button.Location = new Point(845, 95);
             Search_button.Name = "Search_button";
@@ -87,14 +94,16 @@
             Search_button.UseVisualStyleBackColor = true;
             Search_button.Click += Search_button_Click;
             // 
+            // 
             // comboBox
             // 
+            comboBox.Cursor = Cursors.Hand;
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(584, 134);
+            comboBox.Location = new Point(586, 134);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(147, 23);
-            comboBox.TabIndex = 6;
+            comboBox.TabIndex = 14;
             // 
             // SearchBird
             // 
@@ -120,7 +129,7 @@
         private Label Search_label;
         private Label label2;
         private Button Search_button;
+        private ColorDialog colorDialog1;
         private ComboBox comboBox;
-
     }
 }

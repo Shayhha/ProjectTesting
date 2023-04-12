@@ -32,7 +32,7 @@ namespace ProjectTesting
         public static void Show(string message, string title, bool cross = true)
         {
             CustomMessageBox messageBox = new CustomMessageBox();
-            messageBox.ShowMessage(message, title,cross);
+            messageBox.ShowMessage(message, title, cross);
             messageBox.ShowDialog();
         }
 

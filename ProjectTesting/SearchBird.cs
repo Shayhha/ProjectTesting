@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectTesting
 {
@@ -15,6 +17,7 @@ namespace ProjectTesting
         public SearchBird()
         {
             InitializeComponent();
+            comboBox.SelectedIndex = 0;
         }
 
 
@@ -26,6 +29,7 @@ namespace ProjectTesting
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
+            string[] DefaultCombo = { "Bird", "Cage" };//we will use this array to check combo
             if (combo == "" && name == "")
             {
                 CustomMessageBox.Show("Error, You have to write somthing in search box and choose search type!", "Search Error");
@@ -35,6 +39,12 @@ namespace ProjectTesting
             else if (combo == "")
             {
                 CustomMessageBox.Show("Error, choose search type!", "Type Error");
+                ex.Quit();
+                return false;
+            }
+            else if (!DefaultCombo.Contains(combo))
+            {
+                CustomMessageBox.Show("There's no search type named \"" + combo + "\" \n(Please choose a search type from the box with the arrow)", "Error");
                 ex.Quit();
                 return false;
             }
@@ -90,6 +100,13 @@ namespace ProjectTesting
         public void ClearList() //clears all items in list 
         {
             birdList.Items.Clear();
+        }
+
+        private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
+        {
+            MessageBox.Show("yes");
+            //Form2 newForm = new Form2();
+            //newForm.Show();
         }
 
     }
