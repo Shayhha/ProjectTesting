@@ -38,9 +38,9 @@
             // Message_label
             // 
             Message_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Message_label.Location = new Point(94, 46);
+            Message_label.Location = new Point(94, 24);
             Message_label.Name = "Message_label";
-            Message_label.Size = new Size(433, 77);
+            Message_label.Size = new Size(433, 119);
             Message_label.TabIndex = 0;
             Message_label.Text = "Message";
             // 
@@ -58,7 +58,7 @@
             // Error_picture
             // 
             Error_picture.Image = (Image)resources.GetObject("Error_picture.Image");
-            Error_picture.Location = new Point(11, 36);
+            Error_picture.Location = new Point(11, 24);
             Error_picture.Name = "Error_picture";
             Error_picture.Size = new Size(77, 53);
             Error_picture.SizeMode = PictureBoxSizeMode.Zoom;
