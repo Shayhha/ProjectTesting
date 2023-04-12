@@ -81,6 +81,10 @@ namespace ProjectTesting
                 searchBird1.Hide();
                 hideBackBtn();
                 homePage1.Show();
+            } else if (moreDetails1.Visible == true)
+            {
+                moreDetails1.Hide();
+                searchBird1.Show();
             }
         }
     }

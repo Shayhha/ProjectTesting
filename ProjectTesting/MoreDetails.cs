@@ -25,20 +25,20 @@ namespace ProjectTesting
 
             this.mainPic.Image = getRandomImage();
 
-            Image offspring1 = Image.FromFile(dirc + "images\\questionMark.jpg");
-            this.offspringPic1.Image = offspring1;
+            //Image offspring1 = Image.FromFile(dirc + "images\\questionMark.jpg");
+            //this.offspringPic1.Image = offspring1;
 
-            Image offspring2 = Image.FromFile(dirc + "images\\questionMark.jpg");
-            this.offspringPic2.Image = offspring2;
+            //Image offspring2 = Image.FromFile(dirc + "images\\questionMark.jpg");
+            //this.offspringPic2.Image = offspring2;
 
-            Image offspring3 = Image.FromFile(dirc + "images\\questionMark.jpg");
-            this.offspringPic3.Image = offspring3;
+            //Image offspring3 = Image.FromFile(dirc + "images\\questionMark.jpg");
+            //this.offspringPic3.Image = offspring3;
 
-            Image offspring4 = Image.FromFile(dirc + "images\\questionMark.jpg");
-            this.offspringPic4.Image = offspring4;
+            //Image offspring4 = Image.FromFile(dirc + "images\\questionMark.jpg");
+            //this.offspringPic4.Image = offspring4;
 
-            Image offspring5 = Image.FromFile(dirc + "images\\questionMark.jpg");
-            this.offspringPic5.Image = offspring5;
+            //Image offspring5 = Image.FromFile(dirc + "images\\questionMark.jpg");
+            //this.offspringPic5.Image = offspring5;
         }
 
         private Image getRandomImage()
