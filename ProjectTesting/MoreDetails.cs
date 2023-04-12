@@ -105,5 +105,10 @@ namespace ProjectTesting
             dadIdLabel.Text = "";
             momIdLabel.Text = "";
         }
+
+        private void addOffspringButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
