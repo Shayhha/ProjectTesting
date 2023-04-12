@@ -106,7 +106,6 @@ namespace ProjectTesting
         {
             string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
             if (text.Split(",")[0].Split(" ")[0] == "Bird") { 
-
                 string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
                 MessageBox.Show(birdId);
                 ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(birdId);
