@@ -15,7 +15,7 @@ namespace ProjectTesting
         public MoreDetails()
         {
             InitializeComponent();
-            setImages();
+            
         }
 
         public void setImages()
@@ -50,6 +50,7 @@ namespace ProjectTesting
 
         public void initLabels(string birdId)
         {
+            setImages();
             Excel ex = new Excel("database", MainWindow.UserSheet);
             int size = ex.GetLastRow();
             string tempId = "";
