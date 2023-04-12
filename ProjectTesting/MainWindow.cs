@@ -93,7 +93,9 @@ namespace ProjectTesting
 
         private void dashboardButton_Click(object sender, EventArgs e)
         {
-            CustomMessageBox.Show("Opens the dashboard", "dashboard");
+            UserDash dash = new UserDash();
+            dash.initDash();
+            dash.Show();
         }
     }
 }
