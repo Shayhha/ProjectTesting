@@ -12,9 +12,8 @@ namespace ProjectTesting
             this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
             this.StartPosition = FormStartPosition.CenterScreen;
             Back_Button.Hide();
-            logOutButton.Hide();
-            Bird_label.Hide();
-            Cage_label.Hide();
+            hideTopBar();
+            hideTopPanel();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -42,7 +41,7 @@ namespace ProjectTesting
             moreDetails1.Hide();
             hideTopBar();
             hideBackBtn();
-            //Back_Button.Hide();
+            hideTopPanel();
         }
 
         public void showTopBar()
@@ -58,6 +57,9 @@ namespace ProjectTesting
             Bird_label.Hide();
             Cage_label.Hide();
         }
+
+        public void showTopPanel() { headlinePanel.Show(); }
+        public void hideTopPanel() { headlinePanel.Hide(); }
 
         public void showBackBtn() { Back_Button.Show(); }
         public void hideBackBtn() { Back_Button.Hide(); }

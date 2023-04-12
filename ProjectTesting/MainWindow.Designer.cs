@@ -197,7 +197,7 @@
         }
 
         #endregion
-        private Panel headlinePanel;
+        public Panel headlinePanel;
         private Panel contentPanel;
         public MoreDetails moreDetails1;
         public SearchBird searchBird1;
