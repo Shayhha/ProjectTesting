@@ -59,6 +59,11 @@ namespace ProjectTesting
                 if (combo == "Bird")
                 {
                     size = ex.GetLastRow(7);
+                    if (name == "m" || name == "M" || name == "male")
+                        name = "Male";
+                    else if (name == "f" || name == "F" || name == "female")
+                        name = "Female";
+
                     for (int i = 1; i < size; i++)
                     {
                         temp = ex.ReadRange(i, 7, 14);
@@ -78,7 +83,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
+                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4];
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }

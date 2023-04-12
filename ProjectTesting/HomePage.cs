@@ -40,17 +40,6 @@ namespace ProjectTesting
 
         }
 
-
-        //private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
-        //{
-        //    using (Font myFont = new Font("Arial", 22, FontStyle.Bold))
-        //    {
-        //        SizeF textSize = e.Graphics.MeasureString("Click To Add Cage", myFont);
-        //        int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2;
-        //        int y = Cage_pictureBox.Height - (int)textSize.Height;
-        //        e.Graphics.DrawString("Click To Add Cage", myFont, Brushes.Black, new Point(x, y));
-        //    }
-        //}
         private void Cage_pictureBox_Paint(object sender, PaintEventArgs e)
         {
             using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
@@ -58,7 +47,7 @@ namespace ProjectTesting
                 string text = "Click To Add Cage";
                 SizeF textSize = e.Graphics.MeasureString(text, myFont);
                 int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2 + 35;
-                int y = (Cage_pictureBox.Height - (int)textSize.Height) + 5;
+                int y = (Cage_pictureBox.Height - (int)textSize.Height) + 12;
 
                 GraphicsPath path = new GraphicsPath();
                 path.AddString(text, myFont.FontFamily, (int)myFont.Style, myFont.Size, new Point(x, y), StringFormat.GenericDefault);
@@ -71,14 +60,14 @@ namespace ProjectTesting
             }
         }
 
-        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e)
+        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e) 
         {
             using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
                 string text = "Click To Add Bird";
                 SizeF textSize = e.Graphics.MeasureString(text, myFont);
-                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2 + 44;
-                int y = (Bird_pictureBox.Height - (int)textSize.Height) + 5;
+                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2 + 46;
+                int y = (Bird_pictureBox.Height - (int)textSize.Height) + 12;//5
 
                 GraphicsPath path = new GraphicsPath();
                 path.AddString(text, myFont.FontFamily, (int)myFont.Style, myFont.Size, new Point(x, y), StringFormat.GenericDefault);
