@@ -58,7 +58,7 @@ namespace ProjectTesting
                 string text = "Click To Add Cage";
                 SizeF textSize = e.Graphics.MeasureString(text, myFont);
                 int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2 + 35;
-                int y = (Cage_pictureBox.Height - (int)textSize.Height) + 5 ;
+                int y = (Cage_pictureBox.Height - (int)textSize.Height) + 5;
 
                 GraphicsPath path = new GraphicsPath();
                 path.AddString(text, myFont.FontFamily, (int)myFont.Style, myFont.Size, new Point(x, y), StringFormat.GenericDefault);
