@@ -67,6 +67,8 @@
             Back_Button.TabIndex = 11;
             Back_Button.Text = "Back";
             Back_Button.UseVisualStyleBackColor = true;
+            Back_Button.Visible = false;
+            Back_Button.Click += Back_Button_Click;
             // 
             // Cage_label
             // 
@@ -207,6 +209,6 @@
         private Button logOutButton;
         private Label Cage_label;
         private Label Bird_label;
-        private Button Back_Button;
+        public Button Back_Button;
     }
 }

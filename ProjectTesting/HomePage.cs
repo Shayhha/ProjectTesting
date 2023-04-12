@@ -25,6 +25,7 @@ namespace ProjectTesting
             if (((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo) == true)
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
+                ((MainWindow)this.Parent.Parent).showBackBtn();
                 Search_textbox.Text = "";
                 comboBox.Text = "";
                 this.Hide();

@@ -41,7 +41,8 @@ namespace ProjectTesting
             addCage1.Hide();
             moreDetails1.Hide();
             hideTopBar();
-
+            hideBackBtn();
+            //Back_Button.Hide();
         }
 
         public void showTopBar()
@@ -58,6 +59,9 @@ namespace ProjectTesting
             Cage_label.Hide();
         }
 
+        public void showBackBtn() { Back_Button.Show(); }
+        public void hideBackBtn() { Back_Button.Hide(); }
+
         public void setBirdsLabel(string number)
         {
             Bird_label.Text = "Birds: " + number;
@@ -65,6 +69,17 @@ namespace ProjectTesting
         public void setCagesLabel(string number)
         {
             Cage_label.Text = "Cages: " + number;
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            if (searchBird1.Visible == true)
+            {
+                if (searchBird1.Search_textbox.Text != "") { searchBird1.Search_textbox.Text = ""; }
+                searchBird1.Hide();
+                hideBackBtn();
+                homePage1.Show();
+            }
         }
     }
 }

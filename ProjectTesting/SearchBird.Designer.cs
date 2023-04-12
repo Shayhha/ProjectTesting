@@ -168,7 +168,7 @@
         #endregion
 
         private ListBox birdList;
-        private TextBox Search_textbox;
+        public TextBox Search_textbox;
         private Button LogOut_button;
         private Label Search_label;
         private Label label2;
