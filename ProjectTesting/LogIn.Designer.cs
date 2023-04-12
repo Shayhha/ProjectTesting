@@ -56,7 +56,6 @@
             // Password_textbox
             // 
             Password_textbox.BorderStyle = BorderStyle.FixedSingle;
-            Password_textbox.Cursor = Cursors.Hand;
             Password_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.Location = new Point(219, 131);
             Password_textbox.Name = "Password_textbox";
@@ -93,7 +92,6 @@
             // UserName_textbox
             // 
             UserName_textbox.BorderStyle = BorderStyle.FixedSingle;
-            UserName_textbox.Cursor = Cursors.Hand;
             UserName_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserName_textbox.Location = new Point(219, 83);
             UserName_textbox.Name = "UserName_textbox";

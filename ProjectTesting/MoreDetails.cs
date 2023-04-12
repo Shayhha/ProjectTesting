@@ -16,7 +16,6 @@ namespace ProjectTesting
         {
             InitializeComponent();
             setImages();
-            initLabels(); // this function needs to run when we use the .Show() method on this object
         }
 
         public void setImages()
@@ -49,20 +48,17 @@ namespace ProjectTesting
             return temp;
         }
 
-        public void initLabels()
+        public void initLabels(string birdId)
         {
-            string BIRD_ID = "97235"; // This function will recive a birds id in some way shape or form
-            string USER_NAME = "default"; // This function will have access to the username of the current user
-
-            Excel ex = new Excel("database", USER_NAME);
+            Excel ex = new Excel("database", MainWindow.UserSheet);
             int size = ex.GetLastRow();
             string tempId = "";
             string[] databaseInfo = null;
 
-            for (int i = 2; i < size; i++)
+            for (int i = 1; i < size; i++)
             {
                 tempId = ex.ReadCell("G" + i.ToString());
-                if (tempId == BIRD_ID) //if we found one that matches we open a messagebox and break
+                if (tempId == birdId) //if we found one that matches we open a messagebox and break
                 {
                     databaseInfo = ex.ReadRange(i, 7, 14);
                     idLabel.Text = databaseInfo[0];
@@ -76,7 +72,6 @@ namespace ProjectTesting
                     break;
                 }
             }
-
             ex.Quit();
         }
 
