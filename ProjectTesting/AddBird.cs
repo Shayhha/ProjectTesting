@@ -22,7 +22,7 @@ namespace ProjectTesting
         private bool getInfoFromUser()
         {
 
-            string[] birdInfo = new string[8];
+            string[] birdInfo = new string[9];
 
             birdInfo[0] = idBox.Text.ToString();
             birdInfo[1] = typeBox.Text.ToString();
@@ -32,6 +32,7 @@ namespace ProjectTesting
             birdInfo[5] = cageIdBox.Text.ToString();
             birdInfo[6] = dadBox.Text.ToString();
             birdInfo[7] = momBox.Text.ToString();
+            birdInfo[8] = "no";
 
             int flag = 0;
             string errorMessage = "";
@@ -94,7 +95,8 @@ namespace ProjectTesting
             } else 
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
-                ex.WriteRange(ex.GetLastRow(7), 7, 14, birdInfo);
+                ex.WriteRange(ex.GetLastRow(7), 7, 15, birdInfo);
+                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
                 ex.Quit();
                 return true;
             }
