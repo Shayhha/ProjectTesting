@@ -69,7 +69,6 @@ namespace ProjectTesting
                     return false;
                 }
                 else if (!checkBirdId(birdInfo[0])) { return false; }
-                //else if (!checkDateOfBirth()) { return false; } //add this function
                 else if (birdInfo[6] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[6], idPattern)))
@@ -213,7 +212,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.ReadOnly = false;
                 ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.ReadOnly = false;
 
-                if(((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly == true)
+                if (((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly == true)
                     ((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly = false;
                 else
                     ((MainWindow)this.Parent.Parent).addBird1.momBox.ReadOnly = false;
