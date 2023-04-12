@@ -46,6 +46,10 @@ namespace ProjectTesting
                 }
             }
 
+            if (cageInfo[4] == "Wood" || cageInfo[4] == "wood") { cageInfo[4] = "WOOD"; }
+            if (cageInfo[4] == "Metal" || cageInfo[4] == "metal") { cageInfo[4] = "METAL"; }
+            if (cageInfo[4] == "Plastic" || cageInfo[4] == "plastic") { cageInfo[4] = "PLASTIC"; }
+
             if (flag == 0)
             {
                 if (!(Regex.IsMatch(cageInfo[0], idPattern)))
@@ -57,9 +61,9 @@ namespace ProjectTesting
                 {
                     return false;
                 }
-                else if (cageInfo[4] != "Wood" && cageInfo[4] != "Metal" && cageInfo[4] != "Plastic")
+                else if (cageInfo[4] != "WOOD" && cageInfo[4] != "METAL" && cageInfo[4] != "PLASTIC")
                 {
-                    errorMessage = "Cage can only be made out of Wood, Metal or Plastic.";
+                    errorMessage = "Cage can only be made out of WOOD, METAL or PLASTIC.";
                     flag = 1;
                 }
             }
@@ -79,6 +83,7 @@ namespace ProjectTesting
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 ex.WriteRange(ex.GetLastRow(), 1, 5, cageInfo);
+                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
                 ex.Quit();
             }
 
