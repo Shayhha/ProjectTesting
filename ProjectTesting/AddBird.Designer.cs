@@ -45,7 +45,7 @@
             label2 = new Label();
             label3 = new Label();
             label5 = new Label();
-            label9 = new Label();
+            AddBird_label = new Label();
             addButton = new Button();
             cancelButton = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -222,15 +222,15 @@
             label5.TabIndex = 20;
             label5.Text = "Dad's Id: ";
             // 
-            // label9
+            // AddBird_label
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(3, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(217, 50);
-            label9.TabIndex = 1;
-            label9.Text = "Add a Bird:";
+            AddBird_label.AutoSize = true;
+            AddBird_label.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AddBird_label.Location = new Point(3, 0);
+            AddBird_label.Name = "AddBird_label";
+            AddBird_label.Size = new Size(217, 50);
+            AddBird_label.TabIndex = 1;
+            AddBird_label.Text = "Add a Bird:";
             // 
             // addButton
             // 
@@ -257,7 +257,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = SystemColors.ActiveCaption;
-            flowLayoutPanel1.Controls.Add(label9);
+            flowLayoutPanel1.Controls.Add(AddBird_label);
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
@@ -293,13 +293,13 @@
         #endregion
 
         private Panel panel1;
-        private TextBox momBox;
-        private TextBox dadBox;
-        private TextBox cageIdBox;
+        public TextBox momBox;
+        public TextBox dadBox;
+        public TextBox cageIdBox;
         private TextBox genderBox;
         private TextBox dateBox;
-        private TextBox subTypeBox;
-        private TextBox typeBox;
+        public TextBox subTypeBox;
+        public TextBox typeBox;
         private TextBox idBox;
         private Label label7;
         private Label label4;
@@ -309,7 +309,7 @@
         private Label label2;
         private Label label3;
         private Label label5;
-        private Label label9;
+        public Label AddBird_label;
         private Button addButton;
         private Button cancelButton;
         private FlowLayoutPanel flowLayoutPanel1;

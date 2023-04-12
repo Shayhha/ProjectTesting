@@ -104,9 +104,27 @@ namespace ProjectTesting
             momIdLabel.Text = "";
         }
 
-        private void addOffspringButton_Click(object sender, EventArgs e)
+        private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
-
+            ((MainWindow)this.Parent.Parent).addBird1.AddBird_label.Text = "Add an Offspring:";
+            ((MainWindow)this.Parent.Parent).addBird1.typeBox.Text = typeLabel.Text;
+            ((MainWindow)this.Parent.Parent).addBird1.typeBox.ReadOnly = true;
+            ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.Text = subTypeLabel.Text;
+            ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.ReadOnly = true;
+            ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.Text = cageIdLabel.Text;
+            ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.ReadOnly = true;
+            if (genderLabel.Text == "Male")
+            {
+                ((MainWindow)this.Parent.Parent).addBird1.dadBox.Text = idLabel.Text;
+                ((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly = true;
+            }
+            else
+            {
+                ((MainWindow)this.Parent.Parent).addBird1.momBox.Text = idLabel.Text;
+                ((MainWindow)this.Parent.Parent).addBird1.momBox.ReadOnly = true;
+            }
+            ((MainWindow)this.Parent.Parent).addBird1.Show();
+            this.Hide();
         }
     }
 }
