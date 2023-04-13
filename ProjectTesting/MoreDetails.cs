@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +14,9 @@ namespace ProjectTesting
 {
     public partial class MoreDetails : UserControl
     {
+
+        private string[] infoFromDatabase;
+
         public MoreDetails()
         {
             InitializeComponent();
@@ -50,6 +55,8 @@ namespace ProjectTesting
 
         public void initLabels(string birdId)
         {
+            editButton.Show();
+            saveButton.Hide();
             setImages();
             cleanLabels();
             Excel ex = new Excel("database", MainWindow.UserSheet);
@@ -63,6 +70,8 @@ namespace ProjectTesting
                 if (tempId == birdId) //if we found one that matches we open a messagebox and break
                 {
                     databaseInfo = ex.ReadRange(i, 7, 15);
+                    infoFromDatabase = databaseInfo;
+
                     idLabel.Text = databaseInfo[0];
                     typeLabel.Text = databaseInfo[1];
                     subTypeLabel.Text = databaseInfo[2];
@@ -128,6 +137,71 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             this.Hide();
             ((MainWindow)this.Parent.Parent).hideBackBtn();
+        }
+
+        //private string[] getTextFromUi()
+        //{
+        //    string[] birdInfo = new string[9];
+
+        //    birdInfo[0] = idLabel.Text.ToString();
+        //    birdInfo[1] = typeLabel.Text.ToString();
+        //    birdInfo[2] = subTypeLabel.Text.ToString();
+        //    birdInfo[3] = dateLabel.Text.ToString();
+        //    birdInfo[4] = genderLabel.Text.ToString();
+        //    birdInfo[5] = cageIdLabel.Text.ToString();
+        //    birdInfo[6] = dadIdLabel.Text.ToString();
+        //    birdInfo[7] = momIdLabel.Text.ToString();
+
+        //    return birdInfo;
+        //}
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            editButton.Hide();
+            saveButton.Show();
+
+            string[] currentValues = getTextFromUi();
+
+            idLabel.ReadOnly = false;
+            typeLabel.ReadOnly = false;
+            subTypeLabel.ReadOnly = false;
+            dateLabel.Enabled = true;
+            genderLabel.ReadOnly = false;
+            cageIdLabel.ReadOnly = false;
+            dadIdLabel.ReadOnly = false;
+            momIdLabel.ReadOnly = false;
+
+            idLabel.Enabled = true;
+            typeLabel.Enabled = true;
+            subTypeLabel.Enabled = true;
+            genderLabel.Enabled = true;
+            cageIdLabel.Enabled = true;
+            dadIdLabel.Enabled = true;
+            momIdLabel.Enabled = true;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            editButton.Show();
+            saveButton.Hide();
+            idLabel.ReadOnly = true;
+            typeLabel.ReadOnly = true;
+            subTypeLabel.ReadOnly = true;
+            dateLabel.Enabled = false;
+            genderLabel.ReadOnly = true;
+            cageIdLabel.ReadOnly = true;
+            dadIdLabel.ReadOnly = true;
+            momIdLabel.ReadOnly = true;
+
+            idLabel.Enabled = false;
+            typeLabel.Enabled = false;
+            subTypeLabel.Enabled = false;
+            genderLabel.Enabled = false;
+            cageIdLabel.Enabled = false;
+            dadIdLabel.Enabled = false;
+            momIdLabel.Enabled = false;
+
+            ((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(infoFromDatabase, "no");
         }
     }
 }

@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            momIdLabel = new Label();
-            dadIdLabel = new Label();
-            cageIdLabel = new Label();
-            genderLabel = new Label();
-            dateLabel = new Label();
-            subTypeLabel = new Label();
-            typeLabel = new Label();
-            idLabel = new Label();
+            dateLabel = new DateTimePicker();
+            momIdLabel = new TextBox();
+            dadIdLabel = new TextBox();
+            cageIdLabel = new TextBox();
+            genderLabel = new TextBox();
+            subTypeLabel = new TextBox();
+            typeLabel = new TextBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            saveButton = new Button();
+            editButton = new Button();
+            idLabel = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             nameLabel = new Label();
             label1 = new Label();
@@ -53,6 +56,7 @@
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
             panel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
@@ -61,99 +65,159 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(dateLabel);
             panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(dadIdLabel);
             panel1.Controls.Add(cageIdLabel);
             panel1.Controls.Add(genderLabel);
-            panel1.Controls.Add(dateLabel);
             panel1.Controls.Add(subTypeLabel);
             panel1.Controls.Add(typeLabel);
+            panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(idLabel);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Location = new Point(215, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(372, 223);
+            panel1.Size = new Size(380, 223);
             panel1.TabIndex = 16;
-            // 
-            // momIdLabel
-            // 
-            momIdLabel.AutoSize = true;
-            momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            momIdLabel.Location = new Point(159, 185);
-            momIdLabel.Name = "momIdLabel";
-            momIdLabel.Size = new Size(52, 25);
-            momIdLabel.TabIndex = 21;
-            momIdLabel.Text = "John";
-            // 
-            // dadIdLabel
-            // 
-            dadIdLabel.AutoSize = true;
-            dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dadIdLabel.Location = new Point(159, 160);
-            dadIdLabel.Name = "dadIdLabel";
-            dadIdLabel.Size = new Size(52, 25);
-            dadIdLabel.TabIndex = 20;
-            dadIdLabel.Text = "John";
-            // 
-            // cageIdLabel
-            // 
-            cageIdLabel.AutoSize = true;
-            cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cageIdLabel.Location = new Point(159, 135);
-            cageIdLabel.Name = "cageIdLabel";
-            cageIdLabel.Size = new Size(52, 25);
-            cageIdLabel.TabIndex = 18;
-            cageIdLabel.Text = "John";
-            // 
-            // genderLabel
-            // 
-            genderLabel.AutoSize = true;
-            genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            genderLabel.Location = new Point(159, 110);
-            genderLabel.Name = "genderLabel";
-            genderLabel.Size = new Size(52, 25);
-            genderLabel.TabIndex = 19;
-            genderLabel.Text = "John";
             // 
             // dateLabel
             // 
-            dateLabel.AutoSize = true;
-            dateLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dateLabel.Location = new Point(159, 85);
+            dateLabel.CalendarForeColor = SystemColors.ControlLight;
+            dateLabel.CalendarMonthBackground = SystemColors.ControlLight;
+            dateLabel.CalendarTitleBackColor = SystemColors.ControlLight;
+            dateLabel.CalendarTitleForeColor = SystemColors.ControlLight;
+            dateLabel.CalendarTrailingForeColor = Color.Transparent;
+            dateLabel.CustomFormat = "dd/MM/yyyy";
+            dateLabel.Format = DateTimePickerFormat.Custom;
+            dateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLabel.Location = new Point(159, 87);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new Size(116, 25);
-            dateLabel.TabIndex = 17;
-            dateLabel.Text = "dd/mm/yyyy";
+            dateLabel.Size = new Size(111, 25);
+            dateLabel.TabIndex = 28;
+            dateLabel.Enabled = false;
+            // 
+            // momIdLabel
+            // 
+            momIdLabel.BackColor = SystemColors.ControlLight;
+            momIdLabel.BorderStyle = BorderStyle.None;
+            momIdLabel.Enabled = false;
+            momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            momIdLabel.Location = new Point(159, 185);
+            momIdLabel.Name = "momIdLabel";
+            momIdLabel.PlaceholderText = "John";
+            momIdLabel.ReadOnly = true;
+            momIdLabel.Size = new Size(100, 26);
+            momIdLabel.TabIndex = 35;
+            // 
+            // dadIdLabel
+            // 
+            dadIdLabel.BackColor = SystemColors.ControlLight;
+            dadIdLabel.BorderStyle = BorderStyle.None;
+            dadIdLabel.Enabled = false;
+            dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dadIdLabel.Location = new Point(159, 160);
+            dadIdLabel.Name = "dadIdLabel";
+            dadIdLabel.PlaceholderText = "John";
+            dadIdLabel.ReadOnly = true;
+            dadIdLabel.Size = new Size(100, 26);
+            dadIdLabel.TabIndex = 34;
+            // 
+            // cageIdLabel
+            // 
+            cageIdLabel.BackColor = SystemColors.ControlLight;
+            cageIdLabel.BorderStyle = BorderStyle.None;
+            cageIdLabel.Enabled = false;
+            cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cageIdLabel.Location = new Point(159, 134);
+            cageIdLabel.Name = "cageIdLabel";
+            cageIdLabel.PlaceholderText = "John";
+            cageIdLabel.ReadOnly = true;
+            cageIdLabel.Size = new Size(100, 26);
+            cageIdLabel.TabIndex = 33;
+            // 
+            // genderLabel
+            // 
+            genderLabel.BackColor = SystemColors.ControlLight;
+            genderLabel.BorderStyle = BorderStyle.None;
+            genderLabel.Enabled = false;
+            genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            genderLabel.Location = new Point(159, 110);
+            genderLabel.Name = "genderLabel";
+            genderLabel.PlaceholderText = "John";
+            genderLabel.ReadOnly = true;
+            genderLabel.Size = new Size(100, 26);
+            genderLabel.TabIndex = 32;
             // 
             // subTypeLabel
             // 
-            subTypeLabel.AutoSize = true;
+            subTypeLabel.BackColor = SystemColors.ControlLight;
+            subTypeLabel.BorderStyle = BorderStyle.None;
+            subTypeLabel.Enabled = false;
             subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             subTypeLabel.Location = new Point(159, 60);
             subTypeLabel.Name = "subTypeLabel";
-            subTypeLabel.Size = new Size(52, 25);
-            subTypeLabel.TabIndex = 16;
-            subTypeLabel.Text = "John";
+            subTypeLabel.PlaceholderText = "John";
+            subTypeLabel.ReadOnly = true;
+            subTypeLabel.Size = new Size(100, 26);
+            subTypeLabel.TabIndex = 31;
             // 
             // typeLabel
             // 
-            typeLabel.AutoSize = true;
+            typeLabel.BackColor = SystemColors.ControlLight;
+            typeLabel.BorderStyle = BorderStyle.None;
+            typeLabel.Enabled = false;
             typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             typeLabel.Location = new Point(159, 35);
             typeLabel.Name = "typeLabel";
-            typeLabel.Size = new Size(52, 25);
-            typeLabel.TabIndex = 15;
-            typeLabel.Text = "John";
+            typeLabel.PlaceholderText = "John";
+            typeLabel.ReadOnly = true;
+            typeLabel.Size = new Size(100, 26);
+            typeLabel.TabIndex = 29;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(saveButton);
+            flowLayoutPanel2.Controls.Add(editButton);
+            flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
+            flowLayoutPanel2.Location = new Point(300, 128);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(80, 95);
+            flowLayoutPanel2.TabIndex = 30;
+            // 
+            // saveButton
+            // 
+            saveButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            saveButton.Location = new Point(3, 52);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(70, 40);
+            saveButton.TabIndex = 29;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
+            // 
+            // editButton
+            // 
+            editButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            editButton.Location = new Point(3, 6);
+            editButton.Name = "editButton";
+            editButton.Size = new Size(70, 40);
+            editButton.TabIndex = 28;
+            editButton.Text = "Edit";
+            editButton.UseVisualStyleBackColor = true;
+            editButton.Click += editButton_Click;
             // 
             // idLabel
             // 
-            idLabel.AutoSize = true;
+            idLabel.BackColor = SystemColors.ControlLight;
+            idLabel.BorderStyle = BorderStyle.None;
+            idLabel.Enabled = false;
             idLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            idLabel.Location = new Point(159, 10);
+            idLabel.Location = new Point(159, 9);
             idLabel.Name = "idLabel";
-            idLabel.Size = new Size(52, 25);
-            idLabel.TabIndex = 14;
-            idLabel.Text = "John";
+            idLabel.PlaceholderText = "John";
+            idLabel.ReadOnly = true;
+            idLabel.Size = new Size(100, 26);
+            idLabel.TabIndex = 28;
             // 
             // flowLayoutPanel1
             // 
@@ -329,6 +393,7 @@
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).EndInit();
@@ -340,14 +405,6 @@
 
         #endregion
         private Panel panel1;
-        private Label momIdLabel;
-        private Label dadIdLabel;
-        private Label genderLabel;
-        private Label cageIdLabel;
-        private Label dateLabel;
-        private Label subTypeLabel;
-        private Label typeLabel;
-        private Label idLabel;
         private Label label7;
         private Label nameLabel;
         private Label label4;
@@ -363,5 +420,16 @@
         private Button addOffspringButton;
         public Panel offspringsPanel;
         public Label fledglingLabel;
+        private Button editButton;
+        private TextBox idLabel;
+        private Button saveButton;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private DateTimePicker dateLabel;
+        private TextBox momIdLabel;
+        private TextBox dadIdLabel;
+        private TextBox cageIdLabel;
+        private TextBox genderLabel;
+        private TextBox subTypeLabel;
+        private TextBox typeLabel;
     }
 }

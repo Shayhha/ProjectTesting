@@ -19,6 +19,22 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        private string[] getTextFromUi()
+        {
+            string[] birdInfo = new string[9];
+
+            birdInfo[0] = idBox.Text.ToString();
+            birdInfo[1] = typeBox.Text.ToString();
+            birdInfo[2] = subTypeBox.Text.ToString();
+            birdInfo[3] = dateBox.Text.ToString();
+            birdInfo[4] = genderBox.Text.ToString();
+            birdInfo[5] = cageIdBox.Text.ToString();
+            birdInfo[6] = dadBox.Text.ToString();
+            birdInfo[7] = momBox.Text.ToString();
+
+            return birdInfo;
+        }
+
         private bool getInfoFromUser(string isOffspring)
         {
             string[] birdInfo = new string[9];
@@ -197,7 +213,7 @@ namespace ProjectTesting
             if(AddBird_label.Text == "Add an Offspring:") //if we add offspring we change it to yes
                 isOffspring = "yes";
             
-            if (getInfoFromUser(isOffspring))
+            if (getInfoFromUser(getTextFromUi(), isOffspring))
             {
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
