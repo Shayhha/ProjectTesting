@@ -139,28 +139,28 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        //private string[] getTextFromUi()
-        //{
-        //    string[] birdInfo = new string[9];
+        private string[] getTextFromUi()
+        {
+            string[] birdInfo = new string[9];
 
-        //    birdInfo[0] = idLabel.Text.ToString();
-        //    birdInfo[1] = typeLabel.Text.ToString();
-        //    birdInfo[2] = subTypeLabel.Text.ToString();
-        //    birdInfo[3] = dateLabel.Text.ToString();
-        //    birdInfo[4] = genderLabel.Text.ToString();
-        //    birdInfo[5] = cageIdLabel.Text.ToString();
-        //    birdInfo[6] = dadIdLabel.Text.ToString();
-        //    birdInfo[7] = momIdLabel.Text.ToString();
+            birdInfo[0] = idLabel.Text.ToString();
+            birdInfo[1] = typeLabel.Text.ToString();
+            birdInfo[2] = subTypeLabel.Text.ToString();
+            birdInfo[3] = dateLabel.Text.ToString();
+            birdInfo[4] = genderLabel.Text.ToString();
+            birdInfo[5] = cageIdLabel.Text.ToString();
+            birdInfo[6] = dadIdLabel.Text.ToString();
+            birdInfo[7] = momIdLabel.Text.ToString();
 
-        //    return birdInfo;
-        //}
+            return birdInfo;
+        }
 
         private void editButton_Click(object sender, EventArgs e)
         {
             editButton.Hide();
             saveButton.Show();
 
-            string[] currentValues = getTextFromUi();
+            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
             idLabel.ReadOnly = false;
             typeLabel.ReadOnly = false;
@@ -201,7 +201,31 @@ namespace ProjectTesting
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
 
-            ((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(infoFromDatabase, "no");
+            string[] newInfo = getTextFromUi();
+            string[] cleanUp = new string[9];
+
+            for (int i = 0; i < 9; i++)
+            {
+                cleanUp[i] = "";
+            }
+
+            if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
+            {
+                Excel ex = new Excel("database", MainWindow.UserSheet);
+                int row = ex.GetLastRow(7);
+                MessageBox.Show("Add a loading bar or circle for the users to know that the saving is in progress");
+
+                for (int i = 1; i < row; i++)
+                {
+                    if (ex.ReadCell("G" + i) == infoFromDatabase[0])
+                    {
+                        newInfo[8] = ex.ReadCell("O" + i);
+                        ex.WriteRange(i, 7, 15, newInfo);
+                        ex.WriteRange(row-1, 7, 15, cleanUp);
+                    }
+                }
+                ex.Quit();
+            }
         }
     }
 }

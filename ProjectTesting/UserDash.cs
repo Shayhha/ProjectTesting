@@ -16,6 +16,8 @@ namespace ProjectTesting
         public UserDash()
         {
             InitializeComponent();
+            this.Icon = new System.Drawing.Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void initDash()
