@@ -33,9 +33,7 @@
             Search_label = new Label();
             label2 = new Label();
             Search_button = new Button();
-
             colorDialog1 = new ColorDialog();
-
             comboBox = new ComboBox();
             SuspendLayout();
             // 
@@ -46,16 +44,16 @@
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
-            birdList.Location = new Point(96, 196);
+            birdList.Location = new Point(23, 165);
             birdList.Name = "birdList";
-            birdList.Size = new Size(1073, 356);
+            birdList.Size = new Size(1215, 420);
             birdList.TabIndex = 0;
             birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
             // Search_textbox
             // 
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(489, 95);
+            Search_textbox.Location = new Point(385, 50);
             Search_textbox.Name = "Search_textbox";
             Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
@@ -66,17 +64,17 @@
             // 
             Search_label.AutoSize = true;
             Search_label.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Search_label.Location = new Point(405, 98);
+            Search_label.Location = new Point(385, 88);
             Search_label.Name = "Search_label";
-            Search_label.Size = new Size(79, 25);
+            Search_label.Size = new Size(185, 25);
             Search_label.TabIndex = 3;
-            Search_label.Text = "Search: ";
+            Search_label.Text = "choose search type: ";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(268, 164);
+            label2.Location = new Point(236, 127);
             label2.Name = "label2";
             label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
@@ -86,7 +84,7 @@
             // 
             Search_button.Cursor = Cursors.Hand;
             Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_button.Location = new Point(845, 95);
+            Search_button.Location = new Point(741, 50);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(156, 35);
             Search_button.TabIndex = 6;
@@ -94,15 +92,15 @@
             Search_button.UseVisualStyleBackColor = true;
             Search_button.Click += Search_button_Click;
             // 
-            // 
             // comboBox
             // 
             comboBox.Cursor = Cursors.Hand;
+            comboBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox.FormattingEnabled = true;
             comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(586, 134);
+            comboBox.Location = new Point(576, 88);
             comboBox.Name = "comboBox";
-            comboBox.Size = new Size(147, 23);
+            comboBox.Size = new Size(87, 28);
             comboBox.TabIndex = 14;
             // 
             // SearchBird

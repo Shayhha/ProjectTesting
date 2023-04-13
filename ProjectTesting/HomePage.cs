@@ -60,7 +60,7 @@ namespace ProjectTesting
             }
         }
 
-        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e) 
+        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e)
         {
             using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
