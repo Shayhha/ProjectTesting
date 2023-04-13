@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -169,6 +170,7 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("Error, gender is incorrect.", "Error");
                 return false;
+                
             }
             return true;
         }
@@ -191,17 +193,110 @@ namespace ProjectTesting
             return returnString;
         }
 
+        private bool CheckParent()
+        {
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            int size = ex.GetLastRow(7);
+            string parentType="";
+            string parentGender, parentBox;
+            string errorMessage = "";
+
+            if (idBox.Text == momBox.Text || idBox.Text==dadBox.Text) //checks if we entered a parent id
+            {
+                CustomMessageBox.Show("You can't have parent's ID!", "ID Error");
+                ex.Quit();
+                return false;
+            }
+
+            if (momBox.Text == dadBox.Text)
+            {
+                CustomMessageBox.Show("Parent's can't have same ID!", "ID Error");
+                ex.Quit();
+                return false;
+            }
+            //now we want to know which parent's id we need to check
+            if (dadBox.ReadOnly == true)//if dad is locked, we know we need to check moms id
+            {
+                parentType = "mom";
+                parentBox = momBox.Text;
+                parentGender = "Female";
+            }
+
+            else if (momBox.ReadOnly == true)
+            {
+                parentType = "dad";
+                parentBox = dadBox.Text;
+                parentGender = "Male";
+            }
+            else // we have an undefined error
+            {
+                ex.Quit();
+                return false;
+            }
+
+            for (int i = 1; i < size; i++) //cage id, first id, gender, types
+            {
+                string[] temp = ex.ReadRange(i, 7, 15);
+
+
+                if (temp[0] == parentBox)//means we need to find female bird
+                {
+                    errorMessage = "-1";
+                    if (temp[4] != parentGender)
+                    {
+                        errorMessage = "Other parent must me " + parentGender.ToLower() + "!";
+                    }
+
+                    else if (temp[5] != cageIdBox.Text)
+                    {
+                        errorMessage = "Parents must be in the same cage!";
+                    }
+                    else if (temp[1] != typeBox.Text)
+                    {
+                        errorMessage = "Parents must have same type!";
+                    }
+                    else if (temp[2] != subTypeBox.Text)
+                    {
+                        errorMessage = "Parents must have same dubtype!";
+                    }
+                    break;
+                }
+            }
+            ex.Quit();
+            if (errorMessage == "")
+            {
+                CustomMessageBox.Show("id not found", "Error");
+                return false;
+            }
+            else if (errorMessage != "-1")
+            {
+                CustomMessageBox.Show(errorMessage, "Error");
+                return false;
+            }
+            else
+                return true;
+        }
+
+        
         private void addButton_Click(object sender, EventArgs e)
         {
             string isOffspring = "no"; //default is no for addBird
-            if(AddBird_label.Text == "Add an Offspring:") //if we add offspring we change it to yes
+            int flag = 0;
+
+            if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
+            { 
                 isOffspring = "yes";
-            
-            if (getInfoFromUser(isOffspring))
+                if (CheckParent() == false)
+                    flag = 1;
+            }
+            if (flag == 0)
             {
-                cleanTextBoxes();
-                ((MainWindow)this.Parent.Parent).homePage1.Show();
-                this.Hide();
+                if (getInfoFromUser(isOffspring))
+                {
+                    cleanTextBoxes();
+                    ((MainWindow)this.Parent.Parent).homePage1.Show();
+                    this.Hide();
+                }
             }
         }
 
