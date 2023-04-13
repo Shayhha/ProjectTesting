@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -75,7 +76,26 @@ namespace ProjectTesting
                     idLabel.Text = databaseInfo[0];
                     typeLabel.Text = databaseInfo[1];
                     subTypeLabel.Text = databaseInfo[2];
-                    dateLabel.Text = databaseInfo[3];
+                    //dateLabel.Text = databaseInfo[3];
+                    string[] databaseDate = databaseInfo[3].Split("/");
+                    int d, m, y;
+                    if (int.TryParse(databaseDate[0], out d) && int.TryParse(databaseDate[1], out m) && int.TryParse(databaseDate[2], out y))
+                    {
+                        dateLabel.Enabled = true;
+                        DateTime date = new DateTime(y, d, m);
+                        dateTimePicker1.Focus();
+                        dateTimePicker1.Checked = false;
+                        SendKeys.SendWait(date.ToShortDateString());
+                        SendKeys.SendWait("{ENTER}");
+                        dateTimePicker1.Refresh();
+                        dateLabel.Checked = false;
+                        dateLabel.Value = date;
+                        dateLabel.Refresh();
+                        //dateLabel.Enabled = false;
+
+                    }
+
+                    //MessageBox.Show(dateLabel.Value.ToShortDateString());
                     genderLabel.Text = databaseInfo[4];
                     cageIdLabel.Text = databaseInfo[5];
                     dadIdLabel.Text = databaseInfo[6];
@@ -221,7 +241,7 @@ namespace ProjectTesting
                     {
                         newInfo[8] = ex.ReadCell("O" + i);
                         ex.WriteRange(i, 7, 15, newInfo);
-                        ex.WriteRange(row-1, 7, 15, cleanUp);
+                        ex.WriteRange(row - 1, 7, 15, cleanUp);
                     }
                 }
                 ex.Quit();

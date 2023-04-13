@@ -55,6 +55,7 @@
             addOffspringButton = new Button();
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
+            dateTimePicker1 = new DateTimePicker();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -82,19 +83,14 @@
             // 
             // dateLabel
             // 
-            dateLabel.CalendarForeColor = SystemColors.ControlLight;
-            dateLabel.CalendarMonthBackground = SystemColors.ControlLight;
-            dateLabel.CalendarTitleBackColor = SystemColors.ControlLight;
-            dateLabel.CalendarTitleForeColor = SystemColors.ControlLight;
-            dateLabel.CalendarTrailingForeColor = Color.Transparent;
             dateLabel.CustomFormat = "dd/MM/yyyy";
-            dateLabel.Format = DateTimePickerFormat.Custom;
+            dateLabel.Enabled = false;
             dateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLabel.Format = DateTimePickerFormat.Custom;
             dateLabel.Location = new Point(159, 87);
             dateLabel.Name = "dateLabel";
             dateLabel.Size = new Size(111, 25);
             dateLabel.TabIndex = 28;
-            dateLabel.Enabled = false;
             // 
             // momIdLabel
             // 
@@ -106,7 +102,7 @@
             momIdLabel.Name = "momIdLabel";
             momIdLabel.PlaceholderText = "John";
             momIdLabel.ReadOnly = true;
-            momIdLabel.Size = new Size(100, 26);
+            momIdLabel.Size = new Size(135, 26);
             momIdLabel.TabIndex = 35;
             // 
             // dadIdLabel
@@ -119,7 +115,7 @@
             dadIdLabel.Name = "dadIdLabel";
             dadIdLabel.PlaceholderText = "John";
             dadIdLabel.ReadOnly = true;
-            dadIdLabel.Size = new Size(100, 26);
+            dadIdLabel.Size = new Size(135, 26);
             dadIdLabel.TabIndex = 34;
             // 
             // cageIdLabel
@@ -132,7 +128,7 @@
             cageIdLabel.Name = "cageIdLabel";
             cageIdLabel.PlaceholderText = "John";
             cageIdLabel.ReadOnly = true;
-            cageIdLabel.Size = new Size(100, 26);
+            cageIdLabel.Size = new Size(135, 26);
             cageIdLabel.TabIndex = 33;
             // 
             // genderLabel
@@ -145,7 +141,7 @@
             genderLabel.Name = "genderLabel";
             genderLabel.PlaceholderText = "John";
             genderLabel.ReadOnly = true;
-            genderLabel.Size = new Size(100, 26);
+            genderLabel.Size = new Size(111, 26);
             genderLabel.TabIndex = 32;
             // 
             // subTypeLabel
@@ -158,7 +154,7 @@
             subTypeLabel.Name = "subTypeLabel";
             subTypeLabel.PlaceholderText = "John";
             subTypeLabel.ReadOnly = true;
-            subTypeLabel.Size = new Size(100, 26);
+            subTypeLabel.Size = new Size(188, 26);
             subTypeLabel.TabIndex = 31;
             // 
             // typeLabel
@@ -171,7 +167,7 @@
             typeLabel.Name = "typeLabel";
             typeLabel.PlaceholderText = "John";
             typeLabel.ReadOnly = true;
-            typeLabel.Size = new Size(100, 26);
+            typeLabel.Size = new Size(188, 26);
             typeLabel.TabIndex = 29;
             // 
             // flowLayoutPanel2
@@ -216,7 +212,7 @@
             idLabel.Name = "idLabel";
             idLabel.PlaceholderText = "John";
             idLabel.ReadOnly = true;
-            idLabel.Size = new Size(100, 26);
+            idLabel.Size = new Size(188, 26);
             idLabel.TabIndex = 28;
             // 
             // flowLayoutPanel1
@@ -381,10 +377,20 @@
             fledglingLabel.TabIndex = 27;
             fledglingLabel.Text = "I am still a fledgling";
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(682, 46);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 28;
+            // 
             // MoreDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(dateTimePicker1);
             Controls.Add(fledglingLabel);
             Controls.Add(offspringsPanel);
             Controls.Add(mainPic);
@@ -424,12 +430,13 @@
         private TextBox idLabel;
         private Button saveButton;
         private FlowLayoutPanel flowLayoutPanel2;
-        private DateTimePicker dateLabel;
+        public DateTimePicker dateLabel;
         private TextBox momIdLabel;
         private TextBox dadIdLabel;
         private TextBox cageIdLabel;
         private TextBox genderLabel;
         private TextBox subTypeLabel;
         private TextBox typeLabel;
+        public DateTimePicker dateTimePicker1;
     }
 }
