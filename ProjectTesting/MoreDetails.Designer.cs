@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            dateTextBox = new TextBox();
             dateLabel = new DateTimePicker();
             momIdLabel = new TextBox();
             dadIdLabel = new TextBox();
@@ -55,8 +57,8 @@
             addOffspringButton = new Button();
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
-            dateTimePicker1 = new DateTimePicker();
             panel1.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
@@ -66,7 +68,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(dateLabel);
+            panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(dadIdLabel);
             panel1.Controls.Add(cageIdLabel);
@@ -81,16 +83,40 @@
             panel1.Size = new Size(380, 223);
             panel1.TabIndex = 16;
             // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(dateTextBox);
+            flowLayoutPanel3.Controls.Add(dateLabel);
+            flowLayoutPanel3.Location = new Point(156, 82);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(330, 33);
+            flowLayoutPanel3.TabIndex = 37;
+            // 
+            // dateTextBox
+            // 
+            dateTextBox.BackColor = SystemColors.ControlLight;
+            dateTextBox.BorderStyle = BorderStyle.None;
+            dateTextBox.Enabled = false;
+            dateTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTextBox.Location = new Point(3, 3);
+            dateTextBox.Name = "dateTextBox";
+            dateTextBox.PlaceholderText = "John";
+            dateTextBox.ReadOnly = true;
+            dateTextBox.Size = new Size(119, 26);
+            dateTextBox.TabIndex = 36;
+            // 
             // dateLabel
             // 
+            dateLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             dateLabel.CustomFormat = "dd/MM/yyyy";
             dateLabel.Enabled = false;
             dateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dateLabel.Format = DateTimePickerFormat.Custom;
-            dateLabel.Location = new Point(159, 87);
+            dateLabel.Location = new Point(128, 3);
             dateLabel.Name = "dateLabel";
             dateLabel.Size = new Size(111, 25);
             dateLabel.TabIndex = 28;
+            dateLabel.Visible = false;
             // 
             // momIdLabel
             // 
@@ -377,20 +403,10 @@
             fledglingLabel.TabIndex = 27;
             fledglingLabel.Text = "I am still a fledgling";
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(682, 46);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 28;
-            // 
             // MoreDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dateTimePicker1);
             Controls.Add(fledglingLabel);
             Controls.Add(offspringsPanel);
             Controls.Add(mainPic);
@@ -399,6 +415,8 @@
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
@@ -437,6 +455,7 @@
         private TextBox genderLabel;
         private TextBox subTypeLabel;
         private TextBox typeLabel;
-        public DateTimePicker dateTimePicker1;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private TextBox dateTextBox;
     }
 }

@@ -76,26 +76,7 @@ namespace ProjectTesting
                     idLabel.Text = databaseInfo[0];
                     typeLabel.Text = databaseInfo[1];
                     subTypeLabel.Text = databaseInfo[2];
-                    //dateLabel.Text = databaseInfo[3];
-                    string[] databaseDate = databaseInfo[3].Split("/");
-                    int d, m, y;
-                    if (int.TryParse(databaseDate[0], out d) && int.TryParse(databaseDate[1], out m) && int.TryParse(databaseDate[2], out y))
-                    {
-                        dateLabel.Enabled = true;
-                        DateTime date = new DateTime(y, d, m);
-                        dateTimePicker1.Focus();
-                        dateTimePicker1.Checked = false;
-                        SendKeys.SendWait(date.ToShortDateString());
-                        SendKeys.SendWait("{ENTER}");
-                        dateTimePicker1.Refresh();
-                        dateLabel.Checked = false;
-                        dateLabel.Value = date;
-                        dateLabel.Refresh();
-                        //dateLabel.Enabled = false;
-
-                    }
-
-                    //MessageBox.Show(dateLabel.Value.ToShortDateString());
+                    dateTextBox.Text = databaseInfo[3];
                     genderLabel.Text = databaseInfo[4];
                     cageIdLabel.Text = databaseInfo[5];
                     dadIdLabel.Text = databaseInfo[6];
@@ -185,6 +166,8 @@ namespace ProjectTesting
             idLabel.ReadOnly = false;
             typeLabel.ReadOnly = false;
             subTypeLabel.ReadOnly = false;
+            dateTextBox.Visible = false;
+            dateLabel.Visible = true;
             dateLabel.Enabled = true;
             genderLabel.ReadOnly = false;
             cageIdLabel.ReadOnly = false;
@@ -207,6 +190,8 @@ namespace ProjectTesting
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
             subTypeLabel.ReadOnly = true;
+            dateTextBox.Visible = true;
+            dateLabel.Visible = false;
             dateLabel.Enabled = false;
             genderLabel.ReadOnly = true;
             cageIdLabel.ReadOnly = true;
@@ -242,6 +227,15 @@ namespace ProjectTesting
                         newInfo[8] = ex.ReadCell("O" + i);
                         ex.WriteRange(i, 7, 15, newInfo);
                         ex.WriteRange(row - 1, 7, 15, cleanUp);
+
+                        idLabel.Text = newInfo[0];
+                        typeLabel.Text = newInfo[1];
+                        subTypeLabel.Text = newInfo[2];
+                        dateTextBox.Text = newInfo[3];
+                        genderLabel.Text = newInfo[4];
+                        cageIdLabel.Text = newInfo[5];
+                        dadIdLabel.Text = newInfo[6];
+                        momIdLabel.Text = newInfo[7];
                     }
                 }
                 ex.Quit();
