@@ -40,13 +40,13 @@
             // birdList
             // 
             birdList.Cursor = Cursors.Hand;
-            birdList.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            birdList.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
-            birdList.ItemHeight = 37;
+            birdList.ItemHeight = 32;
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
             birdList.Location = new Point(23, 165);
             birdList.Name = "birdList";
-            birdList.Size = new Size(1215, 374);
+            birdList.Size = new Size(1215, 356);
             birdList.TabIndex = 0;
             birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 

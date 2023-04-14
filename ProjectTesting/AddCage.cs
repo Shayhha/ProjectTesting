@@ -159,6 +159,7 @@ namespace ProjectTesting
         {
             if (getInfoFromUser())
             {
+                AddBird.SortExcel("cage"); //calls out function from addBird
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
                 setWelcome_lable(false);

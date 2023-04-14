@@ -42,7 +42,7 @@ namespace ProjectTesting
 
         private void SearchRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            e.ToolTipSize = new Size(440, 120);
+            e.ToolTipSize = new Size(400, 85);
         }
 
 
@@ -84,19 +84,19 @@ namespace ProjectTesting
                 if (combo == "Bird")
                 {
                     size = ex.GetLastRow(7);
-                    if (name == "m" || name == "M" || name == "male")
-                        name = "Male";
-                    else if (name == "f" || name == "F" || name == "female")
-                        name = "Female";
+                    //if (name == "m" || name == "M" || name == "male")
+                    //    name = "Male";
+                    //else if (name == "f" || name == "F" || name == "female")
+                    //    name = "Female";
 
                     for (int i = 1; i < size; i++)
                     {
-                        temp = ex.ReadRange(i, 7, 14);
+                        temp = ex.ReadRange(i, 7, 12);
                         if (temp.Contains(name))
                         {
                             string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
-                            flag = 1;
+                            flag++;
                         }
                     }
                 }
@@ -110,7 +110,7 @@ namespace ProjectTesting
                         {
                             string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
-                            flag = 1;
+                            flag++;
                         }
                     }
                 }
@@ -122,6 +122,12 @@ namespace ProjectTesting
                 ex.Quit();
                 return false;
             }
+            //else if(flag == 1)
+            //{
+            //    string text = birdList.Items[0].ToString(); //gets text in selected index
+            //    ItemSelected(text);
+            //    ClearList();
+            //}
             ex.Quit();
             return true;
         }
@@ -141,6 +147,11 @@ namespace ProjectTesting
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
             string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
+            ItemSelected(text);
+        }
+
+        private void ItemSelected(string text)
+        {
             if (text.Split(",")[0].Split(" ")[0] == "Bird")
             {
                 string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method

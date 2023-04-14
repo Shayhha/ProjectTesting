@@ -42,7 +42,7 @@ namespace ProjectTesting
 
         private void SearchRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            e.ToolTipSize = new Size(440, 120);
+            e.ToolTipSize = new Size(400, 85);
         }
 
         private void Search_button_Click(object sender, EventArgs e)
