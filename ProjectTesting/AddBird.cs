@@ -390,7 +390,8 @@ namespace ProjectTesting
                 }
                 //now we have an arr with all birds\cages inside, not sorted
                 MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
-                Sort(arr, 0, arr.Length-1,name);//here we call Sort method 
+                Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));
+                //Sort(arr, 0, arr.Length-1,name);//here we call Sort method 
                 index = 0;
                 for (int j = 1; j < size+1; j++) //now we going through the database and update the birds list 
                 {
@@ -407,14 +408,10 @@ namespace ProjectTesting
             ex.Quit();//close excel
         }
 
-        public static int Partition(string[][] arr, int Start, int End, string Name)
+        public static int Partition(string[][] arr, int Start, int End)
         {
             int i = Start - 1;//represents the small elements
-            int pivot;
-            if (Name=="cage") // if we sort cage we check the last string that we added to it
-                pivot = int.Parse(arr[End][5]);
-            else //else we sort birds normally
-                pivot = int.Parse(arr[End][0]);
+            int pivot = int.Parse(arr[End][0]);
 
             for (int j = Start; j < End; j++)
             {
@@ -436,14 +433,14 @@ namespace ProjectTesting
             return i + 1;
         }
 
-        public static void Sort(string[][] arr, int Start, int End,string Name)
+        public static void Sort(string[][] arr, int Start, int End)
         {
             if(Start < End)
             {
-                int pr = Partition(arr, Start, End, Name); //represends the pivot in sorting
+                int pr = Partition(arr, Start, End); //represends the pivot in sorting
                 //calls recursivly for first part until pr and from pr+1 to end
-                Sort(arr, Start, pr - 1, Name);
-                Sort(arr, pr+1, End, Name);
+                Sort(arr, Start, pr - 1);
+                Sort(arr, pr+1, End);
             }
         }
 

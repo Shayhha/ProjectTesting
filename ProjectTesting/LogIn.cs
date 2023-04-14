@@ -26,8 +26,6 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            int s ='0';
-            MessageBox.Show(s.ToString());
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
             string[] info = { username, password };
