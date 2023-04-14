@@ -276,11 +276,11 @@ namespace ProjectTesting
                     }
                     else if (temp[7] == "yes")
                     {
-                        errorMessage = "Parent cannot be an offspring!";
+                        errorMessage = "Parents must be adults!";
                     }
                     else if (temp[2] != subTypeBox.Text)
                     {
-                        errorMessage = "Parents must have same dubtype!";
+                        errorMessage = "Parents must have same subtype!";
                     }
                     break;
                 }

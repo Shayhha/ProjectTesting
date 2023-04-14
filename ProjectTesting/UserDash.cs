@@ -41,7 +41,7 @@ namespace ProjectTesting
             for (int i = 1; i < ex.GetLastRow(7); i++)
             {
                 temp = ex.ReadRange(i, 7, 15);
-                newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " , Adult: " + temp[8];
+                newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " , fledgling: " + temp[8];
                 birdsList.Items.Add(newStr);
             }
 
