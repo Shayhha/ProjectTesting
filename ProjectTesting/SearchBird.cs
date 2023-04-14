@@ -108,7 +108,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4];
+                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
