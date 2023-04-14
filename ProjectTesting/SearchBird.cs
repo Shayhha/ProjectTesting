@@ -94,7 +94,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 7, 14);
                         if (temp.Contains(name))
                         {
-                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            string newStr = i.ToString() + ") Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
@@ -108,7 +108,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
+                            string newStr = i.ToString() + ") Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
@@ -145,6 +145,13 @@ namespace ProjectTesting
             {
                 string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
                 ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(birdId);
+                ((MainWindow)this.Parent.Parent).moreDetails1.Show();
+                this.Hide();
+            }
+            else if (text.Split(",")[0].Split(" ")[0] == "Cage")
+            {
+                string cageId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
+                ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(cageId, "cage");
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
                 this.Hide();
             }
