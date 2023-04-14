@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +15,9 @@ namespace ProjectTesting
 {
     public partial class MoreDetails : UserControl
     {
+
+        private string[] infoFromDatabase;
+
         public MoreDetails()
         {
             InitializeComponent();
@@ -50,6 +56,8 @@ namespace ProjectTesting
 
         public void initLabels(string birdId)
         {
+            editButton.Show();
+            saveButton.Hide();
             setImages();
             cleanLabels();
             Excel ex = new Excel("database", MainWindow.UserSheet);
@@ -63,10 +71,31 @@ namespace ProjectTesting
                 if (tempId == birdId) //if we found one that matches we open a messagebox and break
                 {
                     databaseInfo = ex.ReadRange(i, 7, 15);
+                    infoFromDatabase = databaseInfo;
+
                     idLabel.Text = databaseInfo[0];
                     typeLabel.Text = databaseInfo[1];
                     subTypeLabel.Text = databaseInfo[2];
-                    dateLabel.Text = databaseInfo[3];
+                    //dateLabel.Text = databaseInfo[3];
+                    string[] databaseDate = databaseInfo[3].Split("/");
+                    int d, m, y;
+                    if (int.TryParse(databaseDate[0], out d) && int.TryParse(databaseDate[1], out m) && int.TryParse(databaseDate[2], out y))
+                    {
+                        dateLabel.Enabled = true;
+                        DateTime date = new DateTime(y, d, m);
+                        dateTimePicker1.Focus();
+                        dateTimePicker1.Checked = false;
+                        SendKeys.SendWait(date.ToShortDateString());
+                        SendKeys.SendWait("{ENTER}");
+                        dateTimePicker1.Refresh();
+                        dateLabel.Checked = false;
+                        dateLabel.Value = date;
+                        dateLabel.Refresh();
+                        //dateLabel.Enabled = false;
+
+                    }
+
+                    //MessageBox.Show(dateLabel.Value.ToShortDateString());
                     genderLabel.Text = databaseInfo[4];
                     cageIdLabel.Text = databaseInfo[5];
                     dadIdLabel.Text = databaseInfo[6];
@@ -128,6 +157,95 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             this.Hide();
             ((MainWindow)this.Parent.Parent).hideBackBtn();
+        }
+
+        private string[] getTextFromUi()
+        {
+            string[] birdInfo = new string[9];
+
+            birdInfo[0] = idLabel.Text.ToString();
+            birdInfo[1] = typeLabel.Text.ToString();
+            birdInfo[2] = subTypeLabel.Text.ToString();
+            birdInfo[3] = dateLabel.Text.ToString();
+            birdInfo[4] = genderLabel.Text.ToString();
+            birdInfo[5] = cageIdLabel.Text.ToString();
+            birdInfo[6] = dadIdLabel.Text.ToString();
+            birdInfo[7] = momIdLabel.Text.ToString();
+
+            return birdInfo;
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            editButton.Hide();
+            saveButton.Show();
+
+            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+
+            idLabel.ReadOnly = false;
+            typeLabel.ReadOnly = false;
+            subTypeLabel.ReadOnly = false;
+            dateLabel.Enabled = true;
+            genderLabel.ReadOnly = false;
+            cageIdLabel.ReadOnly = false;
+            dadIdLabel.ReadOnly = false;
+            momIdLabel.ReadOnly = false;
+
+            idLabel.Enabled = true;
+            typeLabel.Enabled = true;
+            subTypeLabel.Enabled = true;
+            genderLabel.Enabled = true;
+            cageIdLabel.Enabled = true;
+            dadIdLabel.Enabled = true;
+            momIdLabel.Enabled = true;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            editButton.Show();
+            saveButton.Hide();
+            idLabel.ReadOnly = true;
+            typeLabel.ReadOnly = true;
+            subTypeLabel.ReadOnly = true;
+            dateLabel.Enabled = false;
+            genderLabel.ReadOnly = true;
+            cageIdLabel.ReadOnly = true;
+            dadIdLabel.ReadOnly = true;
+            momIdLabel.ReadOnly = true;
+
+            idLabel.Enabled = false;
+            typeLabel.Enabled = false;
+            subTypeLabel.Enabled = false;
+            genderLabel.Enabled = false;
+            cageIdLabel.Enabled = false;
+            dadIdLabel.Enabled = false;
+            momIdLabel.Enabled = false;
+
+            string[] newInfo = getTextFromUi();
+            string[] cleanUp = new string[9];
+
+            for (int i = 0; i < 9; i++)
+            {
+                cleanUp[i] = "";
+            }
+
+            if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
+            {
+                Excel ex = new Excel("database", MainWindow.UserSheet);
+                int row = ex.GetLastRow(7);
+                MessageBox.Show("Add a loading bar or circle for the users to know that the saving is in progress");
+
+                for (int i = 1; i < row; i++)
+                {
+                    if (ex.ReadCell("G" + i) == infoFromDatabase[0])
+                    {
+                        newInfo[8] = ex.ReadCell("O" + i);
+                        ex.WriteRange(i, 7, 15, newInfo);
+                        ex.WriteRange(row - 1, 7, 15, cleanUp);
+                    }
+                }
+                ex.Quit();
+            }
         }
     }
 }

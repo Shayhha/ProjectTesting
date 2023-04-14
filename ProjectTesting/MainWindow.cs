@@ -86,6 +86,7 @@ namespace ProjectTesting
             }
             else if (moreDetails1.Visible == true)
             {
+                searchBird1.Search_textbox.Text = "";
                 moreDetails1.Hide();
                 searchBird1.Show();
             }

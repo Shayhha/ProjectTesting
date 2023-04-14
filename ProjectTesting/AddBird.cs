@@ -20,7 +20,7 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private bool getInfoFromUser(string isOffspring)
+        private string[] getTextFromUi()
         {
             string[] birdInfo = new string[9];
 
@@ -32,6 +32,22 @@ namespace ProjectTesting
             birdInfo[5] = cageIdBox.Text.ToString();
             birdInfo[6] = dadBox.Text.ToString();
             birdInfo[7] = momBox.Text.ToString();
+
+            return birdInfo;
+        }
+
+        public bool getInfoFromUser(string[] birdInfo, string isOffspring, bool edited = false)
+        {
+            //string[] birdInfo = new string[9];
+
+            //birdInfo[0] = idBox.Text.ToString();
+            //birdInfo[1] = typeBox.Text.ToString();
+            //birdInfo[2] = subTypeBox.Text.ToString();
+            //birdInfo[3] = dateBox.Text.ToString();
+            //birdInfo[4] = genderBox.Text.ToString();
+            //birdInfo[5] = cageIdBox.Text.ToString();
+            //birdInfo[6] = dadBox.Text.ToString();
+            //birdInfo[7] = momBox.Text.ToString();
             birdInfo[8] = isOffspring; // can be "yes" or "no"
 
             int flag = 0;
@@ -69,7 +85,10 @@ namespace ProjectTesting
                     CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try one of these: " + findValidCageIds(), "Error");
                     return false;
                 }
-                else if (!checkBirdId(birdInfo[0])) { return false; }
+                else if (!edited) // edited will be true only if the user is adding a new bird, when the user edits an existing bird it will be false
+                {
+                    if (!checkBirdId(birdInfo[0])) { return false; }
+                }
                 else if (birdInfo[6] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[6], idPattern)))
@@ -291,7 +310,7 @@ namespace ProjectTesting
             }
             if (flag == 0)
             {
-                if (getInfoFromUser(isOffspring))
+                if (getInfoFromUser(getTextFromUi(), isOffspring))
                 {
                     SortExcel("bird");//! here I call my sorting method!///
                     cleanTextBoxes();
