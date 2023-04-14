@@ -416,16 +416,16 @@ namespace ProjectTesting
                 {
                     i++;// increase index
 
-                    string temp1 = arr[j][0];
-                    arr[j][0] = arr[i][0];
-                    arr[i][0] = temp1;
+                    string[] temp1 = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp1;
                 }
                 //now we need to do last switch with last index and last small element
                
             }
-            string temp = arr[i+1][0];
-            arr[i+1][0] = arr[End][0];
-            arr[End][0] = temp;
+            string[] temp = arr[i+1];
+            arr[i+1] = arr[End];
+            arr[End] = temp;
 
             return i + 1;
         }
