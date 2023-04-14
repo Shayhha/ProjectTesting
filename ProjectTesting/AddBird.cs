@@ -293,7 +293,7 @@ namespace ProjectTesting
             {
                 if (getInfoFromUser(isOffspring))
                 {
-                    SortExcel("bird");//! here i call my sorting method!///
+                    SortExcel("bird");//! here I call my sorting method!///
                     cleanTextBoxes();
                     ((MainWindow)this.Parent.Parent).homePage1.Show();
                     this.Hide();
