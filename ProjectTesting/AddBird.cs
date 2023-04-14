@@ -293,6 +293,7 @@ namespace ProjectTesting
             {
                 if (getInfoFromUser(isOffspring))
                 {
+                    SortExcel("bird");//! here i call my sorting method!///
                     cleanTextBoxes();
                     ((MainWindow)this.Parent.Parent).homePage1.Show();
                     this.Hide();
@@ -323,5 +324,38 @@ namespace ProjectTesting
             cleanTextBoxes();
             this.Hide();
         }
+
+        public static void SortExcel(string name) //name can be "bird" or "cage"
+        {
+            int size=1; //default value
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            if (name == "bird")
+                size =ex.GetLastRow(7);
+            else if (name == "cage")
+                size = ex.GetLastRow(1);
+
+            string[][] arr = new string[size-1][]; //initalize the double array //size is -1 because of our default line in Shay!
+            int index = 0; //index for array
+            for (int i = 2; i < size; i++)
+            {
+                string[] temp = ex.ReadRange(i, 7, 15);
+                arr[index] = temp;
+                index++;//increment index 
+            }
+            //now we have an arr with all birds inside, not sorted
+            //here we call Sort method 
+            index = 0;
+            for(int j = 2; j < size; j++) //now we going through the database and update the birds list 
+            {
+                ex.WriteRange(j, 7, 15, arr[index]);
+                index++;
+            }
+            ex.Quit();//close excel
+        }
+
+
+
+
+
     }
 }

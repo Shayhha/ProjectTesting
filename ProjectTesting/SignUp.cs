@@ -171,7 +171,7 @@ namespace ProjectTesting
             this.Hide();
         }
 
-        private void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e) //sets font size of ToolTip and the background
+        public void PasswordRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e) //sets font size of ToolTip and the background
         {
             // Set the font size of the text in the ToolTip
             Font font = new Font(e.Font.FontFamily, 12);
@@ -184,7 +184,7 @@ namespace ProjectTesting
             e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds);
         }
 
-        private void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
+        public void PasswordRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
             e.ToolTipSize = new Size(440, 120);
         }

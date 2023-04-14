@@ -17,6 +17,32 @@ namespace ProjectTesting
         {
             InitializeComponent();
             comboBox.SelectedIndex = 0;
+            string text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
+            System.Windows.Forms.ToolTip SearchRequirementsToolTip = new System.Windows.Forms.ToolTip();
+            SearchRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
+            SearchRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
+            SearchRequirementsToolTip.Draw += SearchRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
+            SearchRequirementsToolTip.Popup += SearchRequirementsToolTip_Popup;
+            SearchRequirementsToolTip.SetToolTip(Search_textbox, text);
+
+        }
+
+        private void SearchRequirementsToolTip_Draw(object sender, DrawToolTipEventArgs e) //sets font size of ToolTip and the background
+        {
+            // Set the font size of the text in the ToolTip
+            Font font = new Font(e.Font.FontFamily, 12);
+
+            // Draw the background and border of the ToolTip
+            e.DrawBackground();
+            e.DrawBorder();
+
+            // Draw the text in the ToolTip using the specified font
+            e.Graphics.DrawString(e.ToolTipText, font, Brushes.Black, e.Bounds);
+        }
+
+        private void SearchRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
+        {
+            e.ToolTipSize = new Size(440, 120);
         }
 
         private void Search_button_Click(object sender, EventArgs e)

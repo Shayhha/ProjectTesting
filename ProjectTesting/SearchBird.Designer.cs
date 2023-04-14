@@ -33,9 +33,7 @@
             Search_label = new Label();
             label2 = new Label();
             Search_button = new Button();
-
             colorDialog1 = new ColorDialog();
-
             comboBox = new ComboBox();
             SuspendLayout();
             // 
@@ -81,6 +79,7 @@
             label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
             label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
+            
             // 
             // Search_button
             // 
@@ -93,7 +92,6 @@
             Search_button.Text = "Search Results";
             Search_button.UseVisualStyleBackColor = true;
             Search_button.Click += Search_button_Click;
-            // 
             // 
             // comboBox
             // 
