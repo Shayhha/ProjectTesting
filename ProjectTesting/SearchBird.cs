@@ -141,16 +141,16 @@ namespace ProjectTesting
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
             string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
-            if (text.Split(",")[0].Split(" ")[1] == "Bird")
+            if (text.Split(",")[0].Split(" ")[0] == "Bird")
             {
-                string birdId = text.Split(",")[0].Split(" ")[3].ToString(); //gets the bird id using split method
+                string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
                 ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(birdId);
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
                 this.Hide();
             }
-            else if (text.Split(",")[0].Split(" ")[1] == "Cage")
+            else if (text.Split(",")[0].Split(" ")[0] == "Cage")
             {
-                string cageId = text.Split(",")[0].Split(" ")[3].ToString(); //gets the bird id using split method
+                string cageId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
                 ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(cageId, "cage");
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
                 this.Hide();
