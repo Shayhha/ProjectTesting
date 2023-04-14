@@ -50,6 +50,7 @@ namespace ProjectTesting
             string name = Search_textbox.Text;
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
             string combo = comboBox.Text;
+            //((MainWindow)this.Parent.Parent).searchBird1.Show();
             if (((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo) == true)
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
@@ -109,12 +110,14 @@ namespace ProjectTesting
         private void Cage_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addCage1.Show();
+            comboBox.SelectedIndex = 0;
             this.Hide();
         }
 
         private void Bird_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addBird1.Show();
+            comboBox.SelectedIndex = 0;
             this.Hide();
         }
     }

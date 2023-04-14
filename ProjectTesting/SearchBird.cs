@@ -49,6 +49,8 @@ namespace ProjectTesting
 
         public bool Search(string name, string combo)
         {
+            //((MainWindow)this.Parent.Parent).searchBird1.Show();
+            birdList.Hide();
             Excel ex = new Excel("database", MainWindow.UserSheet);
             int size = 0;
             string[] temp = null;
@@ -84,15 +86,16 @@ namespace ProjectTesting
                 if (combo == "Bird")
                 {
                     size = ex.GetLastRow(7);
-                    //if (name == "m" || name == "M" || name == "male")
-                    //    name = "Male";
-                    //else if (name == "f" || name == "F" || name == "female")
-                    //    name = "Female";
+                    if (name == "m" || name == "M" || name == "male")
+                        name = "Male";
+                    else if (name == "f" || name == "F" || name == "female")
+                        name = "Female";
 
                     for (int i = 1; i < size; i++)
                     {
                         temp = ex.ReadRange(i, 7, 12);
-                        if (temp.Contains(name))
+                        string[] searchTemp = { temp[0], temp[1], temp[2], temp[3], temp[4] };//only searching specific things
+                        if (searchTemp.Contains(name))
                         {
                             string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
@@ -103,10 +106,18 @@ namespace ProjectTesting
                 else if (combo == "Cage")
                 {
                     size = ex.GetLastRow(1);
+                    if (name.ToUpper() == "WOOD")
+                        name = "WOOD";
+                    else if (name.ToUpper() == "METAL")
+                        name = "METAL";
+                    else if (name.ToUpper() == "PLASTIC")
+                        name = "PLASTIC";
+
                     for (int i = 1; i < size; i++)
                     {
                         temp = ex.ReadRange(i, 1, 5);
-                        if (temp.Contains(name))
+                        string[] searchTemp = { temp[0], temp[4] }; //only searching specific things
+                        if (searchTemp.Contains(name))
                         {
                             string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
@@ -122,12 +133,16 @@ namespace ProjectTesting
                 ex.Quit();
                 return false;
             }
-            //else if(flag == 1)
-            //{
-            //    string text = birdList.Items[0].ToString(); //gets text in selected index
-            //    ItemSelected(text);
-            //    ClearList();
-            //}
+            else if (flag == 1)
+            {
+                string text = birdList.Items[0].ToString(); //gets text in selected index
+                ItemSelected(text);
+                ClearList();
+            }
+            else
+            {
+                birdList.Show();
+            }
             ex.Quit();
             return true;
         }

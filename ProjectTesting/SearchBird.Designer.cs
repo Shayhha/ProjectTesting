@@ -35,6 +35,7 @@
             Search_button = new Button();
             colorDialog1 = new ColorDialog();
             comboBox = new ComboBox();
+            tempListBox = new ListBox();
             SuspendLayout();
             // 
             // birdList
@@ -103,6 +104,17 @@
             comboBox.Size = new Size(87, 28);
             comboBox.TabIndex = 14;
             // 
+            // tempListBox
+            // 
+            tempListBox.Cursor = Cursors.Hand;
+            tempListBox.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            tempListBox.FormattingEnabled = true;
+            tempListBox.ItemHeight = 32;
+            tempListBox.Location = new Point(23, 165);
+            tempListBox.Name = "tempListBox";
+            tempListBox.Size = new Size(1215, 356);
+            tempListBox.TabIndex = 15;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -114,6 +126,7 @@
             Controls.Add(Search_label);
             Controls.Add(Search_textbox);
             Controls.Add(birdList);
+            Controls.Add(tempListBox);
             Name = "SearchBird";
             Size = new Size(1264, 611);
             ResumeLayout(false);
@@ -129,5 +142,6 @@
         private Button Search_button;
         private ColorDialog colorDialog1; // what is this? *****************
         private ComboBox comboBox;
+        private ListBox tempListBox;
     }
 }
