@@ -94,7 +94,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 7, 14);
                         if (temp.Contains(name))
                         {
-                            string newStr = i.ToString() + ") Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
@@ -108,7 +108,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = i.ToString() + ") Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
+                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
@@ -141,7 +141,6 @@ namespace ProjectTesting
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
             string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
-            CustomMessageBox.Show(text.Split(",")[0].Split(" ")[1],"Error");
             if (text.Split(",")[0].Split(" ")[1] == "Bird")
             {
                 string birdId = text.Split(",")[0].Split(" ")[3].ToString(); //gets the bird id using split method

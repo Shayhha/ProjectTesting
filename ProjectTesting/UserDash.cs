@@ -34,14 +34,14 @@ namespace ProjectTesting
             for (int i = 1; i < ex.GetLastRow(); i++)
             {
                 temp = ex.ReadRange(i, 1, 5);
-                newStr = i.ToString() + ") Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4];
+                newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4];
                 cagesList.Items.Add(newStr);
             }
 
             for (int i = 1; i < ex.GetLastRow(7); i++)
             {
                 temp = ex.ReadRange(i, 7, 15);
-                newStr = i.ToString() + ") Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " , Adult: " + temp[8];
+                newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " , Adult: " + temp[8];
                 birdsList.Items.Add(newStr);
             }
 

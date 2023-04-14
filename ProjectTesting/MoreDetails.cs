@@ -63,7 +63,6 @@ namespace ProjectTesting
 
             if (birdOrCage == "bird")
             {
-                birdPanel.Visible = true;
                 cagePanel.Visible = false;
                 editButton.Show();
                 saveButton.Hide();
@@ -103,7 +102,6 @@ namespace ProjectTesting
             }
             else if (birdOrCage == "cage")
             {
-                birdPanel.Visible = false;
                 cagePanel.Visible = true;
                 int size = ex.GetLastRow();
 
