@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectTesting
 {
@@ -38,6 +39,7 @@ namespace ProjectTesting
 
         public bool getInfoFromUser(string[] birdInfo, string isOffspring, bool edited = false)
         {
+            ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 10;
             //string[] birdInfo = new string[9];
 
             //birdInfo[0] = idBox.Text.ToString();
@@ -56,12 +58,14 @@ namespace ProjectTesting
 
             for (int j = 0; j < 6; j++)
             {
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 5;
                 if (birdInfo[j] == "")
                 {
                     errorMessage = "Please enter all of the information into the form. (dad's id and mom's id are optional)";
                     flag = 1;
                 }
             }
+            ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 10;
 
             if (birdInfo[4] == "m" || birdInfo[4] == "male")
             {
@@ -74,6 +78,7 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 10;
                 if (!(Regex.IsMatch(birdInfo[0], idPattern)))
                 {
                     errorMessage = "The bird id must ONLY contain numbers.";
@@ -105,15 +110,18 @@ namespace ProjectTesting
                         flag = 1;
                     }
                 }
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 10;
             }
 
             if (flag == 1)
             {
                 CustomMessageBox.Show(errorMessage, "Error");
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 20;
                 return false;
             }
             else
             {
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value += 20;
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 ex.WriteRange(ex.GetLastRow(7), 7, 15, birdInfo);
                 ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());

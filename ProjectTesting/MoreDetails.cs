@@ -63,7 +63,7 @@ namespace ProjectTesting
 
             if (birdOrCage == "bird")
             {
-                //birdPanel.Visible = true;
+                birdPanel.Visible = true;
                 cagePanel.Visible = false;
                 editButton.Show();
                 saveButton.Hide();
@@ -103,7 +103,7 @@ namespace ProjectTesting
             }
             else if (birdOrCage == "cage")
             {
-                //birdPanel.Visible = false;
+                birdPanel.Visible = false;
                 cagePanel.Visible = true;
                 int size = ex.GetLastRow();
 
@@ -252,6 +252,9 @@ namespace ProjectTesting
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
 
+            progressBarPanel.Visible = true;
+            progressBar.Value = 0;
+
             string[] newInfo = getTextFromUi();
             string[] cleanUp = new string[9];
 
@@ -264,12 +267,13 @@ namespace ProjectTesting
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 int row = ex.GetLastRow(7);
-                MessageBox.Show("Add a loading bar or circle for the users to know that the saving is in progress");
+                progressBar.Value += 10;
 
                 for (int i = 1; i < row; i++)
                 {
                     if (ex.ReadCell("G" + i) == infoFromDatabase[0])
                     {
+                        progressBar.Value = 100;
                         newInfo[8] = ex.ReadCell("O" + i);
                         ex.WriteRange(i, 7, 15, newInfo);
                         ex.WriteRange(row - 1, 7, 15, cleanUp);
@@ -284,6 +288,7 @@ namespace ProjectTesting
                         momIdLabel.Text = newInfo[7];
                     }
                 }
+                progressBarPanel.Visible = false;
                 ex.Quit();
             }
         }

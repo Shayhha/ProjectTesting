@@ -58,6 +58,9 @@
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
             birdPanel = new Panel();
+            progressBarPanel = new Panel();
+            prograssBarLabel = new Label();
+            progressBar = new ProgressBar();
             cagePanel = new Panel();
             listLabel = new Label();
             birdList = new ListBox();
@@ -81,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
             birdPanel.SuspendLayout();
+            progressBarPanel.SuspendLayout();
             cagePanel.SuspendLayout();
             panel3.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
@@ -427,6 +431,7 @@
             // 
             // birdPanel
             // 
+            birdPanel.Controls.Add(progressBarPanel);
             birdPanel.Controls.Add(panel1);
             birdPanel.Controls.Add(fledglingLabel);
             birdPanel.Controls.Add(mainPic);
@@ -436,12 +441,39 @@
             birdPanel.Size = new Size(1160, 539);
             birdPanel.TabIndex = 28;
             // 
+            // progressBarPanel
+            // 
+            progressBarPanel.Controls.Add(prograssBarLabel);
+            progressBarPanel.Controls.Add(progressBar);
+            progressBarPanel.Location = new Point(427, 196);
+            progressBarPanel.Name = "progressBarPanel";
+            progressBarPanel.Size = new Size(310, 81);
+            progressBarPanel.TabIndex = 30;
+            progressBarPanel.Visible = false;
+            // 
+            // prograssBarLabel
+            // 
+            prograssBarLabel.AutoSize = true;
+            prograssBarLabel.Location = new Point(37, 7);
+            prograssBarLabel.Name = "prograssBarLabel";
+            prograssBarLabel.Size = new Size(237, 15);
+            prograssBarLabel.TabIndex = 29;
+            prograssBarLabel.Text = "checking your input and saving the data . . .";
+            // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(24, 23);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(261, 50);
+            progressBar.TabIndex = 28;
+            progressBar.Value = 100;
+            // 
             // cagePanel
             // 
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(18, 39);
+            cagePanel.Location = new Point(12, 16);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
@@ -623,6 +655,8 @@
             offspringsPanel.PerformLayout();
             birdPanel.ResumeLayout(false);
             birdPanel.PerformLayout();
+            progressBarPanel.ResumeLayout(false);
+            progressBarPanel.PerformLayout();
             cagePanel.ResumeLayout(false);
             cagePanel.PerformLayout();
             panel3.ResumeLayout(false);
@@ -680,5 +714,8 @@
         private Label widthLabel;
         private Label heightLabel;
         private Label listLabel;
+        public Panel progressBarPanel;
+        public ProgressBar progressBar;
+        private Label prograssBarLabel;
     }
 }
