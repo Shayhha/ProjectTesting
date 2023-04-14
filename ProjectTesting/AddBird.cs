@@ -274,6 +274,10 @@ namespace ProjectTesting
                     {
                         errorMessage = "Parents must have same type!";
                     }
+                    else if (temp[7] == "yes")
+                    {
+                        errorMessage = "Parent cannot be an offspring!";
+                    }
                     else if (temp[2] != subTypeBox.Text)
                     {
                         errorMessage = "Parents must have same dubtype!";
@@ -390,7 +394,7 @@ namespace ProjectTesting
                 }
                 //now we have an arr with all birds\cages inside, not sorted
                 if(name == "cage")
-                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));
+                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));// using lambda to sort cages 
                 else
                     Sort(arr, 0, arr.Length-1);//here we call Sort method 
 
