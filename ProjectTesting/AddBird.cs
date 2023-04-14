@@ -378,8 +378,10 @@ namespace ProjectTesting
                     string[] temp = ex.ReadRange(i, colStart, colEnd);
                     if (name == "cage") //check with max ?
                     {
-                        string copyOfID = Regex.Replace(temp[0], "[^0-9]", ""); ;//saving id in new var without letters for sort
-                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], copyOfID };//new temp2 for cages added original id
+                        string ID = temp[0]; //saving id in new var
+                        char farLeftChar = ID[0]; //saves the msb of id string
+                        int asciiId = (int)farLeftChar; //saves ascii value in var
+                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], asciiId.ToString() };//new temp2 for cages added ascii char
                         arr[index] = temp2;
                     }
                     else //else we're using bird id so we are fine
@@ -388,7 +390,7 @@ namespace ProjectTesting
                 }
                 //now we have an arr with all birds\cages inside, not sorted
                 MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
-                Sort(arr, 0, arr.Length-1);//here we call Sort method 
+                Sort(arr, 0, arr.Length-1,name);//here we call Sort method 
                 index = 0;
                 for (int j = 1; j < size+1; j++) //now we going through the database and update the birds list 
                 {
@@ -405,10 +407,14 @@ namespace ProjectTesting
             ex.Quit();//close excel
         }
 
-        public static int Partition(string[][] arr, int Start, int End)
+        public static int Partition(string[][] arr, int Start, int End, string Name)
         {
             int i = Start - 1;//represents the small elements
-            int pivot = int.Parse(arr[End][0]);
+            int pivot;
+            if (Name=="cage") // if we sort cage we check the last string that we added to it
+                pivot = int.Parse(arr[End][5]);
+            else //else we sort birds normally
+                pivot = int.Parse(arr[End][0]);
 
             for (int j = Start; j < End; j++)
             {
@@ -430,14 +436,14 @@ namespace ProjectTesting
             return i + 1;
         }
 
-        public static void Sort(string[][] arr, int Start, int End)
+        public static void Sort(string[][] arr, int Start, int End,string Name)
         {
             if(Start < End)
             {
-                int pr = Partition(arr, Start, End); //represends the pivot in sorting
+                int pr = Partition(arr, Start, End, Name); //represends the pivot in sorting
                 //calls recursivly for first part until pr and from pr+1 to end
-                Sort(arr, Start, pr - 1);
-                Sort(arr, pr+1, End);
+                Sort(arr, Start, pr - 1, Name);
+                Sort(arr, pr+1, End, Name);
             }
         }
 
