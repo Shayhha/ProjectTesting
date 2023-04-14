@@ -79,6 +79,7 @@
             label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
             label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
+            
             // 
             // Search_button
             // 

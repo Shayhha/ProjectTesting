@@ -312,6 +312,7 @@ namespace ProjectTesting
             {
                 if (getInfoFromUser(getTextFromUi(), isOffspring))
                 {
+                    SortExcel("bird");//! here I call my sorting method!///
                     cleanTextBoxes();
                     ((MainWindow)this.Parent.Parent).homePage1.Show();
                     this.Hide();
@@ -342,5 +343,105 @@ namespace ProjectTesting
             cleanTextBoxes();
             this.Hide();
         }
+
+        public static void SortExcel(string name) //name can be "bird" or "cage"
+        {
+            int size=1; //default value
+            int colStart = 7;  //default value
+            int colEnd = 15; //default vaule
+            int flag = 0;
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            if (name == "bird")
+            {
+                size = ex.GetLastRow(7)-1;
+                colStart = 7;
+                colEnd = 15;
+            }
+            else if (name == "cage")
+            {
+                size = ex.GetLastRow(1)-1;
+                colStart = 1;
+                colEnd = 5;
+            }
+            else //means we got invalid string for operation, we do nothing
+            {
+                flag = 1;
+            }
+
+            if (flag == 0)
+            {
+                string[][] arr = new string[size - 1][]; //initalize the double array //size is -1 because of our default line in Shay!
+                int index = 0; //index for array
+               
+                for (int i = 2; i < size+1; i++)
+                {
+                    string[] temp = ex.ReadRange(i, colStart, colEnd);
+                    if (name == "cage") //check with max ?
+                    {
+                        string copyOfID = Regex.Replace(temp[0], "[^0-9]", ""); ;//saving id in new var without letters for sort
+                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], copyOfID };//new temp2 for cages added original id
+                        arr[index] = temp2;
+                    }
+                    else //else we're using bird id so we are fine
+                        arr[index] = temp;
+                    index++;//increment index 
+                }
+                //now we have an arr with all birds\cages inside, not sorted
+                MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
+                Sort(arr, 0, arr.Length-1);//here we call Sort method 
+                index = 0;
+                for (int j = 2; j < size+1; j++) //now we going through the database and update the birds list 
+                {
+                    if (name == "cage")
+                    {
+                        //this is now the cropped string, we removed what we added in previous loop
+                        string[] temp3 = { arr[index][0], arr[index][1], arr[index][2], arr[index][3], arr[index][4] };
+                        arr[index] = temp3; //giving temp3 new string
+                    }
+                    ex.WriteRange(j, colStart, colEnd, arr[index]);
+                    index++;
+                }
+            }
+            ex.Quit();//close excel
+        }
+
+        public static int Partition(string[][] arr, int Start, int End)
+        {
+            int i = Start - 1;//represents the small elements
+            int pivot = int.Parse(arr[End][0]);
+
+            for (int j = Start; j < End; j++)
+            {
+                if (int.Parse(arr[j][0]) <= pivot) //if found a smaller num we switch numbers
+                {
+                    i++;// increase index
+
+                    string temp1 = arr[j][0];
+                    arr[j][0] = arr[i][0];
+                    arr[i][0] = temp1;
+                }
+                //now we need to do last switch with last index and last small element
+               
+            }
+            string temp = arr[i+1][0];
+            arr[i+1][0] = arr[End][0];
+            arr[End][0] = temp;
+
+            return i + 1;
+        }
+
+        public static void Sort(string[][] arr, int Start, int End)
+        {
+            if(Start < End)
+            {
+                int pr = Partition(arr, Start, End); //represends the pivot in sorting
+                //calls recursivly for first part until pr and from pr+1 to end
+                Sort(arr, Start, pr - 1);
+                Sort(arr, pr+1, End);
+            }
+        }
+
+
+
     }
 }
