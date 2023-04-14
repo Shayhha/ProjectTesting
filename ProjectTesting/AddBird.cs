@@ -389,9 +389,11 @@ namespace ProjectTesting
                     index++;//increment index 
                 }
                 //now we have an arr with all birds\cages inside, not sorted
-                MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
-                Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));
-                //Sort(arr, 0, arr.Length-1,name);//here we call Sort method 
+                if(name == "cage")
+                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));
+                else
+                    Sort(arr, 0, arr.Length-1);//here we call Sort method 
+
                 index = 0;
                 for (int j = 1; j < size+1; j++) //now we going through the database and update the birds list 
                 {
