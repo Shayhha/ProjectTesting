@@ -94,7 +94,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 7, 14);
                         if (temp.Contains(name))
                         {
-                            string newStr = i.ToString() + ") Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
+                            string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
@@ -108,7 +108,7 @@ namespace ProjectTesting
                         temp = ex.ReadRange(i, 1, 5);
                         if (temp.Contains(name))
                         {
-                            string newStr = i.ToString() + ") Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
+                            string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
                             flag = 1;
                         }
