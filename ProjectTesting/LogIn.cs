@@ -83,16 +83,10 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
             }
 
-            if (MainWindow.UserSheet == "Shay")
-            {
-                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 2).ToString());
-                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 2).ToString());
-            }
-            else
-            {
-                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
-            }
+
+            ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
+            ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+            
             ((MainWindow)this.Parent.Parent).showTopBar();
             ((MainWindow)this.Parent.Parent).showTopPanel();
 
