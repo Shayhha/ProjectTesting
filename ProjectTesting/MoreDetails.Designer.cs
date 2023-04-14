@@ -57,12 +57,34 @@
             addOffspringButton = new Button();
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
+            birdPanel = new Panel();
+            cagePanel = new Panel();
+            listLabel = new Label();
+            birdList = new ListBox();
+            panel3 = new Panel();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            cageValue = new Label();
+            materialValue = new Label();
+            lengthValue = new Label();
+            widthValue = new Label();
+            heightValue = new Label();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            cageLabel = new Label();
+            materialLabel = new Label();
+            lengthLabel = new Label();
+            widthLabel = new Label();
+            heightLabel = new Label();
             panel1.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
+            birdPanel.SuspendLayout();
+            cagePanel.SuspendLayout();
+            panel3.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -78,7 +100,7 @@
             panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(idLabel);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(215, 34);
+            panel1.Location = new Point(167, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(380, 223);
             panel1.TabIndex = 16;
@@ -355,7 +377,7 @@
             // 
             // mainPic
             // 
-            mainPic.Location = new Point(753, 75);
+            mainPic.Location = new Point(705, 44);
             mainPic.Name = "mainPic";
             mainPic.Size = new Size(450, 450);
             mainPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -388,7 +410,7 @@
             offspringsPanel.Controls.Add(offspringList);
             offspringsPanel.Controls.Add(addOffspringButton);
             offspringsPanel.Controls.Add(label8);
-            offspringsPanel.Location = new Point(50, 283);
+            offspringsPanel.Location = new Point(2, 252);
             offspringsPanel.Name = "offspringsPanel";
             offspringsPanel.Size = new Size(680, 285);
             offspringsPanel.TabIndex = 26;
@@ -397,20 +419,196 @@
             // 
             fledglingLabel.AutoSize = true;
             fledglingLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            fledglingLabel.Location = new Point(312, 270);
+            fledglingLabel.Location = new Point(264, 239);
             fledglingLabel.Name = "fledglingLabel";
             fledglingLabel.Size = new Size(181, 25);
             fledglingLabel.TabIndex = 27;
             fledglingLabel.Text = "I am still a fledgling";
             // 
+            // birdPanel
+            // 
+            birdPanel.Controls.Add(panel1);
+            birdPanel.Controls.Add(fledglingLabel);
+            birdPanel.Controls.Add(mainPic);
+            birdPanel.Controls.Add(offspringsPanel);
+            birdPanel.Location = new Point(55, 46);
+            birdPanel.Name = "birdPanel";
+            birdPanel.Size = new Size(1160, 539);
+            birdPanel.TabIndex = 28;
+            // 
+            // cagePanel
+            // 
+            cagePanel.Controls.Add(listLabel);
+            cagePanel.Controls.Add(birdList);
+            cagePanel.Controls.Add(panel3);
+            cagePanel.Location = new Point(18, 39);
+            cagePanel.Name = "cagePanel";
+            cagePanel.Size = new Size(1218, 569);
+            cagePanel.TabIndex = 29;
+            cagePanel.Visible = false;
+            // 
+            // listLabel
+            // 
+            listLabel.AutoSize = true;
+            listLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            listLabel.Location = new Point(192, 189);
+            listLabel.Name = "listLabel";
+            listLabel.Size = new Size(218, 25);
+            listLabel.TabIndex = 2;
+            listLabel.Text = "List of birds in this cage:";
+            // 
+            // birdList
+            // 
+            birdList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            birdList.FormattingEnabled = true;
+            birdList.ItemHeight = 25;
+            birdList.Location = new Point(192, 217);
+            birdList.Name = "birdList";
+            birdList.Size = new Size(867, 279);
+            birdList.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.ButtonShadow;
+            panel3.Controls.Add(flowLayoutPanel5);
+            panel3.Controls.Add(flowLayoutPanel4);
+            panel3.Location = new Point(504, 20);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(243, 141);
+            panel3.TabIndex = 0;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.Controls.Add(cageValue);
+            flowLayoutPanel5.Controls.Add(materialValue);
+            flowLayoutPanel5.Controls.Add(lengthValue);
+            flowLayoutPanel5.Controls.Add(widthValue);
+            flowLayoutPanel5.Controls.Add(heightValue);
+            flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel5.Location = new Point(105, 6);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new Size(120, 139);
+            flowLayoutPanel5.TabIndex = 1;
+            // 
+            // cageValue
+            // 
+            cageValue.AutoSize = true;
+            cageValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cageValue.Location = new Point(3, 0);
+            cageValue.Name = "cageValue";
+            cageValue.Size = new Size(77, 25);
+            cageValue.TabIndex = 1;
+            cageValue.Text = "A5324G";
+            // 
+            // materialValue
+            // 
+            materialValue.AutoSize = true;
+            materialValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            materialValue.Location = new Point(3, 25);
+            materialValue.Name = "materialValue";
+            materialValue.Size = new Size(71, 25);
+            materialValue.TabIndex = 3;
+            materialValue.Text = "WOOD";
+            // 
+            // lengthValue
+            // 
+            lengthValue.AutoSize = true;
+            lengthValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lengthValue.Location = new Point(3, 50);
+            lengthValue.Name = "lengthValue";
+            lengthValue.Size = new Size(32, 25);
+            lengthValue.TabIndex = 5;
+            lengthValue.Text = "35";
+            // 
+            // widthValue
+            // 
+            widthValue.AutoSize = true;
+            widthValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            widthValue.Location = new Point(3, 75);
+            widthValue.Name = "widthValue";
+            widthValue.Size = new Size(32, 25);
+            widthValue.TabIndex = 7;
+            widthValue.Text = "54";
+            // 
+            // heightValue
+            // 
+            heightValue.AutoSize = true;
+            heightValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            heightValue.Location = new Point(3, 100);
+            heightValue.Name = "heightValue";
+            heightValue.Size = new Size(32, 25);
+            heightValue.TabIndex = 9;
+            heightValue.Text = "12";
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(cageLabel);
+            flowLayoutPanel4.Controls.Add(materialLabel);
+            flowLayoutPanel4.Controls.Add(lengthLabel);
+            flowLayoutPanel4.Controls.Add(widthLabel);
+            flowLayoutPanel4.Controls.Add(heightLabel);
+            flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new Point(8, 7);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(95, 126);
+            flowLayoutPanel4.TabIndex = 1;
+            // 
+            // cageLabel
+            // 
+            cageLabel.AutoSize = true;
+            cageLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            cageLabel.Location = new Point(3, 0);
+            cageLabel.Name = "cageLabel";
+            cageLabel.Size = new Size(82, 25);
+            cageLabel.TabIndex = 0;
+            cageLabel.Text = "Cage Id:";
+            // 
+            // materialLabel
+            // 
+            materialLabel.AutoSize = true;
+            materialLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            materialLabel.Location = new Point(3, 25);
+            materialLabel.Name = "materialLabel";
+            materialLabel.Size = new Size(89, 25);
+            materialLabel.TabIndex = 2;
+            materialLabel.Text = "Material:";
+            // 
+            // lengthLabel
+            // 
+            lengthLabel.AutoSize = true;
+            lengthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lengthLabel.Location = new Point(3, 50);
+            lengthLabel.Name = "lengthLabel";
+            lengthLabel.Size = new Size(76, 25);
+            lengthLabel.TabIndex = 4;
+            lengthLabel.Text = "Length:";
+            // 
+            // widthLabel
+            // 
+            widthLabel.AutoSize = true;
+            widthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            widthLabel.Location = new Point(3, 75);
+            widthLabel.Name = "widthLabel";
+            widthLabel.Size = new Size(69, 25);
+            widthLabel.TabIndex = 6;
+            widthLabel.Text = "Width:";
+            // 
+            // heightLabel
+            // 
+            heightLabel.AutoSize = true;
+            heightLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            heightLabel.Location = new Point(3, 100);
+            heightLabel.Name = "heightLabel";
+            heightLabel.Size = new Size(75, 25);
+            heightLabel.TabIndex = 8;
+            heightLabel.Text = "Height:";
+            // 
             // MoreDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(fledglingLabel);
-            Controls.Add(offspringsPanel);
-            Controls.Add(mainPic);
-            Controls.Add(panel1);
+            Controls.Add(cagePanel);
+            Controls.Add(birdPanel);
             Name = "MoreDetails";
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
@@ -423,8 +621,16 @@
             ((System.ComponentModel.ISupportInitialize)mainPic).EndInit();
             offspringsPanel.ResumeLayout(false);
             offspringsPanel.PerformLayout();
+            birdPanel.ResumeLayout(false);
+            birdPanel.PerformLayout();
+            cagePanel.ResumeLayout(false);
+            cagePanel.PerformLayout();
+            panel3.ResumeLayout(false);
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -457,5 +663,22 @@
         private TextBox typeLabel;
         private FlowLayoutPanel flowLayoutPanel3;
         private TextBox dateTextBox;
+        private Panel birdPanel;
+        private Panel cagePanel;
+        private ListBox birdList;
+        private Panel panel3;
+        private FlowLayoutPanel flowLayoutPanel5;
+        private Label cageValue;
+        private Label materialValue;
+        private Label lengthValue;
+        private Label widthValue;
+        private Label heightValue;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Label cageLabel;
+        private Label materialLabel;
+        private Label lengthLabel;
+        private Label widthLabel;
+        private Label heightLabel;
+        private Label listLabel;
     }
 }

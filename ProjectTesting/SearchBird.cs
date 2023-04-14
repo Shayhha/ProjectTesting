@@ -148,6 +148,13 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
                 this.Hide();
             }
+            else if (text.Split(",")[0].Split(" ")[0] == "Cage")
+            {
+                string cageId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
+                ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(cageId, "cage");
+                ((MainWindow)this.Parent.Parent).moreDetails1.Show();
+                this.Hide();
+            }
         }
 
     }
