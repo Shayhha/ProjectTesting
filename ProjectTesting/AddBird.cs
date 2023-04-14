@@ -370,10 +370,10 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                string[][] arr = new string[size - 1][]; //initalize the double array //size is -1 because of our default line in Shay!
+                string[][] arr = new string[size][]; //initalize the double array //size is -1 because of our default line in Shay!
                 int index = 0; //index for array
                
-                for (int i = 2; i < size+1; i++)
+                for (int i = 1; i < size+1; i++)
                 {
                     string[] temp = ex.ReadRange(i, colStart, colEnd);
                     if (name == "cage") //check with max ?
@@ -390,7 +390,7 @@ namespace ProjectTesting
                 MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
                 Sort(arr, 0, arr.Length-1);//here we call Sort method 
                 index = 0;
-                for (int j = 2; j < size+1; j++) //now we going through the database and update the birds list 
+                for (int j = 1; j < size+1; j++) //now we going through the database and update the birds list 
                 {
                     if (name == "cage")
                     {
@@ -416,16 +416,16 @@ namespace ProjectTesting
                 {
                     i++;// increase index
 
-                    string temp1 = arr[j][0];
-                    arr[j][0] = arr[i][0];
-                    arr[i][0] = temp1;
+                    string[] temp1 = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp1;
                 }
                 //now we need to do last switch with last index and last small element
                
             }
-            string temp = arr[i+1][0];
-            arr[i+1][0] = arr[End][0];
-            arr[End][0] = temp;
+            string[] temp = arr[i+1];
+            arr[i+1] = arr[End];
+            arr[End] = temp;
 
             return i + 1;
         }
