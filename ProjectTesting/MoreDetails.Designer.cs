@@ -58,16 +58,22 @@
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
             birdPanel = new Panel();
+            progressBarPanel = new Panel();
+            prograssBarLabel = new Label();
+            progressBar = new ProgressBar();
             cagePanel = new Panel();
+            editPanel = new FlowLayoutPanel();
+            editBtn = new Button();
+            saveBtn = new Button();
             listLabel = new Label();
             birdList = new ListBox();
             panel3 = new Panel();
             flowLayoutPanel5 = new FlowLayoutPanel();
-            cageValue = new Label();
-            materialValue = new Label();
-            lengthValue = new Label();
-            widthValue = new Label();
-            heightValue = new Label();
+            cageValue = new TextBox();
+            materialValue = new TextBox();
+            lengthValue = new TextBox();
+            widthValue = new TextBox();
+            heightValue = new TextBox();
             flowLayoutPanel4 = new FlowLayoutPanel();
             cageLabel = new Label();
             materialLabel = new Label();
@@ -81,7 +87,9 @@
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
             birdPanel.SuspendLayout();
+            progressBarPanel.SuspendLayout();
             cagePanel.SuspendLayout();
+            editPanel.SuspendLayout();
             panel3.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
@@ -427,6 +435,7 @@
             // 
             // birdPanel
             // 
+            birdPanel.Controls.Add(progressBarPanel);
             birdPanel.Controls.Add(panel1);
             birdPanel.Controls.Add(fledglingLabel);
             birdPanel.Controls.Add(mainPic);
@@ -436,16 +445,77 @@
             birdPanel.Size = new Size(1160, 539);
             birdPanel.TabIndex = 28;
             // 
+            // progressBarPanel
+            // 
+            progressBarPanel.BackColor = Color.Moccasin;
+            progressBarPanel.Controls.Add(prograssBarLabel);
+            progressBarPanel.Controls.Add(progressBar);
+            progressBarPanel.Location = new Point(427, 196);
+            progressBarPanel.Name = "progressBarPanel";
+            progressBarPanel.Size = new Size(310, 90);
+            progressBarPanel.TabIndex = 30;
+            progressBarPanel.Visible = false;
+            // 
+            // prograssBarLabel
+            // 
+            prograssBarLabel.AutoSize = true;
+            prograssBarLabel.Location = new Point(37, 10);
+            prograssBarLabel.Name = "prograssBarLabel";
+            prograssBarLabel.Size = new Size(237, 15);
+            prograssBarLabel.TabIndex = 29;
+            prograssBarLabel.Text = "checking your input and saving the data . . .";
+            // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(24, 27);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(261, 50);
+            progressBar.TabIndex = 28;
+            progressBar.Value = 100;
+            // 
             // cagePanel
             // 
+            cagePanel.Controls.Add(editPanel);
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(18, 39);
+            cagePanel.Location = new Point(26, 16);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
             cagePanel.Visible = false;
+            // 
+            // editPanel
+            // 
+            editPanel.Controls.Add(editBtn);
+            editPanel.Controls.Add(saveBtn);
+            editPanel.Location = new Point(748, 117);
+            editPanel.Name = "editPanel";
+            editPanel.Size = new Size(162, 45);
+            editPanel.TabIndex = 5;
+            // 
+            // editBtn
+            // 
+            editBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            editBtn.Location = new Point(3, 3);
+            editBtn.Name = "editBtn";
+            editBtn.Size = new Size(75, 40);
+            editBtn.TabIndex = 3;
+            editBtn.Text = "Edit";
+            editBtn.UseVisualStyleBackColor = true;
+            editBtn.Click += editBtn_Click;
+            // 
+            // saveBtn
+            // 
+            saveBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            saveBtn.Location = new Point(84, 3);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(75, 40);
+            saveBtn.TabIndex = 4;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Visible = false;
+            saveBtn.Click += saveBtn_Click;
             // 
             // listLabel
             // 
@@ -469,7 +539,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.ButtonShadow;
+            panel3.BackColor = SystemColors.ActiveCaption;
             panel3.Controls.Add(flowLayoutPanel5);
             panel3.Controls.Add(flowLayoutPanel4);
             panel3.Location = new Point(504, 20);
@@ -487,58 +557,69 @@
             flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel5.Location = new Point(105, 6);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(120, 139);
+            flowLayoutPanel5.Padding = new Padding(0, 2, 0, 0);
+            flowLayoutPanel5.Size = new Size(132, 134);
             flowLayoutPanel5.TabIndex = 1;
             // 
             // cageValue
             // 
-            cageValue.AutoSize = true;
-            cageValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cageValue.Location = new Point(3, 0);
+            cageValue.BackColor = SystemColors.ActiveCaption;
+            cageValue.BorderStyle = BorderStyle.None;
+            cageValue.Enabled = false;
+            cageValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cageValue.Location = new Point(3, 5);
             cageValue.Name = "cageValue";
-            cageValue.Size = new Size(77, 25);
-            cageValue.TabIndex = 1;
-            cageValue.Text = "A5324G";
+            cageValue.Size = new Size(120, 19);
+            cageValue.TabIndex = 10;
+            cageValue.Text = "A5342G";
             // 
             // materialValue
             // 
-            materialValue.AutoSize = true;
-            materialValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            materialValue.Location = new Point(3, 25);
+            materialValue.BackColor = SystemColors.ActiveCaption;
+            materialValue.BorderStyle = BorderStyle.None;
+            materialValue.Enabled = false;
+            materialValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            materialValue.Location = new Point(3, 30);
             materialValue.Name = "materialValue";
-            materialValue.Size = new Size(71, 25);
-            materialValue.TabIndex = 3;
+            materialValue.Size = new Size(120, 19);
+            materialValue.TabIndex = 11;
             materialValue.Text = "WOOD";
             // 
             // lengthValue
             // 
-            lengthValue.AutoSize = true;
-            lengthValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lengthValue.Location = new Point(3, 50);
+            lengthValue.BackColor = SystemColors.ActiveCaption;
+            lengthValue.BorderStyle = BorderStyle.None;
+            lengthValue.Enabled = false;
+            lengthValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lengthValue.Location = new Point(3, 55);
             lengthValue.Name = "lengthValue";
-            lengthValue.Size = new Size(32, 25);
-            lengthValue.TabIndex = 5;
+            lengthValue.Size = new Size(120, 19);
+            lengthValue.TabIndex = 12;
             lengthValue.Text = "35";
             // 
             // widthValue
             // 
-            widthValue.AutoSize = true;
-            widthValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            widthValue.Location = new Point(3, 75);
+            widthValue.BackColor = SystemColors.ActiveCaption;
+            widthValue.BorderStyle = BorderStyle.None;
+            widthValue.Enabled = false;
+            widthValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            widthValue.Location = new Point(3, 80);
             widthValue.Name = "widthValue";
-            widthValue.Size = new Size(32, 25);
-            widthValue.TabIndex = 7;
-            widthValue.Text = "54";
+            widthValue.Size = new Size(120, 19);
+            widthValue.TabIndex = 13;
+            widthValue.Text = "25";
             // 
             // heightValue
             // 
-            heightValue.AutoSize = true;
-            heightValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            heightValue.Location = new Point(3, 100);
+            heightValue.BackColor = SystemColors.ActiveCaption;
+            heightValue.BorderStyle = BorderStyle.None;
+            heightValue.Enabled = false;
+            heightValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            heightValue.Location = new Point(3, 105);
             heightValue.Name = "heightValue";
-            heightValue.Size = new Size(32, 25);
-            heightValue.TabIndex = 9;
-            heightValue.Text = "12";
+            heightValue.Size = new Size(120, 19);
+            heightValue.TabIndex = 14;
+            heightValue.Text = "68";
             // 
             // flowLayoutPanel4
             // 
@@ -623,8 +704,11 @@
             offspringsPanel.PerformLayout();
             birdPanel.ResumeLayout(false);
             birdPanel.PerformLayout();
+            progressBarPanel.ResumeLayout(false);
+            progressBarPanel.PerformLayout();
             cagePanel.ResumeLayout(false);
             cagePanel.PerformLayout();
+            editPanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
@@ -668,11 +752,6 @@
         private ListBox birdList;
         private Panel panel3;
         private FlowLayoutPanel flowLayoutPanel5;
-        private Label cageValue;
-        private Label materialValue;
-        private Label lengthValue;
-        private Label widthValue;
-        private Label heightValue;
         private FlowLayoutPanel flowLayoutPanel4;
         private Label cageLabel;
         private Label materialLabel;
@@ -680,5 +759,16 @@
         private Label widthLabel;
         private Label heightLabel;
         private Label listLabel;
+        public Panel progressBarPanel;
+        public ProgressBar progressBar;
+        private Label prograssBarLabel;
+        private FlowLayoutPanel editPanel;
+        private Button editBtn;
+        private Button saveBtn;
+        private TextBox cageValue;
+        private TextBox materialValue;
+        private TextBox lengthValue;
+        private TextBox widthValue;
+        private TextBox heightValue;
     }
 }

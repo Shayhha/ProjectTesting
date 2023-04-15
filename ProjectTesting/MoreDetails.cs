@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -111,6 +112,8 @@ namespace ProjectTesting
                     if (tempId == id)
                     {
                         databaseInfo = ex.ReadRange(i, 1, 5);
+                        infoFromDatabase = databaseInfo;
+
                         cageValue.Text = databaseInfo[0];
                         lengthValue.Text = databaseInfo[1];
                         widthValue.Text = databaseInfo[2];
@@ -184,20 +187,34 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi()
+        private string[] getTextFromUi(string birdOrCage = "bird")
         {
-            string[] birdInfo = new string[9];
+            string[] info = null;
+            if (birdOrCage == "bird")
+            {
+                info = new string[9];
 
-            birdInfo[0] = idLabel.Text.ToString();
-            birdInfo[1] = typeLabel.Text.ToString();
-            birdInfo[2] = subTypeLabel.Text.ToString();
-            birdInfo[3] = dateLabel.Text.ToString();
-            birdInfo[4] = genderLabel.Text.ToString();
-            birdInfo[5] = cageIdLabel.Text.ToString();
-            birdInfo[6] = dadIdLabel.Text.ToString();
-            birdInfo[7] = momIdLabel.Text.ToString();
+                info[0] = idLabel.Text.ToString();
+                info[1] = typeLabel.Text.ToString();
+                info[2] = subTypeLabel.Text.ToString();
+                info[3] = dateLabel.Text.ToString();
+                info[4] = genderLabel.Text.ToString();
+                info[5] = cageIdLabel.Text.ToString();
+                info[6] = dadIdLabel.Text.ToString();
+                info[7] = momIdLabel.Text.ToString();
 
-            return birdInfo;
+            }
+            else if (birdOrCage == "cage")
+            {
+                info = new string[5];
+
+                info[0] = cageValue.Text.ToString();
+                info[1] = lengthValue.Text.ToString();
+                info[2] = widthValue.Text.ToString();
+                info[3] = heightValue.Text.ToString();
+                info[4] = materialValue.Text.ToString();
+            }
+            return info;
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -229,8 +246,12 @@ namespace ProjectTesting
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            progressBarPanel.Visible = true;
+            progressBar.Value = 0;
+
             editButton.Show();
             saveButton.Hide();
+
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
             subTypeLabel.ReadOnly = true;
@@ -250,24 +271,24 @@ namespace ProjectTesting
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
 
+            progressBar.Value = 25;
+
             string[] newInfo = getTextFromUi();
             string[] cleanUp = new string[9];
+            for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
 
-            for (int i = 0; i < 9; i++)
-            {
-                cleanUp[i] = "";
-            }
 
             if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 int row = ex.GetLastRow(7);
-                MessageBox.Show("Add a loading bar or circle for the users to know that the saving is in progress");
 
                 for (int i = 1; i < row; i++)
                 {
                     if (ex.ReadCell("G" + i) == infoFromDatabase[0])
                     {
+
+                        progressBar.Value = 100;
                         newInfo[8] = ex.ReadCell("O" + i);
                         ex.WriteRange(i, 7, 15, newInfo);
                         ex.WriteRange(row - 1, 7, 15, cleanUp);
@@ -282,8 +303,91 @@ namespace ProjectTesting
                         momIdLabel.Text = newInfo[7];
                     }
                 }
+                progressBarPanel.Visible = false;
                 ex.Quit();
             }
+            else
+            {
+                idLabel.Text = infoFromDatabase[0];
+                typeLabel.Text = infoFromDatabase[1];
+                subTypeLabel.Text = infoFromDatabase[2];
+                dateTextBox.Text = infoFromDatabase[3];
+                genderLabel.Text = infoFromDatabase[4];
+                cageIdLabel.Text = infoFromDatabase[5];
+                dadIdLabel.Text = infoFromDatabase[6];
+                momIdLabel.Text = infoFromDatabase[7];
+            }
         }
+
+        private void editBtn_Click(object sender, EventArgs e) // for cage
+        {
+            editBtn.Visible = false;
+            saveBtn.Visible = true;
+
+            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+
+            cageValue.ReadOnly = false;
+            materialValue.ReadOnly = false;
+            lengthValue.ReadOnly = false;
+            widthValue.ReadOnly = false;
+            heightValue.ReadOnly = false;
+
+            cageValue.Enabled = true;
+            materialValue.Enabled = true;
+            lengthValue.Enabled = true;
+            widthValue.Enabled = true;
+            heightValue.Enabled = true;
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e) // for cage
+        {
+            editBtn.Visible = true;
+            saveBtn.Visible = false;
+
+            cageValue.ReadOnly = true;
+            materialValue.ReadOnly = true;
+            lengthValue.ReadOnly = true;
+            widthValue.ReadOnly = true;
+            heightValue.ReadOnly = true;
+
+            cageValue.Enabled = false;
+            materialValue.Enabled = false;
+            lengthValue.Enabled = false;
+            widthValue.Enabled = false;
+            heightValue.Enabled = false;
+
+            string[] newInfo = getTextFromUi("cage");
+            string[] cleanUp = new string[9];
+            for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
+
+            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUi("cage"), true) == true)
+            {
+                Excel ex = new Excel("database", MainWindow.UserSheet);
+                int row = ex.GetLastRow();
+
+                for (int i = 1; i < row; i++)
+                {
+                    if (ex.ReadCell("A" + i) == infoFromDatabase[0])
+                    {
+
+                        //progressBar.Value = 100;
+                        ex.WriteRange(i, 1, 5, newInfo);
+                        ex.WriteRange(row - 1, 1, 5, cleanUp);
+
+
+                    }
+                }
+                ex.Quit();
+            }
+            else
+            {
+                cageValue.Text = infoFromDatabase[0];
+                lengthValue.Text = infoFromDatabase[1];
+                widthValue.Text = infoFromDatabase[2];
+                heightValue.Text = infoFromDatabase[3];
+                materialValue.Text = infoFromDatabase[4];
+            }
+        }
+
     }
 }

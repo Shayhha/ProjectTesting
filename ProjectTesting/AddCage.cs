@@ -22,9 +22,8 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private bool getInfoFromUser()
+        private string[] getTextFromUi()
         {
-
             string[] cageInfo = new string[5];
 
             cageInfo[0] = idBox.Text.ToString();
@@ -33,6 +32,11 @@ namespace ProjectTesting
             cageInfo[3] = heightBox.Text.ToString();
             cageInfo[4] = materialBox.Text.ToString();
 
+            return cageInfo;
+        }
+
+        public bool getInfoFromUser(string[] cageInfo, bool edited = false)
+        {
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number
@@ -47,8 +51,8 @@ namespace ProjectTesting
             }
 
             if (cageInfo[4] == "Wood" || cageInfo[4] == "wood") { cageInfo[4] = "WOOD"; }
-            if (cageInfo[4] == "Metal" || cageInfo[4] == "metal") { cageInfo[4] = "METAL"; }
-            if (cageInfo[4] == "Plastic" || cageInfo[4] == "plastic") { cageInfo[4] = "PLASTIC"; }
+            else if (cageInfo[4] == "Metal" || cageInfo[4] == "metal") { cageInfo[4] = "METAL"; }
+            else if (cageInfo[4] == "Plastic" || cageInfo[4] == "plastic") { cageInfo[4] = "PLASTIC"; }
 
             if (flag == 0)
             {
@@ -74,18 +78,22 @@ namespace ProjectTesting
                 return false;
             }
 
-            if (!checkCageId(cageInfo[0])) 
+            if (!edited)
             {
-                CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
-                return false; 
+                if (!checkCageId(cageInfo[0]))
+                {
+                    CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
+                    return false;
+                }
             }
-            else
-            {
-                Excel ex = new Excel("database", MainWindow.UserSheet);
-                ex.WriteRange(ex.GetLastRow(), 1, 5, cageInfo);
+
+            
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            ex.WriteRange(ex.GetLastRow(), 1, 5, cageInfo);
+            if (!edited)
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-                ex.Quit();
-            }
+            ex.Quit();
+            
 
             return true;
             
@@ -157,7 +165,7 @@ namespace ProjectTesting
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (getInfoFromUser())
+            if (getInfoFromUser(getTextFromUi()))
             {
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
