@@ -91,7 +91,7 @@ namespace ProjectTesting
 
                 if (!edited) // edited will be true only if the user is adding a new bird, when the user edits an existing bird it will be false
                 {
-                    if (!checkBirdId(birdInfo[0])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
+                    if (!checkBirdId(birdInfo[0], birdInfo[6], birdInfo[7])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
                 }
                 
                 if (birdInfo[6] != "")
@@ -110,6 +110,8 @@ namespace ProjectTesting
                         flag = 1;
                     }
                 }
+
+
             }
             ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 75;
 
@@ -142,7 +144,7 @@ namespace ProjectTesting
             momBox.Text = "";
         }
 
-        private bool checkBirdId(string birdId)
+        private bool checkBirdId(string birdId, string dadId = "", string momId = "")
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
             int row = ex.GetLastRow(7);
@@ -156,6 +158,18 @@ namespace ProjectTesting
                     CustomMessageBox.Show("The bird you are trying to add already exists in the database, try a different id.", "Error");
                     ex.Quit();
                     return false;
+                }
+                else if (dadId != "" && momId != "")
+                {
+                    if (idValue == dadId || idValue == momId)
+                    {
+                        if (ex.ReadCell("O" + i.ToString()) == "yes")
+                        {
+                            CustomMessageBox.Show("Dad's id is an id of a fledgiling, he cannot yet be a dad.", "Dad Id Error");
+                            ex.Quit();
+                            return false;
+                        } 
+                    }
                 }
             }
             ex.Quit();

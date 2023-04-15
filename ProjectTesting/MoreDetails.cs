@@ -374,7 +374,19 @@ namespace ProjectTesting
                         ex.WriteRange(i, 1, 5, newInfo);
                         ex.WriteRange(row - 1, 1, 5, cleanUp);
 
+                    }
+                }
 
+                if (infoFromDatabase[0] != cageValue.Text) //this means that the id was changed, now we change the chage id for the birds
+                {
+                    row = ex.GetLastRow(7);
+
+                    for (int i = 1; i < row; i++)
+                    {
+                        if (ex.ReadCell("L" + i) == infoFromDatabase[0])
+                        {
+                            ex.WriteCell("L" + i.ToString(), cageValue.Text);
+                        }
                     }
                 }
                 ex.Quit();
