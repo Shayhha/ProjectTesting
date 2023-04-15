@@ -90,6 +90,7 @@ namespace ProjectTesting
                 {
                     searchBird1.Search_textbox.Text = "";
                     moreDetails1.Hide();
+                    hideBackBtn();
                     homePage1.Show();
                     homePage1.OneOption = false;
                 }
