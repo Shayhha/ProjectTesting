@@ -294,6 +294,17 @@ namespace ProjectTesting
                 progressBarPanel.Visible = false;
                 ex.Quit();
             }
+            else
+            {
+                idLabel.Text = infoFromDatabase[0];
+                typeLabel.Text = infoFromDatabase[1];
+                subTypeLabel.Text = infoFromDatabase[2];
+                dateTextBox.Text = infoFromDatabase[3];
+                genderLabel.Text = infoFromDatabase[4];
+                cageIdLabel.Text = infoFromDatabase[5];
+                dadIdLabel.Text = infoFromDatabase[6];
+                momIdLabel.Text = infoFromDatabase[7];
+            }
         }
     }
 }

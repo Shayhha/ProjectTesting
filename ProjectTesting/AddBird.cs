@@ -81,9 +81,10 @@ namespace ProjectTesting
                     errorMessage = "The bird id must ONLY contain numbers.";
                     flag = 1;
                 }
-                else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
+                else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
+                    ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false;
                     CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try one of these: " + findValidCageIds(), "Error");
                     return false;
                 }
@@ -93,7 +94,7 @@ namespace ProjectTesting
                 }
                 if (!edited) // edited will be true only if the user is adding a new bird, when the user edits an existing bird it will be false
                 {
-                    if (!checkBirdId(birdInfo[0])) { return false; }
+                    if (!checkBirdId(birdInfo[0])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
                 }
                 else if (birdInfo[6] != "")
                 {
@@ -116,7 +117,7 @@ namespace ProjectTesting
 
             if (flag == 1)
             {
-                ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; //////!!!!!!!!!!!!
+                ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; 
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
