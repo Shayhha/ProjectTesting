@@ -42,13 +42,14 @@ namespace ProjectTesting
 
         private void SearchRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            e.ToolTipSize = new Size(440, 120);
+            e.ToolTipSize = new Size(400, 85);
         }
 
 
 
-        public bool Search(string name, string combo)
+        public int Search(string name, string combo) //remeber this method was boolean
         {
+            birdList.Hide();
             Excel ex = new Excel("database", MainWindow.UserSheet);
             int size = 0;
             string[] temp = null;
@@ -59,25 +60,25 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("You have to write somthing in search box and choose search type!", "Search Error");
                 ex.Quit();
-                return false;
+                return -1;
             }
             else if (combo == "")
             {
                 CustomMessageBox.Show("Choose search type!", "Type Error");
                 ex.Quit();
-                return false;
+                return -1;
             }
             else if (name == "")
             {
                 CustomMessageBox.Show("Search field empty!", "Search Error");
                 ex.Quit();
-                return false;
+                return -1;
             }
             else if (!DefaultCombo.Contains(combo))
             {
                 CustomMessageBox.Show("There's no search type named \"" + combo + "\" \n(Please choose a search type from the box with the arrow)", "Error");
                 ex.Quit();
-                return false;
+                return -1;
             }
             else
             {
@@ -91,26 +92,35 @@ namespace ProjectTesting
 
                     for (int i = 1; i < size; i++)
                     {
-                        temp = ex.ReadRange(i, 7, 14);
-                        if (temp.Contains(name))
+                        temp = ex.ReadRange(i, 7, 12);
+                        string[] searchTemp = { temp[0], temp[1], temp[2], temp[3], temp[4] };//only searching specific things
+                        if (searchTemp.Contains(name))
                         {
                             string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
                             birdList.Items.Add(newStr);
-                            flag = 1;
+                            flag++;
                         }
                     }
                 }
                 else if (combo == "Cage")
                 {
                     size = ex.GetLastRow(1);
+                    if (name.ToUpper() == "WOOD")
+                        name = "WOOD";
+                    else if (name.ToUpper() == "METAL")
+                        name = "METAL";
+                    else if (name.ToUpper() == "PLASTIC")
+                        name = "PLASTIC";
+
                     for (int i = 1; i < size; i++)
                     {
                         temp = ex.ReadRange(i, 1, 5);
-                        if (temp.Contains(name))
+                        string[] searchTemp = { temp[0], temp[4] }; //only searching specific things
+                        if (searchTemp.Contains(name))
                         {
                             string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
                             birdList.Items.Add(newStr);
-                            flag = 1;
+                            flag++;
                         }
                     }
                 }
@@ -120,10 +130,19 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("No matching results for \"" + name + "\"", "Search Error");
                 ex.Quit();
-                return false;
+                return -1;
+            }
+            else if (flag == 1)
+            {
+               //if we have only one search result
+                return 1;
+            }
+            else
+            {
+                birdList.Show();
             }
             ex.Quit();
-            return true;
+            return 0;
         }
 
         private void Search_button_Click(object sender, EventArgs e)
@@ -131,7 +150,14 @@ namespace ProjectTesting
             string name = Search_textbox.Text;
             ClearList();
             string combo = comboBox.Text;
-            Search(name, combo);
+            int SearchResult = Search(name, combo);
+            if (SearchResult == 1)
+            {
+                string text = birdList.Items[0].ToString(); //gets text in selected index
+                ItemSelected(text);
+                ClearList();
+            }
+            
         }
         public void ClearList() //clears all items in list 
         {
@@ -141,6 +167,11 @@ namespace ProjectTesting
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
             string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
+            ItemSelected(text);
+        }
+
+        public void ItemSelected(string text)
+        {
             if (text.Split(",")[0].Split(" ")[0] == "Bird")
             {
                 string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method

@@ -86,9 +86,19 @@ namespace ProjectTesting
             }
             else if (moreDetails1.Visible == true)
             {
-                searchBird1.Search_textbox.Text = "";
-                moreDetails1.Hide();
-                searchBird1.Show();
+                if (homePage1.OneOption == true)
+                {
+                    searchBird1.Search_textbox.Text = "";
+                    moreDetails1.Hide();
+                    homePage1.Show();
+                    homePage1.OneOption = false;
+                }
+                else
+                {
+                    searchBird1.Search_textbox.Text = "";
+                    moreDetails1.Hide();
+                    searchBird1.Show();
+                }
             }
         }
 

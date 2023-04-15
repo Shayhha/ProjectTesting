@@ -35,6 +35,7 @@
             Search_button = new Button();
             colorDialog1 = new ColorDialog();
             comboBox = new ComboBox();
+            tempListBox = new ListBox();
             SuspendLayout();
             // 
             // birdList
@@ -46,7 +47,7 @@
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
             birdList.Location = new Point(23, 165);
             birdList.Name = "birdList";
-            birdList.Size = new Size(1215, 420);
+            birdList.Size = new Size(1215, 356);
             birdList.TabIndex = 0;
             birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
@@ -79,7 +80,6 @@
             label2.Size = new Size(769, 20);
             label2.TabIndex = 4;
             label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
-            
             // 
             // Search_button
             // 
@@ -104,6 +104,17 @@
             comboBox.Size = new Size(87, 28);
             comboBox.TabIndex = 14;
             // 
+            // tempListBox
+            // 
+            tempListBox.Cursor = Cursors.Hand;
+            tempListBox.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            tempListBox.FormattingEnabled = true;
+            tempListBox.ItemHeight = 32;
+            tempListBox.Location = new Point(23, 165);
+            tempListBox.Name = "tempListBox";
+            tempListBox.Size = new Size(1215, 356);
+            tempListBox.TabIndex = 15;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -115,6 +126,7 @@
             Controls.Add(Search_label);
             Controls.Add(Search_textbox);
             Controls.Add(birdList);
+            Controls.Add(tempListBox);
             Name = "SearchBird";
             Size = new Size(1264, 611);
             ResumeLayout(false);
@@ -123,12 +135,13 @@
 
         #endregion
 
-        private ListBox birdList;
+        public ListBox birdList;
         public TextBox Search_textbox;
         private Label Search_label;
         private Label label2;
         private Button Search_button;
         private ColorDialog colorDialog1; // what is this? *****************
         private ComboBox comboBox;
+        private ListBox tempListBox;
     }
 }

@@ -282,9 +282,13 @@ namespace ProjectTesting
                     {
                         errorMessage = "Parents must have same type!";
                     }
+                    else if (temp[7] == "yes")
+                    {
+                        errorMessage = "Parents must be adults!";
+                    }
                     else if (temp[2] != subTypeBox.Text)
                     {
-                        errorMessage = "Parents must have same dubtype!";
+                        errorMessage = "Parents must have same subtype!";
                     }
                     break;
                 }
@@ -386,8 +390,10 @@ namespace ProjectTesting
                     string[] temp = ex.ReadRange(i, colStart, colEnd);
                     if (name == "cage") //check with max ?
                     {
-                        string copyOfID = Regex.Replace(temp[0], "[^0-9]", ""); ;//saving id in new var without letters for sort
-                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], copyOfID };//new temp2 for cages added original id
+                        string ID = temp[0]; //saving id in new var
+                        char farLeftChar = ID[0]; //saves the msb of id string
+                        int asciiId = (int)farLeftChar; //saves ascii value in var
+                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], asciiId.ToString() };//new temp2 for cages added ascii char
                         arr[index] = temp2;
                     }
                     else //else we're using bird id so we are fine
@@ -395,8 +401,11 @@ namespace ProjectTesting
                     index++;//increment index 
                 }
                 //now we have an arr with all birds\cages inside, not sorted
-                MessageBox.Show(arr[0][0] + " " + arr[1][0] + " " + arr[2][0] + " "+arr[3][0]  +  " " + arr.Length);
-                Sort(arr, 0, arr.Length-1);//here we call Sort method 
+                if(name == "cage")
+                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));// using lambda to sort cages 
+                else
+                    Sort(arr, 0, arr.Length-1);//here we call Sort method 
+
                 index = 0;
                 for (int j = 1; j < size+1; j++) //now we going through the database and update the birds list 
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace ProjectTesting
 {
     public partial class HomePage : UserControl
     {
+        public bool OneOption = false;//if false we have more then one option
         public HomePage()
         {
             InitializeComponent();
@@ -42,15 +44,22 @@ namespace ProjectTesting
 
         private void SearchRequirementsToolTip_Popup(object sender, PopupEventArgs e) //sets size of ToolTip
         {
-            e.ToolTipSize = new Size(440, 120);
+            e.ToolTipSize = new Size(400, 85);
         }
 
         private void Search_button_Click(object sender, EventArgs e)
         {
+            
+            Stopwatch stopwatch = new Stopwatch();
+
+            // Start the stopwatch
+            stopwatch.Start();
+
             string name = Search_textbox.Text;
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
             string combo = comboBox.Text;
-            if (((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo) == true)
+            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo); 
+            if (SearchResult == 0)
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
                 ((MainWindow)this.Parent.Parent).showBackBtn();
@@ -58,7 +67,40 @@ namespace ProjectTesting
                 comboBox.SelectedIndex = 0;
                 this.Hide();
             }
+            else if (SearchResult == 1)
+            {
+                OneOption = true;
+                string text = ((MainWindow)this.Parent.Parent).searchBird1.birdList.Items[0].ToString(); //gets text in selected index
+                ItemSelected(text);
+                ((MainWindow)this.Parent.Parent).showBackBtn();
+                ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+            }
+            // Stop the stopwatch
+            stopwatch.Stop();
 
+            // Get the elapsed time as a TimeSpan object
+            TimeSpan elapsed = stopwatch.Elapsed;
+
+            // Print the elapsed time in milliseconds
+            MessageBox.Show("Elapsed time: " + elapsed.TotalMilliseconds + " ms");
+        }
+
+        public void ItemSelected(string text)
+        {
+            if (text.Split(",")[0].Split(" ")[0] == "Bird")
+            {
+                string birdId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
+                ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(birdId);
+                ((MainWindow)this.Parent.Parent).moreDetails1.Show();
+                this.Hide();
+            }
+            else if (text.Split(",")[0].Split(" ")[0] == "Cage")
+            {
+                string cageId = text.Split(",")[0].Split(" ")[2].ToString(); //gets the bird id using split method
+                ((MainWindow)this.Parent.Parent).moreDetails1.initLabels(cageId, "cage");
+                ((MainWindow)this.Parent.Parent).moreDetails1.Show();
+                this.Hide();
+            }
         }
 
         private void HomePage_Load(object sender, EventArgs e)
@@ -109,12 +151,14 @@ namespace ProjectTesting
         private void Cage_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addCage1.Show();
+            comboBox.SelectedIndex = 0;
             this.Hide();
         }
 
         private void Bird_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addBird1.Show();
+            comboBox.SelectedIndex = 0;
             this.Hide();
         }
     }
