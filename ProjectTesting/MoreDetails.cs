@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -229,8 +230,12 @@ namespace ProjectTesting
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            progressBarPanel.Visible = true;
+            progressBar.Value = 0;
+
             editButton.Show();
             saveButton.Hide();
+
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
             subTypeLabel.ReadOnly = true;
@@ -250,8 +255,7 @@ namespace ProjectTesting
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
 
-            progressBarPanel.Visible = true;
-            progressBar.Value = 0;
+            progressBar.Value = 25;
 
             string[] newInfo = getTextFromUi();
             string[] cleanUp = new string[9];
@@ -261,16 +265,17 @@ namespace ProjectTesting
                 cleanUp[i] = "";
             }
 
+
             if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 int row = ex.GetLastRow(7);
-                progressBar.Value += 10;
 
                 for (int i = 1; i < row; i++)
                 {
                     if (ex.ReadCell("G" + i) == infoFromDatabase[0])
                     {
+
                         progressBar.Value = 100;
                         newInfo[8] = ex.ReadCell("O" + i);
                         ex.WriteRange(i, 7, 15, newInfo);

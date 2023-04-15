@@ -443,18 +443,19 @@
             // 
             // progressBarPanel
             // 
+            progressBarPanel.BackColor = Color.Moccasin;
             progressBarPanel.Controls.Add(prograssBarLabel);
             progressBarPanel.Controls.Add(progressBar);
             progressBarPanel.Location = new Point(427, 196);
             progressBarPanel.Name = "progressBarPanel";
-            progressBarPanel.Size = new Size(310, 81);
+            progressBarPanel.Size = new Size(310, 90);
             progressBarPanel.TabIndex = 30;
             progressBarPanel.Visible = false;
             // 
             // prograssBarLabel
             // 
             prograssBarLabel.AutoSize = true;
-            prograssBarLabel.Location = new Point(37, 7);
+            prograssBarLabel.Location = new Point(37, 10);
             prograssBarLabel.Name = "prograssBarLabel";
             prograssBarLabel.Size = new Size(237, 15);
             prograssBarLabel.TabIndex = 29;
@@ -462,7 +463,7 @@
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(24, 23);
+            progressBar.Location = new Point(24, 27);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(261, 50);
             progressBar.TabIndex = 28;
@@ -473,7 +474,7 @@
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(12, 16);
+            cagePanel.Location = new Point(22, 575);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
