@@ -134,7 +134,8 @@ namespace ProjectTesting
             }
             else if (flag == 1)
             {
-               //if we have only one search result
+                //if we have only one search result
+                ex.Quit();
                 return 1;
             }
             else
