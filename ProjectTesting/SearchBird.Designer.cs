@@ -135,7 +135,7 @@
 
         #endregion
 
-        private ListBox birdList;
+        public ListBox birdList;
         public TextBox Search_textbox;
         private Label Search_label;
         private Label label2;
