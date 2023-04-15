@@ -40,16 +40,6 @@ namespace ProjectTesting
 
         public bool getInfoFromUser(string[] birdInfo, string isOffspring, bool edited = false)
         {
-            //string[] birdInfo = new string[9];
-
-            //birdInfo[0] = idBox.Text.ToString();
-            //birdInfo[1] = typeBox.Text.ToString();
-            //birdInfo[2] = subTypeBox.Text.ToString();
-            //birdInfo[3] = dateBox.Text.ToString();
-            //birdInfo[4] = genderBox.Text.ToString();
-            //birdInfo[5] = cageIdBox.Text.ToString();
-            //birdInfo[6] = dadBox.Text.ToString();
-            //birdInfo[7] = momBox.Text.ToString();
             birdInfo[8] = isOffspring; // can be "yes" or "no"
 
             int flag = 0;
@@ -63,6 +53,12 @@ namespace ProjectTesting
                     errorMessage = "Please enter all of the information into the form. (dad's id and mom's id are optional)";
                     flag = 1;
                 }
+            }
+
+            if (!edited)
+            {
+                if (dadBox.Text == "") { birdInfo[6] = "0"; }
+                if (momBox.Text == "") { birdInfo[7] = "0"; }
             }
 
             if (birdInfo[4] == "m" || birdInfo[4] == "male")
@@ -92,11 +88,13 @@ namespace ProjectTesting
                 { 
                     ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 50;
                 }
+
                 if (!edited) // edited will be true only if the user is adding a new bird, when the user edits an existing bird it will be false
                 {
                     if (!checkBirdId(birdInfo[0])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
                 }
-                else if (birdInfo[6] != "")
+                
+                if (birdInfo[6] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[6], idPattern)))
                     {
@@ -125,7 +123,8 @@ namespace ProjectTesting
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 ex.WriteRange(ex.GetLastRow(7), 7, 15, birdInfo);
-                ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+                if (!edited)
+                    ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
                 ex.Quit();
                 return true;
             }
