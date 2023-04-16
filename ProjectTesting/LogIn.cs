@@ -18,12 +18,7 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private void SignUp1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
+       
         private void LogIn_button_Click(object sender, EventArgs e)
         {
             string username = UserName_textbox.Text;
@@ -69,7 +64,6 @@ namespace ProjectTesting
 
         private void LoggedIn() //opens the homepage
         {
-            MainWindow.InitHashtable(); //initialize the hashtable!!
             Excel ex = new Excel("database", MainWindow.UserSheet);
             if (ex.ReadCell("A1") == "")
             {
@@ -91,6 +85,7 @@ namespace ProjectTesting
             ex.Quit();//closes the database excel
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
+            MainWindow.InitHashtable(); //initializing the hashtable!!
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)

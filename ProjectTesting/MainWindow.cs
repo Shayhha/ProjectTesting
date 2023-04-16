@@ -5,6 +5,7 @@ namespace ProjectTesting
     public partial class MainWindow : Form
     {
         public static string UserSheet = ""; //this represents the logged in user sheet name
+        public static CustomHashtable HashTable = null;
 
         public MainWindow()
         {
@@ -20,23 +21,23 @@ namespace ProjectTesting
         {
             //sort the database first
             SortExcel("bird");
-            SortExcel("cage"); // doesnt work, needs work!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            SortExcel("cage");
             Excel ex = new Excel("database", UserSheet);
             int BirdSize = ex.GetLastRow(7);
             int CageSize = ex.GetLastRow(1);
-            CustomHashtable BirdHashtable = new CustomHashtable(); //initialize out hashtables
+            HashTable = new CustomHashtable(); //initialize our hashtables
 
             //add birds to bird hashtable
             for (int i = 1; i < BirdSize; i++)
             {
                 string[] temp = ex.ReadRange(i, 7, 15);
-                BirdHashtable.AddBirdToHashtable(temp);
+                HashTable.AddBirdToHashtable(temp);
             }
             //add cages to cage hashtable
             for (int i = 1; i < CageSize; i++)
             {
                 string[] temp = ex.ReadRange(i, 1, 5);
-                BirdHashtable.AddCageToHashtable(temp);
+                HashTable.AddCageToHashtable(temp);
             }
             ex.Quit();
         }
@@ -146,13 +147,13 @@ namespace ProjectTesting
             Excel ex = new Excel("database", UserSheet);
             if (name == "bird")
             {
-                size = ex.GetLastRow(7) - 1;
+                size = ex.GetLastRow(7)-1;
                 colStart = 7;
                 colEnd = 15;
             }
             else if (name == "cage")
             {
-                size = ex.GetLastRow(1) - 1;
+                size = ex.GetLastRow(1)-1;
                 colStart = 1;
                 colEnd = 5;
             }
