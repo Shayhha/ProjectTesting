@@ -35,7 +35,7 @@ namespace ProjectTesting
             //add cages to cage hashtable
             for (int i = 1; i < CageSize; i++)
             {
-                string[] temp = ex.ReadRange(i, 1, 6);
+                string[] temp = ex.ReadRange(i, 1, 5);
                 BirdHashtable.AddCageToHashtable(temp);
             }
         }
