@@ -20,7 +20,7 @@ namespace ProjectTesting
         {
             //sort the database first
             SortExcel("bird");
-            SortExcel("cage"); // doesnt work, needs work!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            SortExcel("cage"); 
             Excel ex = new Excel("database", UserSheet);
             int BirdSize = ex.GetLastRow(7);
             int CageSize = ex.GetLastRow(1);
