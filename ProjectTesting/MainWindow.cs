@@ -25,7 +25,8 @@ namespace ProjectTesting
             Excel ex = new Excel("database", UserSheet);
             int BirdSize = ex.GetLastRow(7);
             int CageSize = ex.GetLastRow(1);
-            HashTable = new CustomHashtable(); //initialize our hashtables
+            //first initializing happens in login
+            //HashTable = new CustomHashtable(); //initialize our hashtables
 
             //add birds to bird hashtable
             for (int i = 1; i < BirdSize; i++)

@@ -10,6 +10,8 @@ namespace ProjectTesting
     {
         private Dictionary<string, List<string[]>> birdHashtable = new Dictionary<string, List<string[]>>();
         private Dictionary<string, List<string[]>> cageHashtable = new Dictionary<string, List<string[]>>();
+        private Dictionary<string, List<string[]>> userHashtable = new Dictionary<string, List<string[]>>();
+
 
         public void AddBirdToHashtable(string[] bird)
         {
@@ -39,6 +41,20 @@ namespace ProjectTesting
             }
         }
 
+        public void AddUserToHashtable(string[] user)
+        {
+            string[] userKeyOptions = { user[0]};
+
+            foreach (string userKey in userKeyOptions)
+            {
+                if (!userHashtable.ContainsKey(userKey))
+                {
+                    userHashtable[userKey] = new List<string[]>();
+                }
+                userHashtable[userKey].Add(user);
+            }
+        }
+
         public List<string[]> SearchBirdHashtable(string searchType)
         {
             if (birdHashtable.ContainsKey(searchType))
@@ -60,6 +76,21 @@ namespace ProjectTesting
             else
             {
                 return new List<string[]>();
+            }
+        }
+
+        public List<string[]> SearchUserHashtable(string searchType)
+        {
+            if (userHashtable.ContainsKey(searchType))
+            {
+                return userHashtable[searchType];
+            }
+            else
+            {
+                List<string[]> list = new List<string[]>();
+                string[] default1 = { "" };
+                list.Add(default1);
+                return list;
             }
         }
     }
