@@ -26,6 +26,9 @@ namespace ProjectTesting
             SearchRequirementsToolTip.Draw += SearchRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
             SearchRequirementsToolTip.Popup += SearchRequirementsToolTip_Popup;
             SearchRequirementsToolTip.SetToolTip(Search_textbox, text);
+            //initialize hashtable
+            //MainWindow.InitHashtable();
+
 
         }
 

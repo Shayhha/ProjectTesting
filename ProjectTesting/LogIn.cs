@@ -67,11 +67,9 @@ namespace ProjectTesting
             ex.Quit(); //after we logged in we close users excel
         }
 
-        private void LoggedIn() //opens the 
+        private void LoggedIn() //opens the homepage
         {
-
-
-
+            MainWindow.InitHashtable(); //initialize the hashtable!!
             Excel ex = new Excel("database", MainWindow.UserSheet);
             if (ex.ReadCell("A1") == "")
             {
