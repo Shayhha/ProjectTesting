@@ -16,6 +16,30 @@ namespace ProjectTesting
             hideTopPanel();
         }
 
+        public void InitHashtable()
+        {
+            Excel ex = new Excel("database", UserSheet);
+            int BirdSize = ex.GetLastRow(7);
+            int CageSize = ex.GetLastRow(1);
+            CustomHashtable BirdHashtable = new CustomHashtable(); //initialize out hashtables
+
+            //sort the database first
+            SortExcel("bird");
+            SortExcel("cage");
+            //add birds to bird hashtable
+            for (int i = 1; i < BirdSize; i++)
+            {
+                string[] temp = ex.ReadRange(i, 7, 15);
+                BirdHashtable.AddBirdToHashtable(temp);
+            }
+            //add cages to cage hashtable
+            for (int i = 1; i < CageSize; i++)
+            {
+                string[] temp = ex.ReadRange(i, 1, 6);
+                BirdHashtable.AddCageToHashtable(temp);
+            }
+        }
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //SignUp1.Hide();
@@ -108,6 +132,110 @@ namespace ProjectTesting
             UserDash dash = new UserDash();
             dash.initDash();
             dash.Show();
+        }
+
+
+        //helper function for program, QuickSort and SortExcel function
+        public static void SortExcel(string name) //name can be "bird" or "cage"
+        {
+            int size = 1; //default value
+            int colStart = 7;  //default value
+            int colEnd = 15; //default vaule
+            int flag = 0;
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            if (name == "bird")
+            {
+                size = ex.GetLastRow(7) - 1;
+                colStart = 7;
+                colEnd = 15;
+            }
+            else if (name == "cage")
+            {
+                size = ex.GetLastRow(1) - 1;
+                colStart = 1;
+                colEnd = 5;
+            }
+            else //means we got invalid string for operation, we do nothing
+            {
+                flag = 1;
+            }
+
+            if (flag == 0)
+            {
+                string[][] arr = new string[size][]; //initalize the double array //size is -1 because of our default line in Shay!
+                int index = 0; //index for array
+
+                for (int i = 1; i < size + 1; i++)
+                {
+                    string[] temp = ex.ReadRange(i, colStart, colEnd);
+                    if (name == "cage") //check with max ?
+                    {
+                        string ID = temp[0]; //saving id in new var
+                        char farLeftChar = ID[0]; //saves the msb of id string
+                        int asciiId = (int)farLeftChar; //saves ascii value in var
+                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], asciiId.ToString() };//new temp2 for cages added ascii char
+                        arr[index] = temp2;
+                    }
+                    else //else we're using bird id so we are fine
+                        arr[index] = temp;
+                    index++;//increment index 
+                }
+                //now we have an arr with all birds\cages inside, not sorted
+                if (name == "cage")
+                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));// using lambda to sort cages 
+                else
+                    Sort(arr, 0, arr.Length - 1);//here we call Sort method 
+
+                index = 0;
+                for (int j = 1; j < size + 1; j++) //now we going through the database and update the birds list 
+                {
+                    if (name == "cage")
+                    {
+                        //this is now the cropped string, we removed what we added in previous loop
+                        string[] temp3 = { arr[index][0], arr[index][1], arr[index][2], arr[index][3], arr[index][4] };
+                        arr[index] = temp3; //giving temp3 new string
+                    }
+                    ex.WriteRange(j, colStart, colEnd, arr[index]);
+                    index++;
+                }
+            }
+            ex.Quit();//close excel
+        }
+
+        public static int Partition(string[][] arr, int Start, int End)
+        {
+            int i = Start - 1;//represents the small elements
+            int pivot = int.Parse(arr[End][0]);
+
+            for (int j = Start; j < End; j++)
+            {
+                if (int.Parse(arr[j][0]) <= pivot) //if found a smaller num we switch numbers
+                {
+                    i++;// increase index
+
+                    string[] temp1 = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp1;
+                }
+                //now we need to do last switch with last index and last small element
+
+            }
+            string[] temp = arr[i + 1];
+            arr[i + 1] = arr[End];
+            arr[End] = temp;
+
+            return i + 1;
+        }
+
+        public static void Sort(string[][] arr, int Start, int End)
+        {
+            if (Start < End)
+            {
+                int pr = Partition(arr, Start, End); //represends the pivot in sorting
+                                                     //calls recursivly for first part until pr and from pr+1 to end
+                Sort(arr, Start, pr - 1);
+                Sort(arr, pr + 1, End);
+            }
         }
     }
 }
