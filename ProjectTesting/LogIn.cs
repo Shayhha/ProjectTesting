@@ -85,7 +85,7 @@ namespace ProjectTesting
             ex.Quit();//closes the database excel
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
-            MainWindow.InitHashtable(); //initialize the hashtable!!
+            MainWindow.InitHashtable(); //initializing the hashtable!!
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)

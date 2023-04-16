@@ -51,7 +51,6 @@ namespace ProjectTesting
         {
             birdList.Hide();
             //Excel ex = new Excel("database", MainWindow.UserSheet);
-            int size = 0;
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
@@ -84,13 +83,12 @@ namespace ProjectTesting
             {
                 if (combo == "Bird")
                 {
-                    //size = ex.GetLastRow(7);
                     if (name == "m" || name == "M" || name == "male")
                         name = "Male";
                     else if (name == "f" || name == "F" || name == "female")
                         name = "Female";
-
-                    //for (int i = 1; i < size; i++)
+                    //=========================OLD VERSION============================//
+                    //for (int i = 1; i < ex.GetLastRow(7); i++)
                     //{
                     //    temp = ex.ReadRange(i, 7, 12);
                     //    string[] searchTemp = { temp[0], temp[1], temp[2], temp[3], temp[4] };//only searching specific things
@@ -101,6 +99,7 @@ namespace ProjectTesting
                     //        flag++;
                     //    }
                     //}
+                    //===============================================================//
                     List<string[]> list = MainWindow.HashTable.SearchBirdHashtable(name);
                     foreach (string[] s in list)
                     {
@@ -111,15 +110,14 @@ namespace ProjectTesting
                 }
                 else if (combo == "Cage")
                 {
-                    //size = ex.GetLastRow(1);
                     if (name.ToUpper() == "WOOD")
                         name = "WOOD";
                     else if (name.ToUpper() == "METAL")
                         name = "METAL";
                     else if (name.ToUpper() == "PLASTIC")
                         name = "PLASTIC";
-
-                    //for (int i = 1; i < size; i++)
+                    //=========================OLD VERSION============================//
+                    //for (int i = 1; i < ex.GetLastRow(1); i++)
                     //{
                     //    //temp = ex.ReadRange(i, 1, 5);
                     //    string[] searchTemp = { temp[0], temp[4] }; //only searching specific things
@@ -130,6 +128,7 @@ namespace ProjectTesting
                     //        flag++;
                     //    }
                     //}
+                    //===============================================================//
                     List<string[]> list = MainWindow.HashTable.SearchBirdHashtable(name);
                     foreach (string[] s in list)
                     {
