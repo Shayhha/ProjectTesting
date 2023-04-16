@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,42 +25,70 @@ namespace ProjectTesting
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
             string[] info = { username, password };
+            ////////////////////////////////////////////////////////////////////////////////
+            MainWindow.HashTable = new CustomHashtable(); //first initializing of hashtable!!
             Excel ex = new Excel("users", "default");
             int size = ex.GetLastRow();
             string[] temp = null;
-            int flag = 0;
 
-            if (username == "" && password == "")
+            for(int i = 1; i < size; i++)
             {
-                CustomMessageBox.Show("Field are empty!", "Error");
-                flag = 1;
+                temp = ex.ReadRange(i, 1, 3);
+                MainWindow.HashTable.AddUserToHashtable(temp);
+            }
+            ex.Quit();
+            List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
+            if (result[0][0] == username && result[0][1] != password)
+            {
+                CustomMessageBox.Show("Wrong password!", "Password Error");
+            }
+            else if (result[0][0] == username && result[0][1] == password)
+            {
+                MainWindow.UserSheet = username; //gives usersheet the current users name
+                LoggedIn();
             }
             else
             {
-                for (int i = 1; i < size; i++)
-                {
-                    temp = ex.ReadRange(i, 1, 3);
-                    if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
-                    {
-                        MainWindow.UserSheet = username; //gives usersheet the current users name
-                        LoggedIn();
-                        flag = 1;
-                        break;
-
-                    }
-                    else if (temp[0] == info[0] && temp[1] != info[1])
-                    {
-                        CustomMessageBox.Show("Wrong password!", "Password Error");
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-            if (flag == 0)
-            {
                 CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
-            ex.Quit(); //after we logged in we close users excel
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            //Excel ex = new Excel("users", "default");
+            //int size = ex.GetLastRow();
+            //string[] temp = null;
+            //int flag = 0;
+
+            //if (username == "" && password == "")
+            //{
+            //    CustomMessageBox.Show("Field are empty!", "Error");
+            //    flag = 1;
+            //}
+            //else
+            //{
+            //    for (int i = 1; i < size; i++)
+            //    {
+            //        temp = ex.ReadRange(i, 1, 3);
+            //        if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
+            //        {
+            //            MainWindow.UserSheet = username; //gives usersheet the current users name
+            //            LoggedIn();
+            //            flag = 1;
+            //            break;
+
+            //        }
+            //        else if (temp[0] == info[0] && temp[1] != info[1])
+            //        {
+            //            CustomMessageBox.Show("Wrong password!", "Password Error");
+            //            flag = 1;
+            //            break;
+            //        }
+            //    }
+            //}
+            //if (flag == 0)
+            //{
+            //    CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
+            //}
+            //ex.Quit(); //after we logged in we close users excel
         }
 
         private void LoggedIn() //opens the homepage
