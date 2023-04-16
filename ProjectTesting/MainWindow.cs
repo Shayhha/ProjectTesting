@@ -16,16 +16,16 @@ namespace ProjectTesting
             hideTopPanel();
         }
 
-        public void InitHashtable()
+        public static void InitHashtable()
         {
+            //sort the database first
+            SortExcel("bird");
+            SortExcel("cage"); // doesnt work, needs work!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             Excel ex = new Excel("database", UserSheet);
             int BirdSize = ex.GetLastRow(7);
             int CageSize = ex.GetLastRow(1);
             CustomHashtable BirdHashtable = new CustomHashtable(); //initialize out hashtables
 
-            //sort the database first
-            SortExcel("bird");
-            SortExcel("cage");
             //add birds to bird hashtable
             for (int i = 1; i < BirdSize; i++)
             {
@@ -38,6 +38,7 @@ namespace ProjectTesting
                 string[] temp = ex.ReadRange(i, 1, 5);
                 BirdHashtable.AddCageToHashtable(temp);
             }
+            ex.Quit();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -142,7 +143,7 @@ namespace ProjectTesting
             int colStart = 7;  //default value
             int colEnd = 15; //default vaule
             int flag = 0;
-            Excel ex = new Excel("database", MainWindow.UserSheet);
+            Excel ex = new Excel("database", UserSheet);
             if (name == "bird")
             {
                 size = ex.GetLastRow(7) - 1;
@@ -168,33 +169,18 @@ namespace ProjectTesting
                 for (int i = 1; i < size + 1; i++)
                 {
                     string[] temp = ex.ReadRange(i, colStart, colEnd);
-                    if (name == "cage") //check with max ?
-                    {
-                        string ID = temp[0]; //saving id in new var
-                        char farLeftChar = ID[0]; //saves the msb of id string
-                        int asciiId = (int)farLeftChar; //saves ascii value in var
-                        string[] temp2 = { temp[0], temp[1], temp[2], temp[3], temp[4], asciiId.ToString() };//new temp2 for cages added ascii char
-                        arr[index] = temp2;
-                    }
-                    else //else we're using bird id so we are fine
-                        arr[index] = temp;
+                    arr[index] = temp;
                     index++;//increment index 
                 }
                 //now we have an arr with all birds\cages inside, not sorted
                 if (name == "cage")
-                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));// using lambda to sort cages 
+                    Array.Sort(arr, (x, y) => x[0].CompareTo(y[0]));// using lambda to sort cages
                 else
                     Sort(arr, 0, arr.Length - 1);//here we call Sort method 
 
                 index = 0;
                 for (int j = 1; j < size + 1; j++) //now we going through the database and update the birds list 
                 {
-                    if (name == "cage")
-                    {
-                        //this is now the cropped string, we removed what we added in previous loop
-                        string[] temp3 = { arr[index][0], arr[index][1], arr[index][2], arr[index][3], arr[index][4] };
-                        arr[index] = temp3; //giving temp3 new string
-                    }
                     ex.WriteRange(j, colStart, colEnd, arr[index]);
                     index++;
                 }
