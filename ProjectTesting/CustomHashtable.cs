@@ -13,7 +13,7 @@ namespace ProjectTesting
 
         public void AddBirdToHashtable(string[] bird)
         {
-            string[] birdKeyOptions = { bird[0], bird[1], bird[2] };
+            string[] birdKeyOptions = { bird[0], bird[1], bird[2], bird[3], bird[4] };
 
             foreach (string birdKey in birdKeyOptions)
             {
@@ -27,7 +27,7 @@ namespace ProjectTesting
 
         public void AddCageToHashtable(string[] cage)
         {
-            string[] cageKeyOptions = { cage[0], cage[3] };
+            string[] cageKeyOptions = { cage[0], cage[4] };
 
             foreach (string cageKey in cageKeyOptions)
             {
