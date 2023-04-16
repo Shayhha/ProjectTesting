@@ -11,7 +11,7 @@ namespace ProjectTesting
         private Dictionary<string, List<string[]>> birdHashtable = new Dictionary<string, List<string[]>>();
         private Dictionary<string, List<string[]>> cageHashtable = new Dictionary<string, List<string[]>>();
 
-        public void AddBiirdToHashtable(string[] bird)
+        public void AddBirdToHashtable(string[] bird)
         {
             string[] birdKeyOptions = { bird[0], bird[1], bird[2] };
 
