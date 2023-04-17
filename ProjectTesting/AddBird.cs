@@ -101,12 +101,23 @@ namespace ProjectTesting
                         errorMessage = "The dad's id must ONLY contain numbers.";
                         flag = 1;
                     }
+                    else if (birdInfo[6] == birdInfo[0])
+                    {
+                        errorMessage = "The bird's id and dad's id must be different.";
+                        flag = 1;
+                    }
                 }
-                else if (birdInfo[7] != "")
+                
+                if (birdInfo[7] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[7], idPattern)))
                     {
                         errorMessage = "The mom's id must ONLY contain numbers.";
+                        flag = 1;
+                    }
+                    else if (birdInfo[7] == birdInfo[0])
+                    {
+                        errorMessage = "The bird's id and mom's id must be different.";
                         flag = 1;
                     }
                 }
@@ -144,7 +155,7 @@ namespace ProjectTesting
             momBox.Text = "";
         }
 
-        private bool checkBirdId(string birdId, string dadId = "", string momId = "")
+        public bool checkBirdId(string birdId, string dadId = "", string momId = "")
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
             int row = ex.GetLastRow(7);

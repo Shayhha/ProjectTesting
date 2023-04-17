@@ -222,26 +222,57 @@ namespace ProjectTesting
             editButton.Hide();
             saveButton.Show();
 
+            infoFromDatabase = getTextFromUi();
+
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
             idLabel.ReadOnly = false;
-            typeLabel.ReadOnly = false;
-            subTypeLabel.ReadOnly = false;
             dateTextBox.Visible = false;
             dateLabel.Visible = true;
             dateLabel.Enabled = true;
-            genderLabel.ReadOnly = false;
             cageIdLabel.ReadOnly = false;
             dadIdLabel.ReadOnly = false;
             momIdLabel.ReadOnly = false;
 
             idLabel.Enabled = true;
-            typeLabel.Enabled = true;
-            subTypeLabel.Enabled = true;
-            genderLabel.Enabled = true;
             cageIdLabel.Enabled = true;
             dadIdLabel.Enabled = true;
             momIdLabel.Enabled = true;
+
+            Excel ex = new Excel("database", MainWindow.UserSheet);
+            int row = ex.GetLastRow(7), flag = 0;
+
+            // Checking if the bird is an adult and has at least one offspring, in that case we cant change the gender, type and subtype.
+            if (infoFromDatabase[8] == "no")
+            {
+                for (int i = 1; i < row; i++)
+                {
+                    string isOffspring = ex.ReadCell("O" + i);
+                    if (isOffspring == "yes")
+                    {
+                        string momId = ex.ReadCell("M" + i), dadId = ex.ReadCell("N" + i);
+                        if (momId == infoFromDatabase[0] || dadId == infoFromDatabase[0])
+                        {
+                            //Here the bird we are editing is an adult and a parent with at least one offspring
+                            flag = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (flag == 0)
+            {
+                typeLabel.ReadOnly = false;
+                subTypeLabel.ReadOnly = false;
+                genderLabel.ReadOnly = false;
+
+                typeLabel.Enabled = true;
+                subTypeLabel.Enabled = true;
+                genderLabel.Enabled = true;
+            }
+
+            ex.Quit();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -276,37 +307,53 @@ namespace ProjectTesting
             string[] newInfo = getTextFromUi();
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
+            int flag = 0;
 
-
-            if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
+            if (infoFromDatabase[0] != newInfo[0])
             {
-                Excel ex = new Excel("database", MainWindow.UserSheet);
-                int row = ex.GetLastRow(7);
-
-                for (int i = 1; i < row; i++)
+                if (!((MainWindow)this.Parent.Parent).addBird1.checkBirdId(newInfo[0]))
                 {
-                    if (ex.ReadCell("G" + i) == infoFromDatabase[0])
-                    {
-
-                        progressBar.Value = 100;
-                        newInfo[8] = ex.ReadCell("O" + i);
-                        ex.WriteRange(i, 7, 15, newInfo);
-                        ex.WriteRange(row - 1, 7, 15, cleanUp);
-
-                        idLabel.Text = newInfo[0];
-                        typeLabel.Text = newInfo[1];
-                        subTypeLabel.Text = newInfo[2];
-                        dateTextBox.Text = newInfo[3];
-                        genderLabel.Text = newInfo[4];
-                        cageIdLabel.Text = newInfo[5];
-                        dadIdLabel.Text = newInfo[6];
-                        momIdLabel.Text = newInfo[7];
-                    }
+                    flag = 1;
                 }
-                progressBarPanel.Visible = false;
-                ex.Quit();
             }
-            else
+
+            if (flag == 0)
+            {
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
+                {
+                    Excel ex = new Excel("database", MainWindow.UserSheet);
+                    int row = ex.GetLastRow(7);
+
+                    for (int i = 1; i < row; i++)
+                    {
+                        if (ex.ReadCell("G" + i) == infoFromDatabase[0])
+                        {
+                            progressBar.Value = 100;
+                            newInfo[8] = ex.ReadCell("O" + i);
+                            ex.WriteRange(i, 7, 15, newInfo);
+                            ex.WriteRange(row - 1, 7, 15, cleanUp);
+
+                            dateTextBox.Text = newInfo[3];
+                        }
+                    }
+                    ex.Quit();
+                }
+                else
+                {
+                    idLabel.Text = infoFromDatabase[0];
+                    typeLabel.Text = infoFromDatabase[1];
+                    subTypeLabel.Text = infoFromDatabase[2];
+                    dateTextBox.Text = infoFromDatabase[3];
+                    genderLabel.Text = infoFromDatabase[4];
+                    cageIdLabel.Text = infoFromDatabase[5];
+                    dadIdLabel.Text = infoFromDatabase[6];
+                    momIdLabel.Text = infoFromDatabase[7];
+                }
+            }
+
+            progressBarPanel.Visible = false;
+
+            if (flag == 1)
             {
                 idLabel.Text = infoFromDatabase[0];
                 typeLabel.Text = infoFromDatabase[1];
@@ -317,6 +364,7 @@ namespace ProjectTesting
                 dadIdLabel.Text = infoFromDatabase[6];
                 momIdLabel.Text = infoFromDatabase[7];
             }
+
         }
 
         private void editBtn_Click(object sender, EventArgs e) // for cage
