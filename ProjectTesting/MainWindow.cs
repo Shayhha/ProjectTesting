@@ -1,4 +1,6 @@
 
+using System.Runtime.InteropServices;
+
 namespace ProjectTesting
 
 {
@@ -6,6 +8,7 @@ namespace ProjectTesting
     {
         public static string UserSheet = ""; //this represents the logged in user sheet name
         public static CustomHashtable HashTable = null;
+        private Excel UserExcel = new Excel("users", "default");
 
         public MainWindow()
         {
@@ -45,11 +48,33 @@ namespace ProjectTesting
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //SignUp1.Hide();
-            //searchBird1.Hide();
-            //homePage1.Hide();
-            //addBird1.Hide();
-            //addCage1.Hide();
+            HashTable = new CustomHashtable(); //first initializing of hashtable!!
+            int size = UserExcel.GetLastRow();
+            string[] temp = null;
+
+            for (int i = 1; i < size; i++)
+            {
+                temp = UserExcel.ReadRange(i, 1, 3);
+                HashTable.AddUserToHashtable(temp);
+            }
+            UserExcel.Quit();
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                // Dispose of Excel instance
+                Marshal.ReleaseComObject(UserExcel.getWs());
+                Marshal.ReleaseComObject(UserExcel.getWb());
+                Marshal.ReleaseComObject(UserExcel.getExcel());
+                UserExcel = null;
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occur during dispose
+                MessageBox.Show("Error disposing of Excel instance: " + ex.Message);
+            }
         }
 
         public void loginToSignUp()
@@ -148,13 +173,13 @@ namespace ProjectTesting
             Excel ex = new Excel("database", UserSheet);
             if (name == "bird")
             {
-                size = ex.GetLastRow(7)-1;
+                size = ex.GetLastRow(7) - 1;
                 colStart = 7;
                 colEnd = 15;
             }
             else if (name == "cage")
             {
-                size = ex.GetLastRow(1)-1;
+                size = ex.GetLastRow(1) - 1;
                 colStart = 1;
                 colEnd = 5;
             }

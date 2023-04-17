@@ -119,5 +119,9 @@ namespace ProjectTesting
             return i;
         }
 
+        //get methods
+        public _Application getExcel() { return this.excel; }
+        public Workbook getWb() { return this.wb; }
+        public Worksheet getWs() {return this.ws; }
     }
 }
