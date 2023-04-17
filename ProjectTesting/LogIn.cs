@@ -26,17 +26,6 @@ namespace ProjectTesting
             string password = Password_textbox.Text;
             string[] info = { username, password };
             ////////////////////////////////////////////////////////////////////////////////
-            MainWindow.HashTable = new CustomHashtable(); //first initializing of hashtable!!
-            Excel ex = new Excel("users", "default");
-            int size = ex.GetLastRow();
-            string[] temp = null;
-
-            for(int i = 1; i < size; i++)
-            {
-                temp = ex.ReadRange(i, 1, 3);
-                MainWindow.HashTable.AddUserToHashtable(temp);
-            }
-            ex.Quit();
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
             if (result[0][0] == username && result[0][1] != password)
             {

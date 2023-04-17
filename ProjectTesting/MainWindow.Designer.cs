@@ -246,6 +246,8 @@
             Controls.Add(headlinePanel);
             Name = "MainWindow";
             Text = "MainWindow";
+            Load += MainWindow_Load;
+            FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             headlinePanel.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
