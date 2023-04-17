@@ -48,6 +48,7 @@ namespace ProjectTesting
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            //Here we initialize the user hashtable for use later in program
             HashTable = new CustomHashtable(); //first initializing of hashtable!!
             int size = UserExcel.GetLastRow();
             string[] temp = null;
@@ -62,6 +63,7 @@ namespace ProjectTesting
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //When we close the program, we need to free up the memeory initialized in Load method
             try
             {
                 // Dispose of Excel instance
