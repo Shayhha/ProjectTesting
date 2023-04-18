@@ -311,10 +311,10 @@ namespace ProjectTesting
                     {
                         errorMessage = "Parents must be adults!";
                     }
-                    else if (temp[2] != subTypeBox.Text)
-                    {
-                        errorMessage = "Parents must have same subtype!";
-                    }
+                    //else if (temp[2] != subTypeBox.Text)
+                    //{
+                    //    errorMessage = "Parents must have same subtype!";
+                    //}
                     break;
                 }
             }
