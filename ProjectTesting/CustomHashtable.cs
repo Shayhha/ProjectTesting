@@ -43,7 +43,7 @@ namespace ProjectTesting
 
         public void AddUserToHashtable(string[] user)
         {
-            string[] userKeyOptions = { user[0]};
+            string[] userKeyOptions = { user[0], user[2] };
 
             foreach (string userKey in userKeyOptions)
             {
