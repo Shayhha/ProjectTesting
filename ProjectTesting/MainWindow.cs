@@ -232,9 +232,8 @@ namespace ProjectTesting
                     arr[j] = arr[i];
                     arr[i] = temp1;
                 }
-                //now we need to do last switch with last index and last small element
-
             }
+            //now we need to do last switch with last index and last small element
             string[] temp = arr[i + 1];
             arr[i + 1] = arr[End];
             arr[End] = temp;
