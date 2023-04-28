@@ -83,12 +83,6 @@ namespace ProjectTesting
         private void LoggedIn() //opens the homepage
         {
             Excel ex = new Excel("database", MainWindow.UserSheet);
-            //set bird and cage counters and top bar
-            ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-            ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
-            ((MainWindow)this.Parent.Parent).showTopBar();
-            ((MainWindow)this.Parent.Parent).showTopPanel();
-
             if (ex.ReadCell("A1") == "") //checks if user is new (without any cages)
             {
                 ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
@@ -98,10 +92,16 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
             }
+            ////set bird and cage counters and top bar
+            ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
+            ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+            ((MainWindow)this.Parent.Parent).showTopBar();
+            ((MainWindow)this.Parent.Parent).showTopPanel();
             ex.Quit();//closes the database excel
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
             MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
+            this.Hide();
         }
 
         private void SignUp_button_Click(object sender, EventArgs e)

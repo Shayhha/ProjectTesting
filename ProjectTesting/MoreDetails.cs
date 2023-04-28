@@ -11,6 +11,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ProjectTesting
 {
@@ -58,7 +59,7 @@ namespace ProjectTesting
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
-            Excel ex = new Excel("database", MainWindow.UserSheet);
+            //Excel ex = new Excel("database", MainWindow.UserSheet);
             string tempId = "";
             string[] databaseInfo = null;
 
@@ -68,74 +69,113 @@ namespace ProjectTesting
                 editButton.Show();
                 saveButton.Hide();
                 setImages();
-                int size = ex.GetLastRow(7);
+                //int size = ex.GetLastRow(7);
 
-                for (int i = 1; i < size; i++)
+                List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id);
+                infoFromDatabase = birdInfo[0];//save the bird for later use
+
+                idLabel.Text = birdInfo[0][0];
+                typeLabel.Text = birdInfo[0][1];
+                subTypeLabel.Text = birdInfo[0][2];
+                dateTextBox.Text = birdInfo[0][3];
+                genderLabel.Text = birdInfo[0][4];
+                cageIdLabel.Text = birdInfo[0][5];
+                dadIdLabel.Text = birdInfo[0][6];
+                momIdLabel.Text = birdInfo[0][7];
+
+                if (birdInfo[0][8] == "yes")
                 {
-                    tempId = ex.ReadCell("G" + i.ToString());
-                    if (tempId == id) //if we found one that matches we open a messagebox and break
-                    {
-                        databaseInfo = ex.ReadRange(i, 7, 15);
-                        infoFromDatabase = databaseInfo;
-
-                        idLabel.Text = databaseInfo[0];
-                        typeLabel.Text = databaseInfo[1];
-                        subTypeLabel.Text = databaseInfo[2];
-                        dateTextBox.Text = databaseInfo[3];
-                        genderLabel.Text = databaseInfo[4];
-                        cageIdLabel.Text = databaseInfo[5];
-                        dadIdLabel.Text = databaseInfo[6];
-                        momIdLabel.Text = databaseInfo[7];
-
-                        if (databaseInfo[8] == "yes")
-                        {
-                            offspringsPanel.Hide();
-                            fledglingLabel.Show();
-                        }
-                        else if (databaseInfo[8] == "no")
-                        {
-                            offspringsPanel.Show();
-                            fledglingLabel.Hide();
-                        }
-                        break;
-                    }
+                    offspringsPanel.Hide();
+                    fledglingLabel.Show();
                 }
+                else if (birdInfo[0][8] == "no")
+                {
+                    offspringsPanel.Show();
+                    fledglingLabel.Hide();
+                }
+                //for (int i = 1; i < size; i++)
+                //{
+                //    tempId = ex.ReadCell("G" + i.ToString());
+                //    if (tempId == id) //if we found one that matches we open a messagebox and break
+                //    {
+                //        databaseInfo = ex.ReadRange(i, 7, 15);
+                //        infoFromDatabase = databaseInfo;
+
+                //        idLabel.Text = databaseInfo[0];
+                //        typeLabel.Text = databaseInfo[1];
+                //        subTypeLabel.Text = databaseInfo[2];
+                //        dateTextBox.Text = databaseInfo[3];
+                //        genderLabel.Text = databaseInfo[4];
+                //        cageIdLabel.Text = databaseInfo[5];
+                //        dadIdLabel.Text = databaseInfo[6];
+                //        momIdLabel.Text = databaseInfo[7];
+
+                //        if (databaseInfo[8] == "yes")
+                //        {
+                //            offspringsPanel.Hide();
+                //            fledglingLabel.Show();
+                //        }
+                //        else if (databaseInfo[8] == "no")
+                //        {
+                //            offspringsPanel.Show();
+                //            fledglingLabel.Hide();
+                //        }
+                //        break;
+                //    }
+                //}
             }
             else if (birdOrCage == "cage")
             {
                 cagePanel.Visible = true;
-                int size = ex.GetLastRow();
+                List<string[]> cageInfo = MainWindow.HashTable.SearchCageHashtable(id);
+                infoFromDatabase = cageInfo[0];
 
-                for (int i = 1; i < size; i++)
+                cageValue.Text = cageInfo[0][0];
+                lengthValue.Text = cageInfo[0][1];
+                widthValue.Text = cageInfo[0][2];
+                heightValue.Text = cageInfo[0][3];
+                materialValue.Text = cageInfo[0][4];
+
+                List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id);
+
+                foreach (string[] bird in  birdsInCage)
                 {
-                    tempId = ex.ReadCell("A" + i.ToString());
-                    if (tempId == id)
-                    {
-                        databaseInfo = ex.ReadRange(i, 1, 5);
-                        infoFromDatabase = databaseInfo;
-
-                        cageValue.Text = databaseInfo[0];
-                        lengthValue.Text = databaseInfo[1];
-                        widthValue.Text = databaseInfo[2];
-                        heightValue.Text = databaseInfo[3];
-                        materialValue.Text = databaseInfo[4];
-                    }
+                    string newStr = "Bird ID: " + bird[0] + " , Type: " + bird[1] + " , Gender: " + bird[4] + " , Cage ID: " + bird[5];
+                    birdList.Items.Add(newStr);
                 }
 
-                size = ex.GetLastRow(7);
+                //int size = ex.GetLastRow();
 
-                for (int i = 1; i < size; i++)
-                {
-                    tempId = ex.ReadCell("L" + i.ToString());
-                    if (tempId == id) //getting all of the birds that are in the same cage
-                    {
-                        databaseInfo = ex.ReadRange(i, 7, 15);
-                        birdList.Items.Add(i.ToString() + ") Bird ID: " + databaseInfo[0] + " , Type: " + databaseInfo[1] + " , Gender: " + databaseInfo[4] + " , Cage ID: " + databaseInfo[5]);
-                    }
-                }
+                //for (int i = 1; i < size; i++)
+                //{
+                //    tempId = ex.ReadCell("A" + i.ToString());
+                //    if (tempId == id)
+                //    {
+                //        databaseInfo = ex.ReadRange(i, 1, 5);
+                //        infoFromDatabase = databaseInfo;
+
+                //        cageValue.Text = databaseInfo[0];
+                //        lengthValue.Text = databaseInfo[1];
+                //        widthValue.Text = databaseInfo[2];
+                //        heightValue.Text = databaseInfo[3];
+                //        materialValue.Text = databaseInfo[4];
+                //    }
+                //}
+
+                //size = ex.GetLastRow(7);
+
+                //for (int i = 1; i < size; i++)
+                //{
+                //    tempId = ex.ReadCell("L" + i.ToString());
+                //    if (tempId == id) //getting all of the birds that are in the same cage
+                //    {
+                //        databaseInfo = ex.ReadRange(i, 7, 15);
+                //        birdList.Items.Add(i.ToString() + ") Bird ID: " + databaseInfo[0] + " , Type: " + databaseInfo[1] + " , Gender: " + databaseInfo[4] + " , Cage ID: " + databaseInfo[5]);
+                //    }
+                //}
             }
 
-            ex.Quit();
+            //ex.Quit();
         }
 
         private void backButton_Click(object sender, EventArgs e)

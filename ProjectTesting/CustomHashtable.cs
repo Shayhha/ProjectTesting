@@ -15,7 +15,7 @@ namespace ProjectTesting
 
         public void AddBirdToHashtable(string[] bird)
         {
-            string[] birdKeyOptions = { bird[0], bird[1], bird[2], bird[3], bird[4] };
+            string[] birdKeyOptions = { bird[0], bird[1], bird[2], bird[3], bird[4], bird[5] };
 
             foreach (string birdKey in birdKeyOptions)
             {
