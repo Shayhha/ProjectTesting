@@ -60,17 +60,16 @@ namespace ProjectTesting
         {
             cleanLabels();// needs to recive a param and clean based on that param
           
-            if (birdOrCage == "bird")
+            if (birdOrCage == "bird") //if bird we initialize the brid's info
             {
                 cagePanel.Visible = false;
                 editButton.Show();
                 saveButton.Hide();
                 setImages();
-                //int size = ex.GetLastRow(7);
 
-                List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id);
+                List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
                 infoFromDatabase = birdInfo[0];//save the bird for later use
-
+                //initializing the fields
                 idLabel.Text = birdInfo[0][0];
                 typeLabel.Text = birdInfo[0][1];
                 subTypeLabel.Text = birdInfo[0][2];
@@ -79,7 +78,7 @@ namespace ProjectTesting
                 cageIdLabel.Text = birdInfo[0][5];
                 dadIdLabel.Text = birdInfo[0][6];
                 momIdLabel.Text = birdInfo[0][7];
-
+                //checks if offspring, if not we show a list of offsprings
                 if (birdInfo[0][8] == "yes")
                 {
                     offspringsPanel.Hide();
@@ -92,21 +91,22 @@ namespace ProjectTesting
                 }
                
             }
-            else if (birdOrCage == "cage")
+            else if (birdOrCage == "cage") //else we initialize cage's info
             {
                 cagePanel.Visible = true;
-                List<string[]> cageInfo = MainWindow.HashTable.SearchCageHashtable(id);
-                infoFromDatabase = cageInfo[0];
+                List<string[]> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
+                infoFromDatabase = cageInfo[0]; //saving cage for later use
 
+                //filling the fields for cage
                 cageValue.Text = cageInfo[0][0];
                 lengthValue.Text = cageInfo[0][1];
                 widthValue.Text = cageInfo[0][2];
                 heightValue.Text = cageInfo[0][3];
                 materialValue.Text = cageInfo[0][4];
 
-                List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id);
+                List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
 
-                foreach (string[] bird in  birdsInCage)
+                foreach (string[] bird in  birdsInCage) //adding birds to list 
                 {
                     string newStr = "Bird ID: " + bird[0] + " , Type: " + bird[1] + " , Gender: " + bird[4] + " , Cage ID: " + bird[5];
                     birdList.Items.Add(newStr);
@@ -164,7 +164,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi(string birdOrCage = "bird")
+        private string[] getTextFromUi(string birdOrCage = "bird") // not neccessary at all, we do this in initLabels!!
         {
             string[] info = null;
             if (birdOrCage == "bird")
@@ -344,7 +344,7 @@ namespace ProjectTesting
 
         }
 
-        private void editBtn_Click(object sender, EventArgs e) // for cage
+        private void editBtn_Click(object sender, EventArgs e) // for cage 
         {
             editBtn.Visible = false;
             saveBtn.Visible = true;
