@@ -316,7 +316,7 @@ namespace ProjectTesting
             heightValue.Enabled = true;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e) // for cage //edit to hashtable
+        private void saveBtn_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
             editBtn.Visible = true;
             saveBtn.Visible = false;
