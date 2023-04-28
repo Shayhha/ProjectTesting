@@ -73,6 +73,9 @@ namespace ProjectTesting
                 ItemSelected(text);
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+                Search_textbox.Text = "";
+                comboBox.SelectedIndex = 0;
+                this.Hide();
             }
             // Stop the stopwatch
             stopwatch.Stop();
