@@ -59,10 +59,7 @@ namespace ProjectTesting
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
-            //Excel ex = new Excel("database", MainWindow.UserSheet);
-            string tempId = "";
-            string[] databaseInfo = null;
-
+          
             if (birdOrCage == "bird")
             {
                 cagePanel.Visible = false;
@@ -93,36 +90,7 @@ namespace ProjectTesting
                     offspringsPanel.Show();
                     fledglingLabel.Hide();
                 }
-                //for (int i = 1; i < size; i++)
-                //{
-                //    tempId = ex.ReadCell("G" + i.ToString());
-                //    if (tempId == id) //if we found one that matches we open a messagebox and break
-                //    {
-                //        databaseInfo = ex.ReadRange(i, 7, 15);
-                //        infoFromDatabase = databaseInfo;
-
-                //        idLabel.Text = databaseInfo[0];
-                //        typeLabel.Text = databaseInfo[1];
-                //        subTypeLabel.Text = databaseInfo[2];
-                //        dateTextBox.Text = databaseInfo[3];
-                //        genderLabel.Text = databaseInfo[4];
-                //        cageIdLabel.Text = databaseInfo[5];
-                //        dadIdLabel.Text = databaseInfo[6];
-                //        momIdLabel.Text = databaseInfo[7];
-
-                //        if (databaseInfo[8] == "yes")
-                //        {
-                //            offspringsPanel.Hide();
-                //            fledglingLabel.Show();
-                //        }
-                //        else if (databaseInfo[8] == "no")
-                //        {
-                //            offspringsPanel.Show();
-                //            fledglingLabel.Hide();
-                //        }
-                //        break;
-                //    }
-                //}
+               
             }
             else if (birdOrCage == "cage")
             {
@@ -144,38 +112,7 @@ namespace ProjectTesting
                     birdList.Items.Add(newStr);
                 }
 
-                //int size = ex.GetLastRow();
-
-                //for (int i = 1; i < size; i++)
-                //{
-                //    tempId = ex.ReadCell("A" + i.ToString());
-                //    if (tempId == id)
-                //    {
-                //        databaseInfo = ex.ReadRange(i, 1, 5);
-                //        infoFromDatabase = databaseInfo;
-
-                //        cageValue.Text = databaseInfo[0];
-                //        lengthValue.Text = databaseInfo[1];
-                //        widthValue.Text = databaseInfo[2];
-                //        heightValue.Text = databaseInfo[3];
-                //        materialValue.Text = databaseInfo[4];
-                //    }
-                //}
-
-                //size = ex.GetLastRow(7);
-
-                //for (int i = 1; i < size; i++)
-                //{
-                //    tempId = ex.ReadCell("L" + i.ToString());
-                //    if (tempId == id) //getting all of the birds that are in the same cage
-                //    {
-                //        databaseInfo = ex.ReadRange(i, 7, 15);
-                //        birdList.Items.Add(i.ToString() + ") Bird ID: " + databaseInfo[0] + " , Type: " + databaseInfo[1] + " , Gender: " + databaseInfo[4] + " , Cage ID: " + databaseInfo[5]);
-                //    }
-                //}
             }
-
-            //ex.Quit();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -284,7 +221,7 @@ namespace ProjectTesting
             momIdLabel.Enabled = true;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
             progressBarPanel.Visible = true;
             progressBar.Value = 0;
