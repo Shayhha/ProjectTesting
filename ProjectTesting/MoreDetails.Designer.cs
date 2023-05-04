@@ -40,7 +40,7 @@
             typeLabel = new TextBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
             saveButton = new Button();
-            editButton = new Button();
+            editBirdButton = new Button();
             idLabel = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             nameLabel = new Label();
@@ -63,7 +63,7 @@
             progressBar = new ProgressBar();
             cagePanel = new Panel();
             editPanel = new FlowLayoutPanel();
-            editBtn = new Button();
+            editCageButton = new Button();
             saveBtn = new Button();
             listLabel = new Label();
             birdList = new ListBox();
@@ -229,7 +229,7 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Controls.Add(saveButton);
-            flowLayoutPanel2.Controls.Add(editButton);
+            flowLayoutPanel2.Controls.Add(editBirdButton);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
             flowLayoutPanel2.Location = new Point(300, 128);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -247,16 +247,16 @@
             saveButton.UseVisualStyleBackColor = true;
             saveButton.Click += saveButton_Click;
             // 
-            // editButton
+            // editBirdButton
             // 
-            editButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            editButton.Location = new Point(3, 6);
-            editButton.Name = "editButton";
-            editButton.Size = new Size(70, 40);
-            editButton.TabIndex = 28;
-            editButton.Text = "Edit";
-            editButton.UseVisualStyleBackColor = true;
-            editButton.Click += editButton_Click;
+            editBirdButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            editBirdButton.Location = new Point(3, 6);
+            editBirdButton.Name = "editBirdButton";
+            editBirdButton.Size = new Size(70, 40);
+            editBirdButton.TabIndex = 28;
+            editBirdButton.Text = "Edit";
+            editBirdButton.UseVisualStyleBackColor = true;
+            editBirdButton.Click += editButton_Click;
             // 
             // idLabel
             // 
@@ -479,7 +479,7 @@
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(26, 16);
+            cagePanel.Location = new Point(22, 20);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
@@ -487,23 +487,23 @@
             // 
             // editPanel
             // 
-            editPanel.Controls.Add(editBtn);
+            editPanel.Controls.Add(editCageButton);
             editPanel.Controls.Add(saveBtn);
             editPanel.Location = new Point(748, 117);
             editPanel.Name = "editPanel";
             editPanel.Size = new Size(162, 45);
             editPanel.TabIndex = 5;
             // 
-            // editBtn
+            // editCageButton
             // 
-            editBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            editBtn.Location = new Point(3, 3);
-            editBtn.Name = "editBtn";
-            editBtn.Size = new Size(75, 40);
-            editBtn.TabIndex = 3;
-            editBtn.Text = "Edit";
-            editBtn.UseVisualStyleBackColor = true;
-            editBtn.Click += editBtn_Click;
+            editCageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            editCageButton.Location = new Point(3, 3);
+            editCageButton.Name = "editCageButton";
+            editCageButton.Size = new Size(75, 40);
+            editCageButton.TabIndex = 3;
+            editCageButton.Text = "Edit";
+            editCageButton.UseVisualStyleBackColor = true;
+            editCageButton.Click += editBtn_Click;
             // 
             // saveBtn
             // 
@@ -734,7 +734,7 @@
         private Button addOffspringButton;
         public Panel offspringsPanel;
         public Label fledglingLabel;
-        private Button editButton;
+        private Button editBirdButton;
         private TextBox idLabel;
         private Button saveButton;
         private FlowLayoutPanel flowLayoutPanel2;
@@ -763,7 +763,7 @@
         public ProgressBar progressBar;
         private Label prograssBarLabel;
         private FlowLayoutPanel editPanel;
-        private Button editBtn;
+        private Button editCageButton;
         private Button saveBtn;
         private TextBox cageValue;
         private TextBox materialValue;

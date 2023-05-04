@@ -59,11 +59,11 @@ namespace ProjectTesting
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
-          
+
             if (birdOrCage == "bird") //if bird we initialize the brid's info
             {
                 cagePanel.Visible = false;
-                editButton.Show();
+                editBirdButton.Show();
                 saveButton.Hide();
                 setImages();
 
@@ -89,7 +89,7 @@ namespace ProjectTesting
                     offspringsPanel.Show();
                     fledglingLabel.Hide();
                 }
-               
+
             }
             else if (birdOrCage == "cage") //else we initialize cage's info
             {
@@ -106,7 +106,7 @@ namespace ProjectTesting
 
                 List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
 
-                foreach (string[] bird in  birdsInCage) //adding birds to list 
+                foreach (string[] bird in birdsInCage) //adding birds to list 
                 {
                     string newStr = "Bird ID: " + bird[0] + " , Type: " + bird[1] + " , Gender: " + bird[4] + " , Cage ID: " + bird[5];
                     birdList.Items.Add(newStr);
@@ -164,7 +164,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi(string birdOrCage = "bird") 
+        private string[] getTextFromUi(string birdOrCage = "bird")
         {
             string[] info = null;
             if (birdOrCage == "bird")
@@ -196,7 +196,7 @@ namespace ProjectTesting
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            editButton.Hide();
+            editBirdButton.Hide();
             saveButton.Show();
 
             infoFromDatabase = getTextFromUi();
@@ -257,7 +257,7 @@ namespace ProjectTesting
             progressBarPanel.Visible = true;
             progressBar.Value = 0;
 
-            editButton.Show();
+            editBirdButton.Show();
             saveButton.Hide();
 
             idLabel.ReadOnly = true;
@@ -346,7 +346,7 @@ namespace ProjectTesting
 
         private void editBtn_Click(object sender, EventArgs e) // for cage 
         {
-            editBtn.Visible = false;
+            editCageButton.Visible = false;
             saveBtn.Visible = true;
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
@@ -366,7 +366,7 @@ namespace ProjectTesting
 
         private void saveBtn_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
-            editBtn.Visible = true;
+            editCageButton.Visible = true;
             saveBtn.Visible = false;
 
             cageValue.ReadOnly = true;
