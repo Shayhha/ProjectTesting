@@ -18,7 +18,8 @@ namespace ProjectTesting
     public partial class MoreDetails : UserControl
     {
 
-        private string[] infoFromDatabase;
+        private Bird infoFromDatabaseBird;
+        private Cage infoFromDatabaseCage;
 
         public MoreDetails()
         {
@@ -67,24 +68,24 @@ namespace ProjectTesting
                 saveBirdButton.Hide();
                 setImages();
 
-                List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
-                infoFromDatabase = birdInfo[0];//save the bird for later use
+                List<Bird> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
+                infoFromDatabaseBird = birdInfo[0];//save the bird for later use
                 //initializing the fields
-                idLabel.Text = birdInfo[0][0];
-                typeLabel.Text = birdInfo[0][1];
-                subTypeLabel.Text = birdInfo[0][2];
-                dateTextBox.Text = birdInfo[0][3];
-                genderLabel.Text = birdInfo[0][4];
-                cageIdLabel.Text = birdInfo[0][5];
-                dadIdLabel.Text = birdInfo[0][6];
-                momIdLabel.Text = birdInfo[0][7];
+                idLabel.Text = birdInfo[0].Id;
+                typeLabel.Text = birdInfo[0].Type;
+                subTypeLabel.Text = birdInfo[0].SubType;
+                dateTextBox.Text = birdInfo[0].DateOfBirth;
+                genderLabel.Text = birdInfo[0].Gender;
+                cageIdLabel.Text = birdInfo[0].CageId;
+                dadIdLabel.Text = birdInfo[0].DadId;
+                momIdLabel.Text = birdInfo[0].MomId;
                 //checks if offspring, if not we show a list of offsprings
-                if (birdInfo[0][8] == "yes")
+                if (birdInfo[0].isOffspring)
                 {
                     offspringsPanel.Hide();
                     fledglingLabel.Show();
                 }
-                else if (birdInfo[0][8] == "no")
+                else if (!birdInfo[0].isOffspring)
                 {
                     offspringsPanel.Show();
                     fledglingLabel.Hide();
@@ -94,21 +95,21 @@ namespace ProjectTesting
             else if (birdOrCage == "cage") //else we initialize cage's info
             {
                 cagePanel.Visible = true;
-                List<string[]> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
-                infoFromDatabase = cageInfo[0]; //saving cage for later use
+                List<Cage> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
+                infoFromDatabaseCage = cageInfo[0]; //saving cage for later use
 
                 //filling the fields for cage
-                cageValue.Text = cageInfo[0][0];
-                lengthValue.Text = cageInfo[0][1];
-                widthValue.Text = cageInfo[0][2];
-                heightValue.Text = cageInfo[0][3];
-                materialValue.Text = cageInfo[0][4];
+                cageValue.Text = cageInfo[0].Id;
+                lengthValue.Text = cageInfo[0].Length;
+                widthValue.Text = cageInfo[0].Width;
+                heightValue.Text = cageInfo[0].Height;
+                materialValue.Text = cageInfo[0].Material;
 
-                List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
+                //List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
 
-                foreach (string[] bird in birdsInCage) //adding birds to list 
+                foreach (Bird bird in cageInfo[0].BirdList) //adding birds to list 
                 {
-                    string newStr = "Bird ID: " + bird[0] + " , Type: " + bird[1] + " , Gender: " + bird[4] + " , Cage ID: " + bird[5];
+                    string newStr = "Bird ID: " + bird.Id + " , Type: " + bird.Type + " , Gender: " + bird.Gender + " , Cage ID: " + bird.CageId;
                     birdList.Items.Add(newStr);
                 }
 
@@ -164,33 +165,32 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi(string birdOrCage = "bird")
+        private Bird getTextFromUiBird()
         {
-            string[] info = null;
-            if (birdOrCage == "bird")
-            {
-                info = new string[9];
+            Bird info = new Bird(new string[] {
+                        idLabel.Text.ToString(),
+                        typeLabel.Text.ToString(),
+                        subTypeLabel.Text.ToString(),
+                        dateLabel.Text.ToString(),
+                        genderLabel.Text.ToString(),
+                        cageIdLabel.Text.ToString(),
+                        dadIdLabel.Text.ToString(),
+                        momIdLabel.Text.ToString()
+                        }
+                    );
+            return info;
+        }
 
-                info[0] = idLabel.Text.ToString();
-                info[1] = typeLabel.Text.ToString();
-                info[2] = subTypeLabel.Text.ToString();
-                info[3] = dateLabel.Text.ToString();
-                info[4] = genderLabel.Text.ToString();
-                info[5] = cageIdLabel.Text.ToString();
-                info[6] = dadIdLabel.Text.ToString();
-                info[7] = momIdLabel.Text.ToString();
-
-            }
-            else if (birdOrCage == "cage")
-            {
-                info = new string[5];
-
-                info[0] = cageValue.Text.ToString();
-                info[1] = lengthValue.Text.ToString();
-                info[2] = widthValue.Text.ToString();
-                info[3] = heightValue.Text.ToString();
-                info[4] = materialValue.Text.ToString();
-            }
+        private Cage getTextFromUiCage()
+        {
+            Cage info = new Cage(new string[] {
+                        cageValue.Text.ToString(),
+                        lengthValue.Text.ToString(),
+                        widthValue.Text.ToString(),
+                        heightValue.Text.ToString(),
+                        materialValue.Text.ToString()
+                        }
+                    );
             return info;
         }
 
@@ -199,7 +199,7 @@ namespace ProjectTesting
             editBirdButton.Hide();
             saveBirdButton.Show();
 
-            infoFromDatabase = getTextFromUi();
+            //infoFromDatabaseBird = getTextFromUi();
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
@@ -220,7 +220,7 @@ namespace ProjectTesting
             int row = ex.GetLastRow(7), flag = 0;
 
             // Checking if the bird is an adult and has at least one offspring, in that case we cant change the gender, type and subtype.
-            if (infoFromDatabase[8] == "no")
+            if (!infoFromDatabaseBird.isOffspring) // max will change
             {
                 for (int i = 1; i < row; i++)
                 {
@@ -228,7 +228,7 @@ namespace ProjectTesting
                     if (isOffspring == "yes")
                     {
                         string momId = ex.ReadCell("M" + i), dadId = ex.ReadCell("N" + i);
-                        if (momId == infoFromDatabase[0] || dadId == infoFromDatabase[0])
+                        if (momId == infoFromDatabaseBird.Id || dadId == infoFromDatabaseBird.Id)
                         {
                             //Here the bird we are editing is an adult and a parent with at least one offspring
                             flag = 1;
@@ -281,12 +281,12 @@ namespace ProjectTesting
 
             progressBar.Value = 25;
 
-            string[] newInfo = getTextFromUi();
+            string[] newInfo = getTextFromUiBird().ToStringArray(); //convert Bird to string array for ease of use 
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
             int flag = 0;
 
-            if (infoFromDatabase[0] != newInfo[0])
+            if (infoFromDatabaseBird.Id != newInfo[0])
             {
                 if (!((MainWindow)this.Parent.Parent).addBird1.checkBirdId(newInfo[0]))
                 {
@@ -296,14 +296,14 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUi(), "no", true) == true)
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), false, true) == true) 
                 {
                     Excel ex = new Excel("database", MainWindow.UserSheet);
                     int row = ex.GetLastRow(7);
 
                     for (int i = 1; i < row; i++)
                     {
-                        if (ex.ReadCell("G" + i) == infoFromDatabase[0])
+                        if (ex.ReadCell("G" + i) == infoFromDatabaseBird.Id)
                         {
                             progressBar.Value = 100;
                             newInfo[8] = ex.ReadCell("O" + i);
@@ -317,14 +317,14 @@ namespace ProjectTesting
                 }
                 else
                 {
-                    idLabel.Text = infoFromDatabase[0];
-                    typeLabel.Text = infoFromDatabase[1];
-                    subTypeLabel.Text = infoFromDatabase[2];
-                    dateTextBox.Text = infoFromDatabase[3];
-                    genderLabel.Text = infoFromDatabase[4];
-                    cageIdLabel.Text = infoFromDatabase[5];
-                    dadIdLabel.Text = infoFromDatabase[6];
-                    momIdLabel.Text = infoFromDatabase[7];
+                    idLabel.Text = infoFromDatabaseBird.Id;
+                    typeLabel.Text = infoFromDatabaseBird.Type;
+                    subTypeLabel.Text = infoFromDatabaseBird.SubType;
+                    dateTextBox.Text = infoFromDatabaseBird.DateOfBirth;
+                    genderLabel.Text = infoFromDatabaseBird.Gender;
+                    cageIdLabel.Text = infoFromDatabaseBird.CageId;
+                    dadIdLabel.Text = infoFromDatabaseBird.DadId;
+                    momIdLabel.Text = infoFromDatabaseBird.MomId;
                 }
             }
 
@@ -332,14 +332,14 @@ namespace ProjectTesting
 
             if (flag == 1)
             {
-                idLabel.Text = infoFromDatabase[0];
-                typeLabel.Text = infoFromDatabase[1];
-                subTypeLabel.Text = infoFromDatabase[2];
-                dateTextBox.Text = infoFromDatabase[3];
-                genderLabel.Text = infoFromDatabase[4];
-                cageIdLabel.Text = infoFromDatabase[5];
-                dadIdLabel.Text = infoFromDatabase[6];
-                momIdLabel.Text = infoFromDatabase[7];
+                idLabel.Text = infoFromDatabaseBird.Id;
+                typeLabel.Text = infoFromDatabaseBird.Type;
+                subTypeLabel.Text = infoFromDatabaseBird.SubType;
+                dateTextBox.Text = infoFromDatabaseBird.DateOfBirth;
+                genderLabel.Text = infoFromDatabaseBird.Gender;
+                cageIdLabel.Text = infoFromDatabaseBird.CageId;
+                dadIdLabel.Text = infoFromDatabaseBird.DadId;
+                momIdLabel.Text = infoFromDatabaseBird.MomId;
             }
 
         }
@@ -381,18 +381,18 @@ namespace ProjectTesting
             widthValue.Enabled = false;
             heightValue.Enabled = false;
 
-            string[] newInfo = getTextFromUi("cage");
+            string[] newInfo = getTextFromUiCage().ToStringArray(); //convert Cage to string array for ease of use
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
 
-            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUi("cage"), true) == true)
+            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true) == true)
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 int row = ex.GetLastRow();
 
                 for (int i = 1; i < row; i++)
                 {
-                    if (ex.ReadCell("A" + i) == infoFromDatabase[0])
+                    if (ex.ReadCell("A" + i) == infoFromDatabaseCage.Id)
                     {
 
                         //progressBar.Value = 100;
@@ -402,13 +402,13 @@ namespace ProjectTesting
                     }
                 }
 
-                if (infoFromDatabase[0] != cageValue.Text) //this means that the id was changed, now we change the chage id for the birds
+                if (infoFromDatabaseCage.Id != cageValue.Text) //this means that the id was changed, now we change the chage id for the birds
                 {
                     row = ex.GetLastRow(7);
 
                     for (int i = 1; i < row; i++)
                     {
-                        if (ex.ReadCell("L" + i) == infoFromDatabase[0])
+                        if (ex.ReadCell("L" + i) == infoFromDatabaseCage.Id)
                         {
                             ex.WriteCell("L" + i.ToString(), cageValue.Text);
                         }
@@ -418,11 +418,11 @@ namespace ProjectTesting
             }
             else
             {
-                cageValue.Text = infoFromDatabase[0];
-                lengthValue.Text = infoFromDatabase[1];
-                widthValue.Text = infoFromDatabase[2];
-                heightValue.Text = infoFromDatabase[3];
-                materialValue.Text = infoFromDatabase[4];
+                cageValue.Text = infoFromDatabaseCage.Id;
+                lengthValue.Text = infoFromDatabaseCage.Length;
+                widthValue.Text = infoFromDatabaseCage.Width;
+                heightValue.Text = infoFromDatabaseCage.Height;
+                materialValue.Text = infoFromDatabaseCage.Material;
             }
         }
 

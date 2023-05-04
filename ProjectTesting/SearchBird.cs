@@ -100,10 +100,10 @@ namespace ProjectTesting
                     //    }
                     //}
                     //===============================================================//
-                    List<string[]> birds = MainWindow.HashTable.SearchBirdHashtable(name);
-                    foreach (string[] s in birds)
+                    List<Bird> birds = MainWindow.HashTable.SearchBirdHashtable(name);
+                    foreach (Bird bird in birds)
                     {
-                        string newStr = "Bird ID: " + s[0] + " , Type: " + s[1] + " , Gender: " + s[4] + " , Cage ID: " + s[5] + " | Click for more details";
+                        string newStr = "Bird ID: " + bird.Id + " , Type: " + bird.Type + " , Gender: " + bird.Gender + " , Cage ID: " + bird.CageId + " | Click for more details";
                         birdList.Items.Add(newStr);
                         flag++;
                     }
@@ -129,10 +129,10 @@ namespace ProjectTesting
                     //    }
                     //}
                     //===============================================================//
-                    List<string[]> cages = MainWindow.HashTable.SearchCageHashtable(name);
-                    foreach (string[] s in cages)
+                    List<Cage> cages = MainWindow.HashTable.SearchCageHashtable(name);
+                    foreach (Cage cage in cages)
                     {
-                        string newStr = "Cage ID: " + s[0] + " , Length: " + s[1] + " , Width: " + s[2] + " , Height: " + s[3] + " , Material: " + s[4] + " | Click for more details";
+                        string newStr = "Cage ID: " + cage.Id + " , Length: " + cage.Length + " , Width: " + cage.Width + " , Height: " + cage.Height + " , Material: " + cage.Material + " | Click for more details";
                         birdList.Items.Add(newStr);
                         flag++;
                     }

@@ -10,28 +10,39 @@ namespace ProjectTesting
     public class Cage
     {
         // Fields
-        private string Id { get; set; }
-        private string Material { get; set; }
-        private string Length { get; set; }
-        private string Width { get; set; }
-        private string Height { get; set; }
-        private List<Bird> BirdList { get; set; }
+        public string Id { get; set; }
+        public string Material { get; set; }
+        public string Length { get; set; }
+        public string Width { get; set; }
+        public string Height { get; set; }
+        public List<Bird> BirdList { get; set; }
 
         // Constructor
         public Cage(string[] cageInfo)
         {
             Id = cageInfo[0];
-            Material = cageInfo[4];
             Length = cageInfo[1];
             Width = cageInfo[2];
             Height = cageInfo[3];
+            Material = cageInfo[4];
 
             BirdList = new List<Bird>();
         }
 
-        private void AddBird(Bird bird)
+        public void AddBird(Bird bird)
         {
             BirdList.Add(bird);
+        }
+
+        public void SetBirdList(List<Bird> list)
+        {
+            BirdList = list;
+        }
+
+        public string[] ToStringArray() //string array representation of class
+        {
+            string[] cageInfo = new string[5] { this.Id, this.Length, this.Width, this.Height, this.Material };
+            return cageInfo;
         }
     }
 }

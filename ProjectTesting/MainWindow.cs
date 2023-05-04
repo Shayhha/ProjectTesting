@@ -54,17 +54,21 @@ namespace ProjectTesting
             for (int i = 1; i < BirdSize; i++) //add offsprings to each bird in bird hashtable from database
             {
                 string[] temp = ex.ReadRange(i, 7, 16);
-                List <Bird> bird = CustomHashtable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
-                if (!bird[0].isOffspring && temp[9] != "") //if the bird is adult we check if it has offsprings
+                List<Bird> bird = HashTable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
+                if (!bird[0].isOffspring && temp[9] != "none") //if the bird is adult we check if it has offsprings
                 {
                     string[] offspringList = temp[9].Split(","); //splits the string of offsprings to string[] array
-                    foreach(string offspringId in offspringList)
+                    foreach (string offspringId in offspringList)
                     {
-                        List<Bird> offspring = CustomHashtable.SearchBirdHashtable(offspringId);
-                        bird[0].AddOffspring(offspring[0]);
+                        if (offspringId != "") //checks if we have empty string in splitted array
+                        {
+                            List<Bird> offspring = HashTable.SearchBirdHashtable(offspringId);
+                            bird[0].AddOffspring(offspring[0]);
+                        }
                     }
-             
                 }
+                //if((bird[0].OffspringList.Count != 0))
+                //    MessageBox.Show(bird[0].OffspringList[0].Id);
             }
 
             for (int i = 1; i < CageSize; i++) //add cagess to cage hashtable
@@ -76,8 +80,8 @@ namespace ProjectTesting
             for (int i = 1; i < CageSize; i++) //add birds to each cage in cage hashtable from database
             {
                 string[] temp = ex.ReadRange(i, 1, 5);
-                List<Cage> cage = CustomHashtable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
-                cage.SetBirdList(CustomHashtable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
+                List<Cage> cage = HashTable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
+                cage[0].SetBirdList(HashTable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
             }
             ex.Quit();
         }
