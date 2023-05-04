@@ -64,7 +64,7 @@ namespace ProjectTesting
             {
                 cagePanel.Visible = false;
                 editBirdButton.Show();
-                saveButton.Hide();
+                saveBirdButton.Hide();
                 setImages();
 
                 List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
@@ -194,10 +194,10 @@ namespace ProjectTesting
             return info;
         }
 
-        private void editButton_Click(object sender, EventArgs e)
+        private void editBirdButton_Click(object sender, EventArgs e)
         {
             editBirdButton.Hide();
-            saveButton.Show();
+            saveBirdButton.Show();
 
             infoFromDatabase = getTextFromUi();
 
@@ -252,13 +252,13 @@ namespace ProjectTesting
             ex.Quit();
         }
 
-        private void saveButton_Click(object sender, EventArgs e) //change implementation with hashtable
+        private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
             progressBarPanel.Visible = true;
             progressBar.Value = 0;
 
             editBirdButton.Show();
-            saveButton.Hide();
+            saveBirdButton.Hide();
 
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
@@ -344,10 +344,10 @@ namespace ProjectTesting
 
         }
 
-        private void editBtn_Click(object sender, EventArgs e) // for cage 
+        private void editCageButton_Click(object sender, EventArgs e) // for cage 
         {
             editCageButton.Visible = false;
-            saveBtn.Visible = true;
+            saveCageButton.Visible = true;
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
@@ -364,10 +364,10 @@ namespace ProjectTesting
             heightValue.Enabled = true;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e) // for cage //edit to hashtables
+        private void saveCageButton_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
             editCageButton.Visible = true;
-            saveBtn.Visible = false;
+            saveCageButton.Visible = false;
 
             cageValue.ReadOnly = true;
             materialValue.ReadOnly = true;

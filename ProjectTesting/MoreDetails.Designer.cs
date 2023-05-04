@@ -39,7 +39,7 @@
             subTypeLabel = new TextBox();
             typeLabel = new TextBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            saveButton = new Button();
+            saveBirdButton = new Button();
             editBirdButton = new Button();
             idLabel = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -64,7 +64,7 @@
             cagePanel = new Panel();
             editPanel = new FlowLayoutPanel();
             editCageButton = new Button();
-            saveBtn = new Button();
+            saveCageButton = new Button();
             listLabel = new Label();
             birdList = new ListBox();
             panel3 = new Panel();
@@ -228,7 +228,7 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Controls.Add(saveButton);
+            flowLayoutPanel2.Controls.Add(saveBirdButton);
             flowLayoutPanel2.Controls.Add(editBirdButton);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
             flowLayoutPanel2.Location = new Point(300, 128);
@@ -236,16 +236,16 @@
             flowLayoutPanel2.Size = new Size(80, 95);
             flowLayoutPanel2.TabIndex = 30;
             // 
-            // saveButton
+            // saveBirdButton
             // 
-            saveButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            saveButton.Location = new Point(3, 52);
-            saveButton.Name = "saveButton";
-            saveButton.Size = new Size(70, 40);
-            saveButton.TabIndex = 29;
-            saveButton.Text = "Save";
-            saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
+            saveBirdButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            saveBirdButton.Location = new Point(3, 52);
+            saveBirdButton.Name = "saveBirdButton";
+            saveBirdButton.Size = new Size(70, 40);
+            saveBirdButton.TabIndex = 29;
+            saveBirdButton.Text = "Save";
+            saveBirdButton.UseVisualStyleBackColor = true;
+            saveBirdButton.Click += saveBirdButton_Click;
             // 
             // editBirdButton
             // 
@@ -256,7 +256,7 @@
             editBirdButton.TabIndex = 28;
             editBirdButton.Text = "Edit";
             editBirdButton.UseVisualStyleBackColor = true;
-            editBirdButton.Click += editButton_Click;
+            editBirdButton.Click += editBirdButton_Click;
             // 
             // idLabel
             // 
@@ -479,7 +479,7 @@
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(22, 20);
+            cagePanel.Location = new Point(22, 21);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
@@ -488,7 +488,7 @@
             // editPanel
             // 
             editPanel.Controls.Add(editCageButton);
-            editPanel.Controls.Add(saveBtn);
+            editPanel.Controls.Add(saveCageButton);
             editPanel.Location = new Point(748, 117);
             editPanel.Name = "editPanel";
             editPanel.Size = new Size(162, 45);
@@ -503,19 +503,19 @@
             editCageButton.TabIndex = 3;
             editCageButton.Text = "Edit";
             editCageButton.UseVisualStyleBackColor = true;
-            editCageButton.Click += editBtn_Click;
+            editCageButton.Click += editCageButton_Click;
             // 
-            // saveBtn
+            // saveCageButton
             // 
-            saveBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            saveBtn.Location = new Point(84, 3);
-            saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(75, 40);
-            saveBtn.TabIndex = 4;
-            saveBtn.Text = "Save";
-            saveBtn.UseVisualStyleBackColor = true;
-            saveBtn.Visible = false;
-            saveBtn.Click += saveBtn_Click;
+            saveCageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            saveCageButton.Location = new Point(84, 3);
+            saveCageButton.Name = "saveCageButton";
+            saveCageButton.Size = new Size(75, 40);
+            saveCageButton.TabIndex = 4;
+            saveCageButton.Text = "Save";
+            saveCageButton.UseVisualStyleBackColor = true;
+            saveCageButton.Visible = false;
+            saveCageButton.Click += saveCageButton_Click;
             // 
             // listLabel
             // 
@@ -736,7 +736,7 @@
         public Label fledglingLabel;
         private Button editBirdButton;
         private TextBox idLabel;
-        private Button saveButton;
+        private Button saveBirdButton;
         private FlowLayoutPanel flowLayoutPanel2;
         public DateTimePicker dateLabel;
         private TextBox momIdLabel;
@@ -764,7 +764,7 @@
         private Label prograssBarLabel;
         private FlowLayoutPanel editPanel;
         private Button editCageButton;
-        private Button saveBtn;
+        private Button saveCageButton;
         private TextBox cageValue;
         private TextBox materialValue;
         private TextBox lengthValue;
