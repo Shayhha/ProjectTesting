@@ -164,7 +164,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi(string birdOrCage = "bird") // not neccessary at all, we do this in initLabels!!
+        private string[] getTextFromUi(string birdOrCage = "bird") 
         {
             string[] info = null;
             if (birdOrCage == "bird")
