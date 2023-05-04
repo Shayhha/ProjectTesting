@@ -97,9 +97,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
             ex.Quit();
             
-
             return true;
-            
         }
 
         private void cleanTextBoxes()
@@ -164,8 +162,8 @@ namespace ProjectTesting
 
             //ex.Quit();
             //return true;
-            List<Cage> birds = MainWindow.HashTable.SearchCageHashtable(cageId); //search cageId in hashtable
-            if (birds.Count != 0) // if given list is empty we know that the cageId doesnt exists
+            List<Cage> cages = MainWindow.HashTable.SearchCageHashtable(cageId); //search cageId in hashtable
+            if (cages.Count != 0) // if given list is empty we know that the cageId doesnt exists
                 return false; //returns false if the cageId is already in database
             return true; // else we dont have that cageId so we return true
         }

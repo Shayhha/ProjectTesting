@@ -91,6 +91,12 @@ namespace ProjectTesting
                     fledglingLabel.Hide();
                 }
 
+                foreach (Bird offspring in birdInfo[0].OffspringList) //adding offsprings to list 
+                {
+                    string newStr = "Bird ID: " + offspring.Id + " , Type: " + offspring.Type + " , Gender: " + offspring.Gender + " , Cage ID: " + offspring.CageId;
+                    offspringList.Items.Add(newStr);
+                }
+
             }
             else if (birdOrCage == "cage") //else we initialize cage's info
             {
@@ -139,6 +145,7 @@ namespace ProjectTesting
             heightValue.Text = "";
             materialValue.Text = "";
             birdList.Items.Clear();
+            offspringList.Items.Clear();
         }
 
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
@@ -296,7 +303,7 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), false, true) == true) 
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), false, true) == true)
                 {
                     Excel ex = new Excel("database", MainWindow.UserSheet);
                     int row = ex.GetLastRow(7);
