@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProjectTesting
@@ -146,23 +147,27 @@ namespace ProjectTesting
             return true;
         }
 
-        public bool checkCageId(string cageId)
+        public bool checkCageId(string cageId) // with hashtable (works)
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            int row = ex.GetLastRow();
-            string idValue;
-            for (int i = 1; i < row; i++)
-            {
-                idValue = ex.ReadCell("A" + i);
-                if (idValue == cageId)
-                {
-                    ex.Quit();
-                    return false;
-                }
-            }
+            //Excel ex = new Excel("database", MainWindow.UserSheet);
+            //int row = ex.GetLastRow();
+            //string idValue;
+            //for (int i = 1; i < row; i++)
+            //{
+            //    idValue = ex.ReadCell("A" + i);
+            //    if (idValue == cageId)
+            //    {
+            //        ex.Quit();
+            //        return false;
+            //    }
+            //}
 
-            ex.Quit();
-            return true;
+            //ex.Quit();
+            //return true;
+            List<Cage> birds = MainWindow.HashTable.SearchCageHashtable(cageId); //search cageId in hashtable
+            if (birds.Count != 0) // if given list is empty we know that the cageId doesnt exists
+                return false; //returns false if the cageId is already in database
+            return true; // else we dont have that cageId so we return true
         }
 
         private void addButton_Click(object sender, EventArgs e)
