@@ -59,12 +59,12 @@ namespace ProjectTesting
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
-          
+
             if (birdOrCage == "bird") //if bird we initialize the brid's info
             {
                 cagePanel.Visible = false;
-                editButton.Show();
-                saveButton.Hide();
+                editBirdButton.Show();
+                saveBirdButton.Hide();
                 setImages();
 
                 List<string[]> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
@@ -89,7 +89,7 @@ namespace ProjectTesting
                     offspringsPanel.Show();
                     fledglingLabel.Hide();
                 }
-               
+
             }
             else if (birdOrCage == "cage") //else we initialize cage's info
             {
@@ -106,7 +106,7 @@ namespace ProjectTesting
 
                 List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
 
-                foreach (string[] bird in  birdsInCage) //adding birds to list 
+                foreach (string[] bird in birdsInCage) //adding birds to list 
                 {
                     string newStr = "Bird ID: " + bird[0] + " , Type: " + bird[1] + " , Gender: " + bird[4] + " , Cage ID: " + bird[5];
                     birdList.Items.Add(newStr);
@@ -164,7 +164,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private string[] getTextFromUi(string birdOrCage = "bird") // not neccessary at all, we do this in initLabels!!
+        private string[] getTextFromUi(string birdOrCage = "bird")
         {
             string[] info = null;
             if (birdOrCage == "bird")
@@ -194,10 +194,10 @@ namespace ProjectTesting
             return info;
         }
 
-        private void editButton_Click(object sender, EventArgs e)
+        private void editBirdButton_Click(object sender, EventArgs e)
         {
-            editButton.Hide();
-            saveButton.Show();
+            editBirdButton.Hide();
+            saveBirdButton.Show();
 
             infoFromDatabase = getTextFromUi();
 
@@ -252,13 +252,13 @@ namespace ProjectTesting
             ex.Quit();
         }
 
-        private void saveButton_Click(object sender, EventArgs e) //change implementation with hashtable
+        private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
             progressBarPanel.Visible = true;
             progressBar.Value = 0;
 
-            editButton.Show();
-            saveButton.Hide();
+            editBirdButton.Show();
+            saveBirdButton.Hide();
 
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
@@ -344,10 +344,10 @@ namespace ProjectTesting
 
         }
 
-        private void editBtn_Click(object sender, EventArgs e) // for cage 
+        private void editCageButton_Click(object sender, EventArgs e) // for cage 
         {
-            editBtn.Visible = false;
-            saveBtn.Visible = true;
+            editCageButton.Visible = false;
+            saveCageButton.Visible = true;
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
@@ -364,10 +364,10 @@ namespace ProjectTesting
             heightValue.Enabled = true;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e) // for cage //edit to hashtables
+        private void saveCageButton_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
-            editBtn.Visible = true;
-            saveBtn.Visible = false;
+            editCageButton.Visible = true;
+            saveCageButton.Visible = false;
 
             cageValue.ReadOnly = true;
             materialValue.ReadOnly = true;
