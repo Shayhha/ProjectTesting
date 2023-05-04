@@ -97,9 +97,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
             ex.Quit();
             
-
             return true;
-            
         }
 
         private void cleanTextBoxes()
