@@ -90,17 +90,18 @@ namespace ProjectTesting
             }
             else //else user isn't new so we show homepage
             {
-                ((MainWindow)this.Parent.Parent).homePage1.Show();
+                //((MainWindow)this.Parent.Parent).homePage1.Show();
             }
             ////set bird and cage counters and top bar
             ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
             ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
+            ex.Quit();//closes the database excel
+            MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
+            ((MainWindow)this.Parent.Parent).homePage1.Show();
             ((MainWindow)this.Parent.Parent).showTopBar();
             ((MainWindow)this.Parent.Parent).showTopPanel();
-            ex.Quit();//closes the database excel
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
-            MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
             this.Hide();
         }
 

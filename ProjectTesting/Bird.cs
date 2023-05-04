@@ -9,16 +9,16 @@ namespace ProjectTesting
     public class Bird
     {
         // Fields
-        private string Id { get; set; }
-        private string Type { get; set; }
-        private string SubType { get; set; }
-        private string DateOfBirth { get; set; }
-        private string Gender { get; set; }
-        private string CageId { get; set; }
-        private string DadId { get; set; }
-        private string MomId { get; set; }
-        private bool isOffspring { get; set; }
-        private List<Bird> OffspringList { get; set; }
+        public string Id { get; set; }
+        public string Type { get; set; }
+        public string SubType { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string CageId { get; set; }
+        public string DadId { get; set; }
+        public string MomId { get; set; }
+        public bool isOffspring { get; set; }
+        public List<Bird> OffspringList { get; set; }
 
         // Constructor
         public Bird(string[] birdInfo) 
@@ -40,14 +40,19 @@ namespace ProjectTesting
             OffspringList = new List<Bird>();
         }
 
-        private void AddOffspring(Bird offspring)
+        public void AddOffspring(Bird offspring)
         {
             OffspringList.Add(offspring);
         }
 
-        private void SetBirdList(List<Bird> list)
+        public string[] ToStringArray() //string array representation of class
         {
-            OffspringList = list;
+            string[] birdInfo = new string[9] { this.Id,this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "" };
+            if (isOffspring) // can be "true" or "false"
+                birdInfo[8] = "yes";
+            else
+                birdInfo[8] = "no";
+            return birdInfo;
         }
     }
 

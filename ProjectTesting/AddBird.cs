@@ -22,26 +22,24 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private string[] getTextFromUi()
+        private Bird getTextFromUi()
         {
-            string[] birdInfo = new string[9];
-
-            birdInfo[0] = idBox.Text.ToString();
-            birdInfo[1] = typeBox.Text.ToString();
-            birdInfo[2] = subTypeBox.Text.ToString();
-            birdInfo[3] = dateBox.Text.ToString();
-            birdInfo[4] = genderBox.Text.ToString();
-            birdInfo[5] = cageIdBox.Text.ToString();
-            birdInfo[6] = dadBox.Text.ToString();
-            birdInfo[7] = momBox.Text.ToString();
+            Bird birdInfo = new Bird(new string[] {idBox.Text.ToString(),
+            typeBox.Text.ToString(),
+            subTypeBox.Text.ToString(),
+            dateBox.Text.ToString(),
+            genderBox.Text.ToString(),
+            cageIdBox.Text.ToString(),
+            dadBox.Text.ToString(),
+            momBox.Text.ToString()});
 
             return birdInfo;
         }
 
-        public bool getInfoFromUser(string[] birdInfo, string isOffspring, bool edited = false)
+        public bool getInfoFromUser(Bird bird, bool isOffspring, bool edited = false)
         {
-            birdInfo[8] = isOffspring; // can be "yes" or "no"
-
+            string[] birdInfo = bird.ToStringArray(); //convert bird to string array
+            
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^[0-9]+$";
@@ -336,12 +334,12 @@ namespace ProjectTesting
         
         private void addButton_Click(object sender, EventArgs e)
         {
-            string isOffspring = "no"; //default is no for addBird
+            bool isOffspring = false; //default is no for addBird
             int flag = 0;
 
             if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
             { 
-                isOffspring = "yes";
+                isOffspring = true;
                 if (CheckParent() == false)
                     flag = 1;
             }

@@ -22,21 +22,23 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private string[] getTextFromUi()
+        private Cage getTextFromUi()
         {
-            string[] cageInfo = new string[5];
-
-            cageInfo[0] = idBox.Text.ToString();
-            cageInfo[1] = lengthBox.Text.ToString();
-            cageInfo[2] = widthBox.Text.ToString();
-            cageInfo[3] = heightBox.Text.ToString();
-            cageInfo[4] = materialBox.Text.ToString();
+            Cage cageInfo = new Cage(new string[]
+            {
+                idBox.Text.ToString(),
+                lengthBox.Text.ToString(),
+                widthBox.Text.ToString(),
+                heightBox.Text.ToString(),
+                materialBox.Text.ToString()
+            });
 
             return cageInfo;
         }
 
-        public bool getInfoFromUser(string[] cageInfo, bool edited = false)
+        public bool getInfoFromUser(Cage cage, bool edited = false)
         {
+            string[] cageInfo = cage.ToStringArray(); //convert cage to string array
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number

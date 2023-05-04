@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace ProjectTesting
@@ -28,18 +29,59 @@ namespace ProjectTesting
             Excel ex = new Excel("database", UserSheet);
             int BirdSize = ex.GetLastRow(7);
             int CageSize = ex.GetLastRow(1);
+
+            ////add birds to bird hashtable
+            //for (int i = 1; i < BirdSize; i++)
+            //{
+            //    string[] temp = ex.ReadRange(i, 7, 15);
+            //    HashTable.AddBirdToHashtable(temp);
+            //}
+            ////add cages to cage hashtable
+            //for (int i = 1; i < CageSize; i++)
+            //{
+            //    string[] temp = ex.ReadRange(i, 1, 5);
+            //    HashTable.AddCageToHashtable(temp);
+            //}
+
+            //new implementation
             
-            //add birds to bird hashtable
-            for (int i = 1; i < BirdSize; i++)
+            for (int i = 1; i < BirdSize; i++) //add birds to bird hashtable
             {
                 string[] temp = ex.ReadRange(i, 7, 15);
-                HashTable.AddBirdToHashtable(temp);
+                Bird bird = new Bird(temp);
+                HashTable.AddBirdToHashtable(bird);
             }
-            //add cages to cage hashtable
-            for (int i = 1; i < CageSize; i++)
+            for (int i = 1; i < BirdSize; i++) //add offsprings to each bird in bird hashtable from database
+            {
+                string[] temp = ex.ReadRange(i, 7, 16);
+                List<Bird> bird = HashTable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
+                if (!bird[0].isOffspring && temp[9] != "none") //if the bird is adult we check if it has offsprings
+                {
+                    string[] offspringList = temp[9].Split(","); //splits the string of offsprings to string[] array
+                    foreach (string offspringId in offspringList)
+                    {
+                        if (offspringId != "") //checks if we have empty string in splitted array
+                        {
+                            List<Bird> offspring = HashTable.SearchBirdHashtable(offspringId);
+                            bird[0].AddOffspring(offspring[0]);
+                        }
+                    }
+                }
+                //if((bird[0].OffspringList.Count != 0))
+                //    MessageBox.Show(bird[0].OffspringList[0].Id);
+            }
+
+            for (int i = 1; i < CageSize; i++) //add cagess to cage hashtable
             {
                 string[] temp = ex.ReadRange(i, 1, 5);
-                HashTable.AddCageToHashtable(temp);
+                Cage cage = new Cage(temp);
+                HashTable.AddCageToHashtable(cage);
+            }
+            for (int i = 1; i < CageSize; i++) //add birds to each cage in cage hashtable from database
+            {
+                string[] temp = ex.ReadRange(i, 1, 5);
+                List<Cage> cage = HashTable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
+                cage[0].SetBirdList(HashTable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
             }
             ex.Quit();
         }
