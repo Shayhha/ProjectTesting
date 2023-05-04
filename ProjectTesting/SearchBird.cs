@@ -100,8 +100,8 @@ namespace ProjectTesting
                     //    }
                     //}
                     //===============================================================//
-                    List<string[]> list = MainWindow.HashTable.SearchBirdHashtable(name);
-                    foreach (string[] s in list)
+                    List<string[]> birds = MainWindow.HashTable.SearchBirdHashtable(name);
+                    foreach (string[] s in birds)
                     {
                         string newStr = "Bird ID: " + s[0] + " , Type: " + s[1] + " , Gender: " + s[4] + " , Cage ID: " + s[5] + " | Click for more details";
                         birdList.Items.Add(newStr);
@@ -129,8 +129,8 @@ namespace ProjectTesting
                     //    }
                     //}
                     //===============================================================//
-                    List<string[]> list = MainWindow.HashTable.SearchCageHashtable(name);
-                    foreach (string[] s in list)
+                    List<string[]> cages = MainWindow.HashTable.SearchCageHashtable(name);
+                    foreach (string[] s in cages)
                     {
                         string newStr = "Cage ID: " + s[0] + " , Length: " + s[1] + " , Width: " + s[2] + " , Height: " + s[3] + " , Material: " + s[4] + " | Click for more details";
                         birdList.Items.Add(newStr);
