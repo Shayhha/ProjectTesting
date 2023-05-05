@@ -16,13 +16,26 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProjectTesting
 {
+    // This class is responsible for adding cages into the data base. This class has helper functions that help us determin
+    // whether or not the information about the cage is correct or not (the info entered by the user)
+
+    /// <summary>
+    /// This class is responsible for adding cages into the data base. This class has helper functions that help us determin 
+    /// whether or not the information about the cage is correct or not (the info entered by the user).
+    /// </summary>
     public partial class AddCage : UserControl
     {
+        // Constructor
         public AddCage()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Getting all of the information that the user has enters into the textboxes on the screen.
+        /// Creates a Cage object and give the constructor all of the data from the text box.
+        /// </summary>
+        /// <returns>A Cage object that holds all of the data the user has entered</returns>
         private Cage getTextFromUi()
         {
             Cage cageInfo = new Cage(new string[]
@@ -37,13 +50,27 @@ namespace ProjectTesting
             return cageInfo;
         }
 
+        /// <summary>
+        /// 
+        /// !!! We can take all of the simple input checks and place them inside the Cage class, so that the constructor, or another function
+        /// !!! will call it and tell us here in this function if there was a wrong input, that way the code will be easier to read.
+        /// 
+        /// This is the main function of the AddCage class. It is responsible for actually adding new cages into the database and checking 
+        /// their validity in the proccess. This function uses a few helper functions to perform all of the necessary tests.
+        /// </summary>
+        /// <param name="cage">Is the object we want to check and add to the database</param>
+        /// <param name="edited">A boolean parameter that tells the function wheter or not the cage we want to add is a new cage or an existing cage.
+        /// edited = true -> means that the cage we want to add already exists in the database.</param>
+        /// <returns>true if the cage has correct parameters and was successfuly added to the database, false otherwise</returns>
         public bool getInfoFromUser(Cage cage, bool edited = false)
         {
-            string[] cageInfo = cage.ToStringArray(); //convert cage to string array
+            // Variables:
+            string[] cageInfo = cage.ToStringArray(); //convert the given cage into a string array
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number
 
+            // Checking that the user has inputed all of the fields, else show a message box with error
             for (int j = 0; j < 5; j++)
             {
                 if (cageInfo[j] == "")
@@ -53,21 +80,26 @@ namespace ProjectTesting
                 }
             }
 
+            // Next if it is we change it to all capital letters because our database works with capital values for material
             if (cageInfo[4] == "Wood" || cageInfo[4] == "wood") { cageInfo[4] = "WOOD"; }
             else if (cageInfo[4] == "Metal" || cageInfo[4] == "metal") { cageInfo[4] = "METAL"; }
             else if (cageInfo[4] == "Plastic" || cageInfo[4] == "plastic") { cageInfo[4] = "PLASTIC"; }
 
+            // If there where no errors up untill now, we need to perform some more checks
             if (flag == 0)
             {
+                // Checking if the cage id matches the allowed pattern
                 if (!(Regex.IsMatch(cageInfo[0], idPattern)))
                 {
                     errorMessage = "The cage id must contain letters and numbers.";
                     flag = 1;
                 }
+                // Checking if the dimentions of the cage are correct
                 else if (!checkDimentions(cageInfo))
                 {
                     return false;
                 }
+                // Checking if the material of the cage is correct
                 else if (cageInfo[4] != "WOOD" && cageInfo[4] != "METAL" && cageInfo[4] != "PLASTIC")
                 {
                     errorMessage = "Cage can only be made out of WOOD, METAL or PLASTIC.";
@@ -75,14 +107,18 @@ namespace ProjectTesting
                 }
             }
 
+            // If there was an error, then flag will be 1, if it is then we show a message box with the error message and then return false. 
             if (flag == 1)
             {
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
 
+            // If there were no errors, and the cage is not edited, meaning its a new cage that the user wants to add
+            // to the database we need to check if the ID of the new cage does not already exit in the database.
             if (!edited)
             {
+                // Checking if the cage ID is unique
                 if (!checkCageId(cageInfo[0]))
                 {
                     CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
@@ -90,13 +126,14 @@ namespace ProjectTesting
                 }
             }
 
-            
+            // If everything went well and there where no errors, we the open the database excel file,
+            // add the new cage to the excel, sort the excel and then close it.
             Excel ex = new Excel("database", MainWindow.UserSheet);
             ex.WriteRange(ex.GetLastRow(), 1, 5, cageInfo);
             if (!edited)
                 ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
             ex.Quit();
-            
+
             return true;
         }
 
