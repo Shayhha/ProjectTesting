@@ -68,6 +68,18 @@ namespace ProjectTesting
 
             return birdInfo;
         }
+
+        public void EditFields(string[] bird)
+        {
+            Id = bird[0];
+            Type = bird[1];
+            SubType = bird[2];
+            DateOfBirth = bird[3];
+            Gender = bird[4];
+            CageId = bird[5];
+            DadId = bird[6];
+            MomId = bird[7];
+        }
     }
 
 }

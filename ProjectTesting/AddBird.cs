@@ -213,8 +213,11 @@ namespace ProjectTesting
                     /// here we need to build hashtable again because we added new bird/offspring ///
                 }
                 else //means we edit the current bird so we add new info to current index in database
+                {
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
-
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdInfo[0]); ///old bird id needed///
+                    currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
+                }
                 LogIn.DataBaseExcel.Quit();//close excel
                 return true;
             }
