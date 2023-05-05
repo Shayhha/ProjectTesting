@@ -210,7 +210,7 @@ namespace ProjectTesting
                     List<Cage> cage = MainWindow.HashTable.SearchCageHashtable(birdInfo[5]); //find the cage we need to add the new bird to
                     cage[0].AddBird(new Bird(birdInfo)); //add bird to cage object
                     MainWindow.SortExcel("bird");// calls SortExcel from MainWindow
-                    /// here we need to build hashtable agai because we added new bird/offspring ///
+                    /// here we need to build hashtable again because we added new bird/offspring ///
                 }
                 else //means we edit the current bird so we add new info to current index in database
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
