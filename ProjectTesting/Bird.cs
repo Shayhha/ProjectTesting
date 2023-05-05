@@ -47,11 +47,25 @@ namespace ProjectTesting
 
         public string[] ToStringArray() //string array representation of class
         {
-            string[] birdInfo = new string[9] { this.Id,this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "" };
+            string[] birdInfo;
+            if (OffspringList.Count == 0) {
+                birdInfo = new string[10] { this.Id, this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "", "none" };
+            }
+            else
+            {
+                string offsprings = "";
+                foreach (Bird offspring in OffspringList)
+                {
+                    offsprings += offspring.Id + ",";
+                }
+                birdInfo = new string[10] { this.Id, this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "", offsprings };
+            }
+
             if (isOffspring) // can be "true" or "false"
                 birdInfo[8] = "yes";
             else
                 birdInfo[8] = "no";
+
             return birdInfo;
         }
     }

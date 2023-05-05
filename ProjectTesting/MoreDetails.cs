@@ -156,19 +156,27 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
-        private Bird getTextFromUiBird()
+        private Bird getTextFromUiBird(bool isOffspring)
         {
+            string resultOffspring = "";
+            if (isOffspring)
+                resultOffspring = "yes";
+            else
+                resultOffspring = "no";
+
             Bird info = new Bird(new string[] {
-                        idLabel.Text.ToString(),
-                        typeLabel.Text.ToString(),
-                        subTypeLabel.Text.ToString(),
-                        dateLabel.Text.ToString(),
-                        genderLabel.Text.ToString(),
-                        cageIdLabel.Text.ToString(),
-                        dadIdLabel.Text.ToString(),
-                        momIdLabel.Text.ToString()
-                        }
-                    );
+                idLabel.Text.ToString(),
+                typeLabel.Text.ToString(),
+                subTypeLabel.Text.ToString(),
+                dateLabel.Text.ToString(),
+                genderLabel.Text.ToString(),
+                cageIdLabel.Text.ToString(),
+                dadIdLabel.Text.ToString(),
+                momIdLabel.Text.ToString(),
+                resultOffspring
+                }
+            
+            );
             return info;
         }
 
@@ -272,7 +280,7 @@ namespace ProjectTesting
 
             progressBar.Value = 25;
 
-            string[] newInfo = getTextFromUiBird().ToStringArray(); //convert Bird to string array for ease of use 
+            string[] newInfo = getTextFromUiBird(infoFromDatabaseBird.isOffspring).ToStringArray(); //convert Bird to string array for ease of use 
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
             int flag = 0;
@@ -287,7 +295,7 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), false, true) == true)
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(infoFromDatabaseBird.isOffspring), true) == true)
                 {
                     Excel ex = new Excel("database", MainWindow.UserSheet);
                     int row = ex.GetLastRow(7);

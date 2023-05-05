@@ -26,9 +26,8 @@ namespace ProjectTesting
             //sort the database first
             SortExcel("bird");
             SortExcel("cage");
-            Excel ex = new Excel("database", UserSheet);
-            int BirdSize = ex.GetLastRow(7);
-            int CageSize = ex.GetLastRow(1);
+            int BirdSize = LogIn.DataBaseExcel.GetLastRow(7);
+            int CageSize = LogIn.DataBaseExcel.GetLastRow(1);
 
             ////add birds to bird hashtable
             //for (int i = 1; i < BirdSize; i++)
@@ -47,13 +46,13 @@ namespace ProjectTesting
             
             for (int i = 1; i < BirdSize; i++) //add birds to bird hashtable
             {
-                string[] temp = ex.ReadRange(i, 7, 15);
+                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 15);
                 Bird bird = new Bird(temp);
                 HashTable.AddBirdToHashtable(bird);
             }
             for (int i = 1; i < BirdSize; i++) //add offsprings to each bird in bird hashtable from database
             {
-                string[] temp = ex.ReadRange(i, 7, 16);
+                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 16);
                 List<Bird> bird = HashTable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
                 if (!bird[0].isOffspring && temp[9] != "none") //if the bird is adult we check if it has offsprings
                 {
@@ -73,17 +72,16 @@ namespace ProjectTesting
 
             for (int i = 1; i < CageSize; i++) //add cagess to cage hashtable
             {
-                string[] temp = ex.ReadRange(i, 1, 5);
+                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
                 Cage cage = new Cage(temp);
                 HashTable.AddCageToHashtable(cage);
             }
             for (int i = 1; i < CageSize; i++) //add birds to each cage in cage hashtable from database
             {
-                string[] temp = ex.ReadRange(i, 1, 5);
+                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
                 List<Cage> cage = HashTable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
                 cage[0].SetBirdList(HashTable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
             }
-            ex.Quit();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -136,6 +134,7 @@ namespace ProjectTesting
             hideTopBar();
             hideBackBtn();
             hideTopPanel();
+            //LogIn.DataBaseExcel.Quit();  //clsoe DataBaseExcel!
         }
 
         public void showTopBar()
@@ -212,16 +211,16 @@ namespace ProjectTesting
             int colStart = 7;  //default value
             int colEnd = 15; //default vaule
             int flag = 0;
-            Excel ex = new Excel("database", UserSheet);
+            
             if (name == "bird")
             {
-                size = ex.GetLastRow(7) - 1;
+                size = LogIn.DataBaseExcel.GetLastRow(7) - 1;
                 colStart = 7;
                 colEnd = 15;
             }
             else if (name == "cage")
             {
-                size = ex.GetLastRow(1) - 1;
+                size = LogIn.DataBaseExcel.GetLastRow(1) - 1;
                 colStart = 1;
                 colEnd = 5;
             }
@@ -237,7 +236,7 @@ namespace ProjectTesting
 
                 for (int i = 1; i < size + 1; i++)
                 {
-                    string[] temp = ex.ReadRange(i, colStart, colEnd);
+                    string[] temp = LogIn.DataBaseExcel.ReadRange(i, colStart, colEnd);
                     arr[index] = temp;
                     index++;//increment index 
                 }
@@ -250,11 +249,10 @@ namespace ProjectTesting
                 index = 0;
                 for (int j = 1; j < size + 1; j++) //now we going through the database and update the birds list 
                 {
-                    ex.WriteRange(j, colStart, colEnd, arr[index]);
+                    LogIn.DataBaseExcel.WriteRange(j, colStart, colEnd, arr[index]);
                     index++;
                 }
             }
-            ex.Quit();//close excel
         }
 
         public static int Partition(string[][] arr, int Start, int End)
