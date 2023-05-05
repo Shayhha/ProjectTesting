@@ -20,8 +20,8 @@ namespace ProjectTesting
         public bool isOffspring { get; set; }
         public List<Bird> OffspringList { get; set; }
 
-        // Constructor
-        public Bird(string[] birdInfo) 
+        // Constructors
+        public Bird(string[] birdInfo) //ctor
         {
             Id = birdInfo[0];
             Type = birdInfo[1];
@@ -38,6 +38,20 @@ namespace ProjectTesting
                 isOffspring = false;
 
             OffspringList = new List<Bird>();
+        }
+
+        public Bird(Bird bird) //copy ctor
+        {
+            Id = bird.Id;
+            Type = bird.Type;
+            SubType = bird.SubType;
+            DateOfBirth = bird.DateOfBirth;
+            Gender = bird.Gender;
+            CageId = bird.CageId;
+            DadId = bird.DadId;
+            MomId = bird.MomId;
+            isOffspring = bird.isOffspring;
+            OffspringList = bird.OffspringList.Select(b => new Bird(b)).ToList(); //copys the list to current object
         }
 
         public void AddOffspring(Bird offspring)

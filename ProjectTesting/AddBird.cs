@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Dynamic;
 using System.Globalization;
@@ -28,7 +29,7 @@ namespace ProjectTesting
             string resultOffspring = "";
             if (isOffspring)
                 resultOffspring = "yes";
-            else 
+            else
                 resultOffspring = "no";
 
             Bird birdInfo = new Bird(new string[] {
@@ -46,10 +47,11 @@ namespace ProjectTesting
             return birdInfo;
         }
 
-        public bool getInfoFromUser(Bird bird, bool edited = false)
+        public bool getInfoFromUser(Bird bird, bool edited = false, string oldBirdId = "")
         {
             string[] birdInfo = bird.ToStringArray(); //convert bird to string array
             int currentBirdRow = 0 ; //index of current bird
+            Bird newBird = null; // bird object for the new bird (shared with everyone) 
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^[0-9]+$";
@@ -145,6 +147,8 @@ namespace ProjectTesting
                 int count = 0; //count for loop break
                 List<Bird> dad = null; //for use in offspring
                 List<Bird> mom = null; //for use in offspring
+                if(!edited) //if we adding new bird we initialize the bird object
+                    newBird = new Bird(birdInfo);  //initializing new bird object
 
                 if (birdInfo[8] == "yes") //if bird is offspring we search in hashtable the parents
                 {
@@ -153,14 +157,15 @@ namespace ProjectTesting
                     mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
                     if (!edited) //we add the offspring only when we know wern't editing
                     {
-                        dad[0].AddOffspring(new Bird(birdInfo)); //add offspirng to dad
-                        mom[0].AddOffspring(new Bird(birdInfo)); //add offspring to mom
+                        dad[0].AddOffspring(newBird); //add offspirng to dad 
+                        mom[0].AddOffspring(newBird); //add offspring to mom
                     }
                 }
 
-                for (int i = 0; i < LogIn.DataBaseExcel.GetLastRow(7); i++) //goes through database to find index / parents of offspring
+                for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(7); i++) //goes through database to find index / parents of offspring
                 {
-                    if (edited && LogIn.DataBaseExcel.ReadCell("G" + i) == birdInfo[0]) //only when we need to edit
+                    ///needs old bird id///
+                    if (edited && LogIn.DataBaseExcel.ReadCell("G" + i) == oldBirdId) //only when we need to edit
                     {
                         currentBirdRow = i;
                         count++;
@@ -205,17 +210,18 @@ namespace ProjectTesting
                 if (!edited) //means we add the bird/offspring
                 {
                     LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(7), 7, 16, birdInfo); //add bird to database
-                    MainWindow.HashTable.AddBirdToHashtable(new Bird(birdInfo)); //add bird to hashtable
+                    MainWindow.HashTable.AddBirdToHashtable(newBird); //add bird to hashtable
                     ((MainWindow)this.Parent.Parent).setBirdsLabel((LogIn.DataBaseExcel.GetLastRow(7) - 1).ToString());
                     List<Cage> cage = MainWindow.HashTable.SearchCageHashtable(birdInfo[5]); //find the cage we need to add the new bird to
-                    cage[0].AddBird(new Bird(birdInfo)); //add bird to cage object
+                    cage[0].AddBird(newBird); //add bird to cage object
                     MainWindow.SortExcel("bird");// calls SortExcel from MainWindow
                     /// here we need to build hashtable again because we added new bird/offspring ///
                 }
                 else //means we edit the current bird so we add new info to current index in database
                 {
+                    MessageBox.Show(currentBirdRow.ToString());
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
-                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdInfo[0]); ///old bird id needed///
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId); ///old bird id needed///
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
                 }
                 LogIn.DataBaseExcel.Quit();//close excel
