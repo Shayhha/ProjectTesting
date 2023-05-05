@@ -20,8 +20,8 @@ namespace ProjectTesting
         public bool isOffspring { get; set; }
         public List<Bird> OffspringList { get; set; }
 
-        // Constructor
-        public Bird(string[] birdInfo) 
+        // Constructors
+        public Bird(string[] birdInfo) //ctor
         {
             Id = birdInfo[0];
             Type = birdInfo[1];
@@ -40,6 +40,20 @@ namespace ProjectTesting
             OffspringList = new List<Bird>();
         }
 
+        public Bird(Bird bird) //copy ctor
+        {
+            Id = bird.Id;
+            Type = bird.Type;
+            SubType = bird.SubType;
+            DateOfBirth = bird.DateOfBirth;
+            Gender = bird.Gender;
+            CageId = bird.CageId;
+            DadId = bird.DadId;
+            MomId = bird.MomId;
+            isOffspring = bird.isOffspring;
+            OffspringList = bird.OffspringList.Select(b => new Bird(b)).ToList(); //copys the list to current object
+        }
+
         public void AddOffspring(Bird offspring)
         {
             OffspringList.Add(offspring);
@@ -47,12 +61,38 @@ namespace ProjectTesting
 
         public string[] ToStringArray() //string array representation of class
         {
-            string[] birdInfo = new string[9] { this.Id,this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "" };
+            string[] birdInfo;
+            if (OffspringList.Count == 0) {
+                birdInfo = new string[10] { this.Id, this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "", "none" };
+            }
+            else
+            {
+                string offsprings = "";
+                foreach (Bird offspring in OffspringList)
+                {
+                    offsprings += offspring.Id + ",";
+                }
+                birdInfo = new string[10] { this.Id, this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "", offsprings };
+            }
+
             if (isOffspring) // can be "true" or "false"
                 birdInfo[8] = "yes";
             else
                 birdInfo[8] = "no";
+
             return birdInfo;
+        }
+
+        public void EditFields(string[] bird)
+        {
+            Id = bird[0];
+            Type = bird[1];
+            SubType = bird[2];
+            DateOfBirth = bird[3];
+            Gender = bird[4];
+            CageId = bird[5];
+            DadId = bird[6];
+            MomId = bird[7];
         }
     }
 

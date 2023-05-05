@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
+using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
@@ -22,24 +24,34 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        private Bird getTextFromUi()
+        private Bird getTextFromUi(bool isOffspring)
         {
-            Bird birdInfo = new Bird(new string[] {idBox.Text.ToString(),
-            typeBox.Text.ToString(),
-            subTypeBox.Text.ToString(),
-            dateBox.Text.ToString(),
-            genderBox.Text.ToString(),
-            cageIdBox.Text.ToString(),
-            dadBox.Text.ToString(),
-            momBox.Text.ToString()});
+            string resultOffspring = "";
+            if (isOffspring)
+                resultOffspring = "yes";
+            else
+                resultOffspring = "no";
+
+            Bird birdInfo = new Bird(new string[] {
+                idBox.Text.ToString(),
+                typeBox.Text.ToString(),
+                subTypeBox.Text.ToString(),
+                dateBox.Text.ToString(),
+                genderBox.Text.ToString(),
+                cageIdBox.Text.ToString(),
+                dadBox.Text.ToString(),
+                momBox.Text.ToString(),
+                resultOffspring}
+            );
 
             return birdInfo;
         }
 
-        public bool getInfoFromUser(Bird bird, bool isOffspring, bool edited = false)
+        public bool getInfoFromUser(Bird bird, bool edited = false, string oldBirdId = "")
         {
             string[] birdInfo = bird.ToStringArray(); //convert bird to string array
-            
+            int currentBirdRow = 0 ; //index of current bird
+            Bird newBird = null; // bird object for the new bird (shared with everyone) 
             int flag = 0;
             string errorMessage = "";
             string idPattern = "^[0-9]+$";
@@ -119,9 +131,8 @@ namespace ProjectTesting
                         flag = 1;
                     }
                 }
-
-
             }
+
             ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 75;
 
             if (flag == 1)
@@ -130,13 +141,90 @@ namespace ProjectTesting
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
-            else
+            else //else means all parameters are correct so we add/edit the bird
             {
-                Excel ex = new Excel("database", MainWindow.UserSheet);
-                ex.WriteRange(ex.GetLastRow(7), 7, 15, birdInfo);
-                if (!edited)
-                    ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
-                ex.Quit();
+                LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
+                int count = 0; //count for loop break
+                List<Bird> dad = null; //for use in offspring
+                List<Bird> mom = null; //for use in offspring
+                if(!edited) //if we adding new bird we initialize the bird object
+                    newBird = new Bird(birdInfo);  //initializing new bird object
+
+                if (birdInfo[8] == "yes") //if bird is offspring we search in hashtable the parents
+                {
+                    //searching the parents in hashtable and add the offspring to them
+                    dad = MainWindow.HashTable.SearchBirdHashtable(birdInfo[6]);
+                    mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
+                    if (!edited) //we add the offspring only when we know wern't editing
+                    {
+                        dad[0].AddOffspring(newBird); //add offspirng to dad 
+                        mom[0].AddOffspring(newBird); //add offspring to mom
+                    }
+                }
+
+                for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(7); i++) //goes through database to find index / parents of offspring
+                {
+                    ///needs old bird id///
+                    if (edited && LogIn.DataBaseExcel.ReadCell("G" + i) == oldBirdId) //only when we need to edit
+                    {
+                        currentBirdRow = i;
+                        count++;
+                    }
+                    ///we need to regard a situation where we change id of offspring, we need to change that in parents///
+                    if (dad != null && mom != null) //if not null means we add/edit offspring
+                    {
+                        if (LogIn.DataBaseExcel.ReadCell("G" + i) == dad[0].Id)
+                        {
+                            if ((LogIn.DataBaseExcel.ReadCell("P" + i)) == "none") //if dad doesnt have offsprings yet
+                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0] + ","); //add offspring id to dad
+                            else //if dad has offsprings we add another one to existing list of offspring ids
+                                LogIn.DataBaseExcel.WriteCell("P" + i, (LogIn.DataBaseExcel.ReadCell("P" + i)) + birdInfo[0] + ","); //add offspring id to dad
+                            count++;
+                        }
+
+                        else if (LogIn.DataBaseExcel.ReadCell("G" + i) == mom[0].Id)
+                        {
+                            if ((LogIn.DataBaseExcel.ReadCell("P" + i)) == "none") //if mom doesnt have offsprings yet
+                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0] + ","); //add offspring id to mom
+                            else //if mom has offsprings we add another one to existing list of offspring ids
+                                LogIn.DataBaseExcel.WriteCell("P" + i, (LogIn.DataBaseExcel.ReadCell("P" + i)) + birdInfo[0] + ","); //add offspring id to mom
+                            count++;
+                        }
+                    }
+                    if (birdInfo[8] == "no") //break if we have regular bird
+                    {
+                        if (!edited) //if we dont edit we break 
+                            break;
+                        else if (edited && count == 1)  //if we edit, we search currect index in database and then break
+                            break;
+                    }
+                    if (birdInfo[8] == "yes") //break if we have offspring
+                    {
+                        if (!edited && count == 2) //if we already found mom and dad inside the database we break (adding a new bird)
+                            break;
+                        else if (edited && count == 3) //if we found dad, mom and the current offspring we break (editing existing bird)
+                            break;
+                    }
+                }
+
+                if (!edited) //means we add the bird/offspring
+                {
+                    LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(7), 7, 16, birdInfo); //add bird to database
+                    MainWindow.HashTable.AddBirdToHashtable(newBird); //add bird to hashtable
+                    ((MainWindow)this.Parent.Parent).setBirdsLabel((LogIn.DataBaseExcel.GetLastRow(7) - 1).ToString());
+                    List<Cage> cage = MainWindow.HashTable.SearchCageHashtable(birdInfo[5]); //find the cage we need to add the new bird to
+                    cage[0].AddBird(newBird); //add bird to cage object
+                    MainWindow.SortExcel("bird");// calls SortExcel from MainWindow
+                    /// here we need to build hashtable again because we added new bird/offspring ///
+                }
+                else //means we edit the current bird so we add new info to current index in database
+                {
+                    MessageBox.Show(currentBirdRow.ToString());
+                    LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId); ///old bird id needed///
+                    currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
+                }
+                LogIn.DataBaseExcel.Quit();//close excel
                 return true;
             }
         }
@@ -345,9 +433,8 @@ namespace ProjectTesting
             }
             if (flag == 0)
             {
-                if (getInfoFromUser(getTextFromUi(), isOffspring))
+                if (getInfoFromUser(getTextFromUi(isOffspring)))
                 {
-                    MainWindow.SortExcel("bird");//! here I call my sorting method!///
                     cleanTextBoxes();
                     ((MainWindow)this.Parent.Parent).homePage1.Show();
                     this.Hide();

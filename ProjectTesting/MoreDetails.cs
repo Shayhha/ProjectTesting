@@ -158,18 +158,20 @@ namespace ProjectTesting
 
         private Bird getTextFromUiBird()
         {
-            Bird info = new Bird(new string[] {
-                        idLabel.Text.ToString(),
-                        typeLabel.Text.ToString(),
-                        subTypeLabel.Text.ToString(),
-                        dateLabel.Text.ToString(),
-                        genderLabel.Text.ToString(),
-                        cageIdLabel.Text.ToString(),
-                        dadIdLabel.Text.ToString(),
-                        momIdLabel.Text.ToString()
-                        }
-                    );
-            return info;
+            Bird newBird = new Bird(infoFromDatabaseBird);
+            string[] temp = new string[] {
+                idLabel.Text.ToString(),
+                typeLabel.Text.ToString(),
+                subTypeLabel.Text.ToString(),
+                dateLabel.Text.ToString(),
+                genderLabel.Text.ToString(),
+                cageIdLabel.Text.ToString(),
+                dadIdLabel.Text.ToString(),
+                momIdLabel.Text.ToString()
+            };
+            newBird.EditFields(temp); 
+
+            return newBird;
         }
 
         private Cage getTextFromUiCage()
@@ -287,27 +289,24 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), false, true) == true)
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), true, infoFromDatabaseBird.Id) == false)
                 {
-                    Excel ex = new Excel("database", MainWindow.UserSheet);
-                    int row = ex.GetLastRow(7);
+                    //Excel ex = new Excel("database", MainWindow.UserSheet);
+                    //int row = ex.GetLastRow(7);
 
-                    for (int i = 1; i < row; i++)
-                    {
-                        if (ex.ReadCell("G" + i) == infoFromDatabaseBird.Id)
-                        {
-                            progressBar.Value = 100;
-                            newInfo[8] = ex.ReadCell("O" + i);
-                            ex.WriteRange(i, 7, 15, newInfo);
-                            ex.WriteRange(row - 1, 7, 15, cleanUp);
+                    //for (int i = 1; i < row; i++)
+                    //{
+                    //    if (ex.ReadCell("G" + i) == infoFromDatabaseBird.Id)
+                    //    {
+                    //        progressBar.Value = 100;
+                    //        newInfo[8] = ex.ReadCell("O" + i);
+                    //        ex.WriteRange(i, 7, 15, newInfo);
+                    //        ex.WriteRange(row - 1, 7, 15, cleanUp);
 
-                            dateTextBox.Text = newInfo[3];
-                        }
-                    }
-                    ex.Quit();
-                }
-                else
-                {
+                    //        dateTextBox.Text = newInfo[3];
+                    //    }
+                    //}
+                    //ex.Quit();
                     idLabel.Text = infoFromDatabaseBird.Id;
                     typeLabel.Text = infoFromDatabaseBird.Type;
                     subTypeLabel.Text = infoFromDatabaseBird.SubType;

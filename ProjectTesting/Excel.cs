@@ -3,7 +3,7 @@ using _Excel = Microsoft.Office.Interop.Excel;
 
 namespace ProjectTesting
 {
-    class Excel
+    public class Excel
     {
         private string path = "";
         private _Application excel = new _Excel.Application();
