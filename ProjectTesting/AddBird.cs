@@ -165,7 +165,7 @@ namespace ProjectTesting
                         currentBirdRow = i;
                         count++;
                     }
-                    ///we need to regard that situation where we change id of offspring, we need to change that in parents///
+                    ///we need to regard a situation where we change id of offspring, we need to change that in parents///
                     if (dad != null && mom != null) //if not null means we add/edit offspring
                     {
                         if (LogIn.DataBaseExcel.ReadCell("G" + i) == dad[0].Id)
