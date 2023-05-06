@@ -207,8 +207,8 @@ namespace ProjectTesting
                 MainWindow.HashTable.ClearBirdCageHashtable();
                 MainWindow.InitHashtable();
                 // think about make new hashtable
-
             }
+
             LogIn.DataBaseExcel.Quit(); //close excel
 
             return true;

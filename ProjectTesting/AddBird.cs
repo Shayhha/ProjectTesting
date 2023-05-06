@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -91,17 +92,12 @@ namespace ProjectTesting
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
                     ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false;
-                    CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try one of these: " + findValidCageIds(), "Error");
+                    CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try the following: " + findValidCageIds(), "Cage Id Error");
                     return false;
                 }
                 else if (errorMessage != "")
                 { 
                     ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 50;
-                }
-
-                if (!edited) // edited will be true only if the user is adding a new bird, when the user edits an existing bird it will be false
-                {
-                    if (!checkBirdId(birdInfo[0], birdInfo[6], birdInfo[7])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
                 }
                 
                 if (birdInfo[6] != "")
@@ -116,6 +112,9 @@ namespace ProjectTesting
                         errorMessage = "The bird's id and dad's id must be different.";
                         flag = 1;
                     }
+                    else if (!checkDadId(birdInfo[6]))
+                        flag = 1;
+                    
                 }
                 
                 if (birdInfo[7] != "")
@@ -129,6 +128,17 @@ namespace ProjectTesting
                     {
                         errorMessage = "The bird's id and mom's id must be different.";
                         flag = 1;
+                    }
+                    else if (!checkMomId(birdInfo[7]))
+                        flag = 1;
+                }
+
+                if (!edited) // if the user is adding a new bird we also want to check if that bird already exists in the database
+                {
+                    if (!checkBirdId(birdInfo[0]))
+                    {
+                        ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false;
+                        return false;
                     }
                 }
             }
@@ -276,37 +286,56 @@ namespace ProjectTesting
             momBox.Text = "";
         }
 
-        public bool checkBirdId(string birdId, string dadId = "", string momId = "")
+        public bool checkDadId(string dadId)
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            int row = ex.GetLastRow(7);
-            string idValue;
-
-            for (int i = 1; i < row; i++)
+            List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId); 
+            if (dadBird.Count != 0)
             {
-                idValue = ex.ReadCell("G" + i);
-                if (idValue == birdId)
+                if (dadBird[0].isOffspring)
                 {
-                    CustomMessageBox.Show("The bird you are trying to add already exists in the database, try a different id.", "Error");
-                    ex.Quit();
+                    CustomMessageBox.Show("Dad's id is an id of a fledgiling, he cannot yet be a dad.", "Dad Id Error");
                     return false;
                 }
-                else if (dadId != "" && momId != "")
+                else if (dadBird[0].Gender == "Female")
                 {
-                    if (idValue == dadId || idValue == momId)
-                    {
-                        if (ex.ReadCell("O" + i.ToString()) == "yes")
-                        {
-                            CustomMessageBox.Show("Dad's id is an id of a fledgiling, he cannot yet be a dad.", "Dad Id Error");
-                            ex.Quit();
-                            return false;
-                        } 
-                    }
+                    CustomMessageBox.Show("Dad's id must be an id of a Male bird!", "Dad Id Error");
+                    return false;
                 }
             }
-            ex.Quit();
-            return true;
 
+            return true;
+        }
+
+        public bool checkMomId(string momId)
+        {
+            List<Bird> momBird = MainWindow.HashTable.SearchBirdHashtable(momId);
+            if (momBird.Count != 0)
+            {
+                if (momBird[0].isOffspring)
+                {
+                    CustomMessageBox.Show("Mom's id is an id of a fledgiling, she cannot yet be a Mom.", "Mom Id Error");
+                    return false;
+                }
+                else if (momBird[0].Gender == "Male")
+                {
+                    CustomMessageBox.Show("Mom's id must be an id of a Female bird!", "Mom Id Error");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool checkBirdId(string birdId)
+        {
+            List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdId);
+            if (currentBird.Count != 0)
+            {
+                CustomMessageBox.Show("The bird you are trying to add already exists in the database, try a different id.", "Error");
+                return false;
+            }
+
+            return true;
         }
 
         private bool checkType(string type)
@@ -350,102 +379,78 @@ namespace ProjectTesting
 
         private string findValidCageIds()
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            int row = ex.GetLastRow();
-            string returnString = "";
-
-            for (int i = 1; i < row; i++)
+            List<Cage> SomeCagesList = MainWindow.HashTable.SearchCageHashtable("WOOD");
+            if (SomeCagesList.Count != 0)
+                return SomeCagesList[0].Id;
+            else
             {
-                returnString += ex.ReadCell("A" + i.ToString()).ToString();
-                if (i < row - 1)
-                    returnString += ", ";
+                SomeCagesList = MainWindow.HashTable.SearchCageHashtable("METAL");
+                if (SomeCagesList.Count != 0)
+                    return SomeCagesList[0].Id;
                 else
-                    returnString += ".";
+                {
+                    SomeCagesList = MainWindow.HashTable.SearchCageHashtable("PLASTIC");
+                    return SomeCagesList[0].Id;
+                }
             }
-            ex.Quit();
-            return returnString;
         }
 
+        /// <summary>
+        /// When adding an offspring to an existing bird we need to define which parent the user needs to 
+        /// add, if we are adding an offspring to a male bird then the other parent needs to be a female.
+        /// This function performs all of the nessecary checks to ensure we can later add the bird into
+        /// the database safely.
+        /// </summary>
+        /// <returns>true is the parents details are correct, false otherwise</returns>
         private bool CheckParent()
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            int size = ex.GetLastRow(7);
-            string parentType="";
-            string parentGender, parentBox;
-            string errorMessage = "";
+            string parentType = "", errorMessage = "-1", parentGender, parentId;
 
-            if (idBox.Text == momBox.Text || idBox.Text==dadBox.Text) //checks if we entered a parent id
-            {
-                CustomMessageBox.Show("You can't have parent's ID!", "ID Error");
-                ex.Quit();
-                return false;
-            }
-
-            if (momBox.Text == dadBox.Text)
-            {
-                CustomMessageBox.Show("Parent's can't have same ID!", "ID Error");
-                ex.Quit();
-                return false;
-            }
-            //now we want to know which parent's id we need to check
+            // we want to know which parent's id we need to check
             if (dadBox.ReadOnly == true)//if dad is locked, we know we need to check moms id
             {
                 parentType = "mom";
-                parentBox = momBox.Text;
+                parentId = momBox.Text;
                 parentGender = "Female";
             }
 
             else if (momBox.ReadOnly == true)
             {
                 parentType = "dad";
-                parentBox = dadBox.Text;
+                parentId = dadBox.Text;
                 parentGender = "Male";
             }
             else // we have an undefined error
             {
-                ex.Quit();
                 return false;
             }
 
-            for (int i = 1; i < size; i++) //cage id, first id, gender, types
+            List<Bird> parentBird = MainWindow.HashTable.SearchBirdHashtable(parentId);
+
+            if (parentBird.Count != 0)
             {
-                string[] temp = ex.ReadRange(i, 7, 15);
-
-
-                if (temp[0] == parentBox)//means we need to find female bird
+                if (parentBird[0].Gender != parentGender)
                 {
-                    errorMessage = "-1";
-                    if (temp[4] != parentGender)
-                    {
-                        errorMessage = "Other parent must me " + parentGender.ToLower() + "!";
-                    }
-
-                    else if (temp[5] != cageIdBox.Text)
-                    {
-                        errorMessage = "Parents must be in the same cage!";
-                    }
-                    else if (temp[1] != typeBox.Text)
-                    {
-                        errorMessage = "Parents must have same type!";
-                    }
-                    else if (temp[7] == "yes")
-                    {
-                        errorMessage = "Parents must be adults!";
-                    }
-                    //else if (temp[2] != subTypeBox.Text)
-                    //{
-                    //    errorMessage = "Parents must have same subtype!";
-                    //}
-                    break;
+                    errorMessage = "Other parent must me " + parentGender.ToLower() + "!";
+                }
+                else if (parentBird[0].CageId != cageIdBox.Text)
+                {
+                    errorMessage = "Parents must be in the same cage!";
+                }
+                else if (parentBird[0].Type != typeBox.Text)
+                {
+                    errorMessage = "Parents must have same type!";
+                }
+                else if (parentBird[0].isOffspring)
+                {
+                    errorMessage = "Parents must be adults!";
                 }
             }
-            ex.Quit();
-            if (errorMessage == "")
-            {
-                CustomMessageBox.Show("id not found", "Error");
-                return false;
-            }
-            else if (errorMessage != "-1")
+            else
+                errorMessage = "There is no bird that is a " + parentGender + " with that id, try again.";
+            
+
+            if (errorMessage != "-1")
             {
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
@@ -458,22 +463,19 @@ namespace ProjectTesting
         private void addButton_Click(object sender, EventArgs e)
         {
             bool isOffspring = false; //default is no for addBird
-            int flag = 0;
-
+            
             if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
             { 
                 isOffspring = true;
                 if (CheckParent() == false)
-                    flag = 1;
+                    return;
             }
-            if (flag == 0)
+
+            if (getInfoFromUser(getTextFromUi(isOffspring)))
             {
-                if (getInfoFromUser(getTextFromUi(isOffspring)))
-                {
-                    cleanTextBoxes();
-                    ((MainWindow)this.Parent.Parent).homePage1.Show();
-                    this.Hide();
-                }
+                cleanTextBoxes();
+                ((MainWindow)this.Parent.Parent).homePage1.Show();
+                this.Hide();
             }
         }
 
