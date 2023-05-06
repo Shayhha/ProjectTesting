@@ -125,15 +125,17 @@ namespace ProjectTesting
                     return false;
                 }
             }
-
             // If everything went well and there where no errors, we the open the database excel file,
             // add the new cage to the excel, sort the excel and then close it.
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            ex.WriteRange(ex.GetLastRow(), 1, 5, cageInfo);
+            LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
+            LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
+            MainWindow.HashTable.AddCageToHashtable(new Cage(cageInfo)); //add cage to hashtable
             if (!edited)
-                ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-            ex.Quit();
+                ((MainWindow)this.Parent.Parent).setCagesLabel((LogIn.DataBaseExcel.GetLastRow() - 1).ToString());
 
+            MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+            LogIn.DataBaseExcel.Quit(); //close excel
+            
             return true;
         }
 
@@ -212,7 +214,6 @@ namespace ProjectTesting
         {
             if (getInfoFromUser(getTextFromUi()))
             {
-                MainWindow.SortExcel("cage"); //calls out function from addBird
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
                 setWelcome_lable(false);

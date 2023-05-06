@@ -14,18 +14,17 @@ namespace ProjectTesting
 {
     public partial class LogIn : UserControl
     {
+        public static Excel DataBaseExcel = null;
         public LogIn()
         {
             InitializeComponent();
         }
-         
-       
+        
         private void LogIn_button_Click(object sender, EventArgs e)
         {
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
             string[] info = { username, password };
-            ////////////////////////////////////////////////////////////////////////////////
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
             if (result[0][0] == username && result[0][1] != password)
             {
@@ -40,51 +39,15 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
-
-            //////////////////////////////////////////////////////////////////////////////////////
-            //Excel ex = new Excel("users", "default");
-            //int size = ex.GetLastRow();
-            //string[] temp = null;
-            //int flag = 0;
-
-            //if (username == "" && password == "")
-            //{
-            //    CustomMessageBox.Show("Field are empty!", "Error");
-            //    flag = 1;
-            //}
-            //else
-            //{
-            //    for (int i = 1; i < size; i++)
-            //    {
-            //        temp = ex.ReadRange(i, 1, 3);
-            //        if (temp[0] == info[0] && temp[1] == info[1]) //if we found matching user we change value of UserSheet
-            //        {
-            //            MainWindow.UserSheet = username; //gives usersheet the current users name
-            //            LoggedIn();
-            //            flag = 1;
-            //            break;
-
-            //        }
-            //        else if (temp[0] == info[0] && temp[1] != info[1])
-            //        {
-            //            CustomMessageBox.Show("Wrong password!", "Password Error");
-            //            flag = 1;
-            //            break;
-            //        }
-            //    }
-            //}
-            //if (flag == 0)
-            //{
-            //    CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
-            //}
-            //ex.Quit(); //after we logged in we close users excel
         }
 
         private void LoggedIn() //opens the homepage
         {
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            if (ex.ReadCell("A1") == "") //checks if user is new (without any cages)
+            DataBaseExcel = new Excel("database", MainWindow.UserSheet); //opens the database of user
+            if (DataBaseExcel.ReadCell("A1") == "") //checks if user is new (without any cages)
             {
+                ((MainWindow)this.Parent.Parent).showTopBar();
+                ((MainWindow)this.Parent.Parent).showTopPanel();
                 ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
                 ((MainWindow)this.Parent.Parent).addCage1.Show();
             }
@@ -93,15 +56,15 @@ namespace ProjectTesting
                 //((MainWindow)this.Parent.Parent).homePage1.Show();
             }
             ////set bird and cage counters and top bar
-            ((MainWindow)this.Parent.Parent).setCagesLabel((ex.GetLastRow() - 1).ToString());
-            ((MainWindow)this.Parent.Parent).setBirdsLabel((ex.GetLastRow(7) - 1).ToString());
-            ex.Quit();//closes the database excel
+            ((MainWindow)this.Parent.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
+            ((MainWindow)this.Parent.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
             MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
             ((MainWindow)this.Parent.Parent).homePage1.Show();
             ((MainWindow)this.Parent.Parent).showTopBar();
             ((MainWindow)this.Parent.Parent).showTopPanel();
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
+            DataBaseExcel.Quit(); //close DataBaseExcel
             this.Hide();
         }
 
