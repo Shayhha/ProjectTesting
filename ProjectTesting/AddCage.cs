@@ -137,7 +137,7 @@ namespace ProjectTesting
             {
                 int currentCageRow = 0;
                 List<Bird> tempBird = null;
-                List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //add cage to hashtable
+                List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //get current cage
 
                 if (cageInfo[0] == oldCageId)
                 {
@@ -190,11 +190,15 @@ namespace ProjectTesting
 
                 // updating the cage in the hashtable, currentCage[0] is the cage we are editing, we search for it in the code above
                 currentCage[0].EditFields(cageInfo);
-                // think about make new hashtable
+                if (cageInfo[0] != oldCageId) //if we changed id of cage we need to remove old hash code and add new id with new hash code
+                {
+                    MainWindow.HashTable.RemoveCageFromHashtable(oldCageId);
+                    MainWindow.HashTable.AddCageToHashtable(currentCage[0]);
+                }
             }
 
             // we want to sort the database only if the user adds a new cage OR the user modifies the cage id of an existing cage
-            if ((edited && cageInfo[0] != oldCageId) || (!edited))
+            if ((edited && cageInfo[0] != oldCageId) || (!edited)) 
             {
                 MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
                 MainWindow.HashTable.ClearBirdCageHashtable();
