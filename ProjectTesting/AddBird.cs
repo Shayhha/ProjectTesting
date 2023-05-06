@@ -164,11 +164,23 @@ namespace ProjectTesting
 
                 for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(7); i++) //goes through database to find index / parents of offspring
                 {
-                    ///needs old bird id///
                     if (edited && LogIn.DataBaseExcel.ReadCell("G" + i) == oldBirdId) //only when we need to edit
                     {
-                        currentBirdRow = i;
+                        currentBirdRow = i; //finds birds row in database
                         count++;
+                    }
+                    if(edited && birdInfo[8] == "no" && oldBirdId != birdInfo[0]) //means birds id has been changed(regular bird)
+                    {
+                        if(LogIn.DataBaseExcel.ReadCell("M" + i) == oldBirdId) //checks dadId and if we found oldBirdId we change to new one
+                        {
+                            LogIn.DataBaseExcel.WriteCell("M" + i, birdInfo[0]);
+                            count++;
+                        }
+                        else if(LogIn.DataBaseExcel.ReadCell("N" + i) == oldBirdId)//checks momId and if we found oldBirdId we change to new one
+                        {
+                            LogIn.DataBaseExcel.WriteCell("N" + i, birdInfo[0]);
+                            count++;
+                        }
                     }
                     ///we need to regard a situation where we change id of offspring, we need to change that in parents///
                     if (dad != null && mom != null) //if not null means we add/edit offspring
@@ -193,9 +205,13 @@ namespace ProjectTesting
                     }
                     if (birdInfo[8] == "no") //break if we have regular bird
                     {
+                        List<Bird> oldBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId); //search old bird
                         if (!edited) //if we dont edit we break 
                             break;
-                        else if (edited && count == 1)  //if we edit, we search currect index in database and then break
+                        //if id has been changed, if we changed the id in all offsprings(in list) + 1 for current index we break
+                        else if (edited && oldBirdId != birdInfo[0] && count == oldBird[0].OffspringList.Count + 1)
+                            break;
+                        else if (edited && oldBirdId == birdInfo[0] && count == 1)  //if we edit, we search currect index in database and then break
                             break;
                     }
                     if (birdInfo[8] == "yes") //break if we have offspring
@@ -214,15 +230,34 @@ namespace ProjectTesting
                     ((MainWindow)this.Parent.Parent).setBirdsLabel((LogIn.DataBaseExcel.GetLastRow(7) - 1).ToString());
                     List<Cage> cage = MainWindow.HashTable.SearchCageHashtable(birdInfo[5]); //find the cage we need to add the new bird to
                     cage[0].AddBird(newBird); //add bird to cage object
-                    MainWindow.SortExcel("bird");// calls SortExcel from MainWindow
-                    /// here we need to build hashtable again because we added new bird/offspring ///
+                    /// here we need to build hashtable again if new id isnt in sorted order of id's ///
+                    if (oldBirdId != birdInfo[0])
+                    {
+                        if (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (LogIn.DataBaseExcel.GetLastRow(7) - 1))) > int.Parse(birdInfo[0]))
+                        {
+                            MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                            MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                            MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                        }
+                    }
                 }
                 else //means we edit the current bird so we add new info to current index in database
                 {
                     MessageBox.Show(currentBirdRow.ToString());
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
-                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId); ///old bird id needed///
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId); 
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
+                    /// here we need to build hashtable again if new id isnt in sorted order of id's ///
+                    if (oldBirdId != birdInfo[0])
+                    {
+                        if (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
+                            || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))
+                        {
+                            MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                            MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                            MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                        }
+                    }
                 }
                 LogIn.DataBaseExcel.Quit();//close excel
                 return true;
