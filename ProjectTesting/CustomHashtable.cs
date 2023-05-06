@@ -99,6 +99,22 @@ namespace ProjectTesting
             birdHashtable.Clear();
             cageHashtable.Clear();
         }
+
+        public void RemoveBirdFromHashtable(string birdId) //remove the old bird id hashcode from hashtable
+        {
+            if (birdHashtable.ContainsKey(birdId))
+            {
+                birdHashtable.Remove(birdId);
+            }
+        }
+
+        public void RemoveCageFromHashtable(string cageId) //remove the old cage id hashcode from hashtable
+        {
+            if (cageHashtable.ContainsKey(cageId))
+            {
+                cageHashtable.Remove(cageId);
+            }
+        }
     }
 
 }
