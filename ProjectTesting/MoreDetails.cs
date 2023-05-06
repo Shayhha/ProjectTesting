@@ -375,7 +375,7 @@ namespace ProjectTesting
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
 
-            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true) == true)
+            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true, infoFromDatabaseCage.Id) == true)
             {
                 Excel ex = new Excel("database", MainWindow.UserSheet);
                 int row = ex.GetLastRow();

@@ -44,5 +44,14 @@ namespace ProjectTesting
             string[] cageInfo = new string[5] { this.Id, this.Length, this.Width, this.Height, this.Material };
             return cageInfo;
         }
+
+        public void EditFields(string[] cageInfo)
+        {
+            Id = cageInfo[0];
+            Length = cageInfo[1];
+            Width = cageInfo[2];
+            Height = cageInfo[3];
+            Material = cageInfo[4];
+        }
     }
 }

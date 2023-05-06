@@ -62,7 +62,7 @@ namespace ProjectTesting
         /// <param name="edited">A boolean parameter that tells the function wheter or not the cage we want to add is a new cage or an existing cage.
         /// edited = true -> means that the cage we want to add already exists in the database.</param>
         /// <returns>true if the cage has correct parameters and was successfuly added to the database, false otherwise</returns>
-        public bool getInfoFromUser(Cage cage, bool edited = false)
+        public bool getInfoFromUser(Cage cage, bool edited = false, string oldCageId = "")
         {
             // Variables:
             string[] cageInfo = cage.ToStringArray(); //convert the given cage into a string array
@@ -114,7 +114,11 @@ namespace ProjectTesting
                 return false;
             }
 
-            // If there were no errors, and the cage is not edited, meaning its a new cage that the user wants to add
+            // If everything went well and there where no errors, we the open the database excel file,
+            // add the new cage to the excel, sort the excel and then close it.
+            LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
+
+            // If the cage is not edited, meaning its a new cage that the user wants to add
             // to the database we need to check if the ID of the new cage does not already exit in the database.
             if (!edited)
             {
@@ -124,18 +128,33 @@ namespace ProjectTesting
                     CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
                     return false;
                 }
+                LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
+                MainWindow.HashTable.AddCageToHashtable(new Cage(cageInfo)); //add cage to hashtable
             }
-            // If everything went well and there where no errors, we the open the database excel file,
-            // add the new cage to the excel, sort the excel and then close it.
-            LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
-            LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
-            MainWindow.HashTable.AddCageToHashtable(new Cage(cageInfo)); //add cage to hashtable
+            else // if this cage is edited, means it already exists, we need to find the row in the database and change its values
+            {
+                int currentCageRow = 0;
+                for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
+                {
+                    if (LogIn.DataBaseExcel.ReadCell("A" + i) == oldCageId)
+                    {
+                        currentCageRow = i;
+                        break;
+                    }
+                }
+                LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo); //add cage to database excel
+                List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(cageInfo[0]); //add cage to hashtable
+                currentCage[0].EditFields(cageInfo);
+            }
+
+
+
             if (!edited)
                 ((MainWindow)this.Parent.Parent).setCagesLabel((LogIn.DataBaseExcel.GetLastRow() - 1).ToString());
 
             MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
             LogIn.DataBaseExcel.Quit(); //close excel
-            
+
             return true;
         }
 
