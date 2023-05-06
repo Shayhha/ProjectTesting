@@ -137,6 +137,9 @@ namespace ProjectTesting
             return true;
         }
 
+        /// <summary>
+        /// Cleaning the text from the screen
+        /// </summary>
         private void cleanTextBoxes()
         {
             idBox.Text = "";
