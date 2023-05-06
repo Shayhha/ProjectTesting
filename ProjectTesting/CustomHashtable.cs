@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,6 +92,12 @@ namespace ProjectTesting
                 list.Add(default1);
                 return list;
             }
+        }
+
+        public void ClearBirdCageHashtable() //clears bird & cage hashtables
+        { 
+            birdHashtable.Clear();
+            cageHashtable.Clear();
         }
     }
 

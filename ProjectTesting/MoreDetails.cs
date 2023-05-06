@@ -209,30 +209,9 @@ namespace ProjectTesting
             dadIdLabel.Enabled = true;
             momIdLabel.Enabled = true;
 
-            Excel ex = new Excel("database", MainWindow.UserSheet);
-            int row = ex.GetLastRow(7), flag = 0;
-
-            // Checking if the bird is an adult and has at least one offspring, in that case we cant change the gender, type and subtype.
-            if (!infoFromDatabaseBird.isOffspring) // max will change
-            {
-                for (int i = 1; i < row; i++)
-                {
-                    string isOffspring = ex.ReadCell("O" + i);
-                    if (isOffspring == "yes")
-                    {
-                        string momId = ex.ReadCell("M" + i), dadId = ex.ReadCell("N" + i);
-                        if (momId == infoFromDatabaseBird.Id || dadId == infoFromDatabaseBird.Id)
-                        {
-                            //Here the bird we are editing is an adult and a parent with at least one offspring
-                            flag = 1;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (flag == 0)
-            {
+            List<Bird> bird = MainWindow.HashTable.SearchBirdHashtable(infoFromDatabaseBird.Id); //search bird id in hashtable
+            if (bird[0].isOffspring == false && bird[0].OffspringList.Count == 0)
+            { //checking if the bird is adult and has no offsprings then we can edit these fields
                 typeLabel.ReadOnly = false;
                 subTypeLabel.ReadOnly = false;
                 genderLabel.ReadOnly = false;
@@ -241,8 +220,6 @@ namespace ProjectTesting
                 subTypeLabel.Enabled = true;
                 genderLabel.Enabled = true;
             }
-
-            ex.Quit();
         }
 
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
@@ -289,24 +266,12 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), true, infoFromDatabaseBird.Id) == false)
+                if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), true, infoFromDatabaseBird.Id) == true)
                 {
-                    //Excel ex = new Excel("database", MainWindow.UserSheet);
-                    //int row = ex.GetLastRow(7);
-
-                    //for (int i = 1; i < row; i++)
-                    //{
-                    //    if (ex.ReadCell("G" + i) == infoFromDatabaseBird.Id)
-                    //    {
-                    //        progressBar.Value = 100;
-                    //        newInfo[8] = ex.ReadCell("O" + i);
-                    //        ex.WriteRange(i, 7, 15, newInfo);
-                    //        ex.WriteRange(row - 1, 7, 15, cleanUp);
-
-                    //        dateTextBox.Text = newInfo[3];
-                    //    }
-                    //}
-                    //ex.Quit();
+                    infoFromDatabaseBird = getTextFromUiBird();
+                }
+                else
+                {
                     idLabel.Text = infoFromDatabaseBird.Id;
                     typeLabel.Text = infoFromDatabaseBird.Type;
                     subTypeLabel.Text = infoFromDatabaseBird.SubType;
