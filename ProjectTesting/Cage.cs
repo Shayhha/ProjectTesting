@@ -29,6 +29,17 @@ namespace ProjectTesting
             BirdList = new List<Bird>();
         }
 
+        public Cage(Cage otherCage)
+        {
+            Id = otherCage.Id;
+            Material = otherCage.Material;
+            Length = otherCage.Length;
+            Width = otherCage.Width;
+            Height = otherCage.Height;
+
+            BirdList = otherCage.BirdList.Select(b => new Bird(b)).ToList();
+        }
+
         public void AddBird(Bird bird)
         {
             BirdList.Add(bird);
@@ -47,11 +58,11 @@ namespace ProjectTesting
 
         public void EditFields(string[] cageInfo)
         {
-            Id = cageInfo[0];
-            Length = cageInfo[1];
-            Width = cageInfo[2];
-            Height = cageInfo[3];
-            Material = cageInfo[4];
+            this.Id = cageInfo[0];
+            this.Length = cageInfo[1];
+            this.Width = cageInfo[2];
+            this.Height = cageInfo[3];
+            this.Material = cageInfo[4];
         }
     }
 }

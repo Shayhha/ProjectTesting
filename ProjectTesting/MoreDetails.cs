@@ -169,22 +169,24 @@ namespace ProjectTesting
                 dadIdLabel.Text.ToString(),
                 momIdLabel.Text.ToString()
             };
-            newBird.EditFields(temp); 
+            newBird.EditFields(temp);
 
             return newBird;
         }
 
         private Cage getTextFromUiCage()
         {
-            Cage info = new Cage(new string[] {
-                        cageValue.Text.ToString(),
-                        lengthValue.Text.ToString(),
-                        widthValue.Text.ToString(),
-                        heightValue.Text.ToString(),
-                        materialValue.Text.ToString()
-                        }
-                    );
-            return info;
+            Cage newCage = new Cage(infoFromDatabaseCage);
+            string[] temp = new string[] {
+                cageValue.Text.ToString(),
+                lengthValue.Text.ToString(),
+                widthValue.Text.ToString(),
+                heightValue.Text.ToString(),
+                materialValue.Text.ToString()
+            };
+            newCage.EditFields(temp);
+
+            return newCage;
         }
 
         private void editBirdButton_Click(object sender, EventArgs e)
@@ -371,40 +373,14 @@ namespace ProjectTesting
             widthValue.Enabled = false;
             heightValue.Enabled = false;
 
-            string[] newInfo = getTextFromUiCage().ToStringArray(); //convert Cage to string array for ease of use
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
 
             if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true, infoFromDatabaseCage.Id) == true)
             {
-                Excel ex = new Excel("database", MainWindow.UserSheet);
-                int row = ex.GetLastRow();
-
-                for (int i = 1; i < row; i++)
-                {
-                    if (ex.ReadCell("A" + i) == infoFromDatabaseCage.Id)
-                    {
-
-                        //progressBar.Value = 100;
-                        ex.WriteRange(i, 1, 5, newInfo);
-                        ex.WriteRange(row - 1, 1, 5, cleanUp);
-
-                    }
-                }
-
-                if (infoFromDatabaseCage.Id != cageValue.Text) //this means that the id was changed, now we change the chage id for the birds
-                {
-                    row = ex.GetLastRow(7);
-
-                    for (int i = 1; i < row; i++)
-                    {
-                        if (ex.ReadCell("L" + i) == infoFromDatabaseCage.Id)
-                        {
-                            ex.WriteCell("L" + i.ToString(), cageValue.Text);
-                        }
-                    }
-                }
-                ex.Quit();
+                // if the cage was updated successfuly, we need to update the 'infoFromDatabaseCage' object
+                // incase the user decides to update the values again without getting out of the moredetails window
+                infoFromDatabaseCage = getTextFromUiCage();
             }
             else
             {

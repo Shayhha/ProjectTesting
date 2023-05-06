@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Dynamic;
 using System.Globalization;
@@ -114,6 +115,13 @@ namespace ProjectTesting
                 return false;
             }
 
+
+
+
+
+
+
+
             // If everything went well and there where no errors, we the open the database excel file,
             // add the new cage to the excel, sort the excel and then close it.
             LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
@@ -135,20 +143,71 @@ namespace ProjectTesting
             else // if this cage is edited, means it already exists, we need to find the row in the database and change its values
             {
                 int currentCageRow = 0;
-                for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
+                List<Bird> tempBird = null;
+                List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //add cage to hashtable
+
+                if (cageInfo[0] == oldCageId)
                 {
-                    if (LogIn.DataBaseExcel.ReadCell("A" + i) == oldCageId)
+                    for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
                     {
-                        currentCageRow = i;
-                        break;
+                        if (LogIn.DataBaseExcel.ReadCell("A" + i) == oldCageId)
+                        {
+                            currentCageRow = i;
+                            break;
+                        }
+                    }
+                } 
+                else if (cageInfo[0] != oldCageId) // the id of the cage was changed in the edit
+                {
+                    // if the cage id was changed we need to find all the birds from that cage and change their cage id
+                    // in the database and the hashtable.
+                    for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
+                    {
+                        // first we find the current cage in the database inorder to get it's row number
+                        if (LogIn.DataBaseExcel.ReadCell("A" + i) == oldCageId)
+                        {
+                            currentCageRow = i; // saveing the row number of the current cage
+
+                            // if this cage has birds, then we will look for them, the runtime here will be O(n+m) where n is number of cages and m is number of birds
+                            if (currentCage[0].BirdList.Count != 0) 
+                            {
+                                int count = 0;
+                                // this loop will run only once, and only if the bird has offsprings, runtime O(m) where m is num of birds in database
+                                for (int j = 1; j < LogIn.DataBaseExcel.GetLastRow(7); j++)
+                                {
+                                    if (LogIn.DataBaseExcel.ReadCell("L" + j) == oldCageId) // checking if the currend bird belongs to the current cage
+                                    {
+                                        LogIn.DataBaseExcel.WriteCell("L" + j, cageInfo[0]); // change the birds cage id
+                                        tempBird = MainWindow.HashTable.SearchBirdHashtable(LogIn.DataBaseExcel.ReadCell("G" + j)); // find the bird in the hashtable
+                                        tempBird[0].CageId = cageInfo[0]; // change the cage id in the hashtable
+                                        count++;
+                                    }
+
+                                    if (count == currentCage[0].BirdList.Count)
+                                        break; // if we found all of the birds for this cage we break the inner loop because we dont need to search anymore
+                                } 
+                            }
+                            break; // if we have found the cage, and edited the cage id for his birds we now can exit the loop because we dont need to search for the cage anymore
+                        }
                     }
                 }
-                LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo); //add cage to database excel
-                List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(cageInfo[0]); //add cage to hashtable
+
+                // adding the cage to the database
+                LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo);
+
+                // updating the cage in the hashtable, currentCage[0] is the cage we are editing, we search for it in the code above
                 currentCage[0].EditFields(cageInfo);
+                // think about make new hashtable
             }
 
-            MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+            // we want to sort the database only if the user adds a new cage OR the user modifies the cage id of an existing cage
+            if ((edited && cageInfo[0] != oldCageId) || (!edited))
+            {
+                MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+                MainWindow.InitHashtable();
+                // think about make new hashtable
+
+            }
             LogIn.DataBaseExcel.Quit(); //close excel
 
             return true;
