@@ -67,7 +67,7 @@ namespace ProjectTesting
         {
             // Variables:
             string[] cageInfo = cage.ToStringArray(); //convert the given cage into a string array
-            int flag = 0;
+            int flag = 0, currentCageRow = 0;
             string errorMessage = "";
             string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number
 
@@ -135,7 +135,6 @@ namespace ProjectTesting
             }
             else // if this cage is edited, means it already exists, we need to find the row in the database and change its values
             {
-                int currentCageRow = 0;
                 List<Bird> tempBird = null;
                 List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //get current cage
 
@@ -198,12 +197,28 @@ namespace ProjectTesting
             }
 
             // we want to sort the database only if the user adds a new cage OR the user modifies the cage id of an existing cage
-            if ((edited && cageInfo[0] != oldCageId) || (!edited)) 
+            if (edited)
             {
-                MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
-                MainWindow.HashTable.ClearBirdCageHashtable();
-                MainWindow.InitHashtable();
-                // think about make new hashtable
+                if (cageInfo[0] != oldCageId)
+                {
+                    if (LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0
+                        || LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0)
+                    {
+                        MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+                        MainWindow.HashTable.ClearBirdCageHashtable();
+                        MainWindow.InitHashtable();
+                    }
+                }
+            }
+            else 
+            {
+                // if the id of the new cage we added to the database has an id smaller than the last cage in the database, need to sort 
+                if (LogIn.DataBaseExcel.ReadCell("A" + (LogIn.DataBaseExcel.GetLastRow(1) - 2)).CompareTo((cageInfo[0])) > 0)
+                {
+                    MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+                    MainWindow.HashTable.ClearBirdCageHashtable();
+                    MainWindow.InitHashtable();
+                }
             }
 
             LogIn.DataBaseExcel.Quit(); //close excel
