@@ -23,29 +23,29 @@ namespace ProjectTesting
         public void initDash()
         {
             clearDash();
-            Excel ex = new Excel("database", MainWindow.UserSheet);
+            LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet);
             string[] temp;
             string newStr;
 
             usernameLabel.Text = "Hello " + MainWindow.UserSheet;
-            birdsLabel.Text = "You have " + (ex.GetLastRow(7) - 1).ToString() + " birds:";
-            cagesLabel.Text = "You have " + (ex.GetLastRow(0) - 1).ToString() + " cages:";
+            birdsLabel.Text = "You have " + (LogIn.DataBaseExcel.GetLastRow(7) - 1).ToString() + " birds:";
+            cagesLabel.Text = "You have " + (LogIn.DataBaseExcel.GetLastRow(0) - 1).ToString() + " cages:";
 
-            for (int i = 1; i < ex.GetLastRow(); i++)
+            for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(); i++)
             {
-                temp = ex.ReadRange(i, 1, 5);
+                temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
                 newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4];
                 cagesList.Items.Add(newStr);
             }
 
-            for (int i = 1; i < ex.GetLastRow(7); i++)
+            for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(7); i++)
             {
-                temp = ex.ReadRange(i, 7, 15);
+                temp = LogIn.DataBaseExcel.ReadRange(i, 7, 15);
                 newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " , fledgling: " + temp[8];
                 birdsList.Items.Add(newStr);
             }
 
-            ex.Quit();
+            LogIn.DataBaseExcel.Quit();
         }
 
         public void clearDash()
