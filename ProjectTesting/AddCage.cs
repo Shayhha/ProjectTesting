@@ -115,13 +115,6 @@ namespace ProjectTesting
                 return false;
             }
 
-
-
-
-
-
-
-
             // If everything went well and there where no errors, we the open the database excel file,
             // add the new cage to the excel, sort the excel and then close it.
             LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel

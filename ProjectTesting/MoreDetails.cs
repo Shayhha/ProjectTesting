@@ -95,8 +95,6 @@ namespace ProjectTesting
                 heightValue.Text = cageInfo[0].Height;
                 materialValue.Text = cageInfo[0].Material;
 
-                //List<string[]> birdsInCage = MainWindow.HashTable.SearchBirdHashtable(id); //searching the brids hashtable for cage's birds
-
                 foreach (Bird bird in cageInfo[0].BirdList) //adding birds to list 
                 {
                     string newStr = "Bird ID: " + bird.Id + " , Type: " + bird.Type + " , Gender: " + bird.Gender + " , Cage ID: " + bird.CageId;
