@@ -130,6 +130,7 @@ namespace ProjectTesting
                 }
                 LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
                 MainWindow.HashTable.AddCageToHashtable(new Cage(cageInfo)); //add cage to hashtable
+                ((MainWindow)this.Parent.Parent).setCagesLabel((LogIn.DataBaseExcel.GetLastRow() - 1).ToString());
             }
             else // if this cage is edited, means it already exists, we need to find the row in the database and change its values
             {
@@ -146,11 +147,6 @@ namespace ProjectTesting
                 List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(cageInfo[0]); //add cage to hashtable
                 currentCage[0].EditFields(cageInfo);
             }
-
-
-
-            if (!edited)
-                ((MainWindow)this.Parent.Parent).setCagesLabel((LogIn.DataBaseExcel.GetLastRow() - 1).ToString());
 
             MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
             LogIn.DataBaseExcel.Quit(); //close excel
@@ -170,6 +166,11 @@ namespace ProjectTesting
             materialBox.Text = "";
         }
 
+        /// <summary>
+        /// Checking that the dimentions of the cage are numeric and are positive, if not show and error message
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns>true if the dimentios are valid, false otherwise</returns>
         private bool checkDimentions(string[] info)
         {
             int flag = 0;
@@ -206,29 +207,25 @@ namespace ProjectTesting
             return true;
         }
 
+        /// <summary>
+        /// Checking if the id of the cage exists in the database by checking if it exists in the hash table
+        /// </summary>
+        /// <param name="cageId"></param>
+        /// <returns>true if the cage id is unique and false if it exists in the database</returns>
         public bool checkCageId(string cageId) // with hashtable (works)
         {
-            //Excel ex = new Excel("database", MainWindow.UserSheet);
-            //int row = ex.GetLastRow();
-            //string idValue;
-            //for (int i = 1; i < row; i++)
-            //{
-            //    idValue = ex.ReadCell("A" + i);
-            //    if (idValue == cageId)
-            //    {
-            //        ex.Quit();
-            //        return false;
-            //    }
-            //}
-
-            //ex.Quit();
-            //return true;
             List<Cage> cages = MainWindow.HashTable.SearchCageHashtable(cageId); //search cageId in hashtable
             if (cages.Count != 0) // if given list is empty we know that the cageId doesnt exists
                 return false; //returns false if the cageId is already in database
             return true; // else we dont have that cageId so we return true
         }
 
+        /// <summary>
+        /// When clicking the "Add Cage" button, we take all of the info from the screen, test it, and if its correct
+        /// we insert it into the database and the hashtable and return the user to the homepage screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
             if (getInfoFromUser(getTextFromUi()))
@@ -240,6 +237,11 @@ namespace ProjectTesting
             }
         }
 
+        /// <summary>
+        /// If the user decided not to add a cage then we just reset the textboxes to be empty for the next attempt and go back to the homepage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             cleanTextBoxes();
@@ -248,6 +250,12 @@ namespace ProjectTesting
             this.Hide();
         }
 
+        /// <summary>
+        /// Setting a welcome label for the user, this is done when the user has opened a new account, we want him to 
+        /// immediatly add a cage, if that happens we want him to see a welcome message, in any other subsecuent addition of
+        /// a new cage we dont want to show the welcome label
+        /// </summary>
+        /// <param name="temp"></param>
         public void setWelcome_lable(bool temp) //sets the welcome lable to visible/hidden
         {
             if (temp == true)
