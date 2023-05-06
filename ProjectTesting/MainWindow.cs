@@ -29,21 +29,6 @@ namespace ProjectTesting
             int BirdSize = LogIn.DataBaseExcel.GetLastRow(7);
             int CageSize = LogIn.DataBaseExcel.GetLastRow(1);
 
-            ////add birds to bird hashtable
-            //for (int i = 1; i < BirdSize; i++)
-            //{
-            //    string[] temp = ex.ReadRange(i, 7, 15);
-            //    HashTable.AddBirdToHashtable(temp);
-            //}
-            ////add cages to cage hashtable
-            //for (int i = 1; i < CageSize; i++)
-            //{
-            //    string[] temp = ex.ReadRange(i, 1, 5);
-            //    HashTable.AddCageToHashtable(temp);
-            //}
-
-            //new implementation
-            
             for (int i = 1; i < BirdSize; i++) //add birds to bird hashtable
             {
                 string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 15);
@@ -70,7 +55,7 @@ namespace ProjectTesting
                 //    MessageBox.Show(bird[0].OffspringList[0].Id);
             }
 
-            for (int i = 1; i < CageSize; i++) //add cagess to cage hashtable
+            for (int i = 1; i < CageSize; i++) //add cages to cage hashtable
             {
                 string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
                 Cage cage = new Cage(temp);
