@@ -204,6 +204,7 @@ namespace ProjectTesting
             if ((edited && cageInfo[0] != oldCageId) || (!edited))
             {
                 MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+                MainWindow.HashTable.ClearBirdCageHashtable();
                 MainWindow.InitHashtable();
                 // think about make new hashtable
 

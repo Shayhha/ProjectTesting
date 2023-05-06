@@ -180,8 +180,13 @@ namespace ProjectTesting
 
         private void birdList_SelectedIndexChanged(object sender, EventArgs e) //this method handles items in list
         {
-            string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
-            ItemSelected(text);
+            // if the user were to click on a blank space in the list, the program would crash, thats why we
+            // need to check if the selected index is not -1, -1 is a non existing index and is used to catch errors
+            if (birdList.SelectedIndex != -1) 
+            {
+                string text = birdList.Items[birdList.SelectedIndex].ToString(); //gets text in selected index
+                ItemSelected(text);
+            }
         }
 
         public void ItemSelected(string text)
