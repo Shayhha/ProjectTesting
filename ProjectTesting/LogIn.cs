@@ -44,7 +44,7 @@ namespace ProjectTesting
         private void LoggedIn() //opens the homepage
         {
             DataBaseExcel = new Excel("database", MainWindow.UserSheet); //opens the database of user
-            if (DataBaseExcel.ReadCell("A1") == "") //checks if user is new (without any cages)
+            if (DataBaseExcel.ReadCell("A1").Equals("")) //checks if user is new (without any cages)
             {
                 ((MainWindow)this.Parent.Parent).showTopBar();
                 ((MainWindow)this.Parent.Parent).showTopPanel();

@@ -238,13 +238,15 @@ namespace ProjectTesting
                     LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(7), 7, 16, birdInfo); //add bird to database
                     MainWindow.HashTable.AddBirdToHashtable(newBird); //add bird to hashtable (addes the bird to cage as well because of refernce)
                     ((MainWindow)this.Parent.Parent).setBirdsLabel((LogIn.DataBaseExcel.GetLastRow(7) - 1).ToString());
-   
-                    /// here we need to build hashtable again if new id isnt in sorted order of id's ///
-                    if (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (LogIn.DataBaseExcel.GetLastRow(7) - 2))) > int.Parse(birdInfo[0]))
+                    if (!(LogIn.DataBaseExcel.ReadCell("G2").Equals("")))//if we have only one bird we dont need sort
                     {
-                        MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
-                        MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
-                        MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                        /// here we need to build hashtable again if new id isnt in sorted order of id's ///
+                        if (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (LogIn.DataBaseExcel.GetLastRow(7) - 2))) > int.Parse(birdInfo[0]))
+                        {
+                            MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                            MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                            MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                        }
                     }
                 }
                 else //means we edit the current bird so we add new info to current index in database
@@ -257,12 +259,22 @@ namespace ProjectTesting
                     {
                         MainWindow.HashTable.RemoveBirdFromHashtable(oldBirdId); //remove old bird id hashcode from hashtable
                         MainWindow.HashTable.AddBirdToHashtable(currentBird[0]); //add the updated bird to hashtable
-                        if (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
-                            || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))
+                        if (!(LogIn.DataBaseExcel.ReadCell("G2").Equals("")))//if we have only one bird we dont need sort
                         {
-                            MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
-                            MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
-                            MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                            if (currentBirdRow == 1
+                            && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))
+                            {
+                                MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                                MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                                MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                            }
+                            else if (currentBirdRow != 1 && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
+                            || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))
+                            {
+                                MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                                MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                                MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                            }
                         }
                     }
                 }
