@@ -24,12 +24,10 @@ namespace ProjectTesting
         public MoreDetails()
         {
             InitializeComponent();
-
         }
 
         public void setImages()
         {
-            string dirc = Directory.GetCurrentDirectory().Split("bin")[0];
             this.mainPic.Image = getRandomImage();
         }
 
@@ -58,7 +56,9 @@ namespace ProjectTesting
                 idLabel.Text = birdInfo[0].Id;
                 typeLabel.Text = birdInfo[0].Type;
                 subTypeLabel.Text = birdInfo[0].SubType;
-                dateTextBox.Text = birdInfo[0].DateOfBirth;
+                string[] date = birdInfo[0].DateOfBirth.Split("/");
+                int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
+                datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
                 genderLabel.Text = birdInfo[0].Gender;
                 cageIdLabel.Text = birdInfo[0].CageId;
                 dadIdLabel.Text = birdInfo[0].DadId;
@@ -115,7 +115,6 @@ namespace ProjectTesting
             idLabel.Text = "";
             typeLabel.Text = "";
             subTypeLabel.Text = "";
-            dateLabel.Text = "";
             genderLabel.Text = "";
             cageIdLabel.Text = "";
             dadIdLabel.Text = "";
@@ -157,11 +156,12 @@ namespace ProjectTesting
         private Bird getTextFromUiBird()
         {
             Bird newBird = new Bird(infoFromDatabaseBird);
+
             string[] temp = new string[] {
                 idLabel.Text.ToString(),
                 typeLabel.Text.ToString(),
                 subTypeLabel.Text.ToString(),
-                dateLabel.Text.ToString(),
+                datePicker.Text.ToString(),
                 genderLabel.Text.ToString(),
                 cageIdLabel.Text.ToString(),
                 dadIdLabel.Text.ToString(),
@@ -197,9 +197,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
             idLabel.ReadOnly = false;
-            dateTextBox.Visible = false;
-            dateLabel.Visible = true;
-            dateLabel.Enabled = true;
+            datePicker.Enabled = true;
             cageIdLabel.ReadOnly = false;
             dadIdLabel.ReadOnly = false;
             momIdLabel.ReadOnly = false;
@@ -233,9 +231,6 @@ namespace ProjectTesting
             idLabel.ReadOnly = true;
             typeLabel.ReadOnly = true;
             subTypeLabel.ReadOnly = true;
-            dateTextBox.Visible = true;
-            dateLabel.Visible = false;
-            dateLabel.Enabled = false;
             genderLabel.ReadOnly = true;
             cageIdLabel.ReadOnly = true;
             dadIdLabel.ReadOnly = true;
@@ -244,6 +239,7 @@ namespace ProjectTesting
             idLabel.Enabled = false;
             typeLabel.Enabled = false;
             subTypeLabel.Enabled = false;
+            datePicker.Enabled = false;
             genderLabel.Enabled = false;
             cageIdLabel.Enabled = false;
             dadIdLabel.Enabled = false;
@@ -275,7 +271,9 @@ namespace ProjectTesting
                     idLabel.Text = infoFromDatabaseBird.Id;
                     typeLabel.Text = infoFromDatabaseBird.Type;
                     subTypeLabel.Text = infoFromDatabaseBird.SubType;
-                    dateTextBox.Text = infoFromDatabaseBird.DateOfBirth;
+                    string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
+                    int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
+                    datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
                     genderLabel.Text = infoFromDatabaseBird.Gender;
                     cageIdLabel.Text = infoFromDatabaseBird.CageId;
                     dadIdLabel.Text = infoFromDatabaseBird.DadId;
@@ -286,11 +284,13 @@ namespace ProjectTesting
             progressBarPanel.Visible = false;
 
             if (flag == 1)
-            {
+            { // make this into a function and use above as well
                 idLabel.Text = infoFromDatabaseBird.Id;
                 typeLabel.Text = infoFromDatabaseBird.Type;
                 subTypeLabel.Text = infoFromDatabaseBird.SubType;
-                dateTextBox.Text = infoFromDatabaseBird.DateOfBirth;
+                string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
+                int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
+                datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
                 genderLabel.Text = infoFromDatabaseBird.Gender;
                 cageIdLabel.Text = infoFromDatabaseBird.CageId;
                 dadIdLabel.Text = infoFromDatabaseBird.DadId;

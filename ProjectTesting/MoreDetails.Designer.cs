@@ -1,4 +1,6 @@
-﻿namespace ProjectTesting
+﻿using System.Windows.Forms;
+
+namespace ProjectTesting
 {
     partial class MoreDetails
     {
@@ -29,9 +31,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            flowLayoutPanel3 = new FlowLayoutPanel();
-            dateTextBox = new TextBox();
-            dateLabel = new DateTimePicker();
+            datePicker = new DateTimePicker();
             momIdLabel = new TextBox();
             dadIdLabel = new TextBox();
             cageIdLabel = new TextBox();
@@ -81,7 +81,6 @@
             widthLabel = new Label();
             heightLabel = new Label();
             panel1.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
@@ -98,7 +97,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(flowLayoutPanel3);
+            panel1.Controls.Add(datePicker);
             panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(dadIdLabel);
             panel1.Controls.Add(cageIdLabel);
@@ -113,40 +112,15 @@
             panel1.Size = new Size(380, 223);
             panel1.TabIndex = 16;
             // 
-            // flowLayoutPanel3
+            // datePicker
             // 
-            flowLayoutPanel3.Controls.Add(dateTextBox);
-            flowLayoutPanel3.Controls.Add(dateLabel);
-            flowLayoutPanel3.Location = new Point(156, 82);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(330, 33);
-            flowLayoutPanel3.TabIndex = 37;
-            // 
-            // dateTextBox
-            // 
-            dateTextBox.BackColor = SystemColors.ControlLight;
-            dateTextBox.BorderStyle = BorderStyle.None;
-            dateTextBox.Enabled = false;
-            dateTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTextBox.Location = new Point(3, 3);
-            dateTextBox.Name = "dateTextBox";
-            dateTextBox.PlaceholderText = "John";
-            dateTextBox.ReadOnly = true;
-            dateTextBox.Size = new Size(119, 26);
-            dateTextBox.TabIndex = 36;
-            // 
-            // dateLabel
-            // 
-            dateLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            dateLabel.CustomFormat = "dd/MM/yyyy";
-            dateLabel.Enabled = false;
-            dateLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateLabel.Format = DateTimePickerFormat.Custom;
-            dateLabel.Location = new Point(128, 3);
-            dateLabel.Name = "dateLabel";
-            dateLabel.Size = new Size(111, 25);
-            dateLabel.TabIndex = 28;
-            dateLabel.Visible = false;
+            datePicker.CustomFormat = "dd/MM/yyyy";
+            datePicker.Enabled = false;
+            datePicker.Format = DateTimePickerFormat.Custom;
+            datePicker.Location = new Point(159, 87);
+            datePicker.Name = "datePicker";
+            datePicker.Size = new Size(102, 23);
+            datePicker.TabIndex = 38;
             // 
             // momIdLabel
             // 
@@ -479,7 +453,7 @@
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(22, 21);
+            cagePanel.Location = new Point(23, 26);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
@@ -694,8 +668,6 @@
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
@@ -738,15 +710,12 @@
         private TextBox idLabel;
         private Button saveBirdButton;
         private FlowLayoutPanel flowLayoutPanel2;
-        public DateTimePicker dateLabel;
         private TextBox momIdLabel;
         private TextBox dadIdLabel;
         private TextBox cageIdLabel;
         private TextBox genderLabel;
         private TextBox subTypeLabel;
         private TextBox typeLabel;
-        private FlowLayoutPanel flowLayoutPanel3;
-        private TextBox dateTextBox;
         private Panel birdPanel;
         private Panel cagePanel;
         private ListBox birdList;
@@ -770,5 +739,6 @@
         private TextBox lengthValue;
         private TextBox widthValue;
         private TextBox heightValue;
+        private DateTimePicker datePicker;
     }
 }
