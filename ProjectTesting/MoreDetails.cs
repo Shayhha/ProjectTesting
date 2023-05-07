@@ -45,7 +45,7 @@ namespace ProjectTesting
         {
             cleanLabels();// needs to recive a param and clean based on that param
 
-            if (birdOrCage == "bird") //if bird we initialize the brid's info
+            if (birdOrCage.Equals("bird")) //if bird we initialize the brid's info
             {
                 cagePanel.Visible = false;
                 editBirdButton.Show();
@@ -82,7 +82,7 @@ namespace ProjectTesting
                 }
 
             }
-            else if (birdOrCage == "cage") //else we initialize cage's info
+            else if (birdOrCage.Equals("cage")) //else we initialize cage's info
             {
                 cagePanel.Visible = true;
                 List<Cage> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
