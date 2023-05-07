@@ -138,7 +138,7 @@ namespace ProjectTesting
                 List<Bird> tempBird = null;
                 List<Cage> currentCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //get current cage
 
-                if (cageInfo[0] == oldCageId)
+                if (cageInfo[0].Equals(oldCageId))
                 {
                     for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
                     {
@@ -149,14 +149,14 @@ namespace ProjectTesting
                         }
                     }
                 } 
-                else if (cageInfo[0] != oldCageId) // the id of the cage was changed in the edit
+                else if (!(cageInfo[0].Equals(oldCageId))) // the id of the cage was changed in the edit
                 {
                     // if the cage id was changed we need to find all the birds from that cage and change their cage id
                     // in the database and the hashtable.
                     for (int i = 1; i < LogIn.DataBaseExcel.GetLastRow(1); i++)
                     {
                         // first we find the current cage in the database inorder to get it's row number
-                        if (LogIn.DataBaseExcel.ReadCell("A" + i) == oldCageId)
+                        if (LogIn.DataBaseExcel.ReadCell("A" + i).Equals(oldCageId))
                         {
                             currentCageRow = i; // saveing the row number of the current cage
 
@@ -167,7 +167,7 @@ namespace ProjectTesting
                                 // this loop will run only once, and only if the bird has offsprings, runtime O(m) where m is num of birds in database
                                 for (int j = 1; j < LogIn.DataBaseExcel.GetLastRow(7); j++)
                                 {
-                                    if (LogIn.DataBaseExcel.ReadCell("L" + j) == oldCageId) // checking if the currend bird belongs to the current cage
+                                    if (LogIn.DataBaseExcel.ReadCell("L" + j).Equals(oldCageId)) // checking if the currend bird belongs to the current cage
                                     {
                                         LogIn.DataBaseExcel.WriteCell("L" + j, cageInfo[0]); // change the birds cage id
                                         tempBird = MainWindow.HashTable.SearchBirdHashtable(LogIn.DataBaseExcel.ReadCell("G" + j)); // find the bird in the hashtable
@@ -199,7 +199,7 @@ namespace ProjectTesting
             // we want to sort the database only if the user adds a new cage OR the user modifies the cage id of an existing cage
             if (edited)
             {
-                if (cageInfo[0] != oldCageId)
+                if (!(cageInfo[0].Equals(oldCageId)))
                 {
                     if (LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0
                         || LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0)
