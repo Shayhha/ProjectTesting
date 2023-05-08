@@ -44,20 +44,7 @@ namespace ProjectTesting
         private void LoggedIn() //opens the homepage
         {
             DataBaseExcel = new Excel("database", MainWindow.UserSheet); //opens the database of user
-            if (DataBaseExcel.ReadCell("A1").Equals("")) //checks if user is new (without any cages)
-            {
-                // If our user is new, he will not have any cages, thats why for new users we want to show the "Add Cage" screen
-                // as the first screen untill they have actualy added a cage inorder to make them use our app safly and not get bugged out
-                ((MainWindow)this.Parent.Parent).showTopBar();
-                ((MainWindow)this.Parent.Parent).showTopPanel();
-                ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
-                ((MainWindow)this.Parent.Parent).addCage1.Show();
-            }
-            else //else user isn't new so we show homepage
-            {
-                // Here we show the homepage because in this case we know that the user has atleast one cage and can safly use our app
-                ((MainWindow)this.Parent.Parent).homePage1.Show();
-            }
+
             ////set bird and cage counters and top bar
             //((MainWindow)this.Parent.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
             //((MainWindow)this.Parent.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
@@ -73,6 +60,22 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).showTopPanel();
             UserName_textbox.Text = "";
             Password_textbox.Text = "";
+
+            if (DataBaseExcel.ReadCell("A1").Equals("")) //checks if user is new (without any cages)
+            {
+                // If our user is new, he will not have any cages, thats why for new users we want to show the "Add Cage" screen
+                // as the first screen untill they have actualy added a cage inorder to make them use our app safly and not get bugged out
+                ((MainWindow)this.Parent.Parent).showTopBar();
+                ((MainWindow)this.Parent.Parent).showTopPanel();
+                ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
+                ((MainWindow)this.Parent.Parent).addCage1.Show();
+            }
+            else //else user isn't new so we show homepage
+            {
+                // Here we show the homepage because in this case we know that the user has atleast one cage and can safly use our app
+                ((MainWindow)this.Parent.Parent).homePage1.Show();
+            }
+
             DataBaseExcel.Quit(); //close DataBaseExcel
             this.Hide();
         }
