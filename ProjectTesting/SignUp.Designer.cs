@@ -55,7 +55,7 @@
             SignUp_button.Location = new Point(86, 242);
             SignUp_button.Name = "SignUp_button";
             SignUp_button.Size = new Size(168, 39);
-            SignUp_button.TabIndex = 0;
+            SignUp_button.TabIndex = 22;
             SignUp_button.Text = "Sign Up";
             SignUp_button.UseVisualStyleBackColor = false;
             SignUp_button.Click += SignUp_button_Click;
@@ -68,7 +68,7 @@
             Password_textbox.Name = "Password_textbox";
             Password_textbox.PlaceholderText = "Between 8 - 10 characters";
             Password_textbox.Size = new Size(270, 35);
-            Password_textbox.TabIndex = 8;
+            Password_textbox.TabIndex = 7;
             // 
             // Password_label
             // 
@@ -77,7 +77,7 @@
             Password_label.Location = new Point(69, 158);
             Password_label.Name = "Password_label";
             Password_label.Size = new Size(116, 32);
-            Password_label.TabIndex = 7;
+            Password_label.TabIndex = 21;
             Password_label.Text = "Password:";
             // 
             // UserName_label
@@ -160,7 +160,7 @@
             ID_textbox.Name = "ID_textbox";
             ID_textbox.PlaceholderText = "6 digit number";
             ID_textbox.Size = new Size(270, 35);
-            ID_textbox.TabIndex = 21;
+            ID_textbox.TabIndex = 6;
             // 
             // ID_label
             // 

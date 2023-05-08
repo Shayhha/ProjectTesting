@@ -46,6 +46,8 @@ namespace ProjectTesting
             DataBaseExcel = new Excel("database", MainWindow.UserSheet); //opens the database of user
             if (DataBaseExcel.ReadCell("A1").Equals("")) //checks if user is new (without any cages)
             {
+                // If our user is new, he will not have any cages, thats why for new users we want to show the "Add Cage" screen
+                // as the first screen untill they have actualy added a cage inorder to make them use our app safly and not get bugged out
                 ((MainWindow)this.Parent.Parent).showTopBar();
                 ((MainWindow)this.Parent.Parent).showTopPanel();
                 ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
@@ -53,13 +55,20 @@ namespace ProjectTesting
             }
             else //else user isn't new so we show homepage
             {
-                //((MainWindow)this.Parent.Parent).homePage1.Show();
+                // Here we show the homepage because in this case we know that the user has atleast one cage and can safly use our app
+                ((MainWindow)this.Parent.Parent).homePage1.Show();
             }
             ////set bird and cage counters and top bar
+            //((MainWindow)this.Parent.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
+            //((MainWindow)this.Parent.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
+            MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
+
+            //((MainWindow)this.Parent.Parent).homePage1.Show(); // This is not needed
+
+            ////set bird and cage counters and top bar //!?!?!?! try this and if its not fast then delete
             ((MainWindow)this.Parent.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
             ((MainWindow)this.Parent.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
-            MainWindow.InitHashtable(); //initializing the hashtables of birds and cages!!
-            ((MainWindow)this.Parent.Parent).homePage1.Show();
+
             ((MainWindow)this.Parent.Parent).showTopBar();
             ((MainWindow)this.Parent.Parent).showTopPanel();
             UserName_textbox.Text = "";
