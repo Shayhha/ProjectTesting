@@ -118,8 +118,9 @@ namespace ProjectTesting
             datePicker.Enabled = false;
             datePicker.Format = DateTimePickerFormat.Custom;
             datePicker.Location = new Point(159, 87);
+            datePicker.Margin = new Padding(1);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(102, 23);
+            datePicker.Size = new Size(111, 23);
             datePicker.TabIndex = 38;
             // 
             // momIdLabel
@@ -373,7 +374,7 @@ namespace ProjectTesting
             offspringList.ItemHeight = 25;
             offspringList.Location = new Point(26, 32);
             offspringList.Name = "offspringList";
-            offspringList.Size = new Size(630, 204);
+            offspringList.Size = new Size(630, 179);
             offspringList.TabIndex = 24;
             // 
             // addOffspringButton
@@ -453,7 +454,8 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(23, 26);
+            cagePanel.Location = new Point(22, 18);
+            cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
@@ -508,7 +510,7 @@ namespace ProjectTesting
             birdList.ItemHeight = 25;
             birdList.Location = new Point(192, 217);
             birdList.Name = "birdList";
-            birdList.Size = new Size(867, 279);
+            birdList.Size = new Size(867, 254);
             birdList.TabIndex = 1;
             // 
             // panel3

@@ -194,14 +194,14 @@ namespace ProjectTesting
         {
             int size = 1; //default value
             int colStart = 7;  //default value
-            int colEnd = 15; //default vaule
+            int colEnd = 16; //default vaule
             int flag = 0;
             
             if (name == "bird")
             {
                 size = LogIn.DataBaseExcel.GetLastRow(7) - 1;
                 colStart = 7;
-                colEnd = 15;
+                colEnd = 16;
             }
             else if (name == "cage")
             {
