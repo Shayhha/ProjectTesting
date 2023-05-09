@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectTesting
@@ -198,18 +199,28 @@ namespace ProjectTesting
                         if (LogIn.DataBaseExcel.ReadCell("G" + i).Equals(dad[0].Id))
                         {
                             if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if dad doesnt have offsprings yet
-                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0] + ","); //add offspring id to dad
-                            else //if dad has offsprings we add another one to existing list of offspring ids
-                                LogIn.DataBaseExcel.WriteCell("P" + i, (LogIn.DataBaseExcel.ReadCell("P" + i)) + birdInfo[0] + ","); //add offspring id to dad
+                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to dad
+                            else
+                            {//if dad has offsprings we add another one to existing list of offspring ids
+                                string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to dad
+                                SortOffspringList(offspringList); //sorts the string if necessary
+                                LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to dad in database
+                                MessageBox.Show(birdInfo[0]);
+                            }
                             count++;
                         }
 
                         else if (LogIn.DataBaseExcel.ReadCell("G" + i).Equals(mom[0].Id))
                         {
                             if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if mom doesnt have offsprings yet
-                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0] + ","); //add offspring id to mom
-                            else //if mom has offsprings we add another one to existing list of offspring ids
-                                LogIn.DataBaseExcel.WriteCell("P" + i, (LogIn.DataBaseExcel.ReadCell("P" + i)) + birdInfo[0] + ","); //add offspring id to mom
+                                LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to mom
+                            else
+                            {//if mom has offsprings we add another one to existing list of offspring ids
+                                string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to mom
+                                SortOffspringList(offspringList); //sorts the string if necessary
+                                LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to mom in database
+                                MessageBox.Show(birdInfo[0]);
+                            }
                             count++;
                         }
                     }
@@ -280,6 +291,17 @@ namespace ProjectTesting
                 }
                 LogIn.DataBaseExcel.Quit();//close excel
                 return true;
+            }
+        }
+
+        public void SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
+        {
+            string[] splittedList = offspringList.Split(','); //splits the string 
+            //checks if we need to sort, if last element is smaller then previous. if not it does nothing
+            if (int.Parse(splittedList[splittedList.Length - 1]) < int.Parse(splittedList[splittedList.Length - 2]))
+            {
+                Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y)));
+                offspringList = string.Join(",", splittedList);
             }
         }
 
