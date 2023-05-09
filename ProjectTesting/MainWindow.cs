@@ -119,7 +119,7 @@ namespace ProjectTesting
             hideTopBar();
             hideBackBtn();
             hideTopPanel();
-            //LogIn.DataBaseExcel.Quit();  //clsoe DataBaseExcel!
+            HashTable.ClearBirdCageHashtable(); //clear bird and cage hashtables
         }
 
         public void showTopBar()
