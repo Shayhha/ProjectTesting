@@ -203,7 +203,7 @@ namespace ProjectTesting
                             else
                             {//if dad has offsprings we add another one to existing list of offspring ids
                                 string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to dad
-                                SortOffspringList(offspringList); //sorts the string if necessary
+                                offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to dad in database
                                 MessageBox.Show(birdInfo[0]);
                             }
@@ -217,7 +217,7 @@ namespace ProjectTesting
                             else
                             {//if mom has offsprings we add another one to existing list of offspring ids
                                 string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to mom
-                                SortOffspringList(offspringList); //sorts the string if necessary
+                                offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to mom in database
                                 MessageBox.Show(birdInfo[0]);
                             }
@@ -294,7 +294,7 @@ namespace ProjectTesting
             }
         }
 
-        public void SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
+        public string SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
         {
             string[] splittedList = offspringList.Split(','); //splits the string 
             //checks if we need to sort, if last element is smaller then previous. if not it does nothing
@@ -303,6 +303,7 @@ namespace ProjectTesting
                 Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y)));
                 offspringList = string.Join(",", splittedList);
             }
+            return offspringList; //retuens new sorted string
         }
 
         private void cleanTextBoxes()
