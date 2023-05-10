@@ -205,7 +205,6 @@ namespace ProjectTesting
                                 string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to dad
                                 offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to dad in database
-                                MessageBox.Show(birdInfo[0]);
                             }
                             count++;
                         }
@@ -219,7 +218,6 @@ namespace ProjectTesting
                                 string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to mom
                                 offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to mom in database
-                                MessageBox.Show(birdInfo[0]);
                             }
                             count++;
                         }
