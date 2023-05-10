@@ -48,7 +48,7 @@ namespace ProjectTesting
 
         private void Search_button_Click(object sender, EventArgs e)
         {
-            
+
             Stopwatch stopwatch = new Stopwatch();
 
             // Start the stopwatch
@@ -57,7 +57,7 @@ namespace ProjectTesting
             string name = Search_textbox.Text;
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
             string combo = comboBox.Text;
-            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo); 
+            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo);
             if (SearchResult == 0)
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();

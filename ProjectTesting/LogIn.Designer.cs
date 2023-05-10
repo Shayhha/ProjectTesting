@@ -36,6 +36,10 @@
             UserName_label = new Label();
             Pasword_label = new Label();
             LogIn_label = new Label();
+            loginButton_4 = new RJControls.RJButton();
+            loginButton_2 = new RJControls.RJButton();
+            loginButton_3 = new RJControls.RJButton();
+            loginButton_1 = new RJControls.RJButton();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -127,11 +131,91 @@
             LogIn_label.TabIndex = 9;
             LogIn_label.Text = "Log In";
             // 
+            // loginButton_4
+            // 
+            loginButton_4.BackColor = Color.FromArgb(97, 135, 110);
+            loginButton_4.BackgroundColor = Color.FromArgb(97, 135, 110);
+            loginButton_4.BorderColor = Color.FromArgb(82, 115, 77);
+            loginButton_4.BorderRadius = 10;
+            loginButton_4.BorderSize = 2;
+            loginButton_4.FlatAppearance.BorderSize = 0;
+            loginButton_4.FlatStyle = FlatStyle.Flat;
+            loginButton_4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton_4.ForeColor = Color.White;
+            loginButton_4.Location = new Point(185, 294);
+            loginButton_4.Name = "loginButton_4";
+            loginButton_4.Size = new Size(150, 40);
+            loginButton_4.TabIndex = 36;
+            loginButton_4.Text = "Sign Up";
+            loginButton_4.TextColor = Color.White;
+            loginButton_4.UseVisualStyleBackColor = false;
+            // 
+            // loginButton_2
+            // 
+            loginButton_2.BackColor = Color.FromArgb(145, 199, 136);
+            loginButton_2.BackgroundColor = Color.FromArgb(145, 199, 136);
+            loginButton_2.BorderColor = Color.FromArgb(115, 165, 100);
+            loginButton_2.BorderRadius = 10;
+            loginButton_2.BorderSize = 2;
+            loginButton_2.FlatAppearance.BorderSize = 0;
+            loginButton_2.FlatStyle = FlatStyle.Flat;
+            loginButton_2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton_2.ForeColor = Color.Black;
+            loginButton_2.Location = new Point(185, 225);
+            loginButton_2.Name = "loginButton_2";
+            loginButton_2.Size = new Size(150, 40);
+            loginButton_2.TabIndex = 38;
+            loginButton_2.Text = "Sign Up";
+            loginButton_2.TextColor = Color.Black;
+            loginButton_2.UseVisualStyleBackColor = false;
+            // 
+            // loginButton_3
+            // 
+            loginButton_3.BackColor = Color.FromArgb(97, 135, 110);
+            loginButton_3.BackgroundColor = Color.FromArgb(97, 135, 110);
+            loginButton_3.BorderColor = Color.FromArgb(82, 115, 77);
+            loginButton_3.BorderRadius = 10;
+            loginButton_3.BorderSize = 2;
+            loginButton_3.FlatAppearance.BorderSize = 0;
+            loginButton_3.FlatStyle = FlatStyle.Flat;
+            loginButton_3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton_3.ForeColor = Color.White;
+            loginButton_3.Location = new Point(19, 294);
+            loginButton_3.Name = "loginButton_3";
+            loginButton_3.Size = new Size(150, 40);
+            loginButton_3.TabIndex = 35;
+            loginButton_3.Text = "Log In";
+            loginButton_3.TextColor = Color.White;
+            loginButton_3.UseVisualStyleBackColor = false;
+            // 
+            // loginButton_1
+            // 
+            loginButton_1.BackColor = Color.FromArgb(145, 199, 136);
+            loginButton_1.BackgroundColor = Color.FromArgb(145, 199, 136);
+            loginButton_1.BorderColor = Color.FromArgb(115, 165, 100);
+            loginButton_1.BorderRadius = 10;
+            loginButton_1.BorderSize = 2;
+            loginButton_1.FlatAppearance.BorderSize = 0;
+            loginButton_1.FlatStyle = FlatStyle.Flat;
+            loginButton_1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton_1.ForeColor = Color.Black;
+            loginButton_1.Location = new Point(19, 225);
+            loginButton_1.Name = "loginButton_1";
+            loginButton_1.Size = new Size(150, 40);
+            loginButton_1.TabIndex = 37;
+            loginButton_1.Text = "Log In";
+            loginButton_1.TextColor = Color.Black;
+            loginButton_1.UseVisualStyleBackColor = false;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(loginButton_4);
+            Controls.Add(loginButton_2);
+            Controls.Add(loginButton_3);
+            Controls.Add(loginButton_1);
             Controls.Add(panel1);
             Controls.Add(LogIn_label);
             Name = "LogIn";
@@ -151,5 +235,9 @@
         private Label UserName_label;
         private Label Pasword_label;
         private Label LogIn_label;
+        private RJControls.RJButton loginButton_4;
+        private RJControls.RJButton loginButton_2;
+        private RJControls.RJButton loginButton_3;
+        private RJControls.RJButton loginButton_1;
     }
 }

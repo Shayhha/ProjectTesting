@@ -19,7 +19,7 @@ namespace ProjectTesting
         {
             InitializeComponent();
         }
-        
+
         private void LogIn_button_Click(object sender, EventArgs e)
         {
             string username = UserName_textbox.Text;
