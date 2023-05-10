@@ -45,7 +45,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.SkyBlue;
+            panel1.BackColor = Color.FromArgb(214, 232, 219);
             panel1.Controls.Add(Password_textbox);
             panel1.Controls.Add(LogIn_button);
             panel1.Controls.Add(SignUp_button);
