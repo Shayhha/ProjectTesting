@@ -36,6 +36,7 @@
             label2 = new Label();
             Search_label = new Label();
             Search_textbox = new TextBox();
+            rjToggleButton1 = new RJControls.RJToggleButton();
             ((System.ComponentModel.ISupportInitialize)Cage_pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).BeginInit();
             SuspendLayout();
@@ -122,11 +123,26 @@
             Search_textbox.Size = new Size(350, 33);
             Search_textbox.TabIndex = 9;
             // 
+            // rjToggleButton1
+            // 
+            rjToggleButton1.AutoSize = true;
+            rjToggleButton1.Location = new Point(736, 113);
+            rjToggleButton1.MinimumSize = new Size(45, 22);
+            rjToggleButton1.Name = "rjToggleButton1";
+            rjToggleButton1.OffBackColor = Color.FromArgb(153, 169, 143);
+            rjToggleButton1.OffToggleColor = Color.Gainsboro;
+            rjToggleButton1.OnBackColor = Color.FromArgb(97, 135, 110);
+            rjToggleButton1.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton1.Size = new Size(45, 22);
+            rjToggleButton1.TabIndex = 40;
+            rjToggleButton1.UseVisualStyleBackColor = true;
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(rjToggleButton1);
             Controls.Add(Search_button);
             Controls.Add(comboBox);
             Controls.Add(label2);
@@ -151,5 +167,6 @@
         private Label label2;
         private Label Search_label;
         private TextBox Search_textbox;
+        private RJControls.RJToggleButton rjToggleButton1;
     }
 }

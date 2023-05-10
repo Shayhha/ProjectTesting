@@ -36,6 +36,7 @@
             colorDialog1 = new ColorDialog();
             comboBox = new ComboBox();
             tempListBox = new ListBox();
+            rjToggleButton1 = new RJControls.RJToggleButton();
             SuspendLayout();
             // 
             // birdList
@@ -115,11 +116,26 @@
             tempListBox.Size = new Size(1215, 356);
             tempListBox.TabIndex = 15;
             // 
+            // rjToggleButton1
+            // 
+            rjToggleButton1.AutoSize = true;
+            rjToggleButton1.Location = new Point(729, 92);
+            rjToggleButton1.MinimumSize = new Size(45, 22);
+            rjToggleButton1.Name = "rjToggleButton1";
+            rjToggleButton1.OffBackColor = Color.FromArgb(153, 169, 143);
+            rjToggleButton1.OffToggleColor = Color.Gainsboro;
+            rjToggleButton1.OnBackColor = Color.FromArgb(97, 135, 110);
+            rjToggleButton1.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton1.Size = new Size(45, 22);
+            rjToggleButton1.TabIndex = 40;
+            rjToggleButton1.UseVisualStyleBackColor = true;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
+            Controls.Add(rjToggleButton1);
             Controls.Add(Search_button);
             Controls.Add(comboBox);
             Controls.Add(label2);
@@ -143,5 +159,6 @@
         private ColorDialog colorDialog1; // what is this? *****************
         private ComboBox comboBox;
         private ListBox tempListBox;
+        private RJControls.RJToggleButton rjToggleButton1;
     }
 }
