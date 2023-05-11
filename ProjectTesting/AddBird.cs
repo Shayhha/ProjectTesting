@@ -288,7 +288,7 @@ namespace ProjectTesting
                     {
                         MainWindow.HashTable.RemoveBirdFromHashtable(oldBirdId); //remove old bird id hashcode from hashtable
                         MainWindow.HashTable.AddBirdToHashtable(currentBird[0]); //add the updated bird to hashtable
-                        if (currentBird[0].OffspringList.Count != 0)
+                        if (currentBird[0].OffspringList.Count != 0) //if bird has offsprings we change the id in all of them
                         {
                             foreach(Bird b in currentBird[0].OffspringList)
                             {
