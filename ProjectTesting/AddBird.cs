@@ -290,7 +290,7 @@ namespace ProjectTesting
                         MainWindow.HashTable.AddBirdToHashtable(currentBird[0]); //add the updated bird to hashtable
                         if (currentBird[0].OffspringList.Count != 0) //if bird has offsprings we change the id in all of them
                         {
-                            foreach(Bird b in currentBird[0].OffspringList)
+                            foreach(Bird b in currentBird[0].OffspringList) //goes through all offsprings and updating the id
                             {
                                 if(b.DadId.Equals(oldBirdId))
                                     b.DadId = birdInfo[0];
