@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -98,6 +99,24 @@ namespace ProjectTesting
         { 
             birdHashtable.Clear();
             cageHashtable.Clear();
+        }
+
+        public void AddBirdIdToHashtable(Bird bird) //adds cage to hashtable only by id
+        {
+            if (!birdHashtable.ContainsKey(bird.Id))
+            {
+                birdHashtable[bird.Id] = new List<Bird>();
+            }
+            birdHashtable[bird.Id].Add(bird);
+        }
+
+        public void AddCageIdToHashtable(Cage cage) //adds cage to hashtable only by id
+        {
+            if (!cageHashtable.ContainsKey(cage.Id))
+            {
+                cageHashtable[cage.Id] = new List<Cage>();
+            }
+            cageHashtable[cage.Id].Add(cage);
         }
 
         public void RemoveBirdFromHashtable(string birdId) //remove the old bird id hashcode from hashtable

@@ -191,8 +191,8 @@ namespace ProjectTesting
                 currentCage[0].EditFields(cageInfo);
                 if (cageInfo[0] != oldCageId) //if we changed id of cage we need to remove old hash code and add new id with new hash code
                 {
-                    MainWindow.HashTable.RemoveCageFromHashtable(oldCageId);
-                    MainWindow.HashTable.AddCageToHashtable(currentCage[0]);
+                    MainWindow.HashTable.RemoveCageFromHashtable(oldCageId); //remove old cage id from hashtable
+                    MainWindow.HashTable.AddCageIdToHashtable(currentCage[0]); //adds the cage id back to hashtable
                 }
             }
 
@@ -210,8 +210,16 @@ namespace ProjectTesting
                             MainWindow.HashTable.ClearBirdCageHashtable();
                             MainWindow.InitHashtable();
                         }
-                        else if (currentCageRow != 1 && LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0
-                            || LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0)
+                        else if ((currentCageRow == LogIn.DataBaseExcel.GetLastRow() - 1) 
+                            && LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0)
+                        {
+                            MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
+                            MainWindow.HashTable.ClearBirdCageHashtable();
+                            MainWindow.InitHashtable();
+                        }
+                        else if (currentCageRow != 1 && (currentCageRow != LogIn.DataBaseExcel.GetLastRow() - 1) 
+                            && (LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0
+                            || LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0))
                         {
                             MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
                             MainWindow.HashTable.ClearBirdCageHashtable();

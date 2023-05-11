@@ -206,13 +206,13 @@ namespace ProjectTesting
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else
+                            else if(!edited)
                             {
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if dad doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to dad
                                 else
                                 {//if dad has offsprings we add another one to existing list of offspring ids
-                                    string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to dad
+                                    string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "|" + birdInfo[0];//add offspring id to dad
                                     offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                     LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to dad in database
                                 }
@@ -229,12 +229,12 @@ namespace ProjectTesting
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else {
+                            else if(!edited){
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if mom doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to mom
                                 else
                                 {//if mom has offsprings we add another one to existing list of offspring ids
-                                    string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "," + birdInfo[0];//add offspring id to mom
+                                    string offspringList = LogIn.DataBaseExcel.ReadCell("P" + i) + "|" + birdInfo[0];//add offspring id to mom
                                     offspringList = SortOffspringList(offspringList); //sorts the string if necessary
                                     LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //add offspring id to mom in database
                                 }
@@ -287,7 +287,7 @@ namespace ProjectTesting
                     if (!(oldBirdId.Equals(birdInfo[0])))
                     {
                         MainWindow.HashTable.RemoveBirdFromHashtable(oldBirdId); //remove old bird id hashcode from hashtable
-                        MainWindow.HashTable.AddBirdToHashtable(currentBird[0]); //add the updated bird to hashtable
+                        MainWindow.HashTable.AddBirdIdToHashtable(currentBird[0]); //add the updated bird id to hashtable
                         if (currentBird[0].OffspringList.Count != 0) //if bird has offsprings we change the id in all of them
                         {
                             foreach(Bird b in currentBird[0].OffspringList) //goes through all offsprings and updating the id
@@ -307,7 +307,16 @@ namespace ProjectTesting
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
                                 MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
-                            else if (currentBirdRow != 1 && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0]))
+                            else if ((currentBirdRow == LogIn.DataBaseExcel.GetLastRow() - 1)
+                            && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0]))
+                            {
+                                MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                                MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                                MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
+                            }
+                            else if (currentBirdRow != 1 && (currentBirdRow != LogIn.DataBaseExcel.GetLastRow() - 1)
+                            && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
+                            || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0])))
                             {
                                 MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
@@ -323,19 +332,19 @@ namespace ProjectTesting
 
         public string SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
         {
-            string[] splittedList = offspringList.Split(','); //splits the string 
+            string[] splittedList = offspringList.Split('|'); //splits the string 
             //checks if we need to sort, if last element is smaller then previous. if not it does nothing
             if (int.Parse(splittedList[splittedList.Length - 1]) < int.Parse(splittedList[splittedList.Length - 2]))
             {
                 Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y)));
-                offspringList = string.Join(",", splittedList);
+                offspringList = string.Join("|", splittedList);
             }
             return offspringList; //retuens new sorted string
         }
 
         public string UpdateOffspringParents(string offspringList, string newBirdId, string oldBirdId)
         {
-            string[] splittedList = offspringList.Split(','); //splits the string 
+            string[] splittedList = offspringList.Split('|'); //splits the string 
             int index = Array.IndexOf(splittedList, oldBirdId); //get the index of old id in string array
             if (index > -1) //if index found we change to new id and sort if necessary
             {
@@ -347,12 +356,17 @@ namespace ProjectTesting
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
-                    else if (index != 0 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
+                    else if(index == splittedList.Length - 1 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
+                    {
+                        Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
+                    }
+                    else if (index != 0 && index != splittedList.Length - 1 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1]))
+                    || (int.Parse(splittedList[index]) > int.Parse(splittedList[index + 1])))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
                 }
-                offspringList = string.Join(",", splittedList);
+                offspringList = string.Join("|", splittedList);
             }
             return offspringList; //retuens new sorted string
         }
