@@ -288,6 +288,16 @@ namespace ProjectTesting
                     {
                         MainWindow.HashTable.RemoveBirdFromHashtable(oldBirdId); //remove old bird id hashcode from hashtable
                         MainWindow.HashTable.AddBirdToHashtable(currentBird[0]); //add the updated bird to hashtable
+                        if (currentBird[0].OffspringList.Count != 0)
+                        {
+                            foreach(Bird b in currentBird[0].OffspringList)
+                            {
+                                if(b.DadId.Equals(oldBirdId))
+                                    b.DadId = birdInfo[0];
+                                else if(b.MomId.Equals(oldBirdId))
+                                    b.MomId = birdInfo[0];
+                            }
+                        }
                         if (!(LogIn.DataBaseExcel.ReadCell("G2").Equals("")))//if we have only one bird we dont need sort
                         {
                             if (currentBirdRow == 1

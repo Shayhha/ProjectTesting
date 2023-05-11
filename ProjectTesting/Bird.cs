@@ -70,7 +70,7 @@ namespace ProjectTesting
                 string offsprings = "";
                 foreach (Bird offspring in OffspringList)
                 {
-                    offsprings += offspring.Id + ",";
+                    offsprings += offspring.Id;
                 }
                 birdInfo = new string[10] { this.Id, this.Type, this.SubType, this.DateOfBirth, this.Gender, this.CageId, this.DadId, this.MomId, "", offsprings };
             }
