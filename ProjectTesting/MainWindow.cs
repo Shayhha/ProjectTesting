@@ -41,7 +41,7 @@ namespace ProjectTesting
                 List<Bird> bird = HashTable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
                 if (!bird[0].isOffspring && temp[9] != "none") //if the bird is adult we check if it has offsprings
                 {
-                    string[] offspringList = temp[9].Split(","); //splits the string of offsprings to string[] array
+                    string[] offspringList = temp[9].Split("|"); //splits the string of offsprings to string[] array
                     foreach (string offspringId in offspringList)
                     {
                         if (offspringId != "") //checks if we have empty string in splitted array
