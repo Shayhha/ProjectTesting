@@ -39,16 +39,13 @@ namespace ProjectTesting
             {
                 string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 16);
                 List<Bird> bird = HashTable.SearchBirdHashtable(temp[0]); //searches the bird id in hashtable
-                if (!bird[0].isOffspring && temp[9] != "none") //if the bird is adult we check if it has offsprings
+                if (!(bird[0].isOffspring) && temp[9] != "none") //if the bird is adult we check if it has offsprings
                 {
                     string[] offspringList = temp[9].Split("|"); //splits the string of offsprings to string[] array
                     foreach (string offspringId in offspringList)
                     {
-                        if (offspringId != "") //checks if we have empty string in splitted array
-                        {
-                            List<Bird> offspring = HashTable.SearchBirdHashtable(offspringId);
-                            bird[0].AddOffspring(offspring[0]);
-                        }
+                        List<Bird> offspring = HashTable.SearchBirdHashtable(offspringId);
+                        bird[0].AddOffspring(offspring[0]);
                     }
                 }
                 //if((bird[0].OffspringList.Count != 0))
