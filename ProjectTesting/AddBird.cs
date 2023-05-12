@@ -327,7 +327,7 @@ namespace ProjectTesting
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
                                 MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
-                            else if (currentBirdRow != 1 && (currentBirdRow != LogIn.DataBaseExcel.GetLastRow() - 1)
+                            else if (currentBirdRow != 1 && (currentBirdRow != LogIn.DataBaseExcel.GetLastRow(7) - 1)
                             && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
                             || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0])))
                                 {
