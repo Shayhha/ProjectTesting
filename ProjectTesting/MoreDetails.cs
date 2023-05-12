@@ -209,26 +209,7 @@ namespace ProjectTesting
 
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
-            editBirdButton.Show();
-            saveBirdButton.Hide();
-
-            idLabel.ReadOnly = true;
-            typeLabel.ReadOnly = true;
-            subTypeLabel.ReadOnly = true;
-            genderLabel.ReadOnly = true;
-            cageIdLabel.ReadOnly = true;
-            dadIdLabel.ReadOnly = true;
-            momIdLabel.ReadOnly = true;
-
-            idLabel.Enabled = false;
-            typeLabel.Enabled = false;
-            subTypeLabel.Enabled = false;
-            datePicker.Enabled = false;
-            genderLabel.Enabled = false;
-            cageIdLabel.Enabled = false;
-            dadIdLabel.Enabled = false;
-            momIdLabel.Enabled = false;
-
+            setUnedited();
 
             string[] newInfo = getTextFromUiBird().ToStringArray(); //convert Bird to string array for ease of use 
             string[] cleanUp = new string[9];
@@ -326,8 +307,9 @@ namespace ProjectTesting
                 // if the cage was updated successfuly, we need to update the 'infoFromDatabaseCage' object
                 // incase the user decides to update the values again without getting out of the moredetails window
                 infoFromDatabaseCage = getTextFromUiCage();
+                List<Cage> newCage = MainWindow.HashTable.SearchCageHashtable(infoFromDatabaseCage.Id);
                 birdList.Items.Clear();
-                foreach (Bird bird in infoFromDatabaseCage.BirdList) //adding birds to list 
+                foreach (Bird bird in newCage[0].BirdList) //adding birds to list 
                 {
                     string newStr = "Bird ID: " + bird.Id + " , Type: " + bird.Type + " , Gender: " + bird.Gender + " , Cage ID: " + bird.CageId;
                     birdList.Items.Add(newStr);
@@ -343,5 +325,27 @@ namespace ProjectTesting
             }
         }
 
+        public void setUnedited()
+        {
+            editBirdButton.Show();
+            saveBirdButton.Hide();
+
+            idLabel.ReadOnly = true;
+            typeLabel.ReadOnly = true;
+            subTypeLabel.ReadOnly = true;
+            genderLabel.ReadOnly = true;
+            cageIdLabel.ReadOnly = true;
+            dadIdLabel.ReadOnly = true;
+            momIdLabel.ReadOnly = true;
+
+            idLabel.Enabled = false;
+            typeLabel.Enabled = false;
+            subTypeLabel.Enabled = false;
+            datePicker.Enabled = false;
+            genderLabel.Enabled = false;
+            cageIdLabel.Enabled = false;
+            dadIdLabel.Enabled = false;
+            momIdLabel.Enabled = false;
+        }
     }
 }

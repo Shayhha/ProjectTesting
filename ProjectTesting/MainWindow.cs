@@ -125,6 +125,7 @@ namespace ProjectTesting
             addBird1.cleanTextBoxes();
             addCage1.cleanTextBoxes();
             addCage1.setWelcome_lable(false);
+            moreDetails1.setUnedited();
 
             // clear and clean and hide the top navigation bar
             hideTopBar();
@@ -177,6 +178,8 @@ namespace ProjectTesting
             }
             else if (moreDetails1.Visible == true)
             {
+                moreDetails1.setUnedited();
+
                 if (homePage1.OneOption == true)
                 {
                     searchBird1.Search_textbox.Text = "";
