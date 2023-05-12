@@ -247,7 +247,7 @@ namespace ProjectTesting
         /// <summary>
         /// Cleaning the text from the screen
         /// </summary>
-        private void cleanTextBoxes()
+        public void cleanTextBoxes()
         {
             idBox.Text = "";
             lengthBox.Text = "";

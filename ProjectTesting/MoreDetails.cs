@@ -131,23 +131,10 @@ namespace ProjectTesting
 
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
-            ((MainWindow)this.Parent.Parent).addBird1.AddBird_label.Text = "Add an Offspring:";
-            ((MainWindow)this.Parent.Parent).addBird1.typeBox.Text = typeLabel.Text;
-            ((MainWindow)this.Parent.Parent).addBird1.typeBox.ReadOnly = true;
-            ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.Text = subTypeLabel.Text;
-            ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.ReadOnly = true;
-            ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.Text = cageIdLabel.Text;
-            ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.ReadOnly = true;
-            if (genderLabel.Text == "Male")
-            {
-                ((MainWindow)this.Parent.Parent).addBird1.dadBox.Text = idLabel.Text;
-                ((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly = true;
-            }
-            else
-            {
-                ((MainWindow)this.Parent.Parent).addBird1.momBox.Text = idLabel.Text;
-                ((MainWindow)this.Parent.Parent).addBird1.momBox.ReadOnly = true;
-            }
+            ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly(
+                typeLabel.Text, subTypeLabel.Text, cageIdLabel.Text, genderLabel.Text, idLabel.Text
+            );
+
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             this.Hide();
             ((MainWindow)this.Parent.Parent).hideBackBtn();
@@ -222,9 +209,6 @@ namespace ProjectTesting
 
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
-            progressBarPanel.Visible = true;
-            progressBar.Value = 0;
-
             editBirdButton.Show();
             saveBirdButton.Hide();
 
@@ -245,7 +229,6 @@ namespace ProjectTesting
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
 
-            progressBar.Value = 25;
 
             string[] newInfo = getTextFromUiBird().ToStringArray(); //convert Bird to string array for ease of use 
             string[] cleanUp = new string[9];
@@ -281,7 +264,6 @@ namespace ProjectTesting
                 }
             }
 
-            progressBarPanel.Visible = false;
 
             if (flag == 1)
             { // make this into a function and use above as well
@@ -344,6 +326,12 @@ namespace ProjectTesting
                 // if the cage was updated successfuly, we need to update the 'infoFromDatabaseCage' object
                 // incase the user decides to update the values again without getting out of the moredetails window
                 infoFromDatabaseCage = getTextFromUiCage();
+                birdList.Items.Clear();
+                foreach (Bird bird in infoFromDatabaseCage.BirdList) //adding birds to list 
+                {
+                    string newStr = "Bird ID: " + bird.Id + " , Type: " + bird.Type + " , Gender: " + bird.Gender + " , Cage ID: " + bird.CageId;
+                    birdList.Items.Add(newStr);
+                }
             }
             else
             {

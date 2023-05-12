@@ -58,9 +58,6 @@ namespace ProjectTesting
             offspringsPanel = new Panel();
             fledglingLabel = new Label();
             birdPanel = new Panel();
-            progressBarPanel = new Panel();
-            prograssBarLabel = new Label();
-            progressBar = new ProgressBar();
             cagePanel = new Panel();
             editPanel = new FlowLayoutPanel();
             editCageButton = new Button();
@@ -86,7 +83,6 @@ namespace ProjectTesting
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
             birdPanel.SuspendLayout();
-            progressBarPanel.SuspendLayout();
             cagePanel.SuspendLayout();
             editPanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -372,9 +368,9 @@ namespace ProjectTesting
             offspringList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             offspringList.FormattingEnabled = true;
             offspringList.ItemHeight = 25;
-            offspringList.Location = new Point(26, 32);
+            offspringList.Location = new Point(3, 32);
             offspringList.Name = "offspringList";
-            offspringList.Size = new Size(630, 179);
+            offspringList.Size = new Size(677, 179);
             offspringList.TabIndex = 24;
             // 
             // addOffspringButton
@@ -395,7 +391,7 @@ namespace ProjectTesting
             offspringsPanel.Controls.Add(label8);
             offspringsPanel.Location = new Point(2, 252);
             offspringsPanel.Name = "offspringsPanel";
-            offspringsPanel.Size = new Size(680, 285);
+            offspringsPanel.Size = new Size(697, 285);
             offspringsPanel.TabIndex = 26;
             // 
             // fledglingLabel
@@ -410,43 +406,14 @@ namespace ProjectTesting
             // 
             // birdPanel
             // 
-            birdPanel.Controls.Add(progressBarPanel);
             birdPanel.Controls.Add(panel1);
             birdPanel.Controls.Add(fledglingLabel);
             birdPanel.Controls.Add(mainPic);
             birdPanel.Controls.Add(offspringsPanel);
-            birdPanel.Location = new Point(55, 46);
+            birdPanel.Location = new Point(15, 46);
             birdPanel.Name = "birdPanel";
-            birdPanel.Size = new Size(1160, 539);
+            birdPanel.Size = new Size(1200, 539);
             birdPanel.TabIndex = 28;
-            // 
-            // progressBarPanel
-            // 
-            progressBarPanel.BackColor = Color.Moccasin;
-            progressBarPanel.Controls.Add(prograssBarLabel);
-            progressBarPanel.Controls.Add(progressBar);
-            progressBarPanel.Location = new Point(427, 196);
-            progressBarPanel.Name = "progressBarPanel";
-            progressBarPanel.Size = new Size(310, 90);
-            progressBarPanel.TabIndex = 30;
-            progressBarPanel.Visible = false;
-            // 
-            // prograssBarLabel
-            // 
-            prograssBarLabel.AutoSize = true;
-            prograssBarLabel.Location = new Point(37, 10);
-            prograssBarLabel.Name = "prograssBarLabel";
-            prograssBarLabel.Size = new Size(237, 15);
-            prograssBarLabel.TabIndex = 29;
-            prograssBarLabel.Text = "checking your input and saving the data . . .";
-            // 
-            // progressBar
-            // 
-            progressBar.Location = new Point(24, 27);
-            progressBar.Name = "progressBar";
-            progressBar.Size = new Size(261, 50);
-            progressBar.TabIndex = 28;
-            progressBar.Value = 100;
             // 
             // cagePanel
             // 
@@ -454,7 +421,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(22, 18);
+            cagePanel.Location = new Point(15, 28);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
@@ -678,8 +645,6 @@ namespace ProjectTesting
             offspringsPanel.PerformLayout();
             birdPanel.ResumeLayout(false);
             birdPanel.PerformLayout();
-            progressBarPanel.ResumeLayout(false);
-            progressBarPanel.PerformLayout();
             cagePanel.ResumeLayout(false);
             cagePanel.PerformLayout();
             editPanel.ResumeLayout(false);
@@ -730,9 +695,6 @@ namespace ProjectTesting
         private Label widthLabel;
         private Label heightLabel;
         private Label listLabel;
-        public Panel progressBarPanel;
-        public ProgressBar progressBar;
-        private Label prograssBarLabel;
         private FlowLayoutPanel editPanel;
         private Button editCageButton;
         private Button saveCageButton;

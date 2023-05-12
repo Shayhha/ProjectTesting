@@ -10,6 +10,7 @@ using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection.Emit;
 using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -90,17 +91,14 @@ namespace ProjectTesting
                     errorMessage = "The bird id must ONLY contain numbers.";
                     flag = 1;
                 }
-                else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; return false; }
+                else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
-                    ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false;
+                    
                     CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try the following: " + findValidCageIds(), "Cage Id Error");
                     return false;
                 }
-                else if (errorMessage != "")
-                { 
-                    ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 50;
-                }
+                
                 
                 if (birdInfo[6] != "")
                 {
@@ -115,7 +113,7 @@ namespace ProjectTesting
                         flag = 1;
                     }
                     else if (!checkDadId(birdInfo[6]))
-                        flag = 1;
+                        return false;
                     
                 }
                 
@@ -132,24 +130,39 @@ namespace ProjectTesting
                         flag = 1;
                     }
                     else if (!checkMomId(birdInfo[7]))
-                        flag = 1;
+                    {
+                        return false;
+                    }
+                }
+
+                if (birdInfo[8] == "yes")
+                {
+                    List<Bird> dad = MainWindow.HashTable.SearchBirdHashtable(birdInfo[6]);
+                    List<Bird> mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
+                    // turn into data object and check the dates. if wrong date then return false and show error message
+                    DateTime date1 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
+                    DateTime date2 = DateTime.ParseExact(dad[0].DateOfBirth, "dd/MM/yyyy", null);
+                    DateTime date3 = DateTime.ParseExact(mom[0].DateOfBirth, "dd/MM/yyyy", null);
+
+                    if (date1 < date2 && date1 < date3)
+                    {
+                        CustomMessageBox.Show("The offspring's date of birth must proceed the date of birth of his parents","Date Error");
+                        return false;
+                    }
                 }
 
                 if (!edited) // if the user is adding a new bird we also want to check if that bird already exists in the database
                 {
                     if (!checkBirdId(birdInfo[0]))
                     {
-                        ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false;
                         return false;
                     }
                 }
             }
 
-            ((MainWindow)this.Parent.Parent).moreDetails1.progressBar.Value = 75;
 
             if (flag == 1)
             {
-                ((MainWindow)this.Parent.Parent).moreDetails1.progressBarPanel.Visible = false; 
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
             }
@@ -371,7 +384,7 @@ namespace ProjectTesting
             return offspringList; //retuens new sorted string
         }
 
-        private void cleanTextBoxes()
+        public void cleanTextBoxes()
         {
             idBox.Text = "";
             typeBox.Text = "";
@@ -528,7 +541,7 @@ namespace ProjectTesting
             {
                 if (parentBird[0].Gender != parentGender)
                 {
-                    errorMessage = "Other parent must me " + parentGender.ToLower() + "!";
+                    errorMessage = "Other parent must be " + parentGender.ToLower() + "!";
                 }
                 else if (parentBird[0].CageId != cageIdBox.Text)
                 {
@@ -560,7 +573,7 @@ namespace ProjectTesting
         private void addButton_Click(object sender, EventArgs e)
         {
             bool isOffspring = false; //default is no for addBird
-            
+
             if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
             { 
                 isOffspring = true;
@@ -571,6 +584,7 @@ namespace ProjectTesting
             if (getInfoFromUser(getTextFromUi(isOffspring)))
             {
                 cleanTextBoxes();
+                makeNotReadOnly();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
                 this.Hide();
             }
@@ -582,15 +596,8 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 ((MainWindow)this.Parent.Parent).moreDetails1.Show();
-                AddBird_label.Text = "Add a Bird:";
-                ((MainWindow)this.Parent.Parent).addBird1.typeBox.ReadOnly = false;
-                ((MainWindow)this.Parent.Parent).addBird1.subTypeBox.ReadOnly = false;
-                ((MainWindow)this.Parent.Parent).addBird1.cageIdBox.ReadOnly = false;
 
-                if (((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly == true)
-                    ((MainWindow)this.Parent.Parent).addBird1.dadBox.ReadOnly = false;
-                else
-                    ((MainWindow)this.Parent.Parent).addBird1.momBox.ReadOnly = false;
+                makeNotReadOnly();
             }
             else
             {
@@ -600,6 +607,42 @@ namespace ProjectTesting
             this.Hide();
         }
 
-        
+        public void makeReadOnly(string type, string subType, string cageId, string gender, string parentId)
+        {
+            AddBird_label.Text = "Add an Offspring:";
+
+            typeBox.Text = type;
+            typeBox.ReadOnly = true;
+
+            subTypeBox.Text = subType;
+            subTypeBox.ReadOnly = true;
+
+            cageIdBox.Text = cageId;
+            cageIdBox.ReadOnly = true;
+
+            if (gender == "Male")
+            {
+                dadBox.Text = parentId;
+                dadBox.ReadOnly = true;
+            }
+            else
+            {
+                momBox.Text = parentId;
+                momBox.ReadOnly = true;
+            }
+        }
+
+        public void makeNotReadOnly()
+        {
+            AddBird_label.Text = "Add a Bird:";
+            typeBox.ReadOnly = false;
+            subTypeBox.ReadOnly = false;
+            cageIdBox.ReadOnly = false;
+
+            if (dadBox.ReadOnly == true)
+                dadBox.ReadOnly = false;
+            else
+                momBox.ReadOnly = false;
+        }
     }
 }

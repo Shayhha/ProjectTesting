@@ -62,8 +62,9 @@ namespace ProjectTesting
             {
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
                 ((MainWindow)this.Parent.Parent).showBackBtn();
-                Search_textbox.Text = "";
-                comboBox.SelectedIndex = 0;
+                //Search_textbox.Text = "";
+                //comboBox.SelectedIndex = 0;
+                cleanTextbox();
                 this.Hide();
             }
             else if (SearchResult == 1)
@@ -73,8 +74,9 @@ namespace ProjectTesting
                 ItemSelected(text);
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
-                Search_textbox.Text = "";
-                comboBox.SelectedIndex = 0;
+                //Search_textbox.Text = "";
+                //comboBox.SelectedIndex = 0;
+                cleanTextbox();
                 this.Hide();
             }
             // Stop the stopwatch
@@ -162,6 +164,12 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             comboBox.SelectedIndex = 0;
             this.Hide();
+        }
+
+        public void cleanTextbox()
+        {
+            Search_textbox.Text = "";
+            comboBox.SelectedIndex = 0;
         }
     }
 }

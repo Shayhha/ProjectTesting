@@ -207,5 +207,10 @@ namespace ProjectTesting
             }
         }
 
+        public void cleanTextboxAndList()
+        {
+            ClearList();
+            Search_textbox.Text = "";
+        }
     }
 }

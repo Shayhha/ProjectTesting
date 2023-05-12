@@ -110,16 +110,32 @@ namespace ProjectTesting
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
+            // when logout button is clicked we need to do a few things
+
+            // hide all of the user controls and show only the login page
             logIn1.Show();
             homePage1.Hide();
             searchBird1.Hide();
             addBird1.Hide();
             addCage1.Hide();
             moreDetails1.Hide();
+
+            // clean and clear all of the information that was entered into the text boxes
+            // this means clearing the homepage textbox, the searchBird textbox and the addBird and addCage textboxes
+            homePage1.cleanTextbox();
+            searchBird1.cleanTextboxAndList();
+            addBird1.makeNotReadOnly();
+            addBird1.cleanTextBoxes();
+            addCage1.cleanTextBoxes();
+            addCage1.setWelcome_lable(false);
+
+            // clear and clean and hide the top navigation bar
             hideTopBar();
             hideBackBtn();
             hideTopPanel();
-            HashTable.ClearBirdCageHashtable(); //clear bird and cage hashtables
+
+            // clear bird and cage hashtables
+            HashTable.ClearBirdCageHashtable(); 
         }
 
         public void showTopBar()
