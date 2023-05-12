@@ -191,8 +191,8 @@ namespace ProjectTesting
                 currentCage[0].EditFields(cageInfo);
                 if (cageInfo[0] != oldCageId) //if we changed id of cage we need to remove old hash code and add new id with new hash code
                 {
-                    MainWindow.HashTable.RemoveCageFromHashtable(oldCageId); //remove old cage id from hashtable
-                    MainWindow.HashTable.AddCageIdToHashtable(currentCage[0]); //adds the cage id back to hashtable
+                    MainWindow.HashTable.RemoveCageFromHashtable(oldCageId); //remove old cage id from cage hashtable
+                    MainWindow.HashTable.AddCageIdToHashtable(currentCage[0], oldCageId); //adds the cage id back to cage hashtable
                 }
             }
 
