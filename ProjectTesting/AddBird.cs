@@ -54,7 +54,7 @@ namespace ProjectTesting
         public bool getInfoFromUser(Bird bird, bool edited = false, string oldBirdId = "")
         {
             string[] birdInfo = bird.ToStringArray(); //convert bird to string array
-            int currentBirdRow = 0 ; //index of current bird
+            int currentBirdRow = 0; //index of current bird
             Bird newBird = null; // bird object for the new bird (shared with everyone) 
             int flag = 0;
             string errorMessage = "";
@@ -94,12 +94,12 @@ namespace ProjectTesting
                 else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
-                    
+
                     CustomMessageBox.Show("The cage id you have typed does not belong to you or does not exist.\nYou can try the following: " + findValidCageIds(), "Cage Id Error");
                     return false;
                 }
-                
-                
+
+
                 if (birdInfo[6] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[6], idPattern)))
@@ -114,9 +114,9 @@ namespace ProjectTesting
                     }
                     else if (!checkDadId(birdInfo[6]))
                         return false;
-                    
+
                 }
-                
+
                 if (birdInfo[7] != "")
                 {
                     if (!(Regex.IsMatch(birdInfo[7], idPattern)))
@@ -146,7 +146,20 @@ namespace ProjectTesting
 
                     if (date1 < date2 && date1 < date3)
                     {
-                        CustomMessageBox.Show("The offspring's date of birth must proceed the date of birth of his parents","Date Error");
+                        CustomMessageBox.Show("The offspring's date of birth must proceed the date of birth of his parents", "Date Error");
+                        return false;
+                    }
+                }
+                else if (edited && birdInfo[8] == "no" && birdInfo[9] != "none")
+                {
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdInfo[0]);
+
+                    DateTime date1 = DateTime.ParseExact(currentBird[0].DateOfBirth, "dd/MM/yyyy", null);
+                    DateTime date2 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
+
+                    if (date1 < date2)
+                    {
+                        CustomMessageBox.Show("The date of birth for parents cannot proceed the date of birth of his offsprings", "Date Error");
                         return false;
                     }
                 }
@@ -172,7 +185,7 @@ namespace ProjectTesting
                 int count = 0; //count for loop break
                 List<Bird> dad = null; //for use in offspring
                 List<Bird> mom = null; //for use in offspring
-                if(!edited) //if we adding new bird we initialize the bird object
+                if (!edited) //if we adding new bird we initialize the bird object
                     newBird = new Bird(birdInfo);  //initializing new bird object
 
                 if (birdInfo[8].Equals("yes")) //if bird is offspring we search in hashtable the parents
@@ -194,14 +207,14 @@ namespace ProjectTesting
                         currentBirdRow = i; //finds birds row in database
                         count++;
                     }
-                    if(edited && birdInfo[8].Equals("no") && !(oldBirdId.Equals(birdInfo[0]))) //means birds id has been changed(regular bird)
+                    if (edited && birdInfo[8].Equals("no") && !(oldBirdId.Equals(birdInfo[0]))) //means birds id has been changed(regular bird)
                     {
-                        if(LogIn.DataBaseExcel.ReadCell("M" + i).Equals(oldBirdId)) //checks dadId and if we found oldBirdId we change to new one
+                        if (LogIn.DataBaseExcel.ReadCell("M" + i).Equals(oldBirdId)) //checks dadId and if we found oldBirdId we change to new one
                         {
                             LogIn.DataBaseExcel.WriteCell("M" + i, birdInfo[0]);
                             count++;
                         }
-                        else if(LogIn.DataBaseExcel.ReadCell("N" + i).Equals(oldBirdId))//checks momId and if we found oldBirdId we change to new one
+                        else if (LogIn.DataBaseExcel.ReadCell("N" + i).Equals(oldBirdId))//checks momId and if we found oldBirdId we change to new one
                         {
                             LogIn.DataBaseExcel.WriteCell("N" + i, birdInfo[0]);
                             count++;
@@ -219,7 +232,7 @@ namespace ProjectTesting
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else if(!edited)
+                            else if (!edited)
                             {
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if dad doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to dad
@@ -235,14 +248,14 @@ namespace ProjectTesting
 
                         else if (LogIn.DataBaseExcel.ReadCell("G" + i).Equals(mom[0].Id))
                         {
-                            if(edited && !(oldBirdId.Equals(birdInfo[0]))) //if we changed offspring id we need to update mom's list
+                            if (edited && !(oldBirdId.Equals(birdInfo[0]))) //if we changed offspring id we need to update mom's list
                             {
                                 string offspringList = (LogIn.DataBaseExcel.ReadCell("P" + i)); //save old string in parameter
                                 offspringList = UpdateOffspringParents(offspringList, birdInfo[0], oldBirdId); //send the string list to UpdateOffspringList
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else if(!edited){
+                            else if (!edited) {
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if mom doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to mom
                                 else
@@ -303,11 +316,11 @@ namespace ProjectTesting
                         MainWindow.HashTable.AddBirdIdToHashtable(currentBird[0]); //add the updated bird id to hashtable
                         if (currentBird[0].OffspringList.Count != 0) //if bird has offsprings we change the id in all of them
                         {
-                            foreach(Bird b in currentBird[0].OffspringList) //goes through all offsprings and updating the id
+                            foreach (Bird b in currentBird[0].OffspringList) //goes through all offsprings and updating the id
                             {
-                                if(b.DadId.Equals(oldBirdId))
+                                if (b.DadId.Equals(oldBirdId))
                                     b.DadId = birdInfo[0];
-                                else if(b.MomId.Equals(oldBirdId))
+                                else if (b.MomId.Equals(oldBirdId))
                                     b.MomId = birdInfo[0];
                             }
                         }
@@ -330,19 +343,19 @@ namespace ProjectTesting
                             else if (currentBirdRow != 1 && (currentBirdRow != LogIn.DataBaseExcel.GetLastRow(7) - 1)
                             && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
                             || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0])))
-                                {
-                                    MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
-                                    MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
-                                    MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
-                                }
+                            {
+                                MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
+                                MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
+                                MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
                         }
                     }
                 }
-                LogIn.DataBaseExcel.Quit();//close excel
-                return true;
             }
+            LogIn.DataBaseExcel.Quit();//close excel
+            return true;
         }
+    
 
         public string SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
         {
@@ -375,7 +388,7 @@ namespace ProjectTesting
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
                     else if (index != 0 && index != splittedList.Length - 1 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1]))
-                    || (int.Parse(splittedList[index]) > int.Parse(splittedList[index + 1])))
+                        || (int.Parse(splittedList[index]) > int.Parse(splittedList[index + 1])))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
@@ -647,3 +660,4 @@ namespace ProjectTesting
         }
     }
 }
+
