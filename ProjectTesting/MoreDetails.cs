@@ -104,12 +104,6 @@ namespace ProjectTesting
             }
         }
 
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            cleanLabels();
-            this.Hide();
-        }
-
         private void cleanLabels()
         {
             idLabel.Text = "";

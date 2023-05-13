@@ -137,13 +137,16 @@ namespace ProjectTesting
 
                 if (birdInfo[8] == "yes")
                 {
+                    // searching for the dad and mom birds in the hashtable inorder to check their date of birth
                     List<Bird> dad = MainWindow.HashTable.SearchBirdHashtable(birdInfo[6]);
                     List<Bird> mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
-                    // turn into data object and check the dates. if wrong date then return false and show error message
+
+                    // turn into data object and check the dates. including the date of birth of the current bird (the offspring)
                     DateTime date1 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
                     DateTime date2 = DateTime.ParseExact(dad[0].DateOfBirth, "dd/MM/yyyy", null);
                     DateTime date3 = DateTime.ParseExact(mom[0].DateOfBirth, "dd/MM/yyyy", null);
 
+                    // if the date of birth of the offspring is before his parent's date of birth then return false and show error message
                     if (date1 < date2 && date1 < date3)
                     {
                         CustomMessageBox.Show("The offspring's date of birth must proceed the date of birth of his parents", "Date Error");
@@ -152,11 +155,14 @@ namespace ProjectTesting
                 }
                 else if (edited && birdInfo[8] == "no" && birdInfo[9] != "none")
                 {
-                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdInfo[0]);
+                    // searching for the bird in the hashtable, using old id incase the id was changed in the edit
+                    List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId);
 
+                    // checking the date of birth of the current bird before and after the edit
                     DateTime date1 = DateTime.ParseExact(currentBird[0].DateOfBirth, "dd/MM/yyyy", null);
                     DateTime date2 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
 
+                    // if the new date (after the edit) is after the original date of birth then we give an error message because there might be offsprings born before the new date
                     if (date1 < date2)
                     {
                         CustomMessageBox.Show("The date of birth for parents cannot proceed the date of birth of his offsprings", "Date Error");
@@ -326,23 +332,23 @@ namespace ProjectTesting
                         }
                         if (!(LogIn.DataBaseExcel.ReadCell("G2").Equals("")))//if we have only one bird we dont need sort
                         {
-                            if (currentBirdRow == 1
-                            && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))
+                            if ((currentBirdRow == 1)
+                            && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0])))
                             {
                                 MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
                                 MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
-                            else if ((currentBirdRow == LogIn.DataBaseExcel.GetLastRow() - 1)
-                            && int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0]))
+                            else if ((currentBirdRow == (LogIn.DataBaseExcel.GetLastRow(7) - 1))
+                            && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])))
                             {
                                 MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
                                 MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
                             else if (currentBirdRow != 1 && (currentBirdRow != LogIn.DataBaseExcel.GetLastRow(7) - 1)
-                            && (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0])
-                            || int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0])))
+                            && ((int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow - 1))) > int.Parse(birdInfo[0]))
+                            || (int.Parse(LogIn.DataBaseExcel.ReadCell("G" + (currentBirdRow + 1))) < int.Parse(birdInfo[0]))))
                             {
                                 MainWindow.SortExcel("bird");//calls SortExcel from MainWindow
                                 MainWindow.HashTable.ClearBirdCageHashtable();//clear the hashtables of bird and cage
@@ -383,12 +389,12 @@ namespace ProjectTesting
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
-                    else if(index == splittedList.Length - 1 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
+                    else if(index == (splittedList.Length - 1) && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
-                    else if (index != 0 && index != splittedList.Length - 1 && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1]))
-                        || (int.Parse(splittedList[index]) > int.Parse(splittedList[index + 1])))
+                    else if (index != 0 && index != (splittedList.Length - 1) && ((int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1]))
+                    || (int.Parse(splittedList[index]) > int.Parse(splittedList[index + 1]))))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
