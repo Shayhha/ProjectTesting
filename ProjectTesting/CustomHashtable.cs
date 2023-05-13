@@ -118,6 +118,8 @@ namespace ProjectTesting
                 birdHashtable[bird.CageId] = new List<Bird>(); //creates new list in index
             }
             birdHashtable[bird.CageId].Add(bird); //add bird object to list
+            List<Cage> cage = SearchCageHashtable(bird.CageId);
+            cage[0].BirdList = birdHashtable[bird.CageId];
         }
 
         public void AddCageIdToHashtable(Cage cage, string oldCageId) //adds cage to hashtable only by id
