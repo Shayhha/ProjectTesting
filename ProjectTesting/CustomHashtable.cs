@@ -102,13 +102,22 @@ namespace ProjectTesting
             cageHashtable.Clear();
         }
 
-        public void AddBirdIdToHashtable(Bird bird) //adds cage to hashtable only by id
+        public void AddBirdIdToHashtable(Bird bird) //adds bird to hashtable only by id
         {
             if (!birdHashtable.ContainsKey(bird.Id)) //checks if id is in bird hashtable
             {
                 birdHashtable[bird.Id] = new List<Bird>(); //creates new list in index
             }
             birdHashtable[bird.Id].Add(bird); //add bird object to list
+        }
+
+        public void AddCageIdToBirdHashtable(Bird bird) //adds cage id to bird hashtable
+        {
+            if (!birdHashtable.ContainsKey(bird.CageId)) //checks if id is in bird hashtable
+            {
+                birdHashtable[bird.CageId] = new List<Bird>(); //creates new list in index
+            }
+            birdHashtable[bird.CageId].Add(bird); //add bird object to list
         }
 
         public void AddCageIdToHashtable(Cage cage, string oldCageId) //adds cage to hashtable only by id

@@ -282,7 +282,9 @@ namespace ProjectTesting
                 {
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
                     List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId);
+                    string oldCageId = currentBird[0].CageId; //save old cage id for later
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
+           
                     /// here we need to build hashtable again if new id isn't in sorted order of id's ///
                     if (!(oldBirdId.Equals(birdInfo[0])))
                     {
@@ -323,6 +325,25 @@ namespace ProjectTesting
                                 MainWindow.InitHashtable(); //calling initHashtable for bird and cage hashtables
                             }
                         }
+                    }
+                    //if we changed the cage id we need to update hashtables
+                    if (currentBird[0].CageId != oldCageId)
+                    {
+                        //we need to change cage hashtable with updated bird's cage id
+                        List<Cage> oldCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //find old cage id in cage hashtable
+                        List<Cage> newCage = MainWindow.HashTable.SearchCageHashtable(currentBird[0].CageId);
+                        oldCage[0].BirdList.RemoveAll(bird => bird.Id == currentBird[0].Id); //remove the bird from list in cage
+                        newCage[0].AddBird(currentBird[0]); //add bird to new cage id
+                        newCage[0].BirdList.Sort((bird1, bird2) => int.Parse(bird1.Id).CompareTo(int.Parse(bird2.Id)));// sort list
+
+                        //now we need to change the cage id list in bird hashtable
+                        List<Bird> oldBirdCage = MainWindow.HashTable.SearchBirdHashtable(oldCageId);
+                        oldBirdCage.RemoveAll(bird => bird.Id == currentBird[0].Id); //remove the bird from list in cage
+                        if (oldBirdCage.Count == 0) //if cage is now empty of bird we remove its hash code in bird hashtable
+                            MainWindow.HashTable.RemoveBirdFromHashtable(oldCageId); //remove cage 
+                        MainWindow.HashTable.AddCageIdToBirdHashtable(currentBird[0]); //add bird to new cage id list
+                        List<Bird> newBirdCage = MainWindow.HashTable.SearchBirdHashtable(currentBird[0].CageId); //search new cage
+                        newBirdCage.Sort((bird1, bird2) => int.Parse(bird1.Id).CompareTo(int.Parse(bird2.Id))); //sort list
                     }
                 }
                 LogIn.DataBaseExcel.Quit();//close excel
