@@ -158,7 +158,7 @@
             ID_textbox.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             ID_textbox.Location = new Point(191, 102);
             ID_textbox.Name = "ID_textbox";
-            ID_textbox.PlaceholderText = "6 digit number";
+            ID_textbox.PlaceholderText = "9 digit number";
             ID_textbox.Size = new Size(270, 35);
             ID_textbox.TabIndex = 6;
             // 
