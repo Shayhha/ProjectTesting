@@ -25,8 +25,15 @@ namespace ProjectTesting
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
-
-            if (username == "" && password == "") //if fields are empty we show error
+            if(username =="" &&  password != "") //if username is empty we show error
+            {
+                CustomMessageBox.Show("Username field is empty!", "Input Error");
+            }
+            else if (username != "" && password == "") //if password is empty we show error
+            {
+                CustomMessageBox.Show("Password field is empty!", "Input Error");
+            }
+            else if (username == "" && password == "") //if fields are empty we show error
             {
                 CustomMessageBox.Show("Fields are empty!", "Input Error");
             }
