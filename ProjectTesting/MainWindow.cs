@@ -15,7 +15,7 @@ namespace ProjectTesting
         {
             InitializeComponent();
             this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
-            Text = "Gouldian Management"; //title of the window
+            Text = "Gouldian Finch Management"; //title of the window
             this.StartPosition = FormStartPosition.CenterScreen;
             Back_Button.Hide();
             hideTopBar();
