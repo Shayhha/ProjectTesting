@@ -69,7 +69,7 @@ namespace ProjectTesting
                     CustomMessageBox.Show("Username is already taken!", "ERROR");
                     flag = 1;
                 }
-               
+
                 if (searchID[0][0] != "" && searchID[0][2] == id)
                 {
                     CustomMessageBox.Show("ID is already registered!", "ERROR");
@@ -87,7 +87,7 @@ namespace ProjectTesting
                 Password_textbox.Text = "";
                 UserName_textbox.Text = "";
                 ID_textbox.Text = "";
-                ((MainWindow)this.Parent.Parent).logIn1.Show();
+                ((MainWindow)this.Parent).logIn1.Show();
                 MainWindow.HashTable.AddUserToHashtable(userInfo); //add user to hashtable
                 this.Hide(); //return to previous window
             }
@@ -165,7 +165,7 @@ namespace ProjectTesting
             Password_textbox.Text = "";
             UserName_textbox.Text = "";
             ID_textbox.Text = "";
-            ((MainWindow)this.Parent.Parent).logIn1.Show();
+            ((MainWindow)this.Parent).logIn1.Show();
             this.Hide();
         }
 

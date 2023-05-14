@@ -34,7 +34,7 @@
             logOutButton = new Button();
             Back_Button = new Button();
             dashboardButton = new Button();
-            panel1 = new Panel();
+            countersPanel = new Panel();
             Cage_label = new Label();
             Bird_label = new Label();
             appIcon = new PictureBox();
@@ -48,7 +48,7 @@
             logIn1 = new LogIn();
             headlinePanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
+            countersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)appIcon).BeginInit();
             contentPanel.SuspendLayout();
             SuspendLayout();
@@ -58,18 +58,19 @@
             headlinePanel.BackColor = Color.DarkSlateGray;
             headlinePanel.Controls.Add(flowLayoutPanel1);
             headlinePanel.Controls.Add(appIcon);
-            headlinePanel.Location = new Point(0, 0);
+            headlinePanel.Location = new Point(1, 0);
             headlinePanel.Name = "headlinePanel";
-            headlinePanel.Size = new Size(1264, 70);
+            headlinePanel.Size = new Size(1264, 71);
             headlinePanel.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.Controls.Add(logOutButton);
             flowLayoutPanel1.Controls.Add(Back_Button);
             flowLayoutPanel1.Controls.Add(dashboardButton);
-            flowLayoutPanel1.Controls.Add(panel1);
+            flowLayoutPanel1.Controls.Add(countersPanel);
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new Point(775, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -120,15 +121,16 @@
             dashboardButton.UseVisualStyleBackColor = true;
             dashboardButton.Click += dashboardButton_Click;
             // 
-            // panel1
+            // countersPanel
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel1.Controls.Add(Cage_label);
-            panel1.Controls.Add(Bird_label);
-            panel1.Location = new Point(22, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(93, 56);
-            panel1.TabIndex = 16;
+            countersPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            countersPanel.BackColor = Color.Transparent;
+            countersPanel.Controls.Add(Cage_label);
+            countersPanel.Controls.Add(Bird_label);
+            countersPanel.Location = new Point(22, 3);
+            countersPanel.Name = "countersPanel";
+            countersPanel.Size = new Size(93, 56);
+            countersPanel.TabIndex = 16;
             // 
             // Cage_label
             // 
@@ -164,22 +166,22 @@
             // 
             // contentPanel
             // 
-            contentPanel.BackColor = Color.Transparent;
+            contentPanel.BackColor = Color.LightCyan;
             contentPanel.Controls.Add(moreDetails1);
             contentPanel.Controls.Add(searchBird1);
             contentPanel.Controls.Add(addCage1);
             contentPanel.Controls.Add(addBird1);
             contentPanel.Controls.Add(homePage1);
-            contentPanel.Controls.Add(signUp1);
-            contentPanel.Controls.Add(logIn1);
-            contentPanel.Location = new Point(0, 71);
+            contentPanel.Location = new Point(0, 70);
             contentPanel.Name = "contentPanel";
             contentPanel.Size = new Size(1264, 611);
             contentPanel.TabIndex = 2;
+            contentPanel.Visible = false;
             // 
             // moreDetails1
             // 
-            moreDetails1.Location = new Point(0, 0);
+            moreDetails1.BackColor = Color.LightCyan;
+            moreDetails1.Location = new Point(0, 1);
             moreDetails1.Name = "moreDetails1";
             moreDetails1.Size = new Size(1264, 611);
             moreDetails1.TabIndex = 6;
@@ -196,7 +198,8 @@
             // 
             // addCage1
             // 
-            addCage1.Location = new Point(0, 0);
+            addCage1.BackColor = Color.LightCyan;
+            addCage1.Location = new Point(0, -1);
             addCage1.Name = "addCage1";
             addCage1.Size = new Size(1264, 611);
             addCage1.TabIndex = 4;
@@ -204,6 +207,7 @@
             // 
             // addBird1
             // 
+            addBird1.BackColor = Color.LightCyan;
             addBird1.Location = new Point(0, 0);
             addBird1.Name = "addBird1";
             addBird1.Size = new Size(1264, 611);
@@ -221,37 +225,39 @@
             // 
             // signUp1
             // 
-            signUp1.BackColor = Color.LightCyan;
+            signUp1.BackgroundImage = (Image)resources.GetObject("signUp1.BackgroundImage");
             signUp1.Location = new Point(0, 0);
             signUp1.Name = "signUp1";
-            signUp1.Size = new Size(1264, 611);
+            signUp1.Size = new Size(1264, 683);
             signUp1.TabIndex = 1;
             signUp1.Visible = false;
             // 
             // logIn1
             // 
-            logIn1.BackColor = Color.LightCyan;
+            logIn1.BackgroundImage = (Image)resources.GetObject("logIn1.BackgroundImage");
             logIn1.Location = new Point(0, 0);
             logIn1.Name = "logIn1";
-            logIn1.Size = new Size(1264, 611);
+            logIn1.Size = new Size(1264, 683);
             logIn1.TabIndex = 0;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightCyan;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1264, 681);
-            Controls.Add(contentPanel);
             Controls.Add(headlinePanel);
+            Controls.Add(contentPanel);
+            Controls.Add(signUp1);
+            Controls.Add(logIn1);
             Name = "MainWindow";
             Text = "MainWindow";
+            FormClosing += MainWindow_FormClosing;
             Load += MainWindow_Load;
-            FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             headlinePanel.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            countersPanel.ResumeLayout(false);
+            countersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)appIcon).EndInit();
             contentPanel.ResumeLayout(false);
             ResumeLayout(false);
@@ -259,7 +265,7 @@
 
         #endregion
         public Panel headlinePanel;
-        private Panel contentPanel;
+        public Panel contentPanel;
         public MoreDetails moreDetails1;
         public SearchBird searchBird1;
         public AddCage addCage1;
@@ -274,6 +280,6 @@
         public Button dashboardButton;
         private PictureBox appIcon;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel1;
+        private Panel countersPanel;
     }
 }
