@@ -34,7 +34,7 @@ namespace ProjectTesting
         private Image getRandomImage()
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 6);
+            int randomNumber = random.Next(1, 19);
             Image temp = Image.FromFile(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\" + randomNumber.ToString() + ".jpg");
             return temp;
         }
