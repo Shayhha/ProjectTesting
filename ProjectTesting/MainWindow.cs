@@ -132,9 +132,10 @@ namespace ProjectTesting
             hideTopBar();
             hideBackBtn();
             hideTopPanel();
+            hideContent();
 
             // clear bird and cage hashtables
-            HashTable.ClearBirdCageHashtable(); 
+            HashTable.ClearBirdCageHashtable();
         }
 
         public void showTopBar()
@@ -158,6 +159,9 @@ namespace ProjectTesting
 
         public void showBackBtn() { Back_Button.Show(); }
         public void hideBackBtn() { Back_Button.Hide(); }
+
+        public void showContent() { contentPanel.Show(); }
+        public void hideContent() { contentPanel.Hide(); }
 
         public void setBirdsLabel(string number)
         {
@@ -213,7 +217,7 @@ namespace ProjectTesting
             int colStart = 7;  //default value
             int colEnd = 16; //default vaule
             int flag = 0;
-            
+
             if (name == "bird")
             {
                 size = LogIn.DataBaseExcel.GetLastRow(7) - 1;

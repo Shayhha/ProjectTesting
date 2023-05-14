@@ -87,7 +87,7 @@ namespace ProjectTesting
                 Password_textbox.Text = "";
                 UserName_textbox.Text = "";
                 ID_textbox.Text = "";
-                ((MainWindow)this.Parent.Parent).logIn1.Show();
+                ((MainWindow)this.Parent).logIn1.Show();
                 MainWindow.HashTable.AddUserToHashtable(userInfo); //add user to hashtable
                 this.Hide(); //return to previous window
             }
@@ -165,7 +165,7 @@ namespace ProjectTesting
             Password_textbox.Text = "";
             UserName_textbox.Text = "";
             ID_textbox.Text = "";
-            ((MainWindow)this.Parent.Parent).logIn1.Show();
+            ((MainWindow)this.Parent).logIn1.Show();
             this.Hide();
         }
 
