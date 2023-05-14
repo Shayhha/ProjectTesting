@@ -50,7 +50,6 @@ namespace ProjectTesting
         public int Search(string name, string combo) //remeber this method was boolean
         {
             birdList.Hide();
-            //Excel ex = new Excel("database", MainWindow.UserSheet);
             string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
@@ -58,25 +57,21 @@ namespace ProjectTesting
             if (combo == "" && name == "")
             {
                 CustomMessageBox.Show("You have to write somthing in search box and choose search type!", "Search Error");
-                //ex.Quit();
                 return -1;
             }
             else if (combo == "")
             {
                 CustomMessageBox.Show("Choose search type!", "Type Error");
-                //x.Quit();
                 return -1;
             }
             else if (name == "")
             {
                 CustomMessageBox.Show("Search field empty!", "Search Error");
-                //ex.Quit();
                 return -1;
             }
             else if (!DefaultCombo.Contains(combo))
             {
                 CustomMessageBox.Show("There's no search type named \"" + combo + "\" \n(Please choose a search type from the box with the arrow)", "Error");
-                //ex.Quit();
                 return -1;
             }
             else
@@ -87,19 +82,7 @@ namespace ProjectTesting
                         name = "Male";
                     else if (name == "f" || name == "F" || name == "female")
                         name = "Female";
-                    //=========================OLD VERSION============================//
-                    //for (int i = 1; i < ex.GetLastRow(7); i++)
-                    //{
-                    //    temp = ex.ReadRange(i, 7, 12);
-                    //    string[] searchTemp = { temp[0], temp[1], temp[2], temp[3], temp[4] };//only searching specific things
-                    //    if (searchTemp.Contains(name))
-                    //    {
-                    //        string newStr = "Bird ID: " + temp[0] + " , Type: " + temp[1] + " , Gender: " + temp[4] + " , Cage ID: " + temp[5] + " | Click for more details";
-                    //        birdList.Items.Add(newStr);
-                    //        flag++;
-                    //    }
-                    //}
-                    //===============================================================//
+
                     List<Bird> birds = MainWindow.HashTable.SearchBirdHashtable(name);
                     foreach (Bird bird in birds)
                     {
@@ -116,19 +99,7 @@ namespace ProjectTesting
                         name = "METAL";
                     else if (name.ToUpper() == "PLASTIC")
                         name = "PLASTIC";
-                    //=========================OLD VERSION============================//
-                    //for (int i = 1; i < ex.GetLastRow(1); i++)
-                    //{
-                    //    //temp = ex.ReadRange(i, 1, 5);
-                    //    string[] searchTemp = { temp[0], temp[4] }; //only searching specific things
-                    //    if (searchTemp.Contains(name))
-                    //    {
-                    //        string newStr = "Cage ID: " + temp[0] + " , Length: " + temp[1] + " , Width: " + temp[2] + " , Height: " + temp[3] + " , Material: " + temp[4] + " | Click for more details";
-                    //        birdList.Items.Add(newStr);
-                    //        flag++;
-                    //    }
-                    //}
-                    //===============================================================//
+
                     List<Cage> cages = MainWindow.HashTable.SearchCageHashtable(name);
                     foreach (Cage cage in cages)
                     {
@@ -142,20 +113,17 @@ namespace ProjectTesting
             if (flag == 0)
             {
                 CustomMessageBox.Show("No matching results for \"" + name + "\"", "Search Error");
-                //ex.Quit();
                 return -1;
             }
             else if (flag == 1)
             {
                 //if we have only one search result
-                //ex.Quit();
                 return 1;
             }
             else
             {
                 birdList.Show();
             }
-            //ex.Quit();
             return 0;
         }
 
