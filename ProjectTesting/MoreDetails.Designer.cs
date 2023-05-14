@@ -356,7 +356,7 @@ namespace ProjectTesting
             // 
             // mainPic
             // 
-            mainPic.Location = new Point(705, 44);
+            mainPic.Location = new Point(750, 0);
             mainPic.Name = "mainPic";
             mainPic.Size = new Size(450, 450);
             mainPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -421,7 +421,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(15, 28);
+            cagePanel.Location = new Point(17, 20);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);

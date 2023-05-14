@@ -21,7 +21,7 @@ namespace ProjectTesting
             passwordRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
             passwordRequirementsToolTip.Draw += PasswordRequirementsToolTip_Draw; // Handle the Draw event to draw the ToolTip
             passwordRequirementsToolTip.Popup += PasswordRequirementsToolTip_Popup;
-            string text = "1. Name must contain only letters and at max 2 numbers\n2. ID must be 6 numbers\n" +
+            string text = "1. Name must contain only letters and at max 2 numbers\n2. ID must contain 9 numbers\n" +
                 "3. Passsword must contain at least one capital case letter and one" +
                 " lower case letter, also needs to contain at least one symbol\n";
             passwordRequirementsToolTip.SetToolTip(Question_pictureBox, text);
@@ -69,7 +69,7 @@ namespace ProjectTesting
                     CustomMessageBox.Show("Username is already taken!", "ERROR");
                     flag = 1;
                 }
-               
+
                 if (searchID[0][0] != "" && searchID[0][2] == id)
                 {
                     CustomMessageBox.Show("ID is already registered!", "ERROR");

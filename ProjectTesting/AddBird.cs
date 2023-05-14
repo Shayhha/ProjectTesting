@@ -361,18 +361,14 @@ namespace ProjectTesting
                     //if we changed the cage id we need to update hashtables
                     if (currentBird[0].CageId != oldCageId)
                     {
-                        //we need to change the cage id list in bird hashtable
-                        List<Bird> oldBirdCage = MainWindow.HashTable.SearchBirdHashtable(oldCageId);
-                        oldBirdCage.RemoveAll(bird => bird.Id == currentBird[0].Id); //remove the bird from list in cage
-                        if (oldBirdCage.Count == 0) //if cage is now empty of bird we remove its hash code in bird hashtable
+                        //we need to change the cage id list in bird hashtable and change cage hashtable with updated bird's cage id
+                        List<Bird> oldBirdCage = MainWindow.HashTable.SearchBirdHashtable(oldCageId); //search old cage
+                        oldBirdCage.RemoveAll(bird => bird.Id == currentBird[0].Id); //remove the bird from old list in cage
+                        if (oldBirdCage.Count == 0) //if cage is now empty of birds we remove its hash code in bird hashtable
                             MainWindow.HashTable.RemoveBirdFromHashtable(oldCageId); //remove cage 
                         MainWindow.HashTable.AddCageIdToBirdHashtable(currentBird[0]); //add bird to new cage id list
                         List<Bird> newBirdCage = MainWindow.HashTable.SearchBirdHashtable(currentBird[0].CageId); //search new cage
                         newBirdCage.Sort((bird1, bird2) => int.Parse(bird1.Id).CompareTo(int.Parse(bird2.Id))); //sort list
-
-                        //now we need to change cage hashtable with updated bird's cage id
-                        List<Cage> oldCage = MainWindow.HashTable.SearchCageHashtable(oldCageId); //find old cage id in cage hashtable
-                        oldCage[0].BirdList.RemoveAll(bird => bird.Id == currentBird[0].Id); //remove the bird from list in cage
                     }
                 }
             }
