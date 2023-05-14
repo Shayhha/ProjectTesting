@@ -199,6 +199,12 @@ namespace ProjectTesting
                 subTypeLabel.Enabled = true;
                 genderLabel.Enabled = true;
             }
+
+            if (infoFromDatabaseBird.OffspringList.Count > 0 || infoFromDatabaseBird.isOffspring)
+            {
+                cageIdLabel.ReadOnly = true;
+                cageIdLabel.Enabled = false;
+            }
         }
 
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
