@@ -24,23 +24,30 @@ namespace ProjectTesting
         {
             string username = UserName_textbox.Text;
             string password = Password_textbox.Text;
-            if (username == "" || password == "")
-            {
-                CustomMessageBox.Show("Please enter your username and a password", "Missing Information Error");
-                return;
-            }
-            string[] info = { username, password };
+            
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
-            if (result[0][0] == username && result[0][1] != password)
+            if(username =="" &&  password != "") //if username is empty we show error
+            {
+                CustomMessageBox.Show("Username field is empty!", "Input Error");
+            }
+            else if (username != "" && password == "") //if password is empty we show error
+            {
+                CustomMessageBox.Show("Password field is empty!", "Input Error");
+            }
+            else if (username == "" && password == "") //if fields are empty we show error
+            {
+                CustomMessageBox.Show("Fields are empty!", "Input Error");
+            }
+            else if (result[0][0] == username && result[0][1] != password) // if password as invalid we show error
             {
                 CustomMessageBox.Show("Wrong password!", "Password Error");
             }
-            else if (result[0][0] == username && result[0][1] == password)
+            else if (result[0][0] == username && result[0][1] == password) //if user wrote valid information we call LoggedIn method
             {
                 MainWindow.UserSheet = username; //gives usersheet the current users name
                 LoggedIn();
             }
-            else
+            else //else no user found and we show error 
             {
                 CustomMessageBox.Show("No matching user \"" + username + "\"", "User Error");
             }
