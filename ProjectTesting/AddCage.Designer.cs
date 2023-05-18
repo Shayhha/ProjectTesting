@@ -31,20 +31,20 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             label9 = new Label();
             panel1 = new Panel();
+            materialBox = new RJControls.RJTextBox();
             label7 = new Label();
+            heightBox = new RJControls.RJTextBox();
             label1 = new Label();
+            widthBox = new RJControls.RJTextBox();
             label8 = new Label();
+            lengthBox = new RJControls.RJTextBox();
             label2 = new Label();
+            idBox = new RJControls.RJTextBox();
             label3 = new Label();
             Welcome_label = new Label();
             addButton = new RJControls.RJButton();
             cancelButton = new RJControls.RJButton();
             panel2 = new Panel();
-            idBox = new RJControls.RJTextBox();
-            lengthBox = new RJControls.RJTextBox();
-            heightBox = new RJControls.RJTextBox();
-            widthBox = new RJControls.RJTextBox();
-            materialBox = new RJControls.RJTextBox();
             panel3 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -86,6 +86,28 @@
             panel1.Size = new Size(365, 276);
             panel1.TabIndex = 0;
             // 
+            // materialBox
+            // 
+            materialBox.BackColor = SystemColors.Window;
+            materialBox.BorderColor = Color.FromArgb(145, 199, 136);
+            materialBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            materialBox.BorderRadius = 5;
+            materialBox.BorderSize = 2;
+            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            materialBox.ForeColor = Color.FromArgb(64, 64, 64);
+            materialBox.Location = new Point(91, 217);
+            materialBox.Margin = new Padding(4);
+            materialBox.Multiline = false;
+            materialBox.Name = "materialBox";
+            materialBox.Padding = new Padding(10, 7, 10, 7);
+            materialBox.PasswordChar = false;
+            materialBox.PlaceholderColor = Color.DarkGray;
+            materialBox.PlaceholderText = "";
+            materialBox.Size = new Size(250, 40);
+            materialBox.TabIndex = 13;
+            materialBox.Texts = "";
+            materialBox.UnderlinedStyle = false;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -95,6 +117,28 @@
             label7.Size = new Size(90, 25);
             label7.TabIndex = 18;
             label7.Text = "Material:";
+            // 
+            // heightBox
+            // 
+            heightBox.BackColor = SystemColors.Window;
+            heightBox.BorderColor = Color.FromArgb(145, 199, 136);
+            heightBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            heightBox.BorderRadius = 5;
+            heightBox.BorderSize = 2;
+            heightBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            heightBox.ForeColor = Color.FromArgb(64, 64, 64);
+            heightBox.Location = new Point(91, 169);
+            heightBox.Margin = new Padding(4);
+            heightBox.Multiline = false;
+            heightBox.Name = "heightBox";
+            heightBox.Padding = new Padding(10, 7, 10, 7);
+            heightBox.PasswordChar = false;
+            heightBox.PlaceholderColor = Color.DarkGray;
+            heightBox.PlaceholderText = "";
+            heightBox.Size = new Size(250, 40);
+            heightBox.TabIndex = 12;
+            heightBox.Texts = "";
+            heightBox.UnderlinedStyle = false;
             // 
             // label1
             // 
@@ -106,6 +150,28 @@
             label1.TabIndex = 14;
             label1.Text = "Id:";
             // 
+            // widthBox
+            // 
+            widthBox.BackColor = SystemColors.Window;
+            widthBox.BorderColor = Color.FromArgb(145, 199, 136);
+            widthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            widthBox.BorderRadius = 5;
+            widthBox.BorderSize = 2;
+            widthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            widthBox.ForeColor = Color.FromArgb(64, 64, 64);
+            widthBox.Location = new Point(91, 121);
+            widthBox.Margin = new Padding(4);
+            widthBox.Multiline = false;
+            widthBox.Name = "widthBox";
+            widthBox.Padding = new Padding(10, 7, 10, 7);
+            widthBox.PasswordChar = false;
+            widthBox.PlaceholderColor = Color.DarkGray;
+            widthBox.PlaceholderText = "";
+            widthBox.Size = new Size(250, 40);
+            widthBox.TabIndex = 11;
+            widthBox.Texts = "";
+            widthBox.UnderlinedStyle = false;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -116,6 +182,28 @@
             label8.TabIndex = 17;
             label8.Text = "Height:";
             // 
+            // lengthBox
+            // 
+            lengthBox.BackColor = SystemColors.Window;
+            lengthBox.BorderColor = Color.FromArgb(145, 199, 136);
+            lengthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            lengthBox.BorderRadius = 5;
+            lengthBox.BorderSize = 2;
+            lengthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lengthBox.ForeColor = Color.FromArgb(64, 64, 64);
+            lengthBox.Location = new Point(91, 71);
+            lengthBox.Margin = new Padding(4);
+            lengthBox.Multiline = false;
+            lengthBox.Name = "lengthBox";
+            lengthBox.Padding = new Padding(10, 7, 10, 7);
+            lengthBox.PasswordChar = false;
+            lengthBox.PlaceholderColor = Color.DarkGray;
+            lengthBox.PlaceholderText = "";
+            lengthBox.Size = new Size(250, 40);
+            lengthBox.TabIndex = 10;
+            lengthBox.Texts = "";
+            lengthBox.UnderlinedStyle = false;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -125,6 +213,28 @@
             label2.Size = new Size(79, 25);
             label2.TabIndex = 15;
             label2.Text = "Length:";
+            // 
+            // idBox
+            // 
+            idBox.BackColor = SystemColors.Window;
+            idBox.BorderColor = Color.FromArgb(145, 199, 136);
+            idBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            idBox.BorderRadius = 5;
+            idBox.BorderSize = 2;
+            idBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            idBox.ForeColor = Color.FromArgb(64, 64, 64);
+            idBox.Location = new Point(91, 20);
+            idBox.Margin = new Padding(4);
+            idBox.Multiline = false;
+            idBox.Name = "idBox";
+            idBox.Padding = new Padding(10, 7, 10, 7);
+            idBox.PasswordChar = false;
+            idBox.PlaceholderColor = Color.DarkGray;
+            idBox.PlaceholderText = "";
+            idBox.Size = new Size(250, 40);
+            idBox.TabIndex = 9;
+            idBox.Texts = "";
+            idBox.UnderlinedStyle = false;
             // 
             // label3
             // 
@@ -139,7 +249,7 @@
             // Welcome_label
             // 
             Welcome_label.Font = new Font("Comic Sans MS", 24F, FontStyle.Underline, GraphicsUnit.Point);
-            Welcome_label.Location = new Point(321, 34);
+            Welcome_label.Location = new Point(276, 32);
             Welcome_label.Name = "Welcome_label";
             Welcome_label.Size = new Size(660, 64);
             Welcome_label.TabIndex = 5;
@@ -200,116 +310,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 424);
             panel2.TabIndex = 8;
-            // 
-            // idBox
-            // 
-            idBox.BackColor = SystemColors.Window;
-            idBox.BorderColor = Color.FromArgb(145, 199, 136);
-            idBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            idBox.BorderRadius = 5;
-            idBox.BorderSize = 2;
-            idBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            idBox.ForeColor = Color.FromArgb(64, 64, 64);
-            idBox.Location = new Point(91, 20);
-            idBox.Margin = new Padding(4);
-            idBox.Multiline = false;
-            idBox.Name = "idBox";
-            idBox.Padding = new Padding(10, 7, 10, 7);
-            idBox.PasswordChar = false;
-            idBox.PlaceholderColor = Color.DarkGray;
-            idBox.PlaceholderText = "";
-            idBox.Size = new Size(250, 40);
-            idBox.TabIndex = 9;
-            idBox.Texts = "";
-            idBox.UnderlinedStyle = false;
-            // 
-            // lengthBox
-            // 
-            lengthBox.BackColor = SystemColors.Window;
-            lengthBox.BorderColor = Color.FromArgb(145, 199, 136);
-            lengthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            lengthBox.BorderRadius = 5;
-            lengthBox.BorderSize = 2;
-            lengthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lengthBox.ForeColor = Color.FromArgb(64, 64, 64);
-            lengthBox.Location = new Point(91, 71);
-            lengthBox.Margin = new Padding(4);
-            lengthBox.Multiline = false;
-            lengthBox.Name = "lengthBox";
-            lengthBox.Padding = new Padding(10, 7, 10, 7);
-            lengthBox.PasswordChar = false;
-            lengthBox.PlaceholderColor = Color.DarkGray;
-            lengthBox.PlaceholderText = "";
-            lengthBox.Size = new Size(250, 40);
-            lengthBox.TabIndex = 10;
-            lengthBox.Texts = "";
-            lengthBox.UnderlinedStyle = false;
-            // 
-            // heightBox
-            // 
-            heightBox.BackColor = SystemColors.Window;
-            heightBox.BorderColor = Color.FromArgb(145, 199, 136);
-            heightBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            heightBox.BorderRadius = 5;
-            heightBox.BorderSize = 2;
-            heightBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            heightBox.ForeColor = Color.FromArgb(64, 64, 64);
-            heightBox.Location = new Point(91, 169);
-            heightBox.Margin = new Padding(4);
-            heightBox.Multiline = false;
-            heightBox.Name = "heightBox";
-            heightBox.Padding = new Padding(10, 7, 10, 7);
-            heightBox.PasswordChar = false;
-            heightBox.PlaceholderColor = Color.DarkGray;
-            heightBox.PlaceholderText = "";
-            heightBox.Size = new Size(250, 40);
-            heightBox.TabIndex = 12;
-            heightBox.Texts = "";
-            heightBox.UnderlinedStyle = false;
-            // 
-            // widthBox
-            // 
-            widthBox.BackColor = SystemColors.Window;
-            widthBox.BorderColor = Color.FromArgb(145, 199, 136);
-            widthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            widthBox.BorderRadius = 5;
-            widthBox.BorderSize = 2;
-            widthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            widthBox.ForeColor = Color.FromArgb(64, 64, 64);
-            widthBox.Location = new Point(91, 121);
-            widthBox.Margin = new Padding(4);
-            widthBox.Multiline = false;
-            widthBox.Name = "widthBox";
-            widthBox.Padding = new Padding(10, 7, 10, 7);
-            widthBox.PasswordChar = false;
-            widthBox.PlaceholderColor = Color.DarkGray;
-            widthBox.PlaceholderText = "";
-            widthBox.Size = new Size(250, 40);
-            widthBox.TabIndex = 11;
-            widthBox.Texts = "";
-            widthBox.UnderlinedStyle = false;
-            // 
-            // materialBox
-            // 
-            materialBox.BackColor = SystemColors.Window;
-            materialBox.BorderColor = Color.FromArgb(145, 199, 136);
-            materialBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            materialBox.BorderRadius = 5;
-            materialBox.BorderSize = 2;
-            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            materialBox.ForeColor = Color.FromArgb(64, 64, 64);
-            materialBox.Location = new Point(91, 217);
-            materialBox.Margin = new Padding(4);
-            materialBox.Multiline = false;
-            materialBox.Name = "materialBox";
-            materialBox.Padding = new Padding(10, 7, 10, 7);
-            materialBox.PasswordChar = false;
-            materialBox.PlaceholderColor = Color.DarkGray;
-            materialBox.PlaceholderText = "";
-            materialBox.Size = new Size(250, 40);
-            materialBox.TabIndex = 13;
-            materialBox.Texts = "";
-            materialBox.UnderlinedStyle = false;
             // 
             // panel3
             // 
