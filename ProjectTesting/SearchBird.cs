@@ -129,7 +129,7 @@ namespace ProjectTesting
 
         private void Search_button_Click(object sender, EventArgs e)
         {
-            string name = Search_textbox.Texts;
+            string name = Search_textbox.Text;
             ClearList();
             string combo = comboBox.Text;
             int SearchResult = Search(name, combo);
@@ -178,7 +178,7 @@ namespace ProjectTesting
         public void cleanTextboxAndList()
         {
             ClearList();
-            Search_textbox.Texts = "";
+            Search_textbox.Text = "";
         }
     }
 }

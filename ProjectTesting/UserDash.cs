@@ -17,6 +17,7 @@ namespace ProjectTesting
         {
             InitializeComponent();
             this.Icon = new System.Drawing.Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
+            Text = "Dashboard";
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 

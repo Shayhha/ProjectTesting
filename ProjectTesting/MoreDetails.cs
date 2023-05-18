@@ -172,7 +172,6 @@ namespace ProjectTesting
         {
             editBirdButton.Hide();
             saveBirdButton.Show();
-            MessageBox.Show("OK");
             //infoFromDatabaseBird = getTextFromUi();
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
