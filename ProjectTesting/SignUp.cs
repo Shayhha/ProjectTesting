@@ -47,9 +47,9 @@ namespace ProjectTesting
 
             else //else fields are'nt empty so we check their validity
             {
-                if (id.Length != 6)
+                if (id.Length != 9 || !(id.All(char.IsDigit)))
                 {
-                    CustomMessageBox.Show("ID length must be 6 characters.", "ERROR");
+                    CustomMessageBox.Show("ID length must be 9 characters and contain only numbers", "ERROR");
                     flag = 1;
                 }
 
