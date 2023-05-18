@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            momBox = new RJControls.RJTextBox();
             dateBox = new DateTimePicker();
-            momBox = new TextBox();
-            dadBox = new TextBox();
-            cageIdBox = new TextBox();
-            genderBox = new TextBox();
-            subTypeBox = new TextBox();
-            typeBox = new TextBox();
-            idBox = new TextBox();
+            dadBox = new RJControls.RJTextBox();
+            subTypeBox = new RJControls.RJTextBox();
+            cageIdBox = new RJControls.RJTextBox();
+            typeBox = new RJControls.RJTextBox();
+            genderBox = new RJControls.RJTextBox();
+            idBox = new RJControls.RJTextBox();
             label7 = new Label();
             label4 = new Label();
             label1 = new Label();
@@ -46,24 +46,23 @@
             label3 = new Label();
             label5 = new Label();
             AddBird_label = new Label();
-            addButton = new Button();
-            cancelButton = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            addButton = new RJControls.RJButton();
+            cancelButton = new RJControls.RJButton();
+            panel2 = new Panel();
+            panel3 = new Panel();
             panel1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dateBox);
             panel1.Controls.Add(momBox);
+            panel1.Controls.Add(dateBox);
             panel1.Controls.Add(dadBox);
-            panel1.Controls.Add(cageIdBox);
-            panel1.Controls.Add(genderBox);
             panel1.Controls.Add(subTypeBox);
+            panel1.Controls.Add(cageIdBox);
             panel1.Controls.Add(typeBox);
+            panel1.Controls.Add(genderBox);
             panel1.Controls.Add(idBox);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label4);
@@ -73,10 +72,32 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(3, 53);
+            panel1.Location = new Point(18, 55);
             panel1.Name = "panel1";
-            panel1.Size = new Size(418, 370);
+            panel1.Size = new Size(411, 393);
             panel1.TabIndex = 0;
+            // 
+            // momBox
+            // 
+            momBox.BackColor = SystemColors.Window;
+            momBox.BorderColor = Color.FromArgb(145, 199, 136);
+            momBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            momBox.BorderRadius = 5;
+            momBox.BorderSize = 2;
+            momBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            momBox.ForeColor = Color.FromArgb(64, 64, 64);
+            momBox.Location = new Point(150, 343);
+            momBox.Margin = new Padding(4);
+            momBox.Multiline = false;
+            momBox.Name = "momBox";
+            momBox.Padding = new Padding(10, 7, 10, 7);
+            momBox.PasswordChar = false;
+            momBox.PlaceholderColor = Color.DarkGray;
+            momBox.PlaceholderText = "";
+            momBox.Size = new Size(250, 40);
+            momBox.TabIndex = 11;
+            momBox.Texts = "";
+            momBox.UnderlinedStyle = false;
             // 
             // dateBox
             // 
@@ -85,72 +106,148 @@
             dateBox.CustomFormat = "dd/MM/yyyy";
             dateBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dateBox.Format = DateTimePickerFormat.Custom;
-            dateBox.Location = new Point(150, 146);
+            dateBox.Location = new Point(150, 159);
             dateBox.Name = "dateBox";
             dateBox.Size = new Size(250, 33);
             dateBox.TabIndex = 25;
             // 
-            // momBox
-            // 
-            momBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            momBox.Location = new Point(150, 314);
-            momBox.Name = "momBox";
-            momBox.Size = new Size(250, 33);
-            momBox.TabIndex = 28;
-            // 
             // dadBox
             // 
+            dadBox.BackColor = SystemColors.Window;
+            dadBox.BorderColor = Color.FromArgb(145, 199, 136);
+            dadBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            dadBox.BorderRadius = 5;
+            dadBox.BorderSize = 2;
             dadBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dadBox.Location = new Point(150, 271);
+            dadBox.ForeColor = Color.FromArgb(64, 64, 64);
+            dadBox.Location = new Point(150, 295);
+            dadBox.Margin = new Padding(4);
+            dadBox.Multiline = false;
             dadBox.Name = "dadBox";
-            dadBox.Size = new Size(250, 33);
-            dadBox.TabIndex = 27;
-            // 
-            // cageIdBox
-            // 
-            cageIdBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cageIdBox.Location = new Point(150, 230);
-            cageIdBox.Name = "cageIdBox";
-            cageIdBox.Size = new Size(250, 33);
-            cageIdBox.TabIndex = 26;
-            // 
-            // genderBox
-            // 
-            genderBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            genderBox.Location = new Point(150, 187);
-            genderBox.Name = "genderBox";
-            genderBox.Size = new Size(250, 33);
-            genderBox.TabIndex = 25;
+            dadBox.Padding = new Padding(10, 7, 10, 7);
+            dadBox.PasswordChar = false;
+            dadBox.PlaceholderColor = Color.DarkGray;
+            dadBox.PlaceholderText = "";
+            dadBox.Size = new Size(250, 40);
+            dadBox.TabIndex = 10;
+            dadBox.Texts = "";
+            dadBox.UnderlinedStyle = false;
             // 
             // subTypeBox
             // 
+            subTypeBox.BackColor = SystemColors.Window;
+            subTypeBox.BorderColor = Color.FromArgb(145, 199, 136);
+            subTypeBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            subTypeBox.BorderRadius = 5;
+            subTypeBox.BorderSize = 2;
             subTypeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            subTypeBox.Location = new Point(150, 104);
+            subTypeBox.ForeColor = Color.FromArgb(64, 64, 64);
+            subTypeBox.Location = new Point(150, 112);
+            subTypeBox.Margin = new Padding(4);
+            subTypeBox.Multiline = false;
             subTypeBox.Name = "subTypeBox";
-            subTypeBox.Size = new Size(250, 33);
-            subTypeBox.TabIndex = 23;
+            subTypeBox.Padding = new Padding(10, 7, 10, 7);
+            subTypeBox.PasswordChar = false;
+            subTypeBox.PlaceholderColor = Color.DarkGray;
+            subTypeBox.PlaceholderText = "";
+            subTypeBox.Size = new Size(250, 40);
+            subTypeBox.TabIndex = 6;
+            subTypeBox.Texts = "";
+            subTypeBox.UnderlinedStyle = false;
+            // 
+            // cageIdBox
+            // 
+            cageIdBox.BackColor = SystemColors.Window;
+            cageIdBox.BorderColor = Color.FromArgb(145, 199, 136);
+            cageIdBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            cageIdBox.BorderRadius = 5;
+            cageIdBox.BorderSize = 2;
+            cageIdBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cageIdBox.ForeColor = Color.FromArgb(64, 64, 64);
+            cageIdBox.Location = new Point(150, 247);
+            cageIdBox.Margin = new Padding(4);
+            cageIdBox.Multiline = false;
+            cageIdBox.Name = "cageIdBox";
+            cageIdBox.Padding = new Padding(10, 7, 10, 7);
+            cageIdBox.PasswordChar = false;
+            cageIdBox.PlaceholderColor = Color.DarkGray;
+            cageIdBox.PlaceholderText = "";
+            cageIdBox.Size = new Size(250, 40);
+            cageIdBox.TabIndex = 9;
+            cageIdBox.Texts = "";
+            cageIdBox.UnderlinedStyle = false;
             // 
             // typeBox
             // 
+            typeBox.BackColor = SystemColors.Window;
+            typeBox.BorderColor = Color.FromArgb(145, 199, 136);
+            typeBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            typeBox.BorderRadius = 5;
+            typeBox.BorderSize = 2;
             typeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            typeBox.Location = new Point(150, 63);
+            typeBox.ForeColor = Color.FromArgb(64, 64, 64);
+            typeBox.Location = new Point(150, 64);
+            typeBox.Margin = new Padding(4);
+            typeBox.Multiline = false;
             typeBox.Name = "typeBox";
-            typeBox.Size = new Size(250, 33);
-            typeBox.TabIndex = 22;
+            typeBox.Padding = new Padding(10, 7, 10, 7);
+            typeBox.PasswordChar = false;
+            typeBox.PlaceholderColor = Color.DarkGray;
+            typeBox.PlaceholderText = "";
+            typeBox.Size = new Size(250, 40);
+            typeBox.TabIndex = 5;
+            typeBox.Texts = "";
+            typeBox.UnderlinedStyle = false;
+            // 
+            // genderBox
+            // 
+            genderBox.BackColor = SystemColors.Window;
+            genderBox.BorderColor = Color.FromArgb(145, 199, 136);
+            genderBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            genderBox.BorderRadius = 5;
+            genderBox.BorderSize = 2;
+            genderBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            genderBox.ForeColor = Color.FromArgb(64, 64, 64);
+            genderBox.Location = new Point(150, 199);
+            genderBox.Margin = new Padding(4);
+            genderBox.Multiline = false;
+            genderBox.Name = "genderBox";
+            genderBox.Padding = new Padding(10, 7, 10, 7);
+            genderBox.PasswordChar = false;
+            genderBox.PlaceholderColor = Color.DarkGray;
+            genderBox.PlaceholderText = "";
+            genderBox.Size = new Size(250, 40);
+            genderBox.TabIndex = 8;
+            genderBox.Texts = "";
+            genderBox.UnderlinedStyle = false;
             // 
             // idBox
             // 
+            idBox.BackColor = SystemColors.Window;
+            idBox.BorderColor = Color.FromArgb(145, 199, 136);
+            idBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            idBox.BorderRadius = 5;
+            idBox.BorderSize = 2;
             idBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            idBox.Location = new Point(150, 20);
+            idBox.ForeColor = Color.FromArgb(64, 64, 64);
+            idBox.Location = new Point(150, 16);
+            idBox.Margin = new Padding(4);
+            idBox.Multiline = false;
             idBox.Name = "idBox";
-            idBox.Size = new Size(250, 33);
-            idBox.TabIndex = 1;
+            idBox.Padding = new Padding(10, 7, 10, 7);
+            idBox.PasswordChar = false;
+            idBox.PlaceholderColor = Color.DarkGray;
+            idBox.PlaceholderText = "";
+            idBox.Size = new Size(250, 40);
+            idBox.TabIndex = 4;
+            idBox.Texts = "";
+            idBox.UnderlinedStyle = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(60, 192);
+            label7.Location = new Point(60, 208);
             label7.Name = "label7";
             label7.Size = new Size(89, 25);
             label7.TabIndex = 18;
@@ -160,7 +257,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(44, 319);
+            label4.Location = new Point(44, 352);
             label4.Name = "label4";
             label4.Size = new Size(105, 25);
             label4.TabIndex = 21;
@@ -180,7 +277,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(13, 152);
+            label8.Location = new Point(13, 164);
             label8.Name = "label8";
             label8.Size = new Size(136, 25);
             label8.TabIndex = 17;
@@ -190,7 +287,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(60, 235);
+            label6.Location = new Point(60, 257);
             label6.Name = "label6";
             label6.Size = new Size(89, 25);
             label6.TabIndex = 19;
@@ -200,7 +297,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(85, 68);
+            label2.Location = new Point(85, 73);
             label2.Name = "label2";
             label2.Size = new Size(64, 25);
             label2.TabIndex = 15;
@@ -210,7 +307,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(42, 109);
+            label3.Location = new Point(42, 121);
             label3.Name = "label3";
             label3.Size = new Size(107, 25);
             label3.TabIndex = 16;
@@ -220,7 +317,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(55, 276);
+            label5.Location = new Point(55, 304);
             label5.Name = "label5";
             label5.Size = new Size(94, 25);
             label5.TabIndex = 20;
@@ -230,7 +327,7 @@
             // 
             AddBird_label.AutoSize = true;
             AddBird_label.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AddBird_label.Location = new Point(3, 0);
+            AddBird_label.Location = new Point(128, 2);
             AddBird_label.Name = "AddBird_label";
             AddBird_label.Size = new Size(217, 50);
             AddBird_label.TabIndex = 1;
@@ -238,73 +335,88 @@
             // 
             // addButton
             // 
-            addButton.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            addButton.Location = new Point(159, 3);
+            addButton.BackColor = Color.FromArgb(145, 199, 136);
+            addButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            addButton.BorderColor = Color.FromArgb(115, 165, 100);
+            addButton.BorderRadius = 10;
+            addButton.BorderSize = 2;
+            addButton.Cursor = Cursors.Hand;
+            addButton.FlatAppearance.BorderSize = 0;
+            addButton.FlatStyle = FlatStyle.Flat;
+            addButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            addButton.ForeColor = Color.Black;
+            addButton.Location = new Point(85, 469);
             addButton.Name = "addButton";
-            addButton.Size = new Size(150, 75);
-            addButton.TabIndex = 1;
+            addButton.Size = new Size(125, 45);
+            addButton.TabIndex = 5;
             addButton.Text = "Add";
-            addButton.UseVisualStyleBackColor = true;
+            addButton.TextColor = Color.Black;
+            addButton.UseVisualStyleBackColor = false;
             addButton.Click += addButton_Click;
             // 
             // cancelButton
             // 
-            cancelButton.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            cancelButton.Location = new Point(3, 3);
+            cancelButton.BackColor = Color.FromArgb(145, 199, 136);
+            cancelButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            cancelButton.BorderColor = Color.FromArgb(115, 165, 100);
+            cancelButton.BorderRadius = 10;
+            cancelButton.BorderSize = 2;
+            cancelButton.Cursor = Cursors.Hand;
+            cancelButton.FlatAppearance.BorderSize = 0;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.Black;
+            cancelButton.Location = new Point(243, 469);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(150, 75);
-            cancelButton.TabIndex = 2;
+            cancelButton.Size = new Size(125, 45);
+            cancelButton.TabIndex = 4;
             cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.TextColor = Color.Black;
+            cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
             // 
-            // flowLayoutPanel1
+            // panel2
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(97, 135, 110);
-            flowLayoutPanel1.Controls.Add(AddBird_label);
-            flowLayoutPanel1.Controls.Add(panel1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(381, 19);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(505, 569);
-            flowLayoutPanel1.TabIndex = 3;
+            panel2.BackColor = Color.FromArgb(97, 135, 110);
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(cancelButton);
+            panel2.Controls.Add(addButton);
+            panel2.Controls.Add(panel1);
+            panel2.Controls.Add(AddBird_label);
+            panel2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            panel2.ForeColor = Color.Black;
+            panel2.Location = new Point(381, 33);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(450, 534);
+            panel2.TabIndex = 4;
             // 
-            // flowLayoutPanel2
+            // panel3
             // 
-            flowLayoutPanel2.Controls.Add(cancelButton);
-            flowLayoutPanel2.Controls.Add(addButton);
-            flowLayoutPanel2.Location = new Point(3, 429);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(337, 91);
-            flowLayoutPanel2.TabIndex = 4;
+            panel3.BackColor = Color.FromArgb(82, 115, 77);
+            panel3.Location = new Point(389, 25);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(450, 534);
+            panel3.TabIndex = 5;
             // 
             // AddBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(210, 230, 200);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(panel2);
+            Controls.Add(panel3);
             Name = "AddBird";
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        public TextBox momBox;
-        public TextBox dadBox;
-        public TextBox cageIdBox;
-        private TextBox genderBox;
-        public TextBox subTypeBox;
-        public TextBox typeBox;
-        private TextBox idBox;
         private Label label7;
         private Label label4;
         private Label label1;
@@ -314,10 +426,17 @@
         private Label label3;
         private Label label5;
         public Label AddBird_label;
-        private Button addButton;
-        private Button cancelButton;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel2;
         private DateTimePicker dateBox;
+        private RJControls.RJButton addButton;
+        private RJControls.RJButton cancelButton;
+        private RJControls.RJTextBox idBox;
+        public RJControls.RJTextBox typeBox;
+        public RJControls.RJTextBox subTypeBox;
+        public RJControls.RJTextBox momBox;
+        public RJControls.RJTextBox dadBox;
+        public RJControls.RJTextBox cageIdBox;
+        private RJControls.RJTextBox genderBox;
+        private Panel panel2;
+        private Panel panel3;
     }
 }
