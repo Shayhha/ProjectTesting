@@ -68,6 +68,7 @@
             // 
             // birdsList
             // 
+            birdsList.BackColor = Color.WhiteSmoke;
             birdsList.Font = new Font("Segoe UI", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
             birdsList.FormattingEnabled = true;
             birdsList.ItemHeight = 23;
@@ -79,6 +80,7 @@
             // 
             // cagesList
             // 
+            cagesList.BackColor = Color.WhiteSmoke;
             cagesList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cagesList.FormattingEnabled = true;
             cagesList.ItemHeight = 25;
@@ -92,6 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(210, 230, 200);
             ClientSize = new Size(794, 546);
             Controls.Add(usernameLabel);
             Controls.Add(cagesLabel);
