@@ -54,7 +54,7 @@ namespace ProjectTesting
             // Start the stopwatch
             stopwatch.Start();
 
-            string name = Search_textbox.Text;
+            string name = Search_textbox.Texts;
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
             string combo = comboBox.Text;
             int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo);
@@ -168,7 +168,7 @@ namespace ProjectTesting
 
         public void cleanTextbox()
         {
-            Search_textbox.Text = "";
+            Search_textbox.Texts = "";
             comboBox.SelectedIndex = 0;
         }
     }

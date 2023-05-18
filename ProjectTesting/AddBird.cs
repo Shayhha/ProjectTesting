@@ -261,7 +261,8 @@ namespace ProjectTesting
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else if (!edited) {
+                            else if (!edited)
+                            {
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if mom doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to mom
                                 else
@@ -316,7 +317,7 @@ namespace ProjectTesting
                     List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId);
                     string oldCageId = currentBird[0].CageId; //save old cage id for later
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
-           
+
                     /// here we need to build hashtable again if new id isn't in sorted order of id's ///
                     if (!(oldBirdId.Equals(birdInfo[0])))
                     {
@@ -375,7 +376,7 @@ namespace ProjectTesting
             LogIn.DataBaseExcel.Quit();//close excel
             return true;
         }
-    
+
 
         public string SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
         {
@@ -403,7 +404,7 @@ namespace ProjectTesting
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
-                    else if(index == (splittedList.Length - 1) && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
+                    else if (index == (splittedList.Length - 1) && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
@@ -432,7 +433,7 @@ namespace ProjectTesting
 
         public bool checkDadId(string dadId)
         {
-            List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId); 
+            List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId);
             if (dadBird.Count != 0)
             {
                 if (dadBird[0].isOffspring)
@@ -516,7 +517,7 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("Error, gender is incorrect.", "Error");
                 return false;
-                
+
             }
             return true;
         }
@@ -592,7 +593,7 @@ namespace ProjectTesting
             }
             else
                 errorMessage = "There is no bird that is a " + parentGender + " with that id, try again.";
-            
+
 
             if (errorMessage != "-1")
             {
@@ -603,13 +604,13 @@ namespace ProjectTesting
                 return true;
         }
 
-        
+
         private void addButton_Click(object sender, EventArgs e)
         {
             bool isOffspring = false; //default is no for addBird
 
             if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
-            { 
+            {
                 isOffspring = true;
                 if (CheckParent() == false)
                     return;

@@ -176,7 +176,7 @@ namespace ProjectTesting
         {
             if (searchBird1.Visible == true)
             {
-                if (searchBird1.Search_textbox.Text != "") { searchBird1.Search_textbox.Text = ""; }
+                if (searchBird1.Search_textbox.Texts != "") { searchBird1.Search_textbox.Texts = ""; }
                 searchBird1.Hide();
                 hideBackBtn();
                 homePage1.Show();
@@ -187,7 +187,7 @@ namespace ProjectTesting
 
                 if (homePage1.OneOption == true)
                 {
-                    searchBird1.Search_textbox.Text = "";
+                    searchBird1.Search_textbox.Texts = "";
                     moreDetails1.Hide();
                     hideBackBtn();
                     homePage1.Show();
@@ -195,7 +195,7 @@ namespace ProjectTesting
                 }
                 else
                 {
-                    searchBird1.Search_textbox.Text = "";
+                    searchBird1.Search_textbox.Texts = "";
                     moreDetails1.Hide();
                     searchBird1.Show();
                 }

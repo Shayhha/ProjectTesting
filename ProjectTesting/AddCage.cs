@@ -148,7 +148,7 @@ namespace ProjectTesting
                             break;
                         }
                     }
-                } 
+                }
                 else if (!(cageInfo[0].Equals(oldCageId))) // the id of the cage was changed in the edit
                 {
                     // if the cage id was changed we need to find all the birds from that cage and change their cage id
@@ -161,7 +161,7 @@ namespace ProjectTesting
                             currentCageRow = i; // saveing the row number of the current cage
 
                             // if this cage has birds, then we will look for them, the runtime here will be O(n+m) where n is number of cages and m is number of birds
-                            if (currentCage[0].BirdList.Count != 0) 
+                            if (currentCage[0].BirdList.Count != 0)
                             {
                                 int count = 0;
                                 // this loop will run only once, and only if the bird has offsprings, runtime O(m) where m is num of birds in database
@@ -177,7 +177,7 @@ namespace ProjectTesting
 
                                     if (count == currentCage[0].BirdList.Count)
                                         break; // if we found all of the birds for this cage we break the inner loop because we dont need to search anymore
-                                } 
+                                }
                             }
                             break; // if we have found the cage, and edited the cage id for his birds we now can exit the loop because we dont need to search for the cage anymore
                         }
@@ -203,21 +203,21 @@ namespace ProjectTesting
                 {
                     if (!(cageInfo[0].Equals(oldCageId)))
                     {
-                        if (currentCageRow == 1 
+                        if (currentCageRow == 1
                             && LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0)
                         {//if we try to edit the first cage in database we cant find the cage before!!
                             MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
                             MainWindow.HashTable.ClearBirdCageHashtable();
                             MainWindow.InitHashtable();
                         }
-                        else if ((currentCageRow == LogIn.DataBaseExcel.GetLastRow() - 1) 
+                        else if ((currentCageRow == LogIn.DataBaseExcel.GetLastRow() - 1)
                             && LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0)
                         {
                             MainWindow.SortExcel("cage"); //calls SortExcel from MainWindow
                             MainWindow.HashTable.ClearBirdCageHashtable();
                             MainWindow.InitHashtable();
                         }
-                        else if (currentCageRow != 1 && (currentCageRow != LogIn.DataBaseExcel.GetLastRow() - 1) 
+                        else if (currentCageRow != 1 && (currentCageRow != LogIn.DataBaseExcel.GetLastRow() - 1)
                             && (LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow - 1)).CompareTo(cageInfo[0]) > 0
                             || LogIn.DataBaseExcel.ReadCell("A" + (currentCageRow + 1)).CompareTo(cageInfo[0]) < 0))
                         {

@@ -260,7 +260,7 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.BackColor = SystemColors.ActiveCaption;
+            flowLayoutPanel1.BackColor = Color.FromArgb(97, 135, 110);
             flowLayoutPanel1.Controls.Add(AddBird_label);
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
@@ -283,6 +283,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(210, 230, 200);
             Controls.Add(flowLayoutPanel1);
             Name = "AddBird";
             Size = new Size(1264, 611);

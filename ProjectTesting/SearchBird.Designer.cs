@@ -29,38 +29,28 @@
         private void InitializeComponent()
         {
             birdList = new ListBox();
-            Search_textbox = new TextBox();
             Search_label = new Label();
-            label2 = new Label();
-            Search_button = new Button();
             colorDialog1 = new ColorDialog();
             comboBox = new ComboBox();
             tempListBox = new ListBox();
             rjToggleButton1 = new RJControls.RJToggleButton();
+            Search_textbox = new RJControls.RJTextBox();
+            Search_button = new RJControls.RJButton();
             SuspendLayout();
             // 
             // birdList
             // 
+            birdList.BackColor = Color.WhiteSmoke;
             birdList.Cursor = Cursors.Hand;
             birdList.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 32;
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
-            birdList.Location = new Point(23, 165);
+            birdList.Location = new Point(25, 187);
             birdList.Name = "birdList";
             birdList.Size = new Size(1215, 356);
             birdList.TabIndex = 0;
             birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
-            // 
-            // Search_textbox
-            // 
-            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(385, 50);
-            Search_textbox.Name = "Search_textbox";
-            Search_textbox.PlaceholderText = "  Search for birds/cages.....";
-            Search_textbox.ScrollBars = ScrollBars.Vertical;
-            Search_textbox.Size = new Size(350, 33);
-            Search_textbox.TabIndex = 2;
             // 
             // Search_label
             // 
@@ -71,28 +61,6 @@
             Search_label.Size = new Size(185, 25);
             Search_label.TabIndex = 3;
             Search_label.Text = "choose search type: ";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(236, 127);
-            label2.Name = "label2";
-            label2.Size = new Size(769, 20);
-            label2.TabIndex = 4;
-            label2.Text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
-            // 
-            // Search_button
-            // 
-            Search_button.Cursor = Cursors.Hand;
-            Search_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_button.Location = new Point(741, 50);
-            Search_button.Name = "Search_button";
-            Search_button.Size = new Size(156, 35);
-            Search_button.TabIndex = 6;
-            Search_button.Text = "Search Results";
-            Search_button.UseVisualStyleBackColor = true;
-            Search_button.Click += Search_button_Click;
             // 
             // comboBox
             // 
@@ -107,11 +75,12 @@
             // 
             // tempListBox
             // 
+            tempListBox.BackColor = Color.WhiteSmoke;
             tempListBox.Cursor = Cursors.Hand;
             tempListBox.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             tempListBox.FormattingEnabled = true;
             tempListBox.ItemHeight = 32;
-            tempListBox.Location = new Point(23, 165);
+            tempListBox.Location = new Point(25, 187);
             tempListBox.Name = "tempListBox";
             tempListBox.Size = new Size(1215, 356);
             tempListBox.TabIndex = 15;
@@ -130,17 +99,59 @@
             rjToggleButton1.TabIndex = 40;
             rjToggleButton1.UseVisualStyleBackColor = true;
             // 
+            // Search_textbox
+            // 
+            Search_textbox.BackColor = SystemColors.Window;
+            Search_textbox.BorderColor = Color.FromArgb(145, 199, 136);
+            Search_textbox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            Search_textbox.BorderRadius = 10;
+            Search_textbox.BorderSize = 2;
+            Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Search_textbox.ForeColor = Color.FromArgb(64, 64, 64);
+            Search_textbox.Location = new Point(385, 41);
+            Search_textbox.Margin = new Padding(4);
+            Search_textbox.Multiline = false;
+            Search_textbox.Name = "Search_textbox";
+            Search_textbox.Padding = new Padding(10, 7, 10, 7);
+            Search_textbox.PasswordChar = false;
+            Search_textbox.PlaceholderColor = Color.DarkGray;
+            Search_textbox.PlaceholderText = "Search for birds/cages.....";
+            Search_textbox.Size = new Size(375, 40);
+            Search_textbox.TabIndex = 44;
+            Search_textbox.Texts = "";
+            Search_textbox.UnderlinedStyle = false;
+            // 
+            // Search_button
+            // 
+            Search_button.BackColor = Color.FromArgb(145, 199, 136);
+            Search_button.BackgroundColor = Color.FromArgb(145, 199, 136);
+            Search_button.BorderColor = Color.FromArgb(115, 165, 100);
+            Search_button.BorderRadius = 10;
+            Search_button.BorderSize = 2;
+            Search_button.Cursor = Cursors.Hand;
+            Search_button.FlatAppearance.BorderSize = 0;
+            Search_button.FlatStyle = FlatStyle.Flat;
+            Search_button.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            Search_button.ForeColor = Color.Black;
+            Search_button.Location = new Point(772, 41);
+            Search_button.Name = "Search_button";
+            Search_button.Size = new Size(153, 40);
+            Search_button.TabIndex = 43;
+            Search_button.Text = "Search Results";
+            Search_button.TextColor = Color.Black;
+            Search_button.UseVisualStyleBackColor = false;
+            Search_button.Click += Search_button_Click;
+            // 
             // SearchBird
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightCyan;
-            Controls.Add(rjToggleButton1);
-            Controls.Add(Search_button);
-            Controls.Add(comboBox);
-            Controls.Add(label2);
-            Controls.Add(Search_label);
+            BackColor = Color.FromArgb(210, 230, 200);
             Controls.Add(Search_textbox);
+            Controls.Add(Search_button);
+            Controls.Add(rjToggleButton1);
+            Controls.Add(comboBox);
+            Controls.Add(Search_label);
             Controls.Add(birdList);
             Controls.Add(tempListBox);
             Name = "SearchBird";
@@ -152,13 +163,12 @@
         #endregion
 
         public ListBox birdList;
-        public TextBox Search_textbox;
         private Label Search_label;
-        private Label label2;
-        private Button Search_button;
         private ColorDialog colorDialog1; // what is this? *****************
         private ComboBox comboBox;
         private ListBox tempListBox;
         private RJControls.RJToggleButton rjToggleButton1;
+        public RJControls.RJTextBox Search_textbox;
+        private RJControls.RJButton Search_button;
     }
 }
