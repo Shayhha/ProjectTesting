@@ -82,11 +82,15 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent).showTopBar();
                 ((MainWindow)this.Parent).showTopPanel();
                 ((MainWindow)this.Parent).addCage1.setWelcome_lable(true);
+                ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 124);
+                ((MainWindow)this.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 115);
                 ((MainWindow)this.Parent).addCage1.Show();
             }
             else //else user isn't new so we show homepage
             {
                 // Here we show the homepage because in this case we know that the user has atleast one cage and can safly use our app
+                ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
+                ((MainWindow)this.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
                 ((MainWindow)this.Parent).homePage1.Show();
             }
 

@@ -306,7 +306,7 @@
             panel2.Controls.Add(addButton);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(cancelButton);
-            panel2.Location = new Point(381, 123);
+            panel2.Location = new Point(381, 71);
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 424);
             panel2.TabIndex = 8;
@@ -314,7 +314,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(82, 115, 77);
-            panel3.Location = new Point(389, 115);
+            panel3.Location = new Point(389, 63);
             panel3.Name = "panel3";
             panel3.Size = new Size(450, 424);
             panel3.TabIndex = 9;
@@ -325,9 +325,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(210, 230, 200);
             Controls.Add(panel2);
-            Controls.Add(Welcome_label);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel3);
+            Controls.Add(Welcome_label);
             Name = "AddCage";
             Size = new Size(1264, 611);
             panel1.ResumeLayout(false);
@@ -350,12 +350,12 @@
         private Label Welcome_label;
         private RJControls.RJButton addButton;
         private RJControls.RJButton cancelButton;
-        private Panel panel2;
+        public Panel panel2;
         private RJControls.RJTextBox materialBox;
         private RJControls.RJTextBox heightBox;
         private RJControls.RJTextBox widthBox;
         private RJControls.RJTextBox lengthBox;
         private RJControls.RJTextBox idBox;
-        private Panel panel3;
+        public Panel panel3;
     }
 }
