@@ -30,9 +30,9 @@ namespace ProjectTesting
         private void SignUp_button_Click(object sender, EventArgs e)
         {
 
-            string pass = Password_textbox.Text;
-            string username = UserName_textbox.Text;
-            string id = ID_textbox.Text;
+            string pass = Password_textbox2.Texts;
+            string username = UserName_textbox.Texts;
+            string id = ID_textbox.Texts;
             string[] userInfo = { username, pass, id };
             Excel ex = new Excel("users", "default");
             string[] temp = null;
@@ -84,9 +84,9 @@ namespace ProjectTesting
                 ex2.CreateNewSheet(username);
                 ex2.Quit();
                 CustomMessageBox.Show("You've successfully signed up to system!", "Welocme", false);
-                Password_textbox.Text = "";
-                UserName_textbox.Text = "";
-                ID_textbox.Text = "";
+                Password_textbox2.Texts = "";
+                UserName_textbox.Texts = "";
+                ID_textbox.Texts = "";
                 ((MainWindow)this.Parent).logIn1.Show();
                 MainWindow.HashTable.AddUserToHashtable(userInfo); //add user to hashtable
                 this.Hide(); //return to previous window
@@ -162,9 +162,9 @@ namespace ProjectTesting
 
         private void Cancel_button_Click(object sender, EventArgs e) //returns to sign in
         {
-            Password_textbox.Text = "";
-            UserName_textbox.Text = "";
-            ID_textbox.Text = "";
+            Password_textbox2.Texts = "";
+            UserName_textbox.Texts = "";
+            ID_textbox.Texts = "";
             ((MainWindow)this.Parent).logIn1.Show();
             this.Hide();
         }

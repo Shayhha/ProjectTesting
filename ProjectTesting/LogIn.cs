@@ -22,11 +22,11 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            string username = UserName_textbox.Text;
-            string password = Password_textbox.Text;
-            
+            string username = UserName_textbox.Texts;
+            string password = Password_textbox.Texts;
+
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
-            if(username =="" &&  password != "") //if username is empty we show error
+            if (username == "" && password != "") //if username is empty we show error
             {
                 CustomMessageBox.Show("Username field is empty!", "Input Error");
             }
@@ -70,8 +70,8 @@ namespace ProjectTesting
 
             ((MainWindow)this.Parent).showTopBar();
             ((MainWindow)this.Parent).showTopPanel();
-            UserName_textbox.Text = "";
-            Password_textbox.Text = "";
+            UserName_textbox.Texts = "";
+            Password_textbox.Texts = "";
 
             ((MainWindow)this.Parent).showContent(); // makeing the content panel visible, all of our screens sit inside of it (other than login and signup)
 
@@ -96,8 +96,8 @@ namespace ProjectTesting
 
         private void SignUp_button_Click(object sender, EventArgs e)
         {
-            ((MainWindow)this.Parent).logIn1.Hide();
             ((MainWindow)this.Parent).signUp1.Show();
+            ((MainWindow)this.Parent).logIn1.Hide();
         }
     }
 }
