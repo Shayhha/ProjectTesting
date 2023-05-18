@@ -145,7 +145,7 @@
             Password_textbox.Padding = new Padding(10, 7, 10, 7);
             Password_textbox.PasswordChar = true;
             Password_textbox.PlaceholderColor = Color.DarkGray;
-            Password_textbox.PlaceholderText = "";
+            Password_textbox.PlaceholderText = " password";
             Password_textbox.Size = new Size(250, 40);
             Password_textbox.TabIndex = 2;
             Password_textbox.Texts = "";
@@ -167,7 +167,7 @@
             UserName_textbox.Padding = new Padding(10, 7, 10, 7);
             UserName_textbox.PasswordChar = false;
             UserName_textbox.PlaceholderColor = Color.DarkGray;
-            UserName_textbox.PlaceholderText = "";
+            UserName_textbox.PlaceholderText = " username";
             UserName_textbox.Size = new Size(250, 40);
             UserName_textbox.TabIndex = 1;
             UserName_textbox.Texts = "";
