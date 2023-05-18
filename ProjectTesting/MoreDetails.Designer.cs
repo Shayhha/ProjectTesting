@@ -39,8 +39,8 @@ namespace ProjectTesting
             subTypeLabel = new TextBox();
             typeLabel = new TextBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            saveBirdButton = new Button();
-            editBirdButton = new Button();
+            saveBirdButton = new RJControls.RJButton();
+            editBirdButton = new RJControls.RJButton();
             idLabel = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             nameLabel = new Label();
@@ -54,17 +54,17 @@ namespace ProjectTesting
             label8 = new Label();
             mainPic = new PictureBox();
             offspringList = new ListBox();
-            addOffspringButton = new Button();
             offspringsPanel = new Panel();
+            addOffspringButton = new RJControls.RJButton();
             fledglingLabel = new Label();
             birdPanel = new Panel();
             cagePanel = new Panel();
-            editPanel = new FlowLayoutPanel();
-            editCageButton = new Button();
-            saveCageButton = new Button();
             listLabel = new Label();
             birdList = new ListBox();
             panel3 = new Panel();
+            editPanel = new FlowLayoutPanel();
+            saveCageButton = new RJControls.RJButton();
+            editCageButton = new RJControls.RJButton();
             flowLayoutPanel5 = new FlowLayoutPanel();
             cageValue = new TextBox();
             materialValue = new TextBox();
@@ -84,15 +84,15 @@ namespace ProjectTesting
             offspringsPanel.SuspendLayout();
             birdPanel.SuspendLayout();
             cagePanel.SuspendLayout();
-            editPanel.SuspendLayout();
             panel3.SuspendLayout();
+            editPanel.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BackColor = Color.FromArgb(97, 135, 110);
             panel1.Controls.Add(datePicker);
             panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(dadIdLabel);
@@ -121,7 +121,7 @@ namespace ProjectTesting
             // 
             // momIdLabel
             // 
-            momIdLabel.BackColor = SystemColors.ControlLight;
+            momIdLabel.BackColor = Color.FromArgb(97, 135, 110);
             momIdLabel.BorderStyle = BorderStyle.None;
             momIdLabel.Enabled = false;
             momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -134,7 +134,7 @@ namespace ProjectTesting
             // 
             // dadIdLabel
             // 
-            dadIdLabel.BackColor = SystemColors.ControlLight;
+            dadIdLabel.BackColor = Color.FromArgb(97, 135, 110);
             dadIdLabel.BorderStyle = BorderStyle.None;
             dadIdLabel.Enabled = false;
             dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -147,7 +147,7 @@ namespace ProjectTesting
             // 
             // cageIdLabel
             // 
-            cageIdLabel.BackColor = SystemColors.ControlLight;
+            cageIdLabel.BackColor = Color.FromArgb(97, 135, 110);
             cageIdLabel.BorderStyle = BorderStyle.None;
             cageIdLabel.Enabled = false;
             cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -160,7 +160,7 @@ namespace ProjectTesting
             // 
             // genderLabel
             // 
-            genderLabel.BackColor = SystemColors.ControlLight;
+            genderLabel.BackColor = Color.FromArgb(97, 135, 110);
             genderLabel.BorderStyle = BorderStyle.None;
             genderLabel.Enabled = false;
             genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -173,7 +173,7 @@ namespace ProjectTesting
             // 
             // subTypeLabel
             // 
-            subTypeLabel.BackColor = SystemColors.ControlLight;
+            subTypeLabel.BackColor = Color.FromArgb(97, 135, 110);
             subTypeLabel.BorderStyle = BorderStyle.None;
             subTypeLabel.Enabled = false;
             subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -186,7 +186,7 @@ namespace ProjectTesting
             // 
             // typeLabel
             // 
-            typeLabel.BackColor = SystemColors.ControlLight;
+            typeLabel.BackColor = Color.FromArgb(97, 135, 110);
             typeLabel.BorderStyle = BorderStyle.None;
             typeLabel.Enabled = false;
             typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -209,32 +209,54 @@ namespace ProjectTesting
             // 
             // saveBirdButton
             // 
-            saveBirdButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            saveBirdButton.BackColor = Color.FromArgb(145, 199, 136);
+            saveBirdButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            saveBirdButton.BorderColor = Color.FromArgb(115, 165, 100);
+            saveBirdButton.BorderRadius = 10;
+            saveBirdButton.BorderSize = 2;
+            saveBirdButton.Cursor = Cursors.Hand;
+            saveBirdButton.FlatAppearance.BorderSize = 0;
+            saveBirdButton.FlatStyle = FlatStyle.Flat;
+            saveBirdButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            saveBirdButton.ForeColor = Color.Black;
             saveBirdButton.Location = new Point(3, 52);
             saveBirdButton.Name = "saveBirdButton";
-            saveBirdButton.Size = new Size(70, 40);
-            saveBirdButton.TabIndex = 29;
+            saveBirdButton.Size = new Size(75, 40);
+            saveBirdButton.TabIndex = 46;
             saveBirdButton.Text = "Save";
-            saveBirdButton.UseVisualStyleBackColor = true;
+            saveBirdButton.TextColor = Color.Black;
+            saveBirdButton.UseVisualStyleBackColor = false;
+            saveBirdButton.Visible = false;
             saveBirdButton.Click += saveBirdButton_Click;
             // 
             // editBirdButton
             // 
-            editBirdButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            editBirdButton.BackColor = Color.FromArgb(145, 199, 136);
+            editBirdButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            editBirdButton.BorderColor = Color.FromArgb(115, 165, 100);
+            editBirdButton.BorderRadius = 10;
+            editBirdButton.BorderSize = 2;
+            editBirdButton.Cursor = Cursors.Hand;
+            editBirdButton.FlatAppearance.BorderSize = 0;
+            editBirdButton.FlatStyle = FlatStyle.Flat;
+            editBirdButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            editBirdButton.ForeColor = Color.Black;
             editBirdButton.Location = new Point(3, 6);
             editBirdButton.Name = "editBirdButton";
-            editBirdButton.Size = new Size(70, 40);
-            editBirdButton.TabIndex = 28;
+            editBirdButton.Size = new Size(75, 40);
+            editBirdButton.TabIndex = 45;
             editBirdButton.Text = "Edit";
-            editBirdButton.UseVisualStyleBackColor = true;
+            editBirdButton.TextColor = Color.Black;
+            editBirdButton.UseVisualStyleBackColor = false;
             editBirdButton.Click += editBirdButton_Click;
             // 
             // idLabel
             // 
-            idLabel.BackColor = SystemColors.ControlLight;
+            idLabel.BackColor = Color.FromArgb(97, 135, 110);
             idLabel.BorderStyle = BorderStyle.None;
             idLabel.Enabled = false;
             idLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            idLabel.ForeColor = SystemColors.WindowText;
             idLabel.Location = new Point(159, 9);
             idLabel.Name = "idLabel";
             idLabel.PlaceholderText = "John";
@@ -373,26 +395,36 @@ namespace ProjectTesting
             offspringList.Size = new Size(677, 179);
             offspringList.TabIndex = 24;
             // 
-            // addOffspringButton
-            // 
-            addOffspringButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addOffspringButton.Location = new Point(486, 242);
-            addOffspringButton.Name = "addOffspringButton";
-            addOffspringButton.Size = new Size(170, 40);
-            addOffspringButton.TabIndex = 25;
-            addOffspringButton.Text = "Add an Offspring";
-            addOffspringButton.UseVisualStyleBackColor = true;
-            addOffspringButton.Click += addOffspringButton_Click;
-            // 
             // offspringsPanel
             // 
-            offspringsPanel.Controls.Add(offspringList);
             offspringsPanel.Controls.Add(addOffspringButton);
+            offspringsPanel.Controls.Add(offspringList);
             offspringsPanel.Controls.Add(label8);
             offspringsPanel.Location = new Point(2, 252);
             offspringsPanel.Name = "offspringsPanel";
             offspringsPanel.Size = new Size(697, 285);
             offspringsPanel.TabIndex = 26;
+            // 
+            // addOffspringButton
+            // 
+            addOffspringButton.BackColor = Color.FromArgb(145, 199, 136);
+            addOffspringButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            addOffspringButton.BorderColor = Color.FromArgb(115, 165, 100);
+            addOffspringButton.BorderRadius = 10;
+            addOffspringButton.BorderSize = 2;
+            addOffspringButton.Cursor = Cursors.Hand;
+            addOffspringButton.FlatAppearance.BorderSize = 0;
+            addOffspringButton.FlatStyle = FlatStyle.Flat;
+            addOffspringButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addOffspringButton.ForeColor = Color.Black;
+            addOffspringButton.Location = new Point(482, 220);
+            addOffspringButton.Name = "addOffspringButton";
+            addOffspringButton.Size = new Size(198, 40);
+            addOffspringButton.TabIndex = 47;
+            addOffspringButton.Text = "Add an Offspring";
+            addOffspringButton.TextColor = Color.Black;
+            addOffspringButton.UseVisualStyleBackColor = false;
+            addOffspringButton.Visible = false;
             // 
             // fledglingLabel
             // 
@@ -417,48 +449,15 @@ namespace ProjectTesting
             // 
             // cagePanel
             // 
-            cagePanel.Controls.Add(editPanel);
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(17, 20);
+            cagePanel.Location = new Point(15, 25);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
             cagePanel.TabIndex = 29;
             cagePanel.Visible = false;
-            // 
-            // editPanel
-            // 
-            editPanel.Controls.Add(editCageButton);
-            editPanel.Controls.Add(saveCageButton);
-            editPanel.Location = new Point(748, 117);
-            editPanel.Name = "editPanel";
-            editPanel.Size = new Size(162, 45);
-            editPanel.TabIndex = 5;
-            // 
-            // editCageButton
-            // 
-            editCageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            editCageButton.Location = new Point(3, 3);
-            editCageButton.Name = "editCageButton";
-            editCageButton.Size = new Size(75, 40);
-            editCageButton.TabIndex = 3;
-            editCageButton.Text = "Edit";
-            editCageButton.UseVisualStyleBackColor = true;
-            editCageButton.Click += editCageButton_Click;
-            // 
-            // saveCageButton
-            // 
-            saveCageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            saveCageButton.Location = new Point(84, 3);
-            saveCageButton.Name = "saveCageButton";
-            saveCageButton.Size = new Size(75, 40);
-            saveCageButton.TabIndex = 4;
-            saveCageButton.Text = "Save";
-            saveCageButton.UseVisualStyleBackColor = true;
-            saveCageButton.Visible = false;
-            saveCageButton.Click += saveCageButton_Click;
             // 
             // listLabel
             // 
@@ -472,6 +471,7 @@ namespace ProjectTesting
             // 
             // birdList
             // 
+            birdList.BackColor = Color.WhiteSmoke;
             birdList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 25;
@@ -482,13 +482,67 @@ namespace ProjectTesting
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.BackColor = Color.FromArgb(97, 135, 110);
+            panel3.Controls.Add(editPanel);
             panel3.Controls.Add(flowLayoutPanel5);
             panel3.Controls.Add(flowLayoutPanel4);
-            panel3.Location = new Point(504, 20);
+            panel3.Location = new Point(501, 15);
             panel3.Name = "panel3";
-            panel3.Size = new Size(243, 141);
+            panel3.Size = new Size(325, 170);
             panel3.TabIndex = 0;
+            // 
+            // editPanel
+            // 
+            editPanel.Controls.Add(saveCageButton);
+            editPanel.Controls.Add(editCageButton);
+            editPanel.FlowDirection = FlowDirection.BottomUp;
+            editPanel.Location = new Point(241, 72);
+            editPanel.Name = "editPanel";
+            editPanel.Size = new Size(87, 95);
+            editPanel.TabIndex = 5;
+            // 
+            // saveCageButton
+            // 
+            saveCageButton.BackColor = Color.FromArgb(145, 199, 136);
+            saveCageButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            saveCageButton.BorderColor = Color.FromArgb(115, 165, 100);
+            saveCageButton.BorderRadius = 10;
+            saveCageButton.BorderSize = 2;
+            saveCageButton.Cursor = Cursors.Hand;
+            saveCageButton.FlatAppearance.BorderSize = 0;
+            saveCageButton.FlatStyle = FlatStyle.Flat;
+            saveCageButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            saveCageButton.ForeColor = Color.Black;
+            saveCageButton.Location = new Point(3, 52);
+            saveCageButton.Name = "saveCageButton";
+            saveCageButton.Size = new Size(75, 40);
+            saveCageButton.TabIndex = 45;
+            saveCageButton.Text = "Save";
+            saveCageButton.TextColor = Color.Black;
+            saveCageButton.UseVisualStyleBackColor = false;
+            saveCageButton.Visible = false;
+            saveCageButton.Click += saveCageButton_Click;
+            // 
+            // editCageButton
+            // 
+            editCageButton.BackColor = Color.FromArgb(145, 199, 136);
+            editCageButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            editCageButton.BorderColor = Color.FromArgb(115, 165, 100);
+            editCageButton.BorderRadius = 10;
+            editCageButton.BorderSize = 2;
+            editCageButton.Cursor = Cursors.Hand;
+            editCageButton.FlatAppearance.BorderSize = 0;
+            editCageButton.FlatStyle = FlatStyle.Flat;
+            editCageButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            editCageButton.ForeColor = Color.Black;
+            editCageButton.Location = new Point(3, 6);
+            editCageButton.Name = "editCageButton";
+            editCageButton.Size = new Size(75, 40);
+            editCageButton.TabIndex = 44;
+            editCageButton.Text = "Edit";
+            editCageButton.TextColor = Color.Black;
+            editCageButton.UseVisualStyleBackColor = false;
+            editCageButton.Click += editCageButton_Click;
             // 
             // flowLayoutPanel5
             // 
@@ -506,7 +560,7 @@ namespace ProjectTesting
             // 
             // cageValue
             // 
-            cageValue.BackColor = SystemColors.ActiveCaption;
+            cageValue.BackColor = Color.FromArgb(97, 135, 110);
             cageValue.BorderStyle = BorderStyle.None;
             cageValue.Enabled = false;
             cageValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -518,7 +572,7 @@ namespace ProjectTesting
             // 
             // materialValue
             // 
-            materialValue.BackColor = SystemColors.ActiveCaption;
+            materialValue.BackColor = Color.FromArgb(97, 135, 110);
             materialValue.BorderStyle = BorderStyle.None;
             materialValue.Enabled = false;
             materialValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -530,7 +584,7 @@ namespace ProjectTesting
             // 
             // lengthValue
             // 
-            lengthValue.BackColor = SystemColors.ActiveCaption;
+            lengthValue.BackColor = Color.FromArgb(97, 135, 110);
             lengthValue.BorderStyle = BorderStyle.None;
             lengthValue.Enabled = false;
             lengthValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -542,7 +596,7 @@ namespace ProjectTesting
             // 
             // widthValue
             // 
-            widthValue.BackColor = SystemColors.ActiveCaption;
+            widthValue.BackColor = Color.FromArgb(97, 135, 110);
             widthValue.BorderStyle = BorderStyle.None;
             widthValue.Enabled = false;
             widthValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -554,7 +608,7 @@ namespace ProjectTesting
             // 
             // heightValue
             // 
-            heightValue.BackColor = SystemColors.ActiveCaption;
+            heightValue.BackColor = Color.FromArgb(97, 135, 110);
             heightValue.BorderStyle = BorderStyle.None;
             heightValue.Enabled = false;
             heightValue.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -631,6 +685,7 @@ namespace ProjectTesting
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(210, 230, 200);
             Controls.Add(cagePanel);
             Controls.Add(birdPanel);
             Name = "MoreDetails";
@@ -647,8 +702,8 @@ namespace ProjectTesting
             birdPanel.PerformLayout();
             cagePanel.ResumeLayout(false);
             cagePanel.PerformLayout();
-            editPanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            editPanel.ResumeLayout(false);
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
@@ -670,12 +725,9 @@ namespace ProjectTesting
         private PictureBox mainPic;
         private FlowLayoutPanel flowLayoutPanel1;
         private ListBox offspringList;
-        private Button addOffspringButton;
         public Panel offspringsPanel;
         public Label fledglingLabel;
-        private Button editBirdButton;
         private TextBox idLabel;
-        private Button saveBirdButton;
         private FlowLayoutPanel flowLayoutPanel2;
         private TextBox momIdLabel;
         private TextBox dadIdLabel;
@@ -696,13 +748,16 @@ namespace ProjectTesting
         private Label heightLabel;
         private Label listLabel;
         private FlowLayoutPanel editPanel;
-        private Button editCageButton;
-        private Button saveCageButton;
         private TextBox cageValue;
         private TextBox materialValue;
         private TextBox lengthValue;
         private TextBox widthValue;
         private TextBox heightValue;
         private DateTimePicker datePicker;
+        private RJControls.RJButton saveCageButton;
+        private RJControls.RJButton editCageButton;
+        private RJControls.RJButton saveBirdButton;
+        private RJControls.RJButton editBirdButton;
+        private RJControls.RJButton addOffspringButton;
     }
 }

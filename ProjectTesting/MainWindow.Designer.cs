@@ -55,10 +55,10 @@
             // 
             // headlinePanel
             // 
-            headlinePanel.BackColor = Color.DarkSlateGray;
+            headlinePanel.BackColor = Color.FromArgb(50, 80, 57);
             headlinePanel.Controls.Add(flowLayoutPanel1);
             headlinePanel.Controls.Add(appIcon);
-            headlinePanel.Location = new Point(1, 0);
+            headlinePanel.Location = new Point(0, 0);
             headlinePanel.Name = "headlinePanel";
             headlinePanel.Size = new Size(1264, 71);
             headlinePanel.TabIndex = 1;
@@ -166,7 +166,7 @@
             // 
             // contentPanel
             // 
-            contentPanel.BackColor = Color.LightCyan;
+            contentPanel.BackColor = Color.FromArgb(210, 230, 200);
             contentPanel.Controls.Add(moreDetails1);
             contentPanel.Controls.Add(searchBird1);
             contentPanel.Controls.Add(addCage1);
@@ -180,7 +180,7 @@
             // 
             // moreDetails1
             // 
-            moreDetails1.BackColor = Color.LightCyan;
+            moreDetails1.BackColor = Color.FromArgb(210, 230, 200);
             moreDetails1.Location = new Point(0, 1);
             moreDetails1.Name = "moreDetails1";
             moreDetails1.Size = new Size(1264, 611);
@@ -189,7 +189,7 @@
             // 
             // searchBird1
             // 
-            searchBird1.BackColor = Color.LightCyan;
+            searchBird1.BackColor = Color.FromArgb(210, 230, 200);
             searchBird1.Location = new Point(0, 0);
             searchBird1.Name = "searchBird1";
             searchBird1.Size = new Size(1264, 611);
@@ -198,7 +198,7 @@
             // 
             // addCage1
             // 
-            addCage1.BackColor = Color.LightCyan;
+            addCage1.BackColor = Color.FromArgb(210, 230, 200);
             addCage1.Location = new Point(0, -1);
             addCage1.Name = "addCage1";
             addCage1.Size = new Size(1264, 611);
@@ -207,7 +207,7 @@
             // 
             // addBird1
             // 
-            addBird1.BackColor = Color.LightCyan;
+            addBird1.BackColor = Color.FromArgb(210, 230, 200);
             addBird1.Location = new Point(0, 0);
             addBird1.Name = "addBird1";
             addBird1.Size = new Size(1264, 611);
@@ -216,7 +216,7 @@
             // 
             // homePage1
             // 
-            homePage1.BackColor = Color.LightCyan;
+            homePage1.BackColor = Color.FromArgb(210, 230, 200);
             homePage1.Location = new Point(0, 0);
             homePage1.Name = "homePage1";
             homePage1.Size = new Size(1264, 611);
