@@ -143,7 +143,7 @@
             Password_textbox.Multiline = false;
             Password_textbox.Name = "Password_textbox";
             Password_textbox.Padding = new Padding(10, 7, 10, 7);
-            Password_textbox.PasswordChar = false;
+            Password_textbox.PasswordChar = true;
             Password_textbox.PlaceholderColor = Color.DarkGray;
             Password_textbox.PlaceholderText = "";
             Password_textbox.Size = new Size(250, 40);
