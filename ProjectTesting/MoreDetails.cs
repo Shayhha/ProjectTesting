@@ -29,6 +29,7 @@ namespace ProjectTesting
         public void setImages()
         {
             this.mainPic.Image = getRandomImage();
+            this.myPic.Image = getRandomImage();
         }
 
         private Image getRandomImage()
