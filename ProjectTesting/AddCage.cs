@@ -41,11 +41,11 @@ namespace ProjectTesting
         {
             Cage cageInfo = new Cage(new string[]
             {
-                idBox.Text.ToString(),
-                lengthBox.Text.ToString(),
-                widthBox.Text.ToString(),
-                heightBox.Text.ToString(),
-                materialBox.Text.ToString()
+                idBox.Texts.ToString(),
+                lengthBox.Texts.ToString(),
+                widthBox.Texts.ToString(),
+                heightBox.Texts.ToString(),
+                materialBox.Texts.ToString()
             });
 
             return cageInfo;
@@ -249,11 +249,11 @@ namespace ProjectTesting
         /// </summary>
         public void cleanTextBoxes()
         {
-            idBox.Text = "";
-            lengthBox.Text = "";
-            widthBox.Text = "";
-            heightBox.Text = "";
-            materialBox.Text = "";
+            idBox.Texts = "";
+            lengthBox.Texts = "";
+            widthBox.Texts = "";
+            heightBox.Texts = "";
+            materialBox.Texts = "";
         }
 
         /// <summary>

@@ -37,14 +37,14 @@ namespace ProjectTesting
                 resultOffspring = "no";
 
             Bird birdInfo = new Bird(new string[] {
-                idBox.Text.ToString(),
-                typeBox.Text.ToString(),
-                subTypeBox.Text.ToString(),
+                idBox.Texts.ToString(),
+                typeBox.Texts.ToString(),
+                subTypeBox.Texts.ToString(),
                 dateBox.Text.ToString(),
-                genderBox.Text.ToString(),
-                cageIdBox.Text.ToString(),
-                dadBox.Text.ToString(),
-                momBox.Text.ToString(),
+                genderBox.Texts.ToString(),
+                cageIdBox.Texts.ToString(),
+                dadBox.Texts.ToString(),
+                momBox.Texts.ToString(),
                 resultOffspring}
             );
 
@@ -71,8 +71,8 @@ namespace ProjectTesting
 
             if (!edited)
             {
-                if (dadBox.Text == "") { birdInfo[6] = "0"; }
-                if (momBox.Text == "") { birdInfo[7] = "0"; }
+                if (dadBox.Texts == "") { birdInfo[6] = "0"; }
+                if (momBox.Texts == "") { birdInfo[7] = "0"; }
             }
 
             if (birdInfo[4] == "m" || birdInfo[4] == "male")
@@ -421,14 +421,14 @@ namespace ProjectTesting
 
         public void cleanTextBoxes()
         {
-            idBox.Text = "";
-            typeBox.Text = "";
-            subTypeBox.Text = "";
+            idBox.Texts = "";
+            typeBox.Texts = "";
+            subTypeBox.Texts = "";
             dateBox.Text = "";
-            genderBox.Text = "";
-            cageIdBox.Text = "";
-            dadBox.Text = "";
-            momBox.Text = "";
+            genderBox.Texts = "";
+            cageIdBox.Texts = "";
+            dadBox.Texts = "";
+            momBox.Texts = "";
         }
 
         public bool checkDadId(string dadId)
@@ -552,17 +552,17 @@ namespace ProjectTesting
             string parentType = "", errorMessage = "-1", parentGender, parentId;
 
             // we want to know which parent's id we need to check
-            if (dadBox.ReadOnly == true)//if dad is locked, we know we need to check moms id
+            if (dadBox.Enabled == true)//if dad is locked, we know we need to check moms id
             {
                 parentType = "mom";
-                parentId = momBox.Text;
+                parentId = momBox.Texts;
                 parentGender = "Female";
             }
 
-            else if (momBox.ReadOnly == true)
+            else if (momBox.Enabled == true)
             {
                 parentType = "dad";
-                parentId = dadBox.Text;
+                parentId = dadBox.Texts;
                 parentGender = "Male";
             }
             else // we have an undefined error
@@ -578,11 +578,11 @@ namespace ProjectTesting
                 {
                     errorMessage = "Other parent must be " + parentGender.ToLower() + "!";
                 }
-                else if (parentBird[0].CageId != cageIdBox.Text)
+                else if (parentBird[0].CageId != cageIdBox.Texts)
                 {
                     errorMessage = "Parents must be in the same cage!";
                 }
-                else if (parentBird[0].Type != typeBox.Text)
+                else if (parentBird[0].Type != typeBox.Texts)
                 {
                     errorMessage = "Parents must have same type!";
                 }
@@ -645,39 +645,40 @@ namespace ProjectTesting
         public void makeReadOnly(string type, string subType, string cageId, string gender, string parentId)
         {
             AddBird_label.Text = "Add an Offspring:";
+            AddBird_label.Location = new Point(67, 2);
 
-            typeBox.Text = type;
-            typeBox.ReadOnly = true;
+            typeBox.Texts = type;
+            typeBox.Enabled = false;
 
-            subTypeBox.Text = subType;
-            subTypeBox.ReadOnly = true;
+            subTypeBox.Texts = subType;
+            subTypeBox.Enabled = false;
 
-            cageIdBox.Text = cageId;
-            cageIdBox.ReadOnly = true;
+            cageIdBox.Texts = cageId;
+            cageIdBox.Enabled = false;
 
             if (gender == "Male")
             {
-                dadBox.Text = parentId;
-                dadBox.ReadOnly = true;
+                dadBox.Texts = parentId;
+                dadBox.Enabled = false;
             }
             else
             {
-                momBox.Text = parentId;
-                momBox.ReadOnly = true;
+                momBox.Texts = parentId;
+                momBox.Enabled = false;
             }
         }
 
         public void makeNotReadOnly()
         {
             AddBird_label.Text = "Add a Bird:";
-            typeBox.ReadOnly = false;
-            subTypeBox.ReadOnly = false;
-            cageIdBox.ReadOnly = false;
+            typeBox.Enabled = true;
+            subTypeBox.Enabled = true;
+            cageIdBox.Enabled = true;
 
-            if (dadBox.ReadOnly == true)
-                dadBox.ReadOnly = false;
+            if (dadBox.Enabled == false)
+                dadBox.Enabled = true;
             else
-                momBox.ReadOnly = false;
+                momBox.Enabled = true;
         }
     }
 }

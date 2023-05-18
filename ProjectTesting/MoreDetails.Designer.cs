@@ -424,7 +424,7 @@ namespace ProjectTesting
             addOffspringButton.Text = "Add an Offspring";
             addOffspringButton.TextColor = Color.Black;
             addOffspringButton.UseVisualStyleBackColor = false;
-            addOffspringButton.Visible = false;
+            addOffspringButton.Click += addOffspringButton_Click;
             // 
             // fledglingLabel
             // 
@@ -452,7 +452,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(15, 25);
+            cagePanel.Location = new Point(15, 26);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
