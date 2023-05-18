@@ -55,6 +55,7 @@ namespace ProjectTesting
             mainPic = new PictureBox();
             offspringList = new ListBox();
             offspringsPanel = new Panel();
+            addOffspringButton = new RJControls.RJButton();
             fledglingLabel = new Label();
             birdPanel = new Panel();
             cagePanel = new Panel();
@@ -76,7 +77,6 @@ namespace ProjectTesting
             lengthLabel = new Label();
             widthLabel = new Label();
             heightLabel = new Label();
-            addOffspringButton = new RJControls.RJButton();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -405,6 +405,27 @@ namespace ProjectTesting
             offspringsPanel.Size = new Size(697, 285);
             offspringsPanel.TabIndex = 26;
             // 
+            // addOffspringButton
+            // 
+            addOffspringButton.BackColor = Color.FromArgb(145, 199, 136);
+            addOffspringButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            addOffspringButton.BorderColor = Color.FromArgb(115, 165, 100);
+            addOffspringButton.BorderRadius = 10;
+            addOffspringButton.BorderSize = 2;
+            addOffspringButton.Cursor = Cursors.Hand;
+            addOffspringButton.FlatAppearance.BorderSize = 0;
+            addOffspringButton.FlatStyle = FlatStyle.Flat;
+            addOffspringButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addOffspringButton.ForeColor = Color.Black;
+            addOffspringButton.Location = new Point(482, 220);
+            addOffspringButton.Name = "addOffspringButton";
+            addOffspringButton.Size = new Size(198, 40);
+            addOffspringButton.TabIndex = 47;
+            addOffspringButton.Text = "Add an Offspring";
+            addOffspringButton.TextColor = Color.Black;
+            addOffspringButton.UseVisualStyleBackColor = false;
+            addOffspringButton.Visible = false;
+            // 
             // fledglingLabel
             // 
             fledglingLabel.AutoSize = true;
@@ -431,7 +452,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(729, 589);
+            cagePanel.Location = new Point(15, 25);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1218, 569);
@@ -659,27 +680,6 @@ namespace ProjectTesting
             heightLabel.Size = new Size(75, 25);
             heightLabel.TabIndex = 8;
             heightLabel.Text = "Height:";
-            // 
-            // addOffspringButton
-            // 
-            addOffspringButton.BackColor = Color.FromArgb(145, 199, 136);
-            addOffspringButton.BackgroundColor = Color.FromArgb(145, 199, 136);
-            addOffspringButton.BorderColor = Color.FromArgb(115, 165, 100);
-            addOffspringButton.BorderRadius = 10;
-            addOffspringButton.BorderSize = 2;
-            addOffspringButton.Cursor = Cursors.Hand;
-            addOffspringButton.FlatAppearance.BorderSize = 0;
-            addOffspringButton.FlatStyle = FlatStyle.Flat;
-            addOffspringButton.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
-            addOffspringButton.ForeColor = Color.Black;
-            addOffspringButton.Location = new Point(482, 220);
-            addOffspringButton.Name = "addOffspringButton";
-            addOffspringButton.Size = new Size(198, 40);
-            addOffspringButton.TabIndex = 47;
-            addOffspringButton.Text = "Add an Offspring";
-            addOffspringButton.TextColor = Color.Black;
-            addOffspringButton.UseVisualStyleBackColor = false;
-            addOffspringButton.Visible = false;
             // 
             // MoreDetails
             // 
