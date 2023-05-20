@@ -17,7 +17,7 @@ namespace ProjectTesting
         public SearchBird()
         {
             InitializeComponent();
-            comboBox.SelectedIndex = 0;
+            searchBySwitch.Checked = false;
             string text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
             System.Windows.Forms.ToolTip SearchRequirementsToolTip = new System.Windows.Forms.ToolTip();
             SearchRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
@@ -47,36 +47,19 @@ namespace ProjectTesting
 
 
 
-        public int Search(string name, string combo) //remeber this method was boolean
+        public int Search(string name, bool combo) //remeber this method was boolean
         {
             birdList.Hide();
-            string[] temp = null;
             int flag = 0;
             birdList.Items.Clear(); // deleting all of the previous items from the list
-            string[] DefaultCombo = { "Bird", "Cage" };//we will use this array to check combo
-            if (combo == "" && name == "")
+            if (name == "")
             {
-                CustomMessageBox.Show("You have to write somthing in search box and choose search type!", "Search Error");
-                return -1;
-            }
-            else if (combo == "")
-            {
-                CustomMessageBox.Show("Choose search type!", "Type Error");
-                return -1;
-            }
-            else if (name == "")
-            {
-                CustomMessageBox.Show("Search field empty!", "Search Error");
-                return -1;
-            }
-            else if (!DefaultCombo.Contains(combo))
-            {
-                CustomMessageBox.Show("There's no search type named \"" + combo + "\" \n(Please choose a search type from the box with the arrow)", "Error");
+                CustomMessageBox.Show("Search field is empty!", "Search Error");
                 return -1;
             }
             else
             {
-                if (combo == "Bird")
+                if (combo == false) // false is searching for birds
                 {
                     if (name == "m" || name == "M" || name == "male")
                         name = "Male";
@@ -91,7 +74,7 @@ namespace ProjectTesting
                         flag++;
                     }
                 }
-                else if (combo == "Cage")
+                else if (combo == true) // true is searching for cages
                 {
                     if (name.ToUpper() == "WOOD")
                         name = "WOOD";
@@ -131,8 +114,8 @@ namespace ProjectTesting
         {
             string name = Search_textbox.Text;
             ClearList();
-            string combo = comboBox.Text;
-            int SearchResult = Search(name, combo);
+            bool searchSwitch = searchBySwitch.Checked;
+            int SearchResult = Search(name, searchSwitch);
             if (SearchResult == 1)
             {
                 string text = birdList.Items[0].ToString(); //gets text in selected index
@@ -179,6 +162,12 @@ namespace ProjectTesting
         {
             ClearList();
             Search_textbox.Text = "";
+        }
+
+        public void setTextAndSwitch(string text, bool option)
+        {
+            Search_textbox.Text = text;
+            searchBySwitch.Checked = option;
         }
     }
 }

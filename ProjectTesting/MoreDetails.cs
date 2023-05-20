@@ -207,6 +207,20 @@ namespace ProjectTesting
             }
         }
 
+        private void restorInfo()
+        {
+            idLabel.Text = infoFromDatabaseBird.Id;
+            typeLabel.Text = infoFromDatabaseBird.Type;
+            subTypeLabel.Text = infoFromDatabaseBird.SubType;
+            string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
+            int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
+            datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
+            genderLabel.Text = infoFromDatabaseBird.Gender;
+            cageIdLabel.Text = infoFromDatabaseBird.CageId;
+            dadIdLabel.Text = infoFromDatabaseBird.DadId;
+            momIdLabel.Text = infoFromDatabaseBird.MomId;
+        }
+
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
         {
             setUnedited();
@@ -219,47 +233,19 @@ namespace ProjectTesting
             if (infoFromDatabaseBird.Id != newInfo[0])
             {
                 if (!((MainWindow)this.Parent.Parent).addBird1.checkBirdId(newInfo[0]))
-                {
                     flag = 1;
-                }
             }
 
             if (flag == 0)
             {
                 if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), true, infoFromDatabaseBird.Id) == true)
-                {
                     infoFromDatabaseBird = getTextFromUiBird();
-                }
                 else
-                {
-                    idLabel.Text = infoFromDatabaseBird.Id;
-                    typeLabel.Text = infoFromDatabaseBird.Type;
-                    subTypeLabel.Text = infoFromDatabaseBird.SubType;
-                    string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
-                    int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
-                    datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
-                    genderLabel.Text = infoFromDatabaseBird.Gender;
-                    cageIdLabel.Text = infoFromDatabaseBird.CageId;
-                    dadIdLabel.Text = infoFromDatabaseBird.DadId;
-                    momIdLabel.Text = infoFromDatabaseBird.MomId;
-                }
+                    restorInfo();
             }
-
 
             if (flag == 1)
-            { // make this into a function and use above as well
-                idLabel.Text = infoFromDatabaseBird.Id;
-                typeLabel.Text = infoFromDatabaseBird.Type;
-                subTypeLabel.Text = infoFromDatabaseBird.SubType;
-                string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
-                int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
-                datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
-                genderLabel.Text = infoFromDatabaseBird.Gender;
-                cageIdLabel.Text = infoFromDatabaseBird.CageId;
-                dadIdLabel.Text = infoFromDatabaseBird.DadId;
-                momIdLabel.Text = infoFromDatabaseBird.MomId;
-            }
-
+                restorInfo();
         }
 
         private void editCageButton_Click(object sender, EventArgs e) // for cage 

@@ -18,7 +18,7 @@ namespace ProjectTesting
         public HomePage()
         {
             InitializeComponent();
-            comboBox.SelectedIndex = 0;
+            searchBySwitch.Checked = false;
             string text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
             System.Windows.Forms.ToolTip SearchRequirementsToolTip = new System.Windows.Forms.ToolTip();
             SearchRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
@@ -56,10 +56,11 @@ namespace ProjectTesting
 
             string name = Search_textbox.Text;
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
-            string combo = comboBox.Text;
-            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, combo);
+            bool searchSwitch = searchBySwitch.Checked;
+            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, searchSwitch);
             if (SearchResult == 0)
             {
+                ((MainWindow)this.Parent.Parent).searchBird1.setTextAndSwitch(name, searchSwitch);
                 ((MainWindow)this.Parent.Parent).searchBird1.Show();
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 //Search_textbox.Text = "";
@@ -155,21 +156,19 @@ namespace ProjectTesting
         private void Cage_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addCage1.Show();
-            comboBox.SelectedIndex = 0;
             this.Hide();
         }
 
         private void Bird_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addBird1.Show();
-            comboBox.SelectedIndex = 0;
             this.Hide();
         }
 
         public void cleanTextbox()
         {
             Search_textbox.Text = "";
-            comboBox.SelectedIndex = 0;
+            searchBySwitch.Checked = false;
         }
     }
 }

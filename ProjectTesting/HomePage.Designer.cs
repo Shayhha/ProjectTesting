@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             Cage_pictureBox = new PictureBox();
             Bird_pictureBox = new PictureBox();
-            comboBox = new ComboBox();
-            Search_label = new Label();
-            rjToggleButton1 = new RJControls.RJToggleButton();
+            searchBySwitch = new RJControls.RJToggleButton();
             Search_button = new RJControls.RJButton();
             Search_textbox = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)Cage_pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).BeginInit();
             SuspendLayout();
@@ -68,40 +68,20 @@
             Bird_pictureBox.Click += Bird_pictureBox_Click;
             Bird_pictureBox.Paint += Bird_pictureBox_Paint;
             // 
-            // comboBox
+            // searchBySwitch
             // 
-            comboBox.Cursor = Cursors.Hand;
-            comboBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox.FormattingEnabled = true;
-            comboBox.Items.AddRange(new object[] { "Bird", "Cage" });
-            comboBox.Location = new Point(566, 88);
-            comboBox.Name = "comboBox";
-            comboBox.Size = new Size(87, 28);
-            comboBox.TabIndex = 13;
-            // 
-            // Search_label
-            // 
-            Search_label.AutoSize = true;
-            Search_label.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Search_label.Location = new Point(385, 88);
-            Search_label.Name = "Search_label";
-            Search_label.Size = new Size(188, 25);
-            Search_label.TabIndex = 10;
-            Search_label.Text = "Choose search type: ";
-            // 
-            // rjToggleButton1
-            // 
-            rjToggleButton1.AutoSize = true;
-            rjToggleButton1.Location = new Point(692, 90);
-            rjToggleButton1.MinimumSize = new Size(45, 22);
-            rjToggleButton1.Name = "rjToggleButton1";
-            rjToggleButton1.OffBackColor = Color.FromArgb(153, 169, 143);
-            rjToggleButton1.OffToggleColor = Color.Gainsboro;
-            rjToggleButton1.OnBackColor = Color.FromArgb(97, 135, 110);
-            rjToggleButton1.OnToggleColor = Color.WhiteSmoke;
-            rjToggleButton1.Size = new Size(45, 22);
-            rjToggleButton1.TabIndex = 40;
-            rjToggleButton1.UseVisualStyleBackColor = true;
+            searchBySwitch.Cursor = Cursors.Hand;
+            searchBySwitch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            searchBySwitch.Location = new Point(444, 83);
+            searchBySwitch.MinimumSize = new Size(45, 22);
+            searchBySwitch.Name = "searchBySwitch";
+            searchBySwitch.OffBackColor = Color.FromArgb(153, 169, 143);
+            searchBySwitch.OffToggleColor = Color.WhiteSmoke;
+            searchBySwitch.OnBackColor = Color.FromArgb(97, 135, 110);
+            searchBySwitch.OnToggleColor = Color.FromArgb(145, 199, 136);
+            searchBySwitch.Size = new Size(55, 24);
+            searchBySwitch.TabIndex = 40;
+            searchBySwitch.UseVisualStyleBackColor = true;
             // 
             // Search_button
             // 
@@ -134,16 +114,36 @@
             Search_textbox.Size = new Size(375, 33);
             Search_textbox.TabIndex = 47;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(505, 82);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 25);
+            label1.TabIndex = 48;
+            label1.Text = "Cages";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(385, 82);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 25);
+            label2.TabIndex = 49;
+            label2.Text = "Birds";
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(210, 230, 200);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(Search_textbox);
             Controls.Add(Search_button);
-            Controls.Add(rjToggleButton1);
-            Controls.Add(comboBox);
-            Controls.Add(Search_label);
+            Controls.Add(searchBySwitch);
             Controls.Add(Bird_pictureBox);
             Controls.Add(Cage_pictureBox);
             Name = "HomePage";
@@ -158,10 +158,10 @@
         #endregion
         private PictureBox Cage_pictureBox;
         private PictureBox Bird_pictureBox;
-        private ComboBox comboBox;
-        private Label Search_label;
-        private RJControls.RJToggleButton rjToggleButton1;
+        private RJControls.RJToggleButton searchBySwitch;
         private RJControls.RJButton Search_button;
         public TextBox Search_textbox;
+        private Label label1;
+        private Label label2;
     }
 }
