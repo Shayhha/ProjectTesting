@@ -189,7 +189,7 @@ namespace ProjectTesting
 
                 // updating the cage in the hashtable, currentCage[0] is the cage we are editing, we search for it in the code above
                 currentCage[0].EditFields(cageInfo);
-                if (cageInfo[0] != oldCageId) //if we changed id of cage we need to remove old hash code and add new id with new hash code
+                if (!(cageInfo[0].Equals(oldCageId))) //if we changed id of cage we need to remove old hash code and add new id with new hash code
                 {
                     MainWindow.HashTable.RemoveCageFromHashtable(oldCageId); //remove old cage id from cage hashtable
                     MainWindow.HashTable.AddCageIdToHashtable(currentCage[0], oldCageId); //adds the cage id back to cage hashtable
@@ -199,7 +199,7 @@ namespace ProjectTesting
                     List<Cage> oldCageMaterialList = MainWindow.HashTable.SearchCageHashtable(oldCageMaterial); //search old material cage list
                     oldCageMaterialList.RemoveAll(cage => cage.Id == currentCage[0].Id); //remove the cage from old material list in cage 
                     List<Cage> newCageMaterialList = MainWindow.HashTable.SearchCageHashtable(currentCage[0].Material); //search new material cage list
-                    newCageMaterialList.Add(currentCage[0]); //add updated cage to correct material list
+                    MainWindow.HashTable.AddCageMaterialToHashtable(currentCage[0]); //add cage to new list
                     newCageMaterialList.Sort((cage1, cage2) => cage1.Id.CompareTo(cage2.Id)); //sort list
                 }
             }
