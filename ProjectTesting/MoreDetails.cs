@@ -90,11 +90,11 @@ namespace ProjectTesting
                 infoFromDatabaseCage = cageInfo[0]; //saving cage for later use
 
                 //filling the fields for cage
-                cageValue.Text = cageInfo[0].Id;
-                lengthValue.Text = cageInfo[0].Length;
-                widthValue.Text = cageInfo[0].Width;
-                heightValue.Text = cageInfo[0].Height;
-                materialValue.Text = cageInfo[0].Material;
+                cageValue.Texts = cageInfo[0].Id;
+                lengthValue.Texts = cageInfo[0].Length;
+                widthValue.Texts = cageInfo[0].Width;
+                heightValue.Texts = cageInfo[0].Height;
+                materialValue.Texts = cageInfo[0].Material;
 
                 foreach (Bird bird in cageInfo[0].BirdList) //adding birds to list 
                 {
@@ -115,11 +115,11 @@ namespace ProjectTesting
             dadIdLabel.Text = "";
             momIdLabel.Text = "";
 
-            cageValue.Text = "";
-            lengthValue.Text = "";
-            widthValue.Text = "";
-            heightValue.Text = "";
-            materialValue.Text = "";
+            cageValue.Texts = "";
+            lengthValue.Texts = "";
+            widthValue.Texts = "";
+            heightValue.Texts = "";
+            materialValue.Texts = "";
             birdList.Items.Clear();
             offspringList.Items.Clear();
         }
@@ -158,11 +158,11 @@ namespace ProjectTesting
         {
             Cage newCage = new Cage(infoFromDatabaseCage);
             string[] temp = new string[] {
-                cageValue.Text.ToString(),
-                lengthValue.Text.ToString(),
-                widthValue.Text.ToString(),
-                heightValue.Text.ToString(),
-                materialValue.Text.ToString()
+                cageValue.Texts.ToString(),
+                lengthValue.Texts.ToString(),
+                widthValue.Texts.ToString(),
+                heightValue.Texts.ToString(),
+                materialValue.Texts.ToString()
             };
             newCage.EditFields(temp);
 
@@ -255,11 +255,11 @@ namespace ProjectTesting
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
-            cageValue.ReadOnly = false;
-            materialValue.ReadOnly = false;
-            lengthValue.ReadOnly = false;
-            widthValue.ReadOnly = false;
-            heightValue.ReadOnly = false;
+            //cageValue.ReadOnly = false;
+            //materialValue.ReadOnly = false;
+            //lengthValue.ReadOnly = false;
+            //widthValue.ReadOnly = false;
+            //heightValue.ReadOnly = false;
 
             cageValue.Enabled = true;
             materialValue.Enabled = true;
@@ -273,11 +273,11 @@ namespace ProjectTesting
             editCageButton.Visible = true;
             saveCageButton.Visible = false;
 
-            cageValue.ReadOnly = true;
-            materialValue.ReadOnly = true;
-            lengthValue.ReadOnly = true;
-            widthValue.ReadOnly = true;
-            heightValue.ReadOnly = true;
+            //cageValue.ReadOnly = true;
+            //materialValue.ReadOnly = true;
+            //lengthValue.ReadOnly = true;
+            //widthValue.ReadOnly = true;
+            //heightValue.ReadOnly = true;
 
             cageValue.Enabled = false;
             materialValue.Enabled = false;
@@ -303,11 +303,11 @@ namespace ProjectTesting
             }
             else
             {
-                cageValue.Text = infoFromDatabaseCage.Id;
-                lengthValue.Text = infoFromDatabaseCage.Length;
-                widthValue.Text = infoFromDatabaseCage.Width;
-                heightValue.Text = infoFromDatabaseCage.Height;
-                materialValue.Text = infoFromDatabaseCage.Material;
+                cageValue.Texts = infoFromDatabaseCage.Id;
+                lengthValue.Texts = infoFromDatabaseCage.Length;
+                widthValue.Texts = infoFromDatabaseCage.Width;
+                heightValue.Texts = infoFromDatabaseCage.Height;
+                materialValue.Texts = infoFromDatabaseCage.Material;
             }
         }
 

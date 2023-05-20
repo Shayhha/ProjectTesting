@@ -72,11 +72,11 @@ namespace ProjectTesting
             saveCageButton = new RJControls.RJButton();
             editCageButton = new RJControls.RJButton();
             flowLayoutPanel5 = new FlowLayoutPanel();
-            cageValue = new TextBox();
-            materialValue = new TextBox();
-            lengthValue = new TextBox();
-            widthValue = new TextBox();
-            heightValue = new TextBox();
+            cageValue = new RJControls.RJTextBox();
+            materialValue = new RJControls.RJTextBox();
+            lengthValue = new RJControls.RJTextBox();
+            widthValue = new RJControls.RJTextBox();
+            heightValue = new RJControls.RJTextBox();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
@@ -465,7 +465,7 @@ namespace ProjectTesting
             // 
             listLabel.AutoSize = true;
             listLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            listLabel.Location = new Point(192, 205);
+            listLabel.Location = new Point(208, 249);
             listLabel.Name = "listLabel";
             listLabel.Size = new Size(218, 25);
             listLabel.TabIndex = 2;
@@ -477,7 +477,7 @@ namespace ProjectTesting
             birdList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             birdList.FormattingEnabled = true;
             birdList.ItemHeight = 25;
-            birdList.Location = new Point(192, 233);
+            birdList.Location = new Point(208, 277);
             birdList.Name = "birdList";
             birdList.Size = new Size(867, 254);
             birdList.TabIndex = 1;
@@ -494,14 +494,14 @@ namespace ProjectTesting
             panel3.Controls.Add(flowLayoutPanel5);
             panel3.Location = new Point(501, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(325, 194);
+            panel3.Size = new Size(325, 231);
             panel3.TabIndex = 0;
             // 
             // heightLabel
             // 
             heightLabel.AutoSize = true;
             heightLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            heightLabel.Location = new Point(31, 151);
+            heightLabel.Location = new Point(31, 187);
             heightLabel.Name = "heightLabel";
             heightLabel.Padding = new Padding(0, 4, 0, 0);
             heightLabel.Size = new Size(75, 29);
@@ -512,7 +512,7 @@ namespace ProjectTesting
             // 
             widthLabel.AutoSize = true;
             widthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            widthLabel.Location = new Point(37, 115);
+            widthLabel.Location = new Point(37, 143);
             widthLabel.Name = "widthLabel";
             widthLabel.Padding = new Padding(0, 4, 0, 0);
             widthLabel.Size = new Size(69, 29);
@@ -523,7 +523,7 @@ namespace ProjectTesting
             // 
             lengthLabel.AutoSize = true;
             lengthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lengthLabel.Location = new Point(30, 79);
+            lengthLabel.Location = new Point(30, 99);
             lengthLabel.Name = "lengthLabel";
             lengthLabel.Padding = new Padding(0, 4, 0, 0);
             lengthLabel.Size = new Size(76, 29);
@@ -534,7 +534,7 @@ namespace ProjectTesting
             // 
             materialLabel.AutoSize = true;
             materialLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            materialLabel.Location = new Point(17, 43);
+            materialLabel.Location = new Point(17, 55);
             materialLabel.Name = "materialLabel";
             materialLabel.Padding = new Padding(0, 4, 0, 0);
             materialLabel.Size = new Size(89, 29);
@@ -545,7 +545,7 @@ namespace ProjectTesting
             // 
             cageLabel.AutoSize = true;
             cageLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            cageLabel.Location = new Point(24, 7);
+            cageLabel.Location = new Point(24, 12);
             cageLabel.Name = "cageLabel";
             cageLabel.Padding = new Padding(0, 4, 0, 0);
             cageLabel.Size = new Size(82, 29);
@@ -557,7 +557,7 @@ namespace ProjectTesting
             editPanel.Controls.Add(saveCageButton);
             editPanel.Controls.Add(editCageButton);
             editPanel.FlowDirection = FlowDirection.BottomUp;
-            editPanel.Location = new Point(241, 96);
+            editPanel.Location = new Point(241, 132);
             editPanel.Name = "editPanel";
             editPanel.Size = new Size(87, 95);
             editPanel.TabIndex = 5;
@@ -577,7 +577,7 @@ namespace ProjectTesting
             saveCageButton.Location = new Point(3, 52);
             saveCageButton.Name = "saveCageButton";
             saveCageButton.Size = new Size(75, 40);
-            saveCageButton.TabIndex = 45;
+            saveCageButton.TabIndex = 6;
             saveCageButton.Text = "Save";
             saveCageButton.TextColor = Color.Black;
             saveCageButton.UseVisualStyleBackColor = false;
@@ -621,63 +621,118 @@ namespace ProjectTesting
             // 
             // cageValue
             // 
-            cageValue.BackColor = Color.White;
+            cageValue.BackColor = SystemColors.Window;
+            cageValue.BorderColor = Color.FromArgb(145, 199, 136);
+            cageValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            cageValue.BorderRadius = 5;
+            cageValue.BorderSize = 2;
             cageValue.Enabled = false;
             cageValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cageValue.Location = new Point(3, 6);
-            cageValue.Margin = new Padding(3, 4, 3, 3);
+            cageValue.ForeColor = Color.FromArgb(64, 64, 64);
+            cageValue.Location = new Point(4, 6);
+            cageValue.Margin = new Padding(4);
+            cageValue.Multiline = false;
             cageValue.Name = "cageValue";
-            cageValue.Size = new Size(120, 29);
-            cageValue.TabIndex = 10;
-            cageValue.Text = "A5342G";
+            cageValue.Padding = new Padding(10, 7, 10, 7);
+            cageValue.PasswordChar = false;
+            cageValue.PlaceholderColor = Color.DarkGray;
+            cageValue.PlaceholderText = "";
+            cageValue.Size = new Size(120, 36);
+            cageValue.TabIndex = 1;
+            cageValue.Texts = "";
+            cageValue.UnderlinedStyle = false;
             // 
             // materialValue
             // 
-            materialValue.BackColor = Color.White;
+            materialValue.BackColor = SystemColors.Window;
+            materialValue.BorderColor = Color.FromArgb(145, 199, 136);
+            materialValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            materialValue.BorderRadius = 5;
+            materialValue.BorderSize = 2;
             materialValue.Enabled = false;
             materialValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            materialValue.Location = new Point(3, 42);
-            materialValue.Margin = new Padding(3, 4, 3, 3);
+            materialValue.ForeColor = Color.FromArgb(64, 64, 64);
+            materialValue.Location = new Point(4, 50);
+            materialValue.Margin = new Padding(4);
+            materialValue.Multiline = false;
             materialValue.Name = "materialValue";
-            materialValue.Size = new Size(120, 29);
-            materialValue.TabIndex = 11;
-            materialValue.Text = "WOOD";
+            materialValue.Padding = new Padding(10, 7, 10, 7);
+            materialValue.PasswordChar = false;
+            materialValue.PlaceholderColor = Color.DarkGray;
+            materialValue.PlaceholderText = "";
+            materialValue.Size = new Size(120, 36);
+            materialValue.TabIndex = 2;
+            materialValue.Texts = "";
+            materialValue.UnderlinedStyle = false;
             // 
             // lengthValue
             // 
-            lengthValue.BackColor = Color.White;
+            lengthValue.BackColor = SystemColors.Window;
+            lengthValue.BorderColor = Color.FromArgb(145, 199, 136);
+            lengthValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            lengthValue.BorderRadius = 5;
+            lengthValue.BorderSize = 2;
             lengthValue.Enabled = false;
             lengthValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lengthValue.Location = new Point(3, 78);
-            lengthValue.Margin = new Padding(3, 4, 3, 3);
+            lengthValue.ForeColor = Color.FromArgb(64, 64, 64);
+            lengthValue.Location = new Point(4, 94);
+            lengthValue.Margin = new Padding(4);
+            lengthValue.Multiline = false;
             lengthValue.Name = "lengthValue";
-            lengthValue.Size = new Size(120, 29);
-            lengthValue.TabIndex = 12;
-            lengthValue.Text = "35";
+            lengthValue.Padding = new Padding(10, 7, 10, 7);
+            lengthValue.PasswordChar = false;
+            lengthValue.PlaceholderColor = Color.DarkGray;
+            lengthValue.PlaceholderText = "";
+            lengthValue.Size = new Size(120, 36);
+            lengthValue.TabIndex = 3;
+            lengthValue.Texts = "";
+            lengthValue.UnderlinedStyle = false;
             // 
             // widthValue
             // 
-            widthValue.BackColor = Color.White;
+            widthValue.BackColor = SystemColors.Window;
+            widthValue.BorderColor = Color.FromArgb(145, 199, 136);
+            widthValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            widthValue.BorderRadius = 5;
+            widthValue.BorderSize = 2;
             widthValue.Enabled = false;
             widthValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            widthValue.Location = new Point(3, 114);
-            widthValue.Margin = new Padding(3, 4, 3, 3);
+            widthValue.ForeColor = Color.FromArgb(64, 64, 64);
+            widthValue.Location = new Point(4, 138);
+            widthValue.Margin = new Padding(4);
+            widthValue.Multiline = false;
             widthValue.Name = "widthValue";
-            widthValue.Size = new Size(120, 29);
-            widthValue.TabIndex = 13;
-            widthValue.Text = "25";
+            widthValue.Padding = new Padding(10, 7, 10, 7);
+            widthValue.PasswordChar = false;
+            widthValue.PlaceholderColor = Color.DarkGray;
+            widthValue.PlaceholderText = "";
+            widthValue.Size = new Size(120, 36);
+            widthValue.TabIndex = 4;
+            widthValue.Texts = "";
+            widthValue.UnderlinedStyle = false;
             // 
             // heightValue
             // 
-            heightValue.BackColor = Color.White;
+            heightValue.BackColor = SystemColors.Window;
+            heightValue.BorderColor = Color.FromArgb(145, 199, 136);
+            heightValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            heightValue.BorderRadius = 5;
+            heightValue.BorderSize = 2;
             heightValue.Enabled = false;
             heightValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            heightValue.Location = new Point(3, 150);
-            heightValue.Margin = new Padding(3, 4, 3, 3);
+            heightValue.ForeColor = Color.FromArgb(64, 64, 64);
+            heightValue.Location = new Point(4, 182);
+            heightValue.Margin = new Padding(4);
+            heightValue.Multiline = false;
             heightValue.Name = "heightValue";
-            heightValue.Size = new Size(120, 29);
-            heightValue.TabIndex = 14;
-            heightValue.Text = "68";
+            heightValue.Padding = new Padding(10, 7, 10, 7);
+            heightValue.PasswordChar = false;
+            heightValue.PlaceholderColor = Color.DarkGray;
+            heightValue.PlaceholderText = "";
+            heightValue.Size = new Size(120, 36);
+            heightValue.TabIndex = 5;
+            heightValue.Texts = "";
+            heightValue.UnderlinedStyle = false;
             // 
             // MoreDetails
             // 
@@ -703,7 +758,6 @@ namespace ProjectTesting
             panel3.PerformLayout();
             editPanel.ResumeLayout(false);
             flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -742,11 +796,6 @@ namespace ProjectTesting
         private Label heightLabel;
         private Label listLabel;
         private FlowLayoutPanel editPanel;
-        private TextBox cageValue;
-        private TextBox materialValue;
-        private TextBox lengthValue;
-        private TextBox widthValue;
-        private TextBox heightValue;
         private DateTimePicker datePicker;
         private RJControls.RJButton saveCageButton;
         private RJControls.RJButton editCageButton;
@@ -754,5 +803,10 @@ namespace ProjectTesting
         private RJControls.RJButton editBirdButton;
         private RJControls.RJButton addOffspringButton;
         private RJControls.RJCircularPictureBox myPic;
+        private RJControls.RJTextBox cageValue;
+        private RJControls.RJTextBox materialValue;
+        private RJControls.RJTextBox heightValue;
+        private RJControls.RJTextBox widthValue;
+        private RJControls.RJTextBox lengthValue;
     }
 }
