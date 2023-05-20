@@ -32,21 +32,21 @@ namespace ProjectTesting
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoreDetails));
             panel1 = new Panel();
-            idLabel = new TextBox();
+            momIdLabel = new RJControls.RJTextBox();
+            dadIdLabel = new RJControls.RJTextBox();
+            cageIdLabel = new RJControls.RJTextBox();
+            genderLabel = new RJControls.RJTextBox();
+            subTypeLabel = new RJControls.RJTextBox();
+            typeLabel = new RJControls.RJTextBox();
+            idLabel = new RJControls.RJTextBox();
             nameLabel = new Label();
-            momIdLabel = new TextBox();
             label5 = new Label();
-            typeLabel = new TextBox();
             label3 = new Label();
             label7 = new Label();
-            dadIdLabel = new TextBox();
             label6 = new Label();
             datePicker = new DateTimePicker();
             label2 = new Label();
-            genderLabel = new TextBox();
-            cageIdLabel = new TextBox();
             label4 = new Label();
-            subTypeLabel = new TextBox();
             label1 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
             saveBirdButton = new RJControls.RJButton();
@@ -92,92 +92,216 @@ namespace ProjectTesting
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(97, 135, 110);
+            panel1.Controls.Add(momIdLabel);
+            panel1.Controls.Add(dadIdLabel);
+            panel1.Controls.Add(cageIdLabel);
+            panel1.Controls.Add(genderLabel);
+            panel1.Controls.Add(subTypeLabel);
+            panel1.Controls.Add(typeLabel);
             panel1.Controls.Add(idLabel);
             panel1.Controls.Add(nameLabel);
-            panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(typeLabel);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label7);
-            panel1.Controls.Add(dadIdLabel);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(datePicker);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(genderLabel);
-            panel1.Controls.Add(cageIdLabel);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(subTypeLabel);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(30, 10);
+            panel1.Location = new Point(30, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(680, 190);
+            panel1.Size = new Size(680, 212);
             panel1.TabIndex = 16;
+            // 
+            // momIdLabel
+            // 
+            momIdLabel.BackColor = SystemColors.Window;
+            momIdLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            momIdLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            momIdLabel.BorderRadius = 5;
+            momIdLabel.BorderSize = 2;
+            momIdLabel.Enabled = false;
+            momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            momIdLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            momIdLabel.Location = new Point(504, 151);
+            momIdLabel.Margin = new Padding(4);
+            momIdLabel.Multiline = false;
+            momIdLabel.Name = "momIdLabel";
+            momIdLabel.Padding = new Padding(10, 7, 10, 7);
+            momIdLabel.PasswordChar = false;
+            momIdLabel.PlaceholderColor = Color.DarkGray;
+            momIdLabel.PlaceholderText = "";
+            momIdLabel.Size = new Size(138, 40);
+            momIdLabel.TabIndex = 44;
+            momIdLabel.Texts = "";
+            momIdLabel.UnderlinedStyle = false;
+            // 
+            // dadIdLabel
+            // 
+            dadIdLabel.BackColor = SystemColors.Window;
+            dadIdLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            dadIdLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            dadIdLabel.BorderRadius = 5;
+            dadIdLabel.BorderSize = 2;
+            dadIdLabel.Enabled = false;
+            dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dadIdLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            dadIdLabel.Location = new Point(504, 108);
+            dadIdLabel.Margin = new Padding(4);
+            dadIdLabel.Multiline = false;
+            dadIdLabel.Name = "dadIdLabel";
+            dadIdLabel.Padding = new Padding(10, 7, 10, 7);
+            dadIdLabel.PasswordChar = false;
+            dadIdLabel.PlaceholderColor = Color.DarkGray;
+            dadIdLabel.PlaceholderText = "";
+            dadIdLabel.Size = new Size(138, 40);
+            dadIdLabel.TabIndex = 43;
+            dadIdLabel.Texts = "";
+            dadIdLabel.UnderlinedStyle = false;
+            // 
+            // cageIdLabel
+            // 
+            cageIdLabel.BackColor = SystemColors.Window;
+            cageIdLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            cageIdLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            cageIdLabel.BorderRadius = 5;
+            cageIdLabel.BorderSize = 2;
+            cageIdLabel.Enabled = false;
+            cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cageIdLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            cageIdLabel.Location = new Point(504, 65);
+            cageIdLabel.Margin = new Padding(4);
+            cageIdLabel.Multiline = false;
+            cageIdLabel.Name = "cageIdLabel";
+            cageIdLabel.Padding = new Padding(10, 7, 10, 7);
+            cageIdLabel.PasswordChar = false;
+            cageIdLabel.PlaceholderColor = Color.DarkGray;
+            cageIdLabel.PlaceholderText = "";
+            cageIdLabel.Size = new Size(138, 40);
+            cageIdLabel.TabIndex = 42;
+            cageIdLabel.Texts = "";
+            cageIdLabel.UnderlinedStyle = false;
+            // 
+            // genderLabel
+            // 
+            genderLabel.BackColor = SystemColors.Window;
+            genderLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            genderLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            genderLabel.BorderRadius = 5;
+            genderLabel.BorderSize = 2;
+            genderLabel.Enabled = false;
+            genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            genderLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            genderLabel.Location = new Point(504, 22);
+            genderLabel.Margin = new Padding(4);
+            genderLabel.Multiline = false;
+            genderLabel.Name = "genderLabel";
+            genderLabel.Padding = new Padding(10, 7, 10, 7);
+            genderLabel.PasswordChar = false;
+            genderLabel.PlaceholderColor = Color.DarkGray;
+            genderLabel.PlaceholderText = "";
+            genderLabel.Size = new Size(138, 40);
+            genderLabel.TabIndex = 41;
+            genderLabel.Texts = "";
+            genderLabel.UnderlinedStyle = false;
+            // 
+            // subTypeLabel
+            // 
+            subTypeLabel.BackColor = SystemColors.Window;
+            subTypeLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            subTypeLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            subTypeLabel.BorderRadius = 5;
+            subTypeLabel.BorderSize = 2;
+            subTypeLabel.Enabled = false;
+            subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            subTypeLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            subTypeLabel.Location = new Point(169, 108);
+            subTypeLabel.Margin = new Padding(4);
+            subTypeLabel.Multiline = false;
+            subTypeLabel.Name = "subTypeLabel";
+            subTypeLabel.Padding = new Padding(10, 7, 10, 7);
+            subTypeLabel.PasswordChar = false;
+            subTypeLabel.PlaceholderColor = Color.DarkGray;
+            subTypeLabel.PlaceholderText = "";
+            subTypeLabel.Size = new Size(188, 40);
+            subTypeLabel.TabIndex = 40;
+            subTypeLabel.Texts = "";
+            subTypeLabel.UnderlinedStyle = false;
+            // 
+            // typeLabel
+            // 
+            typeLabel.BackColor = SystemColors.Window;
+            typeLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            typeLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            typeLabel.BorderRadius = 5;
+            typeLabel.BorderSize = 2;
+            typeLabel.Enabled = false;
+            typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            typeLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            typeLabel.Location = new Point(169, 65);
+            typeLabel.Margin = new Padding(4);
+            typeLabel.Multiline = false;
+            typeLabel.Name = "typeLabel";
+            typeLabel.Padding = new Padding(10, 7, 10, 7);
+            typeLabel.PasswordChar = false;
+            typeLabel.PlaceholderColor = Color.DarkGray;
+            typeLabel.PlaceholderText = "";
+            typeLabel.Size = new Size(188, 40);
+            typeLabel.TabIndex = 39;
+            typeLabel.Texts = "";
+            typeLabel.UnderlinedStyle = false;
             // 
             // idLabel
             // 
-            idLabel.BackColor = Color.White;
+            idLabel.BackColor = SystemColors.Window;
+            idLabel.BorderColor = Color.FromArgb(145, 199, 136);
+            idLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            idLabel.BorderRadius = 5;
+            idLabel.BorderSize = 2;
             idLabel.Enabled = false;
             idLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            idLabel.ForeColor = SystemColors.WindowText;
-            idLabel.Location = new Point(171, 17);
+            idLabel.ForeColor = Color.FromArgb(64, 64, 64);
+            idLabel.Location = new Point(169, 22);
+            idLabel.Margin = new Padding(4);
+            idLabel.Multiline = false;
             idLabel.Name = "idLabel";
-            idLabel.PlaceholderText = "John";
-            idLabel.ReadOnly = true;
-            idLabel.Size = new Size(188, 33);
-            idLabel.TabIndex = 28;
+            idLabel.Padding = new Padding(10, 7, 10, 7);
+            idLabel.PasswordChar = false;
+            idLabel.PlaceholderColor = Color.DarkGray;
+            idLabel.PlaceholderText = "";
+            idLabel.Size = new Size(188, 40);
+            idLabel.TabIndex = 31;
+            idLabel.Texts = "";
+            idLabel.UnderlinedStyle = false;
             // 
             // nameLabel
             // 
             nameLabel.Anchor = AnchorStyles.Right;
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            nameLabel.Location = new Point(128, 20);
+            nameLabel.Location = new Point(128, 31);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(40, 25);
             nameLabel.TabIndex = 6;
             nameLabel.Text = "Id: ";
-            // 
-            // momIdLabel
-            // 
-            momIdLabel.BackColor = Color.White;
-            momIdLabel.Enabled = false;
-            momIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            momIdLabel.Location = new Point(509, 138);
-            momIdLabel.Name = "momIdLabel";
-            momIdLabel.PlaceholderText = "John";
-            momIdLabel.ReadOnly = true;
-            momIdLabel.Size = new Size(135, 33);
-            momIdLabel.TabIndex = 35;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(409, 101);
+            label5.Location = new Point(409, 117);
             label5.Name = "label5";
             label5.Size = new Size(94, 25);
             label5.TabIndex = 12;
             label5.Text = "Dad's Id: ";
-            // 
-            // typeLabel
-            // 
-            typeLabel.BackColor = Color.White;
-            typeLabel.Enabled = false;
-            typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            typeLabel.Location = new Point(171, 57);
-            typeLabel.Name = "typeLabel";
-            typeLabel.PlaceholderText = "John";
-            typeLabel.ReadOnly = true;
-            typeLabel.Size = new Size(188, 33);
-            typeLabel.TabIndex = 29;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(58, 101);
+            label3.Location = new Point(61, 117);
             label3.Name = "label3";
             label3.Size = new Size(107, 25);
             label3.TabIndex = 8;
@@ -187,30 +311,18 @@ namespace ProjectTesting
             // 
             label7.Anchor = AnchorStyles.Right;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(414, 20);
+            label7.Location = new Point(415, 31);
             label7.Name = "label7";
             label7.Size = new Size(89, 25);
             label7.TabIndex = 10;
             label7.Text = "Gender: ";
-            // 
-            // dadIdLabel
-            // 
-            dadIdLabel.BackColor = Color.White;
-            dadIdLabel.Enabled = false;
-            dadIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dadIdLabel.Location = new Point(509, 98);
-            dadIdLabel.Name = "dadIdLabel";
-            dadIdLabel.PlaceholderText = "John";
-            dadIdLabel.ReadOnly = true;
-            dadIdLabel.Size = new Size(135, 33);
-            dadIdLabel.TabIndex = 34;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(414, 60);
+            label6.Location = new Point(414, 74);
             label6.Name = "label6";
             label6.Size = new Size(89, 25);
             label6.TabIndex = 11;
@@ -222,75 +334,39 @@ namespace ProjectTesting
             datePicker.Enabled = false;
             datePicker.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             datePicker.Format = DateTimePickerFormat.Custom;
-            datePicker.Location = new Point(169, 136);
+            datePicker.Location = new Point(169, 152);
             datePicker.Margin = new Padding(1);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(190, 33);
+            datePicker.Size = new Size(188, 33);
             datePicker.TabIndex = 38;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(29, 141);
+            label2.Location = new Point(32, 156);
             label2.Name = "label2";
             label2.Size = new Size(136, 25);
             label2.TabIndex = 9;
             label2.Text = "Date of Birth: ";
-            // 
-            // genderLabel
-            // 
-            genderLabel.BackColor = Color.White;
-            genderLabel.Enabled = false;
-            genderLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            genderLabel.Location = new Point(509, 17);
-            genderLabel.Name = "genderLabel";
-            genderLabel.PlaceholderText = "John";
-            genderLabel.ReadOnly = true;
-            genderLabel.Size = new Size(135, 33);
-            genderLabel.TabIndex = 32;
-            // 
-            // cageIdLabel
-            // 
-            cageIdLabel.BackColor = Color.White;
-            cageIdLabel.Enabled = false;
-            cageIdLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cageIdLabel.Location = new Point(509, 57);
-            cageIdLabel.Name = "cageIdLabel";
-            cageIdLabel.PlaceholderText = "John";
-            cageIdLabel.ReadOnly = true;
-            cageIdLabel.Size = new Size(135, 33);
-            cageIdLabel.TabIndex = 33;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(398, 141);
+            label4.Location = new Point(398, 160);
             label4.Name = "label4";
             label4.Size = new Size(105, 25);
             label4.TabIndex = 13;
             label4.Text = "Mom's Id: ";
-            // 
-            // subTypeLabel
-            // 
-            subTypeLabel.BackColor = Color.White;
-            subTypeLabel.Enabled = false;
-            subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            subTypeLabel.Location = new Point(171, 97);
-            subTypeLabel.Name = "subTypeLabel";
-            subTypeLabel.PlaceholderText = "John";
-            subTypeLabel.ReadOnly = true;
-            subTypeLabel.Size = new Size(188, 33);
-            subTypeLabel.TabIndex = 31;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(101, 60);
+            label1.Location = new Point(104, 74);
             label1.Name = "label1";
             label1.Size = new Size(64, 25);
             label1.TabIndex = 7;
@@ -301,7 +377,7 @@ namespace ProjectTesting
             flowLayoutPanel2.Controls.Add(saveBirdButton);
             flowLayoutPanel2.Controls.Add(editBirdButton);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(631, 153);
+            flowLayoutPanel2.Location = new Point(631, 164);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(80, 95);
             flowLayoutPanel2.TabIndex = 30;
@@ -384,7 +460,7 @@ namespace ProjectTesting
             offspringsPanel.Controls.Add(addOffspringButton);
             offspringsPanel.Controls.Add(offspringList);
             offspringsPanel.Controls.Add(label8);
-            offspringsPanel.Location = new Point(27, 263);
+            offspringsPanel.Location = new Point(27, 279);
             offspringsPanel.Name = "offspringsPanel";
             offspringsPanel.Size = new Size(705, 267);
             offspringsPanel.TabIndex = 26;
@@ -414,7 +490,7 @@ namespace ProjectTesting
             // 
             fledglingLabel.AutoSize = true;
             fledglingLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            fledglingLabel.Location = new Point(284, 246);
+            fledglingLabel.Location = new Point(284, 262);
             fledglingLabel.Name = "fledglingLabel";
             fledglingLabel.Size = new Size(181, 25);
             fledglingLabel.TabIndex = 27;
@@ -428,9 +504,9 @@ namespace ProjectTesting
             birdPanel.Controls.Add(myPic);
             birdPanel.Controls.Add(mainPic);
             birdPanel.Controls.Add(flowLayoutPanel2);
-            birdPanel.Location = new Point(15, 33);
+            birdPanel.Location = new Point(15, 22);
             birdPanel.Name = "birdPanel";
-            birdPanel.Size = new Size(1233, 575);
+            birdPanel.Size = new Size(1233, 586);
             birdPanel.TabIndex = 28;
             // 
             // myPic
@@ -442,7 +518,7 @@ namespace ProjectTesting
             myPic.BorderSize = 6;
             myPic.GradientAngle = 20F;
             myPic.Image = (Image)resources.GetObject("myPic.Image");
-            myPic.Location = new Point(755, 27);
+            myPic.Location = new Point(755, 45);
             myPic.Name = "myPic";
             myPic.Size = new Size(475, 475);
             myPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -454,7 +530,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(10, 17);
+            cagePanel.Location = new Point(7, 14);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1242, 581);
@@ -776,14 +852,7 @@ namespace ProjectTesting
         private ListBox offspringList;
         public Panel offspringsPanel;
         public Label fledglingLabel;
-        private TextBox idLabel;
         private FlowLayoutPanel flowLayoutPanel2;
-        private TextBox momIdLabel;
-        private TextBox dadIdLabel;
-        private TextBox cageIdLabel;
-        private TextBox genderLabel;
-        private TextBox subTypeLabel;
-        private TextBox typeLabel;
         private Panel birdPanel;
         private Panel cagePanel;
         private ListBox birdList;
@@ -808,5 +877,12 @@ namespace ProjectTesting
         private RJControls.RJTextBox heightValue;
         private RJControls.RJTextBox widthValue;
         private RJControls.RJTextBox lengthValue;
+        private RJControls.RJTextBox idLabel;
+        private RJControls.RJTextBox typeLabel;
+        private RJControls.RJTextBox subTypeLabel;
+        private RJControls.RJTextBox genderLabel;
+        private RJControls.RJTextBox cageIdLabel;
+        private RJControls.RJTextBox dadIdLabel;
+        private RJControls.RJTextBox momIdLabel;
     }
 }

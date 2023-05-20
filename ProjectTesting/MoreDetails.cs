@@ -54,16 +54,16 @@ namespace ProjectTesting
                 List<Bird> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
                 infoFromDatabaseBird = birdInfo[0];//save the bird for later use
                 //initializing the fields
-                idLabel.Text = birdInfo[0].Id;
-                typeLabel.Text = birdInfo[0].Type;
-                subTypeLabel.Text = birdInfo[0].SubType;
+                idLabel.Texts = birdInfo[0].Id;
+                typeLabel.Texts = birdInfo[0].Type;
+                subTypeLabel.Texts = birdInfo[0].SubType;
                 string[] date = birdInfo[0].DateOfBirth.Split("/");
                 int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
                 datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
-                genderLabel.Text = birdInfo[0].Gender;
-                cageIdLabel.Text = birdInfo[0].CageId;
-                dadIdLabel.Text = birdInfo[0].DadId;
-                momIdLabel.Text = birdInfo[0].MomId;
+                genderLabel.Texts = birdInfo[0].Gender;
+                cageIdLabel.Texts = birdInfo[0].CageId;
+                dadIdLabel.Texts = birdInfo[0].DadId;
+                momIdLabel.Texts = birdInfo[0].MomId;
                 //checks if offspring, if not we show a list of offsprings
                 if (birdInfo[0].isOffspring)
                 {
@@ -107,13 +107,13 @@ namespace ProjectTesting
 
         private void cleanLabels()
         {
-            idLabel.Text = "";
-            typeLabel.Text = "";
-            subTypeLabel.Text = "";
-            genderLabel.Text = "";
-            cageIdLabel.Text = "";
-            dadIdLabel.Text = "";
-            momIdLabel.Text = "";
+            idLabel.Texts = "";
+            typeLabel.Texts = "";
+            subTypeLabel.Texts = "";
+            genderLabel.Texts = "";
+            cageIdLabel.Texts = "";
+            dadIdLabel.Texts = "";
+            momIdLabel.Texts = "";
 
             cageValue.Texts = "";
             lengthValue.Texts = "";
@@ -127,7 +127,7 @@ namespace ProjectTesting
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
             ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly(
-                typeLabel.Text, subTypeLabel.Text, cageIdLabel.Text, genderLabel.Text, idLabel.Text
+                typeLabel.Texts, subTypeLabel.Texts, cageIdLabel.Texts, genderLabel.Texts, idLabel.Texts
             );
 
             ((MainWindow)this.Parent.Parent).addBird1.Show();
@@ -140,14 +140,14 @@ namespace ProjectTesting
             Bird newBird = new Bird(infoFromDatabaseBird);
 
             string[] temp = new string[] {
-                idLabel.Text.ToString(),
-                typeLabel.Text.ToString(),
-                subTypeLabel.Text.ToString(),
+                idLabel.Texts.ToString(),
+                typeLabel.Texts.ToString(),
+                subTypeLabel.Texts.ToString(),
                 datePicker.Text.ToString(),
-                genderLabel.Text.ToString(),
-                cageIdLabel.Text.ToString(),
-                dadIdLabel.Text.ToString(),
-                momIdLabel.Text.ToString()
+                genderLabel.Texts.ToString(),
+                cageIdLabel.Texts.ToString(),
+                dadIdLabel.Texts.ToString(),
+                momIdLabel.Texts.ToString()
             };
             newBird.EditFields(temp);
 
@@ -177,11 +177,11 @@ namespace ProjectTesting
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
-            idLabel.ReadOnly = false;
+            ////idLabel.ReadOnly = false;
             datePicker.Enabled = true;
-            cageIdLabel.ReadOnly = false;
-            dadIdLabel.ReadOnly = false;
-            momIdLabel.ReadOnly = false;
+            //cageIdLabel.ReadOnly = false;
+            //dadIdLabel.ReadOnly = false;
+            //momIdLabel.ReadOnly = false;
 
             idLabel.Enabled = true;
             cageIdLabel.Enabled = true;
@@ -191,9 +191,9 @@ namespace ProjectTesting
             List<Bird> bird = MainWindow.HashTable.SearchBirdHashtable(infoFromDatabaseBird.Id); //search bird id in hashtable
             if (bird[0].isOffspring == false && bird[0].OffspringList.Count == 0)
             { //checking if the bird is adult and has no offsprings then we can edit these fields
-                typeLabel.ReadOnly = false;
-                subTypeLabel.ReadOnly = false;
-                genderLabel.ReadOnly = false;
+                //typeLabel.ReadOnly = false;
+                //subTypeLabel.ReadOnly = false;
+                //genderLabel.ReadOnly = false;
 
                 typeLabel.Enabled = true;
                 subTypeLabel.Enabled = true;
@@ -202,23 +202,23 @@ namespace ProjectTesting
 
             if (infoFromDatabaseBird.OffspringList.Count > 0 || infoFromDatabaseBird.isOffspring)
             {
-                cageIdLabel.ReadOnly = true;
+                //cageIdLabel.ReadOnly = true;
                 cageIdLabel.Enabled = false;
             }
         }
 
         private void restorInfo()
         {
-            idLabel.Text = infoFromDatabaseBird.Id;
-            typeLabel.Text = infoFromDatabaseBird.Type;
-            subTypeLabel.Text = infoFromDatabaseBird.SubType;
+            idLabel.Texts = infoFromDatabaseBird.Id;
+            typeLabel.Texts = infoFromDatabaseBird.Type;
+            subTypeLabel.Texts = infoFromDatabaseBird.SubType;
             string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
             int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
             datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
-            genderLabel.Text = infoFromDatabaseBird.Gender;
-            cageIdLabel.Text = infoFromDatabaseBird.CageId;
-            dadIdLabel.Text = infoFromDatabaseBird.DadId;
-            momIdLabel.Text = infoFromDatabaseBird.MomId;
+            genderLabel.Texts = infoFromDatabaseBird.Gender;
+            cageIdLabel.Texts = infoFromDatabaseBird.CageId;
+            dadIdLabel.Texts = infoFromDatabaseBird.DadId;
+            momIdLabel.Texts = infoFromDatabaseBird.MomId;
         }
 
         private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
@@ -316,13 +316,13 @@ namespace ProjectTesting
             editBirdButton.Show();
             saveBirdButton.Hide();
 
-            idLabel.ReadOnly = true;
-            typeLabel.ReadOnly = true;
-            subTypeLabel.ReadOnly = true;
-            genderLabel.ReadOnly = true;
-            cageIdLabel.ReadOnly = true;
-            dadIdLabel.ReadOnly = true;
-            momIdLabel.ReadOnly = true;
+            //idLabel.ReadOnly = true;
+            //typeLabel.ReadOnly = true;
+            //subTypeLabel.ReadOnly = true;
+            //genderLabel.ReadOnly = true;
+            //cageIdLabel.ReadOnly = true;
+            //dadIdLabel.ReadOnly = true;
+            //momIdLabel.ReadOnly = true;
 
             idLabel.Enabled = false;
             typeLabel.Enabled = false;
