@@ -190,11 +190,11 @@ namespace ProjectTesting
         {
             Cage newCage = new Cage(infoFromDatabaseCage);
             string[] temp = new string[] {
-                cageValue.Texts.ToString(),
-                lengthValue.Texts.ToString(),
-                widthValue.Texts.ToString(),
-                heightValue.Texts.ToString(),
-                materialValue.Texts.ToString()
+                cageValue.Texts,
+                lengthValue.Texts,
+                widthValue.Texts,
+                heightValue.Texts,
+                materialValue.Texts
             };
             newCage.EditFields(temp);
 
