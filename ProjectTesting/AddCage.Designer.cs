@@ -31,7 +31,6 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             label9 = new Label();
             panel1 = new Panel();
-            materialBox = new RJControls.RJTextBox();
             label7 = new Label();
             heightBox = new RJControls.RJTextBox();
             label1 = new Label();
@@ -46,6 +45,7 @@
             cancelButton = new RJControls.RJButton();
             panel2 = new Panel();
             panel3 = new Panel();
+            materialBox = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -86,33 +86,11 @@
             panel1.Size = new Size(365, 276);
             panel1.TabIndex = 0;
             // 
-            // materialBox
-            // 
-            materialBox.BackColor = SystemColors.Window;
-            materialBox.BorderColor = Color.FromArgb(145, 199, 136);
-            materialBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            materialBox.BorderRadius = 5;
-            materialBox.BorderSize = 2;
-            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            materialBox.ForeColor = Color.FromArgb(64, 64, 64);
-            materialBox.Location = new Point(91, 217);
-            materialBox.Margin = new Padding(4);
-            materialBox.Multiline = false;
-            materialBox.Name = "materialBox";
-            materialBox.Padding = new Padding(10, 7, 10, 7);
-            materialBox.PasswordChar = false;
-            materialBox.PlaceholderColor = Color.DarkGray;
-            materialBox.PlaceholderText = "";
-            materialBox.Size = new Size(250, 40);
-            materialBox.TabIndex = 13;
-            materialBox.Texts = "";
-            materialBox.UnderlinedStyle = false;
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(2, 226);
+            label7.Location = new Point(2, 223);
             label7.Name = "label7";
             label7.Size = new Size(90, 25);
             label7.TabIndex = 18;
@@ -319,6 +297,16 @@
             panel3.Size = new Size(450, 424);
             panel3.TabIndex = 9;
             // 
+            // materialBox
+            // 
+            materialBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            materialBox.FormattingEnabled = true;
+            materialBox.Location = new Point(91, 219);
+            materialBox.Name = "materialBox";
+            materialBox.Size = new Size(250, 33);
+            materialBox.TabIndex = 10;
+            // 
             // AddCage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -351,11 +339,11 @@
         public RJControls.RJButton addButton;
         private RJControls.RJButton cancelButton;
         public Panel panel2;
-        private RJControls.RJTextBox materialBox;
         private RJControls.RJTextBox heightBox;
         private RJControls.RJTextBox widthBox;
         private RJControls.RJTextBox lengthBox;
         private RJControls.RJTextBox idBox;
         public Panel panel3;
+        private ComboBox materialBox;
     }
 }

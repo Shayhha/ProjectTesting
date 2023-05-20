@@ -32,6 +32,14 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        public void setTypeCombobox()
+        {
+            string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
+            materialBox.Items.Clear();
+            materialBox.Items.AddRange(typeOptions);
+            materialBox.SelectedItem = "WOOD";
+        }
+
         /// <summary>
         /// Getting all of the information that the user has enters into the textboxes on the screen.
         /// Creates a Cage object and give the constructor all of the data from the text box.
@@ -45,7 +53,7 @@ namespace ProjectTesting
                 lengthBox.Texts.ToString(),
                 widthBox.Texts.ToString(),
                 heightBox.Texts.ToString(),
-                materialBox.Texts.ToString()
+                materialBox.Text.ToString()
             });
 
             return cageInfo;
@@ -261,7 +269,7 @@ namespace ProjectTesting
             lengthBox.Texts = "";
             widthBox.Texts = "";
             heightBox.Texts = "";
-            materialBox.Texts = "";
+            //materialBox.Texts = "";
         }
 
         /// <summary>

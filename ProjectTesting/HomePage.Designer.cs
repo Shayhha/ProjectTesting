@@ -72,7 +72,7 @@
             // 
             searchBySwitch.Cursor = Cursors.Hand;
             searchBySwitch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            searchBySwitch.Location = new Point(443, 107);
+            searchBySwitch.Location = new Point(551, 109);
             searchBySwitch.MinimumSize = new Size(45, 22);
             searchBySwitch.Name = "searchBySwitch";
             searchBySwitch.OffBackColor = Color.FromArgb(153, 169, 143);
@@ -95,7 +95,7 @@
             Search_button.FlatStyle = FlatStyle.Flat;
             Search_button.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
             Search_button.ForeColor = Color.Black;
-            Search_button.Location = new Point(767, 65);
+            Search_button.Location = new Point(781, 68);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(105, 33);
             Search_button.TabIndex = 41;
@@ -107,7 +107,7 @@
             // Search_textbox
             // 
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(384, 65);
+            Search_textbox.Location = new Point(398, 68);
             Search_textbox.Name = "Search_textbox";
             Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
@@ -118,7 +118,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(504, 106);
+            label1.Location = new Point(612, 108);
             label1.Name = "label1";
             label1.Size = new Size(63, 25);
             label1.TabIndex = 48;
@@ -128,7 +128,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(384, 106);
+            label2.Location = new Point(492, 108);
             label2.Name = "label2";
             label2.Size = new Size(54, 25);
             label2.TabIndex = 49;

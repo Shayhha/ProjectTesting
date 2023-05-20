@@ -48,7 +48,7 @@
             birdList.Items.AddRange(new object[] { "Bird Id: 93754 , Type: Something , Gender: Male , Cage id: 991A13 | click for more details", "Bird Id: 72721 , Type: Australian Gouldian, Gender: Female , Cage id: BE318R | click for more details" });
             birdList.Location = new Point(25, 187);
             birdList.Name = "birdList";
-            birdList.Size = new Size(1215, 356);
+            birdList.Size = new Size(1215, 388);
             birdList.TabIndex = 0;
             birdList.SelectedIndexChanged += birdList_SelectedIndexChanged;
             // 
@@ -61,7 +61,7 @@
             tempListBox.ItemHeight = 32;
             tempListBox.Location = new Point(25, 187);
             tempListBox.Name = "tempListBox";
-            tempListBox.Size = new Size(1215, 356);
+            tempListBox.Size = new Size(1215, 388);
             tempListBox.TabIndex = 15;
             // 
             // Search_button
@@ -76,7 +76,7 @@
             Search_button.FlatStyle = FlatStyle.Flat;
             Search_button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             Search_button.ForeColor = Color.Black;
-            Search_button.Location = new Point(768, 41);
+            Search_button.Location = new Point(781, 68);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(105, 33);
             Search_button.TabIndex = 43;
@@ -88,7 +88,7 @@
             // Search_textbox
             // 
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Search_textbox.Location = new Point(385, 41);
+            Search_textbox.Location = new Point(398, 68);
             Search_textbox.Name = "Search_textbox";
             Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
@@ -99,7 +99,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(385, 82);
+            label2.Location = new Point(492, 108);
             label2.Name = "label2";
             label2.Size = new Size(54, 25);
             label2.TabIndex = 52;
@@ -109,7 +109,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(505, 82);
+            label1.Location = new Point(612, 108);
             label1.Name = "label1";
             label1.Size = new Size(63, 25);
             label1.TabIndex = 51;
@@ -119,7 +119,7 @@
             // 
             searchBySwitch.Cursor = Cursors.Hand;
             searchBySwitch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            searchBySwitch.Location = new Point(444, 83);
+            searchBySwitch.Location = new Point(551, 109);
             searchBySwitch.MinimumSize = new Size(45, 22);
             searchBySwitch.Name = "searchBySwitch";
             searchBySwitch.OffBackColor = Color.FromArgb(153, 169, 143);

@@ -159,6 +159,7 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
             ((MainWindow)this.Parent.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
             ((MainWindow)this.Parent.Parent).addCage1.Show();
+            ((MainWindow)this.Parent.Parent).addCage1.setTypeCombobox();
             this.Hide();
         }
 

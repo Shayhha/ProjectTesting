@@ -73,10 +73,10 @@ namespace ProjectTesting
             editCageButton = new RJControls.RJButton();
             flowLayoutPanel5 = new FlowLayoutPanel();
             cageValue = new RJControls.RJTextBox();
-            materialValue = new RJControls.RJTextBox();
             lengthValue = new RJControls.RJTextBox();
             widthValue = new RJControls.RJTextBox();
             heightValue = new RJControls.RJTextBox();
+            materialValue = new ComboBox();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
@@ -507,7 +507,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(9, 16);
+            cagePanel.Location = new Point(6, 13);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1242, 581);
@@ -540,8 +540,8 @@ namespace ProjectTesting
             panel3.BackColor = Color.FromArgb(97, 135, 110);
             panel3.Controls.Add(heightLabel);
             panel3.Controls.Add(widthLabel);
-            panel3.Controls.Add(lengthLabel);
             panel3.Controls.Add(materialLabel);
+            panel3.Controls.Add(lengthLabel);
             panel3.Controls.Add(cageLabel);
             panel3.Controls.Add(editPanel);
             panel3.Controls.Add(flowLayoutPanel5);
@@ -554,7 +554,7 @@ namespace ProjectTesting
             // 
             heightLabel.AutoSize = true;
             heightLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            heightLabel.Location = new Point(31, 187);
+            heightLabel.Location = new Point(31, 143);
             heightLabel.Name = "heightLabel";
             heightLabel.Padding = new Padding(0, 4, 0, 0);
             heightLabel.Size = new Size(75, 29);
@@ -565,7 +565,7 @@ namespace ProjectTesting
             // 
             widthLabel.AutoSize = true;
             widthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            widthLabel.Location = new Point(37, 143);
+            widthLabel.Location = new Point(37, 99);
             widthLabel.Name = "widthLabel";
             widthLabel.Padding = new Padding(0, 4, 0, 0);
             widthLabel.Size = new Size(69, 29);
@@ -576,7 +576,7 @@ namespace ProjectTesting
             // 
             lengthLabel.AutoSize = true;
             lengthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lengthLabel.Location = new Point(30, 99);
+            lengthLabel.Location = new Point(30, 55);
             lengthLabel.Name = "lengthLabel";
             lengthLabel.Padding = new Padding(0, 4, 0, 0);
             lengthLabel.Size = new Size(76, 29);
@@ -587,7 +587,7 @@ namespace ProjectTesting
             // 
             materialLabel.AutoSize = true;
             materialLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            materialLabel.Location = new Point(17, 55);
+            materialLabel.Location = new Point(17, 184);
             materialLabel.Name = "materialLabel";
             materialLabel.Padding = new Padding(0, 4, 0, 0);
             materialLabel.Size = new Size(89, 29);
@@ -661,10 +661,10 @@ namespace ProjectTesting
             // flowLayoutPanel5
             // 
             flowLayoutPanel5.Controls.Add(cageValue);
-            flowLayoutPanel5.Controls.Add(materialValue);
             flowLayoutPanel5.Controls.Add(lengthValue);
             flowLayoutPanel5.Controls.Add(widthValue);
             flowLayoutPanel5.Controls.Add(heightValue);
+            flowLayoutPanel5.Controls.Add(materialValue);
             flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel5.Location = new Point(109, 1);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
@@ -695,29 +695,6 @@ namespace ProjectTesting
             cageValue.Texts = "";
             cageValue.UnderlinedStyle = false;
             // 
-            // materialValue
-            // 
-            materialValue.BackColor = SystemColors.Window;
-            materialValue.BorderColor = Color.FromArgb(145, 199, 136);
-            materialValue.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            materialValue.BorderRadius = 5;
-            materialValue.BorderSize = 2;
-            materialValue.Enabled = false;
-            materialValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            materialValue.ForeColor = Color.FromArgb(64, 64, 64);
-            materialValue.Location = new Point(4, 50);
-            materialValue.Margin = new Padding(4);
-            materialValue.Multiline = false;
-            materialValue.Name = "materialValue";
-            materialValue.Padding = new Padding(10, 7, 10, 7);
-            materialValue.PasswordChar = false;
-            materialValue.PlaceholderColor = Color.DarkGray;
-            materialValue.PlaceholderText = "";
-            materialValue.Size = new Size(120, 36);
-            materialValue.TabIndex = 2;
-            materialValue.Texts = "";
-            materialValue.UnderlinedStyle = false;
-            // 
             // lengthValue
             // 
             lengthValue.BackColor = SystemColors.Window;
@@ -728,7 +705,7 @@ namespace ProjectTesting
             lengthValue.Enabled = false;
             lengthValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lengthValue.ForeColor = Color.FromArgb(64, 64, 64);
-            lengthValue.Location = new Point(4, 94);
+            lengthValue.Location = new Point(4, 50);
             lengthValue.Margin = new Padding(4);
             lengthValue.Multiline = false;
             lengthValue.Name = "lengthValue";
@@ -751,7 +728,7 @@ namespace ProjectTesting
             widthValue.Enabled = false;
             widthValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             widthValue.ForeColor = Color.FromArgb(64, 64, 64);
-            widthValue.Location = new Point(4, 138);
+            widthValue.Location = new Point(4, 94);
             widthValue.Margin = new Padding(4);
             widthValue.Multiline = false;
             widthValue.Name = "widthValue";
@@ -774,7 +751,7 @@ namespace ProjectTesting
             heightValue.Enabled = false;
             heightValue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             heightValue.ForeColor = Color.FromArgb(64, 64, 64);
-            heightValue.Location = new Point(4, 182);
+            heightValue.Location = new Point(4, 138);
             heightValue.Margin = new Padding(4);
             heightValue.Multiline = false;
             heightValue.Name = "heightValue";
@@ -786,6 +763,18 @@ namespace ProjectTesting
             heightValue.TabIndex = 5;
             heightValue.Texts = "";
             heightValue.UnderlinedStyle = false;
+            // 
+            // materialValue
+            // 
+            materialValue.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialValue.Enabled = false;
+            materialValue.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            materialValue.FormattingEnabled = true;
+            materialValue.Location = new Point(5, 181);
+            materialValue.Margin = new Padding(5, 3, 3, 3);
+            materialValue.Name = "materialValue";
+            materialValue.Size = new Size(119, 33);
+            materialValue.TabIndex = 4;
             // 
             // MoreDetails
             // 
@@ -850,7 +839,6 @@ namespace ProjectTesting
         private RJControls.RJButton addOffspringButton;
         private RJControls.RJCircularPictureBox myPic;
         private RJControls.RJTextBox cageValue;
-        private RJControls.RJTextBox materialValue;
         private RJControls.RJTextBox heightValue;
         private RJControls.RJTextBox widthValue;
         private RJControls.RJTextBox lengthValue;
@@ -861,5 +849,6 @@ namespace ProjectTesting
         private RJControls.RJTextBox momIdLabel;
         private ComboBox typeLabel;
         private ComboBox subTypeLabel;
+        private ComboBox materialValue;
     }
 }

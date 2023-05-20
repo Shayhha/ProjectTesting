@@ -27,6 +27,14 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        public void setCageTypeCombobox()
+        {
+            string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
+            materialValue.Items.Clear();
+            materialValue.Items.AddRange(typeOptions);
+            materialValue.SelectedItem = "WOOD";
+        }
+
         public void setImages()
         {
             this.mainPic.Image = getRandomImage();
@@ -115,6 +123,7 @@ namespace ProjectTesting
             }
             else if (birdOrCage.Equals("cage")) //else we initialize cage's info
             {
+                setCageTypeCombobox();
                 cagePanel.Visible = true;
                 List<Cage> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
                 infoFromDatabaseCage = cageInfo[0]; //saving cage for later use
@@ -124,7 +133,7 @@ namespace ProjectTesting
                 lengthValue.Texts = cageInfo[0].Length;
                 widthValue.Texts = cageInfo[0].Width;
                 heightValue.Texts = cageInfo[0].Height;
-                materialValue.Texts = cageInfo[0].Material;
+                materialValue.SelectedItem = cageInfo[0].Material;
 
                 foreach (Bird bird in cageInfo[0].BirdList) //adding birds to list 
                 {
@@ -149,7 +158,7 @@ namespace ProjectTesting
             lengthValue.Texts = "";
             widthValue.Texts = "";
             heightValue.Texts = "";
-            materialValue.Texts = "";
+            //materialValue.Texts = "";
             birdList.Items.Clear();
             offspringList.Items.Clear();
         }
@@ -196,7 +205,7 @@ namespace ProjectTesting
                 lengthValue.Texts,
                 widthValue.Texts,
                 heightValue.Texts,
-                materialValue.Texts
+                materialValue.SelectedItem.ToString()
             };
             newCage.EditFields(temp);
 
@@ -341,7 +350,7 @@ namespace ProjectTesting
                 lengthValue.Texts = infoFromDatabaseCage.Length;
                 widthValue.Texts = infoFromDatabaseCage.Width;
                 heightValue.Texts = infoFromDatabaseCage.Height;
-                materialValue.Texts = infoFromDatabaseCage.Material;
+                materialValue.SelectedItem = infoFromDatabaseCage.Material;
             }
         }
 
