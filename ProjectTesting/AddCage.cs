@@ -63,7 +63,7 @@ namespace ProjectTesting
         /// <param name="edited">A boolean parameter that tells the function wheter or not the cage we want to add is a new cage or an existing cage.
         /// edited = true -> means that the cage we want to add already exists in the database.</param>
         /// <returns>true if the cage has correct parameters and was successfuly added to the database, false otherwise</returns>
-        public bool getInfoFromUser(Cage cage, bool edited = false, string oldCageId = "")
+        public bool getInfoFromUser(Cage cage, bool edited = false, string oldCageId = "", string oldCageMaterial = "")
         {
             // Variables:
             string[] cageInfo = cage.ToStringArray(); //convert the given cage into a string array
@@ -183,16 +183,24 @@ namespace ProjectTesting
                         }
                     }
                 }
-
-                // adding the cage to the database
+              
+                // edit cage in database
                 LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo);
 
                 // updating the cage in the hashtable, currentCage[0] is the cage we are editing, we search for it in the code above
                 currentCage[0].EditFields(cageInfo);
-                if (cageInfo[0] != oldCageId) //if we changed id of cage we need to remove old hash code and add new id with new hash code
+                if (!(cageInfo[0].Equals(oldCageId))) //if we changed id of cage we need to remove old hash code and add new id with new hash code
                 {
                     MainWindow.HashTable.RemoveCageFromHashtable(oldCageId); //remove old cage id from cage hashtable
                     MainWindow.HashTable.AddCageIdToHashtable(currentCage[0], oldCageId); //adds the cage id back to cage hashtable
+                }
+                if (!(cageInfo[4].Equals(oldCageMaterial))) //if we changed material we need to update the cage hashtable
+                {
+                    List<Cage> oldCageMaterialList = MainWindow.HashTable.SearchCageHashtable(oldCageMaterial); //search old material cage list
+                    oldCageMaterialList.RemoveAll(cage => cage.Id == currentCage[0].Id); //remove the cage from old material list in cage 
+                    List<Cage> newCageMaterialList = MainWindow.HashTable.SearchCageHashtable(currentCage[0].Material); //search new material cage list
+                    MainWindow.HashTable.AddCageMaterialToHashtable(currentCage[0]); //add cage to new list
+                    newCageMaterialList.Sort((cage1, cage2) => cage1.Id.CompareTo(cage2.Id)); //sort list
                 }
             }
 

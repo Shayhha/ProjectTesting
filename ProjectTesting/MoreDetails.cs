@@ -322,7 +322,7 @@ namespace ProjectTesting
             string[] cleanUp = new string[9];
             for (int i = 0; i < 9; i++) { cleanUp[i] = ""; }
 
-            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true, infoFromDatabaseCage.Id) == true)
+            if (((MainWindow)this.Parent.Parent).addCage1.getInfoFromUser(getTextFromUiCage(), true, infoFromDatabaseCage.Id, infoFromDatabaseCage.Material) == true)
             {
                 // if the cage was updated successfuly, we need to update the 'infoFromDatabaseCage' object
                 // incase the user decides to update the values again without getting out of the moredetails window

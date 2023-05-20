@@ -357,6 +357,10 @@ namespace ProjectTesting
                 {
                     LogIn.DataBaseExcel.WriteRange(currentBirdRow, 7, 16, birdInfo); //add new info to current bird
                     List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(oldBirdId);
+                    string oldType = currentBird[0].Type; //save old type for later
+                    string oldSubType = currentBird[0].SubType; //save old sub type for later
+                    string oldBirthDate = currentBird[0].DateOfBirth; //save old birth date for later
+                    string oldGender = currentBird[0].Gender; //save old gender for later
                     string oldCageId = currentBird[0].CageId; //save old cage id for later
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
 
@@ -413,12 +417,37 @@ namespace ProjectTesting
                         List<Bird> newBirdCage = MainWindow.HashTable.SearchBirdHashtable(currentBird[0].CageId); //search new cage
                         newBirdCage.Sort((bird1, bird2) => int.Parse(bird1.Id).CompareTo(int.Parse(bird2.Id))); //sort list
                     }
+                    /// need to check if type, sub type, gender or birth has been changed and update the lists ///
+                    if (!(currentBird[0].Type.Equals(oldType))) //if we changed type we need to update the hashtable
+                    {
+                        UpdateBird(currentBird[0], currentBird[0].Type, oldType);
+                    }
+                    if (!(currentBird[0].SubType.Equals(oldSubType))) //if we changed subtype we need to update the hashtable
+                    {
+                        UpdateBird(currentBird[0], currentBird[0].SubType, oldSubType);
+                    }
+                    if (!(currentBird[0].DateOfBirth.Equals(oldBirthDate))) //if we changed birth date we need to update the hashtable
+                    {
+                        UpdateBird(currentBird[0], currentBird[0].DateOfBirth, oldBirthDate);
+                    }
+                    if (!(currentBird[0].Gender.Equals(oldGender))) //if we changed gender we need to update the hashtable
+                    {
+                        UpdateBird(currentBird[0], currentBird[0].Gender, oldGender);
+                    }
                 }
             }
             LogIn.DataBaseExcel.Quit();//close excel
             return true;
         }
 
+        public void UpdateBird(Bird currentBird, string newParameter, string oldParameter)
+        {
+            List<Bird> oldList = MainWindow.HashTable.SearchBirdHashtable(oldParameter); //search old list
+            oldList.RemoveAll(bird => bird.Id == currentBird.Id); //remove the bird from list 
+            List<Bird> newList = MainWindow.HashTable.SearchBirdHashtable(newParameter); //search new list
+            MainWindow.HashTable.AddBirdParameterToHashtable(currentBird, newParameter); //add updated bird to correct list
+            newList.Sort((bird1, bird2) => int.Parse(bird1.Id).CompareTo(int.Parse(bird2.Id))); //sort list
+        }
 
         public string SortOffspringList(string offspringList) //method to sort the offspringList in database if necessary
         {
