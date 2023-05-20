@@ -141,6 +141,16 @@ namespace ProjectTesting
                     List<Bird> dad = MainWindow.HashTable.SearchBirdHashtable(birdInfo[6]);
                     List<Bird> mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
 
+                    if (dad.Count == 0)
+                    {
+                        CustomMessageBox.Show("Dad's id does not exist, try a different id.", "Dad Id Error");
+                        return false;
+                    }
+                    else if(mom.Count == 0)
+                    {
+                        CustomMessageBox.Show("Mom's id does not exist, try a different id.", "Mom Id Error");
+                        return false;
+                    }
                     // turn into data object and check the dates. including the date of birth of the current bird (the offspring)
                     DateTime date1 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
                     DateTime date2 = DateTime.ParseExact(dad[0].DateOfBirth, "dd/MM/yyyy", null);
