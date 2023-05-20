@@ -156,6 +156,8 @@ namespace ProjectTesting
 
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
+            restorInfo();
+            setUnedited();
             ((MainWindow)this.Parent.Parent).addBird1.setTypeCombobox();
             ((MainWindow)this.Parent.Parent).addBird1.setSubTypeCombobox();
             ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly(
