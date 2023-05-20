@@ -164,7 +164,7 @@ namespace ProjectTesting
             Search_textbox.Text = "";
         }
 
-        public void setTextAndSwitch(string text, bool option)
+        public void setTextAndSwitch(string text, bool option) // this function transfers the text and search switch position from homepage to searchBird window 
         {
             Search_textbox.Text = text;
             searchBySwitch.Checked = option;
