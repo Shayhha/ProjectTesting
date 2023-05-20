@@ -271,7 +271,7 @@
             addButton.Location = new Point(77, 358);
             addButton.Name = "addButton";
             addButton.Size = new Size(125, 45);
-            addButton.TabIndex = 6;
+            addButton.TabIndex = 14;
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
             addButton.UseVisualStyleBackColor = false;
@@ -292,7 +292,7 @@
             cancelButton.Location = new Point(246, 358);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(125, 45);
-            cancelButton.TabIndex = 7;
+            cancelButton.TabIndex = 15;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
             cancelButton.UseVisualStyleBackColor = false;
@@ -348,7 +348,7 @@
         private Label label2;
         private Label label3;
         private Label Welcome_label;
-        private RJControls.RJButton addButton;
+        public RJControls.RJButton addButton;
         private RJControls.RJButton cancelButton;
         public Panel panel2;
         private RJControls.RJTextBox materialBox;

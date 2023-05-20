@@ -85,7 +85,7 @@
             subTypeBox.Location = new Point(150, 108);
             subTypeBox.Name = "subTypeBox";
             subTypeBox.Size = new Size(250, 33);
-            subTypeBox.TabIndex = 47;
+            subTypeBox.TabIndex = 3;
             // 
             // momBox
             // 
@@ -105,7 +105,7 @@
             momBox.PlaceholderColor = Color.DarkGray;
             momBox.PlaceholderText = "";
             momBox.Size = new Size(250, 40);
-            momBox.TabIndex = 11;
+            momBox.TabIndex = 8;
             momBox.Texts = "";
             momBox.UnderlinedStyle = false;
             // 
@@ -117,7 +117,7 @@
             typeBox.Location = new Point(150, 65);
             typeBox.Name = "typeBox";
             typeBox.Size = new Size(250, 33);
-            typeBox.TabIndex = 46;
+            typeBox.TabIndex = 2;
             typeBox.SelectedIndexChanged += typeCombobox_ItemClicked;
             // 
             // dateBox
@@ -131,7 +131,7 @@
             dateBox.Location = new Point(150, 150);
             dateBox.Name = "dateBox";
             dateBox.Size = new Size(250, 33);
-            dateBox.TabIndex = 25;
+            dateBox.TabIndex = 4;
             // 
             // dadBox
             // 
@@ -151,7 +151,7 @@
             dadBox.PlaceholderColor = Color.DarkGray;
             dadBox.PlaceholderText = "";
             dadBox.Size = new Size(250, 40);
-            dadBox.TabIndex = 10;
+            dadBox.TabIndex = 7;
             dadBox.Texts = "";
             dadBox.UnderlinedStyle = false;
             // 
@@ -173,7 +173,7 @@
             cageIdBox.PlaceholderColor = Color.DarkGray;
             cageIdBox.PlaceholderText = "";
             cageIdBox.Size = new Size(250, 40);
-            cageIdBox.TabIndex = 9;
+            cageIdBox.TabIndex = 6;
             cageIdBox.Texts = "";
             cageIdBox.UnderlinedStyle = false;
             // 
@@ -195,7 +195,7 @@
             genderBox.PlaceholderColor = Color.DarkGray;
             genderBox.PlaceholderText = "";
             genderBox.Size = new Size(250, 40);
-            genderBox.TabIndex = 8;
+            genderBox.TabIndex = 5;
             genderBox.Texts = "";
             genderBox.UnderlinedStyle = false;
             // 
@@ -217,7 +217,7 @@
             idBox.PlaceholderColor = Color.DarkGray;
             idBox.PlaceholderText = "";
             idBox.Size = new Size(250, 40);
-            idBox.TabIndex = 4;
+            idBox.TabIndex = 1;
             idBox.Texts = "";
             idBox.UnderlinedStyle = false;
             // 
@@ -326,7 +326,7 @@
             addButton.Location = new Point(85, 469);
             addButton.Name = "addButton";
             addButton.Size = new Size(125, 45);
-            addButton.TabIndex = 5;
+            addButton.TabIndex = 9;
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
             addButton.UseVisualStyleBackColor = false;
@@ -347,7 +347,7 @@
             cancelButton.Location = new Point(243, 469);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(125, 45);
-            cancelButton.TabIndex = 4;
+            cancelButton.TabIndex = 10;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
             cancelButton.UseVisualStyleBackColor = false;

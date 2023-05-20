@@ -122,7 +122,7 @@ namespace ProjectTesting
             subTypeLabel.Location = new Point(169, 115);
             subTypeLabel.Name = "subTypeLabel";
             subTypeLabel.Size = new Size(188, 33);
-            subTypeLabel.TabIndex = 45;
+            subTypeLabel.TabIndex = 3;
             // 
             // typeLabel
             // 
@@ -133,7 +133,7 @@ namespace ProjectTesting
             typeLabel.Location = new Point(169, 72);
             typeLabel.Name = "typeLabel";
             typeLabel.Size = new Size(188, 33);
-            typeLabel.TabIndex = 31;
+            typeLabel.TabIndex = 2;
             typeLabel.SelectedIndexChanged += typeCombobox_ItemClicked;
             // 
             // momIdLabel
@@ -155,7 +155,7 @@ namespace ProjectTesting
             momIdLabel.PlaceholderColor = Color.DarkGray;
             momIdLabel.PlaceholderText = "";
             momIdLabel.Size = new Size(138, 40);
-            momIdLabel.TabIndex = 44;
+            momIdLabel.TabIndex = 8;
             momIdLabel.Texts = "";
             momIdLabel.UnderlinedStyle = false;
             // 
@@ -178,7 +178,7 @@ namespace ProjectTesting
             dadIdLabel.PlaceholderColor = Color.DarkGray;
             dadIdLabel.PlaceholderText = "";
             dadIdLabel.Size = new Size(138, 40);
-            dadIdLabel.TabIndex = 43;
+            dadIdLabel.TabIndex = 7;
             dadIdLabel.Texts = "";
             dadIdLabel.UnderlinedStyle = false;
             // 
@@ -201,7 +201,7 @@ namespace ProjectTesting
             cageIdLabel.PlaceholderColor = Color.DarkGray;
             cageIdLabel.PlaceholderText = "";
             cageIdLabel.Size = new Size(138, 40);
-            cageIdLabel.TabIndex = 42;
+            cageIdLabel.TabIndex = 6;
             cageIdLabel.Texts = "";
             cageIdLabel.UnderlinedStyle = false;
             // 
@@ -224,7 +224,7 @@ namespace ProjectTesting
             genderLabel.PlaceholderColor = Color.DarkGray;
             genderLabel.PlaceholderText = "";
             genderLabel.Size = new Size(138, 40);
-            genderLabel.TabIndex = 41;
+            genderLabel.TabIndex = 5;
             genderLabel.Texts = "";
             genderLabel.UnderlinedStyle = false;
             // 
@@ -247,7 +247,7 @@ namespace ProjectTesting
             idLabel.PlaceholderColor = Color.DarkGray;
             idLabel.PlaceholderText = "";
             idLabel.Size = new Size(188, 40);
-            idLabel.TabIndex = 31;
+            idLabel.TabIndex = 1;
             idLabel.Texts = "";
             idLabel.UnderlinedStyle = false;
             // 
@@ -315,7 +315,7 @@ namespace ProjectTesting
             datePicker.Margin = new Padding(1);
             datePicker.Name = "datePicker";
             datePicker.Size = new Size(188, 33);
-            datePicker.TabIndex = 38;
+            datePicker.TabIndex = 4;
             // 
             // label2
             // 
@@ -354,7 +354,7 @@ namespace ProjectTesting
             flowLayoutPanel2.Controls.Add(saveBirdButton);
             flowLayoutPanel2.Controls.Add(editBirdButton);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(631, 164);
+            flowLayoutPanel2.Location = new Point(631, 165);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(80, 95);
             flowLayoutPanel2.TabIndex = 30;
@@ -374,7 +374,7 @@ namespace ProjectTesting
             saveBirdButton.Location = new Point(3, 52);
             saveBirdButton.Name = "saveBirdButton";
             saveBirdButton.Size = new Size(75, 40);
-            saveBirdButton.TabIndex = 46;
+            saveBirdButton.TabIndex = 9;
             saveBirdButton.Text = "Save";
             saveBirdButton.TextColor = Color.Black;
             saveBirdButton.UseVisualStyleBackColor = false;
@@ -457,7 +457,7 @@ namespace ProjectTesting
             addOffspringButton.Location = new Point(485, 217);
             addOffspringButton.Name = "addOffspringButton";
             addOffspringButton.Size = new Size(198, 40);
-            addOffspringButton.TabIndex = 47;
+            addOffspringButton.TabIndex = 10;
             addOffspringButton.Text = "Add an Offspring";
             addOffspringButton.TextColor = Color.Black;
             addOffspringButton.UseVisualStyleBackColor = false;
@@ -507,7 +507,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(6, 14);
+            cagePanel.Location = new Point(9, 16);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1242, 581);

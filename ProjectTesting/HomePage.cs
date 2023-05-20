@@ -155,6 +155,9 @@ namespace ProjectTesting
 
         private void Cage_pictureBox_Click(object sender, EventArgs e)
         {
+            ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(77, 358);
+            ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
+            ((MainWindow)this.Parent.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
             ((MainWindow)this.Parent.Parent).addCage1.Show();
             this.Hide();
         }

@@ -183,7 +183,7 @@ namespace ProjectTesting
                         }
                     }
                 }
-              
+
                 // edit cage in database
                 LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo);
 

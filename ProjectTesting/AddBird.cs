@@ -178,7 +178,7 @@ namespace ProjectTesting
                         CustomMessageBox.Show("Dad's id does not exist, try a different id.", "Dad Id Error");
                         return false;
                     }
-                    else if(mom.Count == 0)
+                    else if (mom.Count == 0)
                     {
                         CustomMessageBox.Show("Mom's id does not exist, try a different id.", "Mom Id Error");
                         return false;
