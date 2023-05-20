@@ -113,6 +113,15 @@ namespace ProjectTesting
             birdHashtable[bird.Id].Add(bird); //add bird object to list
         }
 
+        public void AddBirdParameterToHashtable(Bird bird, string parameter) //adds specific parameter to bird hashtable
+        {
+            if (!birdHashtable.ContainsKey(parameter)) //checks if parameter is in bird hashtable
+            {
+                birdHashtable[parameter] = new List<Bird>(); //creates new list in index
+            }
+            birdHashtable[parameter].Add(bird); //add bird object to list
+        }
+
         public void AddCageIdToBirdHashtable(Bird bird) //adds cage id to bird hashtable
         {
             if (!birdHashtable.ContainsKey(bird.CageId)) //checks if id is in bird hashtable
@@ -139,6 +148,15 @@ namespace ProjectTesting
                 birdHashtable[cage.Id] = new List<Bird>(); //create new list in index
             }
             birdHashtable[cage.Id] = cage.BirdList; //give the index the bird list
+        }
+
+        public void AddCageMaterialToHashtable(Cage cage) //adds new cage by material 
+        {
+            if (!cageHashtable.ContainsKey(cage.Material)) //checks if Material is in cage hashtable
+            {
+                cageHashtable[cage.Material] = new List<Cage>(); //creates new list in that new index
+            }
+            cageHashtable[cage.Material].Add(cage); //adds cage object to list 
         }
 
         public void RemoveBirdFromHashtable(string birdId) //remove the old bird id hashcode from hashtable
