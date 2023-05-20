@@ -27,6 +27,8 @@ namespace ProjectTesting
                 }
                 birdHashtable[birdKey].Add(bird); //adds bird to list 
             }
+            List<Cage> cage = SearchCageHashtable(bird.CageId); //search cage 
+            cage[0].BirdList = birdHashtable[bird.CageId]; //update cage bird list
         }
 
         public void AddCageToHashtable(Cage cage) //method to add cage to hashtable
