@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            subTypeBox = new ComboBox();
             momBox = new RJControls.RJTextBox();
+            typeBox = new ComboBox();
             dateBox = new DateTimePicker();
             dadBox = new RJControls.RJTextBox();
-            subTypeBox = new RJControls.RJTextBox();
             cageIdBox = new RJControls.RJTextBox();
-            typeBox = new RJControls.RJTextBox();
             genderBox = new RJControls.RJTextBox();
             idBox = new RJControls.RJTextBox();
             label7 = new Label();
@@ -56,12 +56,12 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(subTypeBox);
             panel1.Controls.Add(momBox);
+            panel1.Controls.Add(typeBox);
             panel1.Controls.Add(dateBox);
             panel1.Controls.Add(dadBox);
-            panel1.Controls.Add(subTypeBox);
             panel1.Controls.Add(cageIdBox);
-            panel1.Controls.Add(typeBox);
             panel1.Controls.Add(genderBox);
             panel1.Controls.Add(idBox);
             panel1.Controls.Add(label7);
@@ -77,6 +77,16 @@
             panel1.Size = new Size(411, 393);
             panel1.TabIndex = 0;
             // 
+            // subTypeBox
+            // 
+            subTypeBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            subTypeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            subTypeBox.FormattingEnabled = true;
+            subTypeBox.Location = new Point(150, 108);
+            subTypeBox.Name = "subTypeBox";
+            subTypeBox.Size = new Size(250, 33);
+            subTypeBox.TabIndex = 47;
+            // 
             // momBox
             // 
             momBox.BackColor = SystemColors.Window;
@@ -86,7 +96,7 @@
             momBox.BorderSize = 2;
             momBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             momBox.ForeColor = Color.FromArgb(64, 64, 64);
-            momBox.Location = new Point(150, 343);
+            momBox.Location = new Point(150, 338);
             momBox.Margin = new Padding(4);
             momBox.Multiline = false;
             momBox.Name = "momBox";
@@ -99,14 +109,26 @@
             momBox.Texts = "";
             momBox.UnderlinedStyle = false;
             // 
+            // typeBox
+            // 
+            typeBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            typeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            typeBox.FormattingEnabled = true;
+            typeBox.Location = new Point(150, 65);
+            typeBox.Name = "typeBox";
+            typeBox.Size = new Size(250, 33);
+            typeBox.TabIndex = 46;
+            typeBox.SelectedIndexChanged += typeCombobox_ItemClicked;
+            // 
             // dateBox
             // 
             dateBox.CalendarFont = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dateBox.CalendarMonthBackground = Color.WhiteSmoke;
             dateBox.Cursor = Cursors.Hand;
             dateBox.CustomFormat = "dd/MM/yyyy";
             dateBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dateBox.Format = DateTimePickerFormat.Custom;
-            dateBox.Location = new Point(150, 159);
+            dateBox.Location = new Point(150, 150);
             dateBox.Name = "dateBox";
             dateBox.Size = new Size(250, 33);
             dateBox.TabIndex = 25;
@@ -120,7 +142,7 @@
             dadBox.BorderSize = 2;
             dadBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dadBox.ForeColor = Color.FromArgb(64, 64, 64);
-            dadBox.Location = new Point(150, 295);
+            dadBox.Location = new Point(150, 290);
             dadBox.Margin = new Padding(4);
             dadBox.Multiline = false;
             dadBox.Name = "dadBox";
@@ -133,28 +155,6 @@
             dadBox.Texts = "";
             dadBox.UnderlinedStyle = false;
             // 
-            // subTypeBox
-            // 
-            subTypeBox.BackColor = SystemColors.Window;
-            subTypeBox.BorderColor = Color.FromArgb(145, 199, 136);
-            subTypeBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            subTypeBox.BorderRadius = 5;
-            subTypeBox.BorderSize = 2;
-            subTypeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            subTypeBox.ForeColor = Color.FromArgb(64, 64, 64);
-            subTypeBox.Location = new Point(150, 112);
-            subTypeBox.Margin = new Padding(4);
-            subTypeBox.Multiline = false;
-            subTypeBox.Name = "subTypeBox";
-            subTypeBox.Padding = new Padding(10, 7, 10, 7);
-            subTypeBox.PasswordChar = false;
-            subTypeBox.PlaceholderColor = Color.DarkGray;
-            subTypeBox.PlaceholderText = "";
-            subTypeBox.Size = new Size(250, 40);
-            subTypeBox.TabIndex = 6;
-            subTypeBox.Texts = "";
-            subTypeBox.UnderlinedStyle = false;
-            // 
             // cageIdBox
             // 
             cageIdBox.BackColor = SystemColors.Window;
@@ -164,7 +164,7 @@
             cageIdBox.BorderSize = 2;
             cageIdBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cageIdBox.ForeColor = Color.FromArgb(64, 64, 64);
-            cageIdBox.Location = new Point(150, 247);
+            cageIdBox.Location = new Point(150, 242);
             cageIdBox.Margin = new Padding(4);
             cageIdBox.Multiline = false;
             cageIdBox.Name = "cageIdBox";
@@ -177,28 +177,6 @@
             cageIdBox.Texts = "";
             cageIdBox.UnderlinedStyle = false;
             // 
-            // typeBox
-            // 
-            typeBox.BackColor = SystemColors.Window;
-            typeBox.BorderColor = Color.FromArgb(145, 199, 136);
-            typeBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            typeBox.BorderRadius = 5;
-            typeBox.BorderSize = 2;
-            typeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            typeBox.ForeColor = Color.FromArgb(64, 64, 64);
-            typeBox.Location = new Point(150, 64);
-            typeBox.Margin = new Padding(4);
-            typeBox.Multiline = false;
-            typeBox.Name = "typeBox";
-            typeBox.Padding = new Padding(10, 7, 10, 7);
-            typeBox.PasswordChar = false;
-            typeBox.PlaceholderColor = Color.DarkGray;
-            typeBox.PlaceholderText = "";
-            typeBox.Size = new Size(250, 40);
-            typeBox.TabIndex = 5;
-            typeBox.Texts = "";
-            typeBox.UnderlinedStyle = false;
-            // 
             // genderBox
             // 
             genderBox.BackColor = SystemColors.Window;
@@ -208,7 +186,7 @@
             genderBox.BorderSize = 2;
             genderBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             genderBox.ForeColor = Color.FromArgb(64, 64, 64);
-            genderBox.Location = new Point(150, 199);
+            genderBox.Location = new Point(150, 193);
             genderBox.Margin = new Padding(4);
             genderBox.Multiline = false;
             genderBox.Name = "genderBox";
@@ -430,13 +408,13 @@
         private RJControls.RJButton addButton;
         private RJControls.RJButton cancelButton;
         private RJControls.RJTextBox idBox;
-        public RJControls.RJTextBox typeBox;
-        public RJControls.RJTextBox subTypeBox;
         public RJControls.RJTextBox momBox;
         public RJControls.RJTextBox dadBox;
         public RJControls.RJTextBox cageIdBox;
         private RJControls.RJTextBox genderBox;
         private Panel panel2;
         private Panel panel3;
+        private ComboBox subTypeBox;
+        private ComboBox typeBox;
     }
 }

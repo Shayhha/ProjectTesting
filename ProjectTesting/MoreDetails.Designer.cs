@@ -32,12 +32,12 @@ namespace ProjectTesting
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoreDetails));
             panel1 = new Panel();
+            subTypeLabel = new ComboBox();
+            typeLabel = new ComboBox();
             momIdLabel = new RJControls.RJTextBox();
             dadIdLabel = new RJControls.RJTextBox();
             cageIdLabel = new RJControls.RJTextBox();
             genderLabel = new RJControls.RJTextBox();
-            subTypeLabel = new RJControls.RJTextBox();
-            typeLabel = new RJControls.RJTextBox();
             idLabel = new RJControls.RJTextBox();
             nameLabel = new Label();
             label5 = new Label();
@@ -92,12 +92,12 @@ namespace ProjectTesting
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(97, 135, 110);
+            panel1.Controls.Add(subTypeLabel);
+            panel1.Controls.Add(typeLabel);
             panel1.Controls.Add(momIdLabel);
             panel1.Controls.Add(dadIdLabel);
             panel1.Controls.Add(cageIdLabel);
             panel1.Controls.Add(genderLabel);
-            panel1.Controls.Add(subTypeLabel);
-            panel1.Controls.Add(typeLabel);
             panel1.Controls.Add(idLabel);
             panel1.Controls.Add(nameLabel);
             panel1.Controls.Add(label5);
@@ -112,6 +112,29 @@ namespace ProjectTesting
             panel1.Name = "panel1";
             panel1.Size = new Size(680, 212);
             panel1.TabIndex = 16;
+            // 
+            // subTypeLabel
+            // 
+            subTypeLabel.DropDownStyle = ComboBoxStyle.DropDownList;
+            subTypeLabel.Enabled = false;
+            subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            subTypeLabel.FormattingEnabled = true;
+            subTypeLabel.Location = new Point(169, 115);
+            subTypeLabel.Name = "subTypeLabel";
+            subTypeLabel.Size = new Size(188, 33);
+            subTypeLabel.TabIndex = 45;
+            // 
+            // typeLabel
+            // 
+            typeLabel.DropDownStyle = ComboBoxStyle.DropDownList;
+            typeLabel.Enabled = false;
+            typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            typeLabel.FormattingEnabled = true;
+            typeLabel.Location = new Point(169, 72);
+            typeLabel.Name = "typeLabel";
+            typeLabel.Size = new Size(188, 33);
+            typeLabel.TabIndex = 31;
+            typeLabel.SelectedIndexChanged += typeCombobox_ItemClicked;
             // 
             // momIdLabel
             // 
@@ -205,52 +228,6 @@ namespace ProjectTesting
             genderLabel.Texts = "";
             genderLabel.UnderlinedStyle = false;
             // 
-            // subTypeLabel
-            // 
-            subTypeLabel.BackColor = SystemColors.Window;
-            subTypeLabel.BorderColor = Color.FromArgb(145, 199, 136);
-            subTypeLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            subTypeLabel.BorderRadius = 5;
-            subTypeLabel.BorderSize = 2;
-            subTypeLabel.Enabled = false;
-            subTypeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            subTypeLabel.ForeColor = Color.FromArgb(64, 64, 64);
-            subTypeLabel.Location = new Point(169, 108);
-            subTypeLabel.Margin = new Padding(4);
-            subTypeLabel.Multiline = false;
-            subTypeLabel.Name = "subTypeLabel";
-            subTypeLabel.Padding = new Padding(10, 7, 10, 7);
-            subTypeLabel.PasswordChar = false;
-            subTypeLabel.PlaceholderColor = Color.DarkGray;
-            subTypeLabel.PlaceholderText = "";
-            subTypeLabel.Size = new Size(188, 40);
-            subTypeLabel.TabIndex = 40;
-            subTypeLabel.Texts = "";
-            subTypeLabel.UnderlinedStyle = false;
-            // 
-            // typeLabel
-            // 
-            typeLabel.BackColor = SystemColors.Window;
-            typeLabel.BorderColor = Color.FromArgb(145, 199, 136);
-            typeLabel.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            typeLabel.BorderRadius = 5;
-            typeLabel.BorderSize = 2;
-            typeLabel.Enabled = false;
-            typeLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            typeLabel.ForeColor = Color.FromArgb(64, 64, 64);
-            typeLabel.Location = new Point(169, 65);
-            typeLabel.Margin = new Padding(4);
-            typeLabel.Multiline = false;
-            typeLabel.Name = "typeLabel";
-            typeLabel.Padding = new Padding(10, 7, 10, 7);
-            typeLabel.PasswordChar = false;
-            typeLabel.PlaceholderColor = Color.DarkGray;
-            typeLabel.PlaceholderText = "";
-            typeLabel.Size = new Size(188, 40);
-            typeLabel.TabIndex = 39;
-            typeLabel.Texts = "";
-            typeLabel.UnderlinedStyle = false;
-            // 
             // idLabel
             // 
             idLabel.BackColor = SystemColors.Window;
@@ -301,7 +278,7 @@ namespace ProjectTesting
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(61, 117);
+            label3.Location = new Point(61, 119);
             label3.Name = "label3";
             label3.Size = new Size(107, 25);
             label3.TabIndex = 8;
@@ -334,7 +311,7 @@ namespace ProjectTesting
             datePicker.Enabled = false;
             datePicker.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             datePicker.Format = DateTimePickerFormat.Custom;
-            datePicker.Location = new Point(169, 152);
+            datePicker.Location = new Point(169, 158);
             datePicker.Margin = new Padding(1);
             datePicker.Name = "datePicker";
             datePicker.Size = new Size(188, 33);
@@ -344,7 +321,7 @@ namespace ProjectTesting
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(32, 156);
+            label2.Location = new Point(32, 162);
             label2.Name = "label2";
             label2.Size = new Size(136, 25);
             label2.TabIndex = 9;
@@ -366,7 +343,7 @@ namespace ProjectTesting
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(104, 74);
+            label1.Location = new Point(104, 76);
             label1.Name = "label1";
             label1.Size = new Size(64, 25);
             label1.TabIndex = 7;
@@ -530,7 +507,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(7, 14);
+            cagePanel.Location = new Point(6, 14);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1242, 581);
@@ -878,11 +855,11 @@ namespace ProjectTesting
         private RJControls.RJTextBox widthValue;
         private RJControls.RJTextBox lengthValue;
         private RJControls.RJTextBox idLabel;
-        private RJControls.RJTextBox typeLabel;
-        private RJControls.RJTextBox subTypeLabel;
         private RJControls.RJTextBox genderLabel;
         private RJControls.RJTextBox cageIdLabel;
         private RJControls.RJTextBox dadIdLabel;
         private RJControls.RJTextBox momIdLabel;
+        private ComboBox typeLabel;
+        private ComboBox subTypeLabel;
     }
 }

@@ -162,6 +162,8 @@ namespace ProjectTesting
         private void Bird_pictureBox_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent.Parent).addBird1.Show();
+            ((MainWindow)this.Parent.Parent).addBird1.setTypeCombobox();
+            ((MainWindow)this.Parent.Parent).addBird1.setSubTypeCombobox();
             this.Hide();
         }
 

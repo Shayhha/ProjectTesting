@@ -28,6 +28,38 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        public void setTypeCombobox()
+        {
+            string[] typeOptions = { "American Gouldian", "European Gouldian", "Australian Gouldian" };
+            typeBox.Items.Clear();
+            typeBox.Items.AddRange(typeOptions);
+            typeBox.SelectedItem = "American Gouldian";
+        }
+
+        public void setSubTypeCombobox()
+        {
+            subTypeBox.Items.Clear();
+
+            if (typeBox.SelectedItem.ToString() == "American Gouldian")
+            {
+                string[] subTypeOptions = { "North America", "Center America", "South America" };
+                subTypeBox.Items.AddRange(subTypeOptions);
+                subTypeBox.SelectedItem = "North America"; // default value
+            }
+            else if (typeBox.SelectedItem.ToString() == "European Gouldian")
+            {
+                string[] subTypeOptions = { "East Europe", "West Europe" };
+                subTypeBox.Items.AddRange(subTypeOptions);
+                subTypeBox.SelectedItem = "East Europe"; // default value
+            }
+            else if (typeBox.SelectedItem.ToString() == "Australian Gouldian")
+            {
+                string[] subTypeOptions = { "Center Australia", "Coastal Cities" };
+                subTypeBox.Items.AddRange(subTypeOptions);
+                subTypeBox.SelectedItem = "Center Australia"; // default value
+            }
+        }
+
         private Bird getTextFromUi(bool isOffspring)
         {
             string resultOffspring = "";
@@ -38,8 +70,8 @@ namespace ProjectTesting
 
             Bird birdInfo = new Bird(new string[] {
                 idBox.Texts.ToString(),
-                typeBox.Texts.ToString(),
-                subTypeBox.Texts.ToString(),
+                typeBox.SelectedItem.ToString(),
+                subTypeBox.SelectedItem.ToString(),
                 dateBox.Text.ToString(),
                 genderBox.Texts.ToString(),
                 cageIdBox.Texts.ToString(),
@@ -422,8 +454,8 @@ namespace ProjectTesting
         public void cleanTextBoxes()
         {
             idBox.Texts = "";
-            typeBox.Texts = "";
-            subTypeBox.Texts = "";
+            //typeBox.Texts = "";
+            //subTypeBox.Texts = "";
             dateBox.Text = "";
             genderBox.Texts = "";
             cageIdBox.Texts = "";
@@ -498,8 +530,8 @@ namespace ProjectTesting
             if (
                 (type == "American Gouldian" &&
                     (subType != "North America" && subType != "Center America" && subType != "South America")) ||
-                (type == "Europe Gouldian" &&
-                    (subType != "East European" && subType != "West European")) ||
+                (type == "European Gouldian" &&
+                    (subType != "East Europe" && subType != "West Europe")) ||
                 (type == "Australian Gouldian" &&
                     (subType != "Center Australia" && subType != "Coastal Cities"))
                 )
@@ -582,7 +614,7 @@ namespace ProjectTesting
                 {
                     errorMessage = "Parents must be in the same cage!";
                 }
-                else if (parentBird[0].Type != typeBox.Texts)
+                else if (parentBird[0].Type != typeBox.SelectedItem.ToString())
                 {
                     errorMessage = "Parents must have same type!";
                 }
@@ -647,10 +679,10 @@ namespace ProjectTesting
             AddBird_label.Text = "Add an Offspring:";
             AddBird_label.Location = new Point(67, 2);
 
-            typeBox.Texts = type;
+            typeBox.SelectedItem = type;
             typeBox.Enabled = false;
 
-            subTypeBox.Texts = subType;
+            subTypeBox.SelectedItem = subType;
             subTypeBox.Enabled = false;
 
             cageIdBox.Texts = cageId;
@@ -679,6 +711,11 @@ namespace ProjectTesting
                 dadBox.Enabled = true;
             else
                 momBox.Enabled = true;
+        }
+
+        private void typeCombobox_ItemClicked(object sender, EventArgs e)
+        {
+            setSubTypeCombobox();
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectTesting
 {
@@ -40,6 +41,30 @@ namespace ProjectTesting
             return temp;
         }
 
+        private void setSubTypeCombobox()
+        {
+            subTypeLabel.Items.Clear();
+
+            if (typeLabel.SelectedItem.ToString() == "American Gouldian")
+            {
+                string[] subTypeOptions = { "North America", "Center America", "South America" };
+                subTypeLabel.Items.AddRange(subTypeOptions);
+                subTypeLabel.SelectedItem = "North America"; // default value
+            }
+            else if (typeLabel.SelectedItem.ToString() == "European Gouldian")
+            {
+                string[] subTypeOptions = { "East Europe", "West Europe" };
+                subTypeLabel.Items.AddRange(subTypeOptions);
+                subTypeLabel.SelectedItem = "East Europe"; // default value
+            }
+            else if (typeLabel.SelectedItem.ToString() == "Australian Gouldian")
+            {
+                string[] subTypeOptions = { "Center Australia", "Coastal Cities" };
+                subTypeLabel.Items.AddRange(subTypeOptions);
+                subTypeLabel.SelectedItem = "Center Australia"; // default value
+            }
+        }
+
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
@@ -51,12 +76,17 @@ namespace ProjectTesting
                 saveBirdButton.Hide();
                 setImages();
 
+                string[] typeOptions = { "American Gouldian", "European Gouldian", "Australian Gouldian" };
+                typeLabel.Items.Clear();
+                typeLabel.Items.AddRange(typeOptions);
+
                 List<Bird> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
                 infoFromDatabaseBird = birdInfo[0];//save the bird for later use
                 //initializing the fields
                 idLabel.Texts = birdInfo[0].Id;
-                typeLabel.Texts = birdInfo[0].Type;
-                subTypeLabel.Texts = birdInfo[0].SubType;
+                typeLabel.SelectedItem = birdInfo[0].Type;
+                setSubTypeCombobox();
+                subTypeLabel.SelectedItem = birdInfo[0].SubType;
                 string[] date = birdInfo[0].DateOfBirth.Split("/");
                 int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
                 datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
@@ -108,8 +138,8 @@ namespace ProjectTesting
         private void cleanLabels()
         {
             idLabel.Texts = "";
-            typeLabel.Texts = "";
-            subTypeLabel.Texts = "";
+            //typeLabel.Texts = "";
+            //subTypeLabel.Texts = "";
             genderLabel.Texts = "";
             cageIdLabel.Texts = "";
             dadIdLabel.Texts = "";
@@ -126,8 +156,10 @@ namespace ProjectTesting
 
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
+            ((MainWindow)this.Parent.Parent).addBird1.setTypeCombobox();
+            ((MainWindow)this.Parent.Parent).addBird1.setSubTypeCombobox();
             ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly(
-                typeLabel.Texts, subTypeLabel.Texts, cageIdLabel.Texts, genderLabel.Texts, idLabel.Texts
+                typeLabel.Text, subTypeLabel.Text, cageIdLabel.Texts, genderLabel.Texts, idLabel.Texts
             );
 
             ((MainWindow)this.Parent.Parent).addBird1.Show();
@@ -141,8 +173,8 @@ namespace ProjectTesting
 
             string[] temp = new string[] {
                 idLabel.Texts.ToString(),
-                typeLabel.Texts.ToString(),
-                subTypeLabel.Texts.ToString(),
+                typeLabel.Text,
+                subTypeLabel.Text,
                 datePicker.Text.ToString(),
                 genderLabel.Texts.ToString(),
                 cageIdLabel.Texts.ToString(),
@@ -210,8 +242,8 @@ namespace ProjectTesting
         private void restorInfo()
         {
             idLabel.Texts = infoFromDatabaseBird.Id;
-            typeLabel.Texts = infoFromDatabaseBird.Type;
-            subTypeLabel.Texts = infoFromDatabaseBird.SubType;
+            typeLabel.SelectedItem = infoFromDatabaseBird.Type;
+            subTypeLabel.SelectedItem = infoFromDatabaseBird.SubType;
             string[] date = infoFromDatabaseBird.DateOfBirth.Split("/");
             int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
             datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
@@ -332,6 +364,11 @@ namespace ProjectTesting
             cageIdLabel.Enabled = false;
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
+        }
+
+        private void typeCombobox_ItemClicked(object sender, EventArgs e)
+        {
+            setSubTypeCombobox();
         }
     }
 }
