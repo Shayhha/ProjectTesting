@@ -37,14 +37,14 @@ namespace ProjectTesting
                 resultOffspring = "no";
 
             Bird birdInfo = new Bird(new string[] {
-                idBox.Text.ToString(),
-                typeBox.Text.ToString(),
-                subTypeBox.Text.ToString(),
+                idBox.Texts.ToString(),
+                typeBox.Texts.ToString(),
+                subTypeBox.Texts.ToString(),
                 dateBox.Text.ToString(),
-                genderBox.Text.ToString(),
-                cageIdBox.Text.ToString(),
-                dadBox.Text.ToString(),
-                momBox.Text.ToString(),
+                genderBox.Texts.ToString(),
+                cageIdBox.Texts.ToString(),
+                dadBox.Texts.ToString(),
+                momBox.Texts.ToString(),
                 resultOffspring}
             );
 
@@ -71,8 +71,8 @@ namespace ProjectTesting
 
             if (!edited)
             {
-                if (dadBox.Text == "") { birdInfo[6] = "0"; }
-                if (momBox.Text == "") { birdInfo[7] = "0"; }
+                if (dadBox.Texts == "") { birdInfo[6] = "0"; }
+                if (momBox.Texts == "") { birdInfo[7] = "0"; }
             }
 
             if (birdInfo[4] == "m" || birdInfo[4] == "male")
@@ -141,6 +141,16 @@ namespace ProjectTesting
                     List<Bird> dad = MainWindow.HashTable.SearchBirdHashtable(birdInfo[6]);
                     List<Bird> mom = MainWindow.HashTable.SearchBirdHashtable(birdInfo[7]);
 
+                    if (dad.Count == 0)
+                    {
+                        CustomMessageBox.Show("Dad's id does not exist, try a different id.", "Dad Id Error");
+                        return false;
+                    }
+                    else if(mom.Count == 0)
+                    {
+                        CustomMessageBox.Show("Mom's id does not exist, try a different id.", "Mom Id Error");
+                        return false;
+                    }
                     // turn into data object and check the dates. including the date of birth of the current bird (the offspring)
                     DateTime date1 = DateTime.ParseExact(birdInfo[3], "dd/MM/yyyy", null);
                     DateTime date2 = DateTime.ParseExact(dad[0].DateOfBirth, "dd/MM/yyyy", null);
@@ -261,7 +271,8 @@ namespace ProjectTesting
                                 LogIn.DataBaseExcel.WriteCell("P" + i, offspringList); //update database with new offspring list
                                 count++;
                             }
-                            else if (!edited) {
+                            else if (!edited)
+                            {
                                 if ((LogIn.DataBaseExcel.ReadCell("P" + i)).Equals("none")) //if mom doesnt have offsprings yet
                                     LogIn.DataBaseExcel.WriteCell("P" + i, birdInfo[0]); //add offspring id to mom
                                 else
@@ -320,7 +331,7 @@ namespace ProjectTesting
                     string oldGender = currentBird[0].Gender; //save old gender for later
                     string oldCageId = currentBird[0].CageId; //save old cage id for later
                     currentBird[0].EditFields(birdInfo); //edit the bird in hashtable
-           
+
                     /// here we need to build hashtable again if new id isn't in sorted order of id's ///
                     if (!(oldBirdId.Equals(birdInfo[0])))
                     {
@@ -396,7 +407,7 @@ namespace ProjectTesting
             LogIn.DataBaseExcel.Quit();//close excel
             return true;
         }
-    
+
         public void UpdateBird(Bird currentBird, string newParameter, string oldParameter)
         {
             List<Bird> oldList = MainWindow.HashTable.SearchBirdHashtable(oldParameter); //search old list
@@ -432,7 +443,7 @@ namespace ProjectTesting
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
-                    else if(index == (splittedList.Length - 1) && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
+                    else if (index == (splittedList.Length - 1) && (int.Parse(splittedList[index]) < int.Parse(splittedList[index - 1])))
                     {
                         Array.Sort(splittedList, (x, y) => int.Parse(x).CompareTo(int.Parse(y))); //sorts the string
                     }
@@ -449,19 +460,19 @@ namespace ProjectTesting
 
         public void cleanTextBoxes()
         {
-            idBox.Text = "";
-            typeBox.Text = "";
-            subTypeBox.Text = "";
+            idBox.Texts = "";
+            typeBox.Texts = "";
+            subTypeBox.Texts = "";
             dateBox.Text = "";
-            genderBox.Text = "";
-            cageIdBox.Text = "";
-            dadBox.Text = "";
-            momBox.Text = "";
+            genderBox.Texts = "";
+            cageIdBox.Texts = "";
+            dadBox.Texts = "";
+            momBox.Texts = "";
         }
 
         public bool checkDadId(string dadId)
         {
-            List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId); 
+            List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId);
             if (dadBird.Count != 0)
             {
                 if (dadBird[0].isOffspring)
@@ -545,7 +556,7 @@ namespace ProjectTesting
             {
                 CustomMessageBox.Show("Error, gender is incorrect.", "Error");
                 return false;
-                
+
             }
             return true;
         }
@@ -580,17 +591,17 @@ namespace ProjectTesting
             string parentType = "", errorMessage = "-1", parentGender, parentId;
 
             // we want to know which parent's id we need to check
-            if (dadBox.ReadOnly == true)//if dad is locked, we know we need to check moms id
+            if (dadBox.Enabled == true)//if dad is locked, we know we need to check moms id
             {
                 parentType = "mom";
-                parentId = momBox.Text;
+                parentId = momBox.Texts;
                 parentGender = "Female";
             }
 
-            else if (momBox.ReadOnly == true)
+            else if (momBox.Enabled == true)
             {
                 parentType = "dad";
-                parentId = dadBox.Text;
+                parentId = dadBox.Texts;
                 parentGender = "Male";
             }
             else // we have an undefined error
@@ -606,11 +617,11 @@ namespace ProjectTesting
                 {
                     errorMessage = "Other parent must be " + parentGender.ToLower() + "!";
                 }
-                else if (parentBird[0].CageId != cageIdBox.Text)
+                else if (parentBird[0].CageId != cageIdBox.Texts)
                 {
                     errorMessage = "Parents must be in the same cage!";
                 }
-                else if (parentBird[0].Type != typeBox.Text)
+                else if (parentBird[0].Type != typeBox.Texts)
                 {
                     errorMessage = "Parents must have same type!";
                 }
@@ -621,7 +632,7 @@ namespace ProjectTesting
             }
             else
                 errorMessage = "There is no bird that is a " + parentGender + " with that id, try again.";
-            
+
 
             if (errorMessage != "-1")
             {
@@ -632,13 +643,13 @@ namespace ProjectTesting
                 return true;
         }
 
-        
+
         private void addButton_Click(object sender, EventArgs e)
         {
             bool isOffspring = false; //default is no for addBird
 
             if (AddBird_label.Text == "Add an Offspring:")//if we add offspring we change it to yes
-            { 
+            {
                 isOffspring = true;
                 if (CheckParent() == false)
                     return;
@@ -673,39 +684,40 @@ namespace ProjectTesting
         public void makeReadOnly(string type, string subType, string cageId, string gender, string parentId)
         {
             AddBird_label.Text = "Add an Offspring:";
+            AddBird_label.Location = new Point(67, 2);
 
-            typeBox.Text = type;
-            typeBox.ReadOnly = true;
+            typeBox.Texts = type;
+            typeBox.Enabled = false;
 
-            subTypeBox.Text = subType;
-            subTypeBox.ReadOnly = true;
+            subTypeBox.Texts = subType;
+            subTypeBox.Enabled = false;
 
-            cageIdBox.Text = cageId;
-            cageIdBox.ReadOnly = true;
+            cageIdBox.Texts = cageId;
+            cageIdBox.Enabled = false;
 
             if (gender == "Male")
             {
-                dadBox.Text = parentId;
-                dadBox.ReadOnly = true;
+                dadBox.Texts = parentId;
+                dadBox.Enabled = false;
             }
             else
             {
-                momBox.Text = parentId;
-                momBox.ReadOnly = true;
+                momBox.Texts = parentId;
+                momBox.Enabled = false;
             }
         }
 
         public void makeNotReadOnly()
         {
             AddBird_label.Text = "Add a Bird:";
-            typeBox.ReadOnly = false;
-            subTypeBox.ReadOnly = false;
-            cageIdBox.ReadOnly = false;
+            typeBox.Enabled = true;
+            subTypeBox.Enabled = true;
+            cageIdBox.Enabled = true;
 
-            if (dadBox.ReadOnly == true)
-                dadBox.ReadOnly = false;
+            if (dadBox.Enabled == false)
+                dadBox.Enabled = true;
             else
-                momBox.ReadOnly = false;
+                momBox.Enabled = true;
         }
     }
 }

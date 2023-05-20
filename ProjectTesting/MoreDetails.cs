@@ -29,6 +29,7 @@ namespace ProjectTesting
         public void setImages()
         {
             this.mainPic.Image = getRandomImage();
+            this.myPic.Image = getRandomImage();
         }
 
         private Image getRandomImage()
@@ -172,7 +173,6 @@ namespace ProjectTesting
         {
             editBirdButton.Hide();
             saveBirdButton.Show();
-
             //infoFromDatabaseBird = getTextFromUi();
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();

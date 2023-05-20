@@ -22,10 +22,11 @@ namespace ProjectTesting
 
         private void LogIn_button_Click(object sender, EventArgs e)
         {
-            string username = UserName_textbox.Text;
-            string password = Password_textbox.Text;
+            string username = UserName_textbox.Texts;
+            string password = Password_textbox.Texts;
+
             List<string[]> result = MainWindow.HashTable.SearchUserHashtable(username);
-            if(username =="" &&  password != "") //if username is empty we show error
+            if (username == "" && password != "") //if username is empty we show error
             {
                 CustomMessageBox.Show("Username field is empty!", "Input Error");
             }
@@ -64,27 +65,33 @@ namespace ProjectTesting
             //((MainWindow)this.Parent.Parent).homePage1.Show(); // This is not needed
 
             ////set bird and cage counters and top bar //!?!?!?! try this and if its not fast then delete
-            ((MainWindow)this.Parent.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
-            ((MainWindow)this.Parent.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
+            ((MainWindow)this.Parent).setCagesLabel((DataBaseExcel.GetLastRow() - 1).ToString());
+            ((MainWindow)this.Parent).setBirdsLabel((DataBaseExcel.GetLastRow(7) - 1).ToString());
 
-            ((MainWindow)this.Parent.Parent).showTopBar();
-            ((MainWindow)this.Parent.Parent).showTopPanel();
-            UserName_textbox.Text = "";
-            Password_textbox.Text = "";
+            ((MainWindow)this.Parent).showTopBar();
+            ((MainWindow)this.Parent).showTopPanel();
+            UserName_textbox.Texts = "";
+            Password_textbox.Texts = "";
+
+            ((MainWindow)this.Parent).showContent(); // makeing the content panel visible, all of our screens sit inside of it (other than login and signup)
 
             if (DataBaseExcel.ReadCell("A1").Equals("")) //checks if user is new (without any cages)
             {
                 // If our user is new, he will not have any cages, thats why for new users we want to show the "Add Cage" screen
                 // as the first screen untill they have actualy added a cage inorder to make them use our app safly and not get bugged out
-                ((MainWindow)this.Parent.Parent).showTopBar();
-                ((MainWindow)this.Parent.Parent).showTopPanel();
-                ((MainWindow)this.Parent.Parent).addCage1.setWelcome_lable(true);
-                ((MainWindow)this.Parent.Parent).addCage1.Show();
+                ((MainWindow)this.Parent).showTopBar();
+                ((MainWindow)this.Parent).showTopPanel();
+                ((MainWindow)this.Parent).addCage1.setWelcome_lable(true);
+                ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 124);
+                ((MainWindow)this.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 115);
+                ((MainWindow)this.Parent).addCage1.Show();
             }
             else //else user isn't new so we show homepage
             {
                 // Here we show the homepage because in this case we know that the user has atleast one cage and can safly use our app
-                ((MainWindow)this.Parent.Parent).homePage1.Show();
+                ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
+                ((MainWindow)this.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
+                ((MainWindow)this.Parent).homePage1.Show();
             }
 
             DataBaseExcel.Quit(); //close DataBaseExcel
@@ -93,8 +100,8 @@ namespace ProjectTesting
 
         private void SignUp_button_Click(object sender, EventArgs e)
         {
-            ((MainWindow)this.Parent.Parent).logIn1.Hide();
-            ((MainWindow)this.Parent.Parent).signUp1.Show();
+            ((MainWindow)this.Parent).signUp1.Show();
+            ((MainWindow)this.Parent).logIn1.Hide();
         }
     }
 }
