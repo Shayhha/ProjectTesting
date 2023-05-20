@@ -30,12 +30,20 @@ namespace ProjectTesting
             int BirdSize = LogIn.DataBaseExcel.GetLastRow(7);
             int CageSize = LogIn.DataBaseExcel.GetLastRow(1);
 
+            for (int i = 1; i < CageSize; i++) //add cages to cage hashtable
+            {
+                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
+                Cage cage = new Cage(temp);
+                HashTable.AddCageToHashtable(cage);
+            }
+
             for (int i = 1; i < BirdSize; i++) //add birds to bird hashtable
             {
                 string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 15);
                 Bird bird = new Bird(temp);
                 HashTable.AddBirdToHashtable(bird);
             }
+
             for (int i = 1; i < BirdSize; i++) //add offsprings to each bird in bird hashtable from database
             {
                 string[] temp = LogIn.DataBaseExcel.ReadRange(i, 7, 16);
@@ -49,22 +57,13 @@ namespace ProjectTesting
                         bird[0].AddOffspring(offspring[0]);
                     }
                 }
-                //if((bird[0].OffspringList.Count != 0))
-                //    MessageBox.Show(bird[0].OffspringList[0].Id);
             }
-
-            for (int i = 1; i < CageSize; i++) //add cages to cage hashtable
-            {
-                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
-                Cage cage = new Cage(temp);
-                HashTable.AddCageToHashtable(cage);
-            }
-            for (int i = 1; i < CageSize; i++) //add birds to each cage in cage hashtable from database
-            {
-                string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
-                List<Cage> cage = HashTable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
-                cage[0].SetBirdList(HashTable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
-            }
+            //for (int i = 1; i < CageSize; i++) //add birds to each cage in cage hashtable from database
+            //{
+            //    string[] temp = LogIn.DataBaseExcel.ReadRange(i, 1, 5);
+            //    List<Cage> cage = HashTable.SearchCageHashtable(temp[0]); //searches the cage id in hashtable
+            //    cage[0].SetBirdList(HashTable.SearchBirdHashtable(temp[0])); //adds the birds to matching cage
+            //}
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
