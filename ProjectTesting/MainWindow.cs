@@ -175,7 +175,8 @@ namespace ProjectTesting
         {
             if (searchBird1.Visible == true)
             {
-                if (searchBird1.Search_textbox.Text != "") { 
+                if (searchBird1.Search_textbox.Text != "")
+                {
                     searchBird1.Search_textbox.Text = "";
                 }
                 searchBird1.Hide();

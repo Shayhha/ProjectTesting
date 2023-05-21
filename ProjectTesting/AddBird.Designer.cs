@@ -79,6 +79,7 @@
             // 
             // subTypeBox
             // 
+            subTypeBox.Cursor = Cursors.Hand;
             subTypeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             subTypeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             subTypeBox.FormattingEnabled = true;
@@ -111,6 +112,7 @@
             // 
             // typeBox
             // 
+            typeBox.Cursor = Cursors.Hand;
             typeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             typeBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             typeBox.FormattingEnabled = true;

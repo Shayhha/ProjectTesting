@@ -136,6 +136,7 @@
             Password_textbox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             Password_textbox.BorderRadius = 5;
             Password_textbox.BorderSize = 2;
+            Password_textbox.Cursor = Cursors.IBeam;
             Password_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Password_textbox.ForeColor = Color.FromArgb(64, 64, 64);
             Password_textbox.Location = new Point(149, 236);
@@ -158,6 +159,7 @@
             UserName_textbox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             UserName_textbox.BorderRadius = 5;
             UserName_textbox.BorderSize = 2;
+            UserName_textbox.Cursor = Cursors.IBeam;
             UserName_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserName_textbox.ForeColor = Color.FromArgb(64, 64, 64);
             UserName_textbox.Location = new Point(149, 173);

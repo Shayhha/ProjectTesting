@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             headlinePanel = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            logOutButton = new Button();
-            Back_Button = new Button();
-            dashboardButton = new Button();
+            logOutButton = new RJControls.RJButton();
+            Back_Button = new RJControls.RJButton();
+            dashboardButton = new RJControls.RJButton();
             countersPanel = new Panel();
             Cage_label = new Label();
             Bird_label = new Label();
@@ -66,7 +66,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            flowLayoutPanel1.BackColor = Color.Transparent;
+            flowLayoutPanel1.BackColor = Color.FromArgb(50, 80, 57);
             flowLayoutPanel1.Controls.Add(logOutButton);
             flowLayoutPanel1.Controls.Add(Back_Button);
             flowLayoutPanel1.Controls.Add(dashboardButton);
@@ -81,44 +81,68 @@
             // 
             logOutButton.Anchor = AnchorStyles.Right;
             logOutButton.BackColor = Color.IndianRed;
+            logOutButton.BackgroundColor = Color.IndianRed;
+            logOutButton.BorderColor = Color.Black;
+            logOutButton.BorderRadius = 10;
+            logOutButton.BorderSize = 1;
             logOutButton.Cursor = Cursors.Hand;
-            logOutButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            logOutButton.FlatAppearance.BorderSize = 0;
+            logOutButton.FlatStyle = FlatStyle.Flat;
+            logOutButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             logOutButton.ForeColor = Color.White;
             logOutButton.Location = new Point(373, 11);
             logOutButton.Margin = new Padding(13, 3, 3, 3);
             logOutButton.Name = "logOutButton";
             logOutButton.Size = new Size(100, 40);
-            logOutButton.TabIndex = 0;
+            logOutButton.TabIndex = 18;
             logOutButton.Text = "Log-out";
+            logOutButton.TextColor = Color.White;
             logOutButton.UseVisualStyleBackColor = false;
             logOutButton.Click += logOutButton_Click;
             // 
             // Back_Button
             // 
             Back_Button.Anchor = AnchorStyles.Right;
+            Back_Button.BackColor = Color.FromArgb(145, 199, 136);
+            Back_Button.BackgroundColor = Color.FromArgb(145, 199, 136);
+            Back_Button.BorderColor = Color.FromArgb(97, 135, 110);
+            Back_Button.BorderRadius = 10;
+            Back_Button.BorderSize = 2;
             Back_Button.Cursor = Cursors.Hand;
+            Back_Button.FlatAppearance.BorderSize = 0;
+            Back_Button.FlatStyle = FlatStyle.Flat;
             Back_Button.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Back_Button.ForeColor = Color.Black;
             Back_Button.Location = new Point(267, 11);
             Back_Button.Margin = new Padding(13, 3, 3, 3);
             Back_Button.Name = "Back_Button";
             Back_Button.Size = new Size(90, 40);
-            Back_Button.TabIndex = 11;
+            Back_Button.TabIndex = 17;
             Back_Button.Text = "Back";
-            Back_Button.UseVisualStyleBackColor = true;
-            Back_Button.Visible = false;
+            Back_Button.TextColor = Color.Black;
+            Back_Button.UseVisualStyleBackColor = false;
             Back_Button.Click += Back_Button_Click;
             // 
             // dashboardButton
             // 
             dashboardButton.Anchor = AnchorStyles.Right;
+            dashboardButton.BackColor = Color.FromArgb(145, 199, 136);
+            dashboardButton.BackgroundColor = Color.FromArgb(145, 199, 136);
+            dashboardButton.BorderColor = Color.FromArgb(97, 135, 110);
+            dashboardButton.BorderRadius = 10;
+            dashboardButton.BorderSize = 2;
             dashboardButton.Cursor = Cursors.Hand;
-            dashboardButton.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dashboardButton.FlatAppearance.BorderSize = 0;
+            dashboardButton.FlatStyle = FlatStyle.Flat;
+            dashboardButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dashboardButton.ForeColor = Color.Black;
             dashboardButton.Location = new Point(121, 11);
             dashboardButton.Name = "dashboardButton";
             dashboardButton.Size = new Size(130, 40);
-            dashboardButton.TabIndex = 12;
+            dashboardButton.TabIndex = 16;
             dashboardButton.Text = "Dashboard";
-            dashboardButton.UseVisualStyleBackColor = true;
+            dashboardButton.TextColor = Color.Black;
+            dashboardButton.UseVisualStyleBackColor = false;
             dashboardButton.Click += dashboardButton_Click;
             // 
             // countersPanel
@@ -225,6 +249,7 @@
             // 
             // signUp1
             // 
+            signUp1.BackColor = Color.WhiteSmoke;
             signUp1.BackgroundImage = (Image)resources.GetObject("signUp1.BackgroundImage");
             signUp1.Location = new Point(0, 0);
             signUp1.Name = "signUp1";
@@ -234,6 +259,7 @@
             // 
             // logIn1
             // 
+            logIn1.BackColor = Color.WhiteSmoke;
             logIn1.BackgroundImage = (Image)resources.GetObject("logIn1.BackgroundImage");
             logIn1.Location = new Point(0, 0);
             logIn1.Name = "logIn1";
@@ -273,13 +299,13 @@
         public HomePage homePage1;
         public SignUp signUp1;
         public LogIn logIn1;
-        private Button logOutButton;
         private Label Cage_label;
         private Label Bird_label;
-        public Button Back_Button;
-        public Button dashboardButton;
         private PictureBox appIcon;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel countersPanel;
+        private RJControls.RJButton dashboardButton;
+        private RJControls.RJButton logOutButton;
+        private RJControls.RJButton Back_Button;
     }
 }

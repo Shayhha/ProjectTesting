@@ -79,7 +79,7 @@
             Search_button.Location = new Point(781, 68);
             Search_button.Name = "Search_button";
             Search_button.Size = new Size(105, 33);
-            Search_button.TabIndex = 43;
+            Search_button.TabIndex = 2;
             Search_button.Text = "Search";
             Search_button.TextColor = Color.Black;
             Search_button.UseVisualStyleBackColor = false;
@@ -87,13 +87,14 @@
             // 
             // Search_textbox
             // 
+            Search_textbox.Cursor = Cursors.IBeam;
             Search_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Search_textbox.Location = new Point(398, 68);
             Search_textbox.Name = "Search_textbox";
             Search_textbox.PlaceholderText = "  Search for birds/cages.....";
             Search_textbox.ScrollBars = ScrollBars.Vertical;
             Search_textbox.Size = new Size(375, 33);
-            Search_textbox.TabIndex = 46;
+            Search_textbox.TabIndex = 1;
             // 
             // label2
             // 

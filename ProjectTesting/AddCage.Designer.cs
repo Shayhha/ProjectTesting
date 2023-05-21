@@ -31,6 +31,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             label9 = new Label();
             panel1 = new Panel();
+            materialBox = new ComboBox();
             label7 = new Label();
             heightBox = new RJControls.RJTextBox();
             label1 = new Label();
@@ -45,7 +46,6 @@
             cancelButton = new RJControls.RJButton();
             panel2 = new Panel();
             panel3 = new Panel();
-            materialBox = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -86,6 +86,17 @@
             panel1.Size = new Size(365, 276);
             panel1.TabIndex = 0;
             // 
+            // materialBox
+            // 
+            materialBox.Cursor = Cursors.Hand;
+            materialBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            materialBox.FormattingEnabled = true;
+            materialBox.Location = new Point(91, 219);
+            materialBox.Name = "materialBox";
+            materialBox.Size = new Size(250, 33);
+            materialBox.TabIndex = 10;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -103,6 +114,7 @@
             heightBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             heightBox.BorderRadius = 5;
             heightBox.BorderSize = 2;
+            heightBox.Cursor = Cursors.IBeam;
             heightBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             heightBox.ForeColor = Color.FromArgb(64, 64, 64);
             heightBox.Location = new Point(91, 169);
@@ -135,6 +147,7 @@
             widthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             widthBox.BorderRadius = 5;
             widthBox.BorderSize = 2;
+            widthBox.Cursor = Cursors.IBeam;
             widthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             widthBox.ForeColor = Color.FromArgb(64, 64, 64);
             widthBox.Location = new Point(91, 121);
@@ -167,6 +180,7 @@
             lengthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             lengthBox.BorderRadius = 5;
             lengthBox.BorderSize = 2;
+            lengthBox.Cursor = Cursors.IBeam;
             lengthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lengthBox.ForeColor = Color.FromArgb(64, 64, 64);
             lengthBox.Location = new Point(91, 71);
@@ -199,6 +213,7 @@
             idBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             idBox.BorderRadius = 5;
             idBox.BorderSize = 2;
+            idBox.Cursor = Cursors.IBeam;
             idBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             idBox.ForeColor = Color.FromArgb(64, 64, 64);
             idBox.Location = new Point(91, 20);
@@ -296,16 +311,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(450, 424);
             panel3.TabIndex = 9;
-            // 
-            // materialBox
-            // 
-            materialBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            materialBox.FormattingEnabled = true;
-            materialBox.Location = new Point(91, 219);
-            materialBox.Name = "materialBox";
-            materialBox.Size = new Size(250, 33);
-            materialBox.TabIndex = 10;
             // 
             // AddCage
             // 
