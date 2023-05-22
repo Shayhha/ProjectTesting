@@ -95,7 +95,7 @@
             materialBox.Location = new Point(91, 219);
             materialBox.Name = "materialBox";
             materialBox.Size = new Size(250, 33);
-            materialBox.TabIndex = 10;
+            materialBox.TabIndex = 13;
             // 
             // label7
             // 
