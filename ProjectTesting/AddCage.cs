@@ -147,6 +147,7 @@ namespace ProjectTesting
                 if (!checkCageId(cageInfo[0]))
                 {
                     CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
+                    LogIn.DataBaseExcel.Quit(); //close excel
                     return false;
                 }
                 LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
