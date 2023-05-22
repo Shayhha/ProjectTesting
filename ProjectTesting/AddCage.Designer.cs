@@ -62,10 +62,10 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(118, 11);
+            label9.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
+            label9.Location = new Point(97, 11);
             label9.Name = "label9";
-            label9.Size = new Size(230, 50);
+            label9.Size = new Size(259, 46);
             label9.TabIndex = 1;
             label9.Text = "Add a Cage:";
             // 
@@ -241,10 +241,11 @@
             // 
             // Welcome_label
             // 
-            Welcome_label.Font = new Font("Comic Sans MS", 24F, FontStyle.Underline, GraphicsUnit.Point);
-            Welcome_label.Location = new Point(276, 32);
+            Welcome_label.AutoSize = true;
+            Welcome_label.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
+            Welcome_label.Location = new Point(182, 37);
             Welcome_label.Name = "Welcome_label";
-            Welcome_label.Size = new Size(660, 64);
+            Welcome_label.Size = new Size(858, 46);
             Welcome_label.TabIndex = 5;
             Welcome_label.Text = "Welcome new user! please add a new cage";
             Welcome_label.Visible = false;
@@ -255,15 +256,16 @@
             addButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             addButton.BorderColor = Color.FromArgb(115, 165, 100);
             addButton.BorderRadius = 10;
-            addButton.BorderSize = 2;
+            addButton.BorderSize = 3;
             addButton.Cursor = Cursors.Hand;
             addButton.FlatAppearance.BorderSize = 0;
             addButton.FlatStyle = FlatStyle.Flat;
-            addButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            addButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             addButton.ForeColor = Color.Black;
-            addButton.Location = new Point(77, 358);
+            addButton.Location = new Point(73, 348);
             addButton.Name = "addButton";
-            addButton.Size = new Size(125, 45);
+            addButton.Padding = new Padding(0, 0, 0, 2);
+            addButton.Size = new Size(140, 50);
             addButton.TabIndex = 14;
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
@@ -276,15 +278,16 @@
             cancelButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             cancelButton.BorderColor = Color.FromArgb(115, 165, 100);
             cancelButton.BorderRadius = 10;
-            cancelButton.BorderSize = 2;
+            cancelButton.BorderSize = 3;
             cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.Black;
-            cancelButton.Location = new Point(246, 358);
+            cancelButton.Location = new Point(242, 348);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(125, 45);
+            cancelButton.Padding = new Padding(0, 0, 0, 2);
+            cancelButton.Size = new Size(140, 50);
             cancelButton.TabIndex = 15;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
@@ -328,6 +331,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

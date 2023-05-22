@@ -65,8 +65,8 @@ namespace ProjectTesting
             panel3 = new Panel();
             heightLabel = new Label();
             widthLabel = new Label();
-            lengthLabel = new Label();
             materialLabel = new Label();
+            lengthLabel = new Label();
             cageLabel = new Label();
             editPanel = new FlowLayoutPanel();
             saveCageButton = new RJControls.RJButton();
@@ -572,17 +572,6 @@ namespace ProjectTesting
             widthLabel.TabIndex = 6;
             widthLabel.Text = "Width:";
             // 
-            // lengthLabel
-            // 
-            lengthLabel.AutoSize = true;
-            lengthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lengthLabel.Location = new Point(30, 55);
-            lengthLabel.Name = "lengthLabel";
-            lengthLabel.Padding = new Padding(0, 4, 0, 0);
-            lengthLabel.Size = new Size(76, 29);
-            lengthLabel.TabIndex = 4;
-            lengthLabel.Text = "Length:";
-            // 
             // materialLabel
             // 
             materialLabel.AutoSize = true;
@@ -593,6 +582,17 @@ namespace ProjectTesting
             materialLabel.Size = new Size(89, 29);
             materialLabel.TabIndex = 2;
             materialLabel.Text = "Material:";
+            // 
+            // lengthLabel
+            // 
+            lengthLabel.AutoSize = true;
+            lengthLabel.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lengthLabel.Location = new Point(30, 55);
+            lengthLabel.Name = "lengthLabel";
+            lengthLabel.Padding = new Padding(0, 4, 0, 0);
+            lengthLabel.Size = new Size(76, 29);
+            lengthLabel.TabIndex = 4;
+            lengthLabel.Text = "Length:";
             // 
             // cageLabel
             // 
@@ -629,6 +629,7 @@ namespace ProjectTesting
             saveCageButton.ForeColor = Color.Black;
             saveCageButton.Location = new Point(3, 52);
             saveCageButton.Name = "saveCageButton";
+            saveCageButton.Padding = new Padding(0, 2, 0, 0);
             saveCageButton.Size = new Size(75, 40);
             saveCageButton.TabIndex = 6;
             saveCageButton.Text = "Save";
@@ -651,6 +652,7 @@ namespace ProjectTesting
             editCageButton.ForeColor = Color.Black;
             editCageButton.Location = new Point(3, 6);
             editCageButton.Name = "editCageButton";
+            editCageButton.Padding = new Padding(0, 2, 0, 0);
             editCageButton.Size = new Size(75, 40);
             editCageButton.TabIndex = 44;
             editCageButton.Text = "Edit";

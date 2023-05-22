@@ -73,12 +73,13 @@
             // SignUp_label
             // 
             SignUp_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            SignUp_label.AutoSize = true;
             SignUp_label.BackColor = Color.Transparent;
-            SignUp_label.Font = new Font("Comic Sans MS", 27.75F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
+            SignUp_label.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
             SignUp_label.ForeColor = Color.WhiteSmoke;
-            SignUp_label.Location = new Point(327, 36);
+            SignUp_label.Location = new Point(296, 41);
             SignUp_label.Name = "SignUp_label";
-            SignUp_label.Size = new Size(645, 52);
+            SignUp_label.Size = new Size(686, 46);
             SignUp_label.TabIndex = 19;
             SignUp_label.Text = "Welcome New User, Sign Up Now!";
             // 
@@ -259,6 +260,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

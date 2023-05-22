@@ -306,10 +306,10 @@
             // AddBird_label
             // 
             AddBird_label.AutoSize = true;
-            AddBird_label.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AddBird_label.Location = new Point(128, 2);
+            AddBird_label.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
+            AddBird_label.Location = new Point(103, 8);
             AddBird_label.Name = "AddBird_label";
-            AddBird_label.Size = new Size(217, 50);
+            AddBird_label.Size = new Size(239, 46);
             AddBird_label.TabIndex = 1;
             AddBird_label.Text = "Add a Bird:";
             // 
@@ -319,15 +319,16 @@
             addButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             addButton.BorderColor = Color.FromArgb(115, 165, 100);
             addButton.BorderRadius = 10;
-            addButton.BorderSize = 2;
+            addButton.BorderSize = 3;
             addButton.Cursor = Cursors.Hand;
             addButton.FlatAppearance.BorderSize = 0;
             addButton.FlatStyle = FlatStyle.Flat;
-            addButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            addButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             addButton.ForeColor = Color.Black;
-            addButton.Location = new Point(85, 469);
+            addButton.Location = new Point(72, 461);
             addButton.Name = "addButton";
-            addButton.Size = new Size(125, 45);
+            addButton.Padding = new Padding(0, 0, 0, 2);
+            addButton.Size = new Size(140, 50);
             addButton.TabIndex = 9;
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
@@ -340,15 +341,16 @@
             cancelButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             cancelButton.BorderColor = Color.FromArgb(115, 165, 100);
             cancelButton.BorderRadius = 10;
-            cancelButton.BorderSize = 2;
+            cancelButton.BorderSize = 3;
             cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.Black;
-            cancelButton.Location = new Point(243, 469);
+            cancelButton.Location = new Point(238, 461);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(125, 45);
+            cancelButton.Padding = new Padding(0, 0, 0, 2);
+            cancelButton.Size = new Size(140, 50);
             cancelButton.TabIndex = 10;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
