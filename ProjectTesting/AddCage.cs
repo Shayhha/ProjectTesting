@@ -123,6 +123,18 @@ namespace ProjectTesting
                 return false;
             }
 
+            // if the user is editing the cage AND has changed the cage id we need to do the following
+            if (edited && !(cageInfo[0].Equals(oldCageId)))
+            {
+                // we need to see if the new cage id is unique or not
+                List<Cage> cageMightExist = MainWindow.HashTable.SearchCageHashtable(cageInfo[0]);
+                if (cageMightExist.Count != 0) // if the cage id is not unique, it already exists, then we show an error message, else we continue
+                {
+                    CustomMessageBox.Show("The new cage id already exists in the database, try a different one.", "Cage Id Already Exists");
+                    return false;
+                }
+            }
+
             // If everything went well and there where no errors, we the open the database excel file,
             // add the new cage to the excel, sort the excel and then close it.
             LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel

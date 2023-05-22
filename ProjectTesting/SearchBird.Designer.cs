@@ -158,6 +158,6 @@
         private RJControls.RJButton Search_button;
         private Label label2;
         private Label label1;
-        private RJControls.RJToggleButton searchBySwitch;
+        public RJControls.RJToggleButton searchBySwitch;
     }
 }

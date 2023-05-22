@@ -65,7 +65,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 //Search_textbox.Text = "";
                 //comboBox.SelectedIndex = 0;
-                cleanTextbox();
+                //cleanTextbox();
                 this.Hide();
             }
             else if (SearchResult == 1)
@@ -77,7 +77,7 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
                 //Search_textbox.Text = "";
                 //comboBox.SelectedIndex = 0;
-                cleanTextbox();
+                //cleanTextbox();
                 this.Hide();
             }
             // Stop the stopwatch
@@ -155,7 +155,7 @@ namespace ProjectTesting
 
         private void Cage_pictureBox_Click(object sender, EventArgs e)
         {
-            ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(77, 358);
+            ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(73, 348);
             ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
             ((MainWindow)this.Parent.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
             ((MainWindow)this.Parent.Parent).addCage1.Show();
@@ -175,6 +175,12 @@ namespace ProjectTesting
         {
             Search_textbox.Text = "";
             searchBySwitch.Checked = false;
+        }
+
+        public void setTextAndSwitch(string text, bool option) // this function transfers the text and search switch position from homepage to searchBird window 
+        {
+            Search_textbox.Text = text;
+            searchBySwitch.Checked = option;
         }
     }
 }

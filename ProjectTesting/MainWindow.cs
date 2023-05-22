@@ -99,12 +99,6 @@ namespace ProjectTesting
             }
         }
 
-        public void loginToSignUp()
-        {
-            logIn1.Hide();
-            signUp1.Show();
-        }
-
         private void logOutButton_Click(object sender, EventArgs e)
         {
             // when logout button is clicked we need to do a few things
@@ -175,12 +169,9 @@ namespace ProjectTesting
         {
             if (searchBird1.Visible == true)
             {
-                if (searchBird1.Search_textbox.Text != "")
-                {
-                    searchBird1.Search_textbox.Text = "";
-                }
                 searchBird1.Hide();
                 hideBackBtn();
+                homePage1.setTextAndSwitch(searchBird1.Search_textbox.Text, searchBird1.searchBySwitch.Checked);
                 homePage1.Show();
             }
             else if (moreDetails1.Visible == true)

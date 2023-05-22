@@ -34,55 +34,67 @@ namespace ProjectTesting
             string username = UserName_textbox.Texts;
             string id = ID_textbox.Texts;
             string[] userInfo = { username, pass, id };
-            Excel ex = new Excel("users", "default");
             string[] temp = null;
             int flag = 0;
-            int size = ex.GetLastRow();
+            //int size = ex.GetLastRow();
 
-            if (pass == "" && username == "" && id == "") //if fields are empty we give an error
+            if (pass == "" || username == "" || id == "") //if fields are empty we give an error
             {
-                CustomMessageBox.Show("Fields are empty!", "ERROR");
-                flag = 1;
+                CustomMessageBox.Show("Some fields are empty!", "ERROR");
+                //flag = 1;
+                return;
             }
-
             else //else fields are'nt empty so we check their validity
             {
+                if (UsernameValidate(username) == false)
+                    return;
+                else
+                {
+                    List<string[]> searchUser = MainWindow.HashTable.SearchUserHashtable(username);
+                    List<string[]> searchID = MainWindow.HashTable.SearchUserHashtable(id);
+                    if (searchUser[0][0] != "" && (searchUser[0][2] == username || searchUser[0][0].ToLower() == username.ToLower())) //if we found one that matches we open a messagebox and break
+                    {
+                        CustomMessageBox.Show("Username is already taken!", "ERROR");
+                        //flag = 1;
+                        return;
+                    }
+
+                    if (searchID[0][0] != "" && searchID[0][2] == id)
+                    {
+                        CustomMessageBox.Show("ID is already registered!", "ERROR");
+                        //flag = 1;
+                        return;
+                    }
+                }
+                //flag = 1;
+
+                if (PasswordValidate(pass) == false)
+                    return;
+                //flag = 1;
+
                 if (id.Length != 9 || !(id.All(char.IsDigit)))
                 {
                     CustomMessageBox.Show("ID length must be 9 characters and contain only numbers", "ERROR");
-                    flag = 1;
-                }
-
-                if (UsernameValidate(username) == false)
-                    flag = 1;
-
-                if (PasswordValidate(pass) == false)
-                    flag = 1;
-            }
-
-            if (flag == 0) //if no errors occurred we check if the user exists in our user hashtable
-            {
-                List<string[]> searchUser = MainWindow.HashTable.SearchUserHashtable(username);
-                List<string[]> searchID = MainWindow.HashTable.SearchUserHashtable(id);
-                if (searchUser[0][0] != "" && (searchUser[0][2] == username || searchUser[0][0].ToLower() == username.ToLower())) //if we found one that matches we open a messagebox and break
-                {
-                    CustomMessageBox.Show("Username is already taken!", "ERROR");
-                    flag = 1;
-                }
-
-                if (searchID[0][0] != "" && searchID[0][2] == id)
-                {
-                    CustomMessageBox.Show("ID is already registered!", "ERROR");
-                    flag = 1;
+                    //flag = 1;
+                    return;
                 }
             }
+
+            //if (flag == 0) //if no errors occurred we check if the user exists in our user hashtable
+            //{
+
+            //}
 
             if (flag == 0) //if everything went right we add the user to file and send welcome message
             {
+                Excel ex = new Excel("users", "default");
                 ex.WriteRange(ex.GetLastRow(), 1, 3, userInfo);
+                ex.Quit();
+
                 Excel ex2 = new Excel("database", "default");
                 ex2.CreateNewSheet(username);
                 ex2.Quit();
+
                 CustomMessageBox.Show("You've successfully signed up to system!", "Welocme", false);
                 Password_textbox2.Texts = "";
                 UserName_textbox.Texts = "";
@@ -91,7 +103,6 @@ namespace ProjectTesting
                 MainWindow.HashTable.AddUserToHashtable(userInfo); //add user to hashtable
                 this.Hide(); //return to previous window
             }
-            ex.Quit();
         }
 
         public bool UsernameValidate(string user)
@@ -153,7 +164,7 @@ namespace ProjectTesting
                 }
                 if (!hasSymbols.IsMatch(pass))
                 {
-                    CustomMessageBox.Show("Error, password must contain at least symbol!", "ERROR");
+                    CustomMessageBox.Show("Error, password must contain at least one symbol!", "ERROR");
                     return false;
                 }
             }

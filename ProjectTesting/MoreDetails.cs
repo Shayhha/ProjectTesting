@@ -147,8 +147,6 @@ namespace ProjectTesting
         private void cleanLabels()
         {
             idLabel.Texts = "";
-            //typeLabel.Texts = "";
-            //subTypeLabel.Texts = "";
             genderLabel.Texts = "";
             cageIdLabel.Texts = "";
             dadIdLabel.Texts = "";
@@ -158,7 +156,6 @@ namespace ProjectTesting
             lengthValue.Texts = "";
             widthValue.Texts = "";
             heightValue.Texts = "";
-            //materialValue.Texts = "";
             birdList.Items.Clear();
             offspringList.Items.Clear();
         }
@@ -220,11 +217,7 @@ namespace ProjectTesting
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
-            ////idLabel.ReadOnly = false;
             datePicker.Enabled = true;
-            //cageIdLabel.ReadOnly = false;
-            //dadIdLabel.ReadOnly = false;
-            //momIdLabel.ReadOnly = false;
 
             idLabel.Enabled = true;
             cageIdLabel.Enabled = true;
@@ -234,10 +227,6 @@ namespace ProjectTesting
             List<Bird> bird = MainWindow.HashTable.SearchBirdHashtable(infoFromDatabaseBird.Id); //search bird id in hashtable
             if (bird[0].isOffspring == false && bird[0].OffspringList.Count == 0)
             { //checking if the bird is adult and has no offsprings then we can edit these fields
-                //typeLabel.ReadOnly = false;
-                //subTypeLabel.ReadOnly = false;
-                //genderLabel.ReadOnly = false;
-
                 typeLabel.Enabled = true;
                 subTypeLabel.Enabled = true;
                 genderLabel.Enabled = true;
@@ -298,12 +287,6 @@ namespace ProjectTesting
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
-            //cageValue.ReadOnly = false;
-            //materialValue.ReadOnly = false;
-            //lengthValue.ReadOnly = false;
-            //widthValue.ReadOnly = false;
-            //heightValue.ReadOnly = false;
-
             cageValue.Enabled = true;
             materialValue.Enabled = true;
             lengthValue.Enabled = true;
@@ -315,12 +298,6 @@ namespace ProjectTesting
         {
             editCageButton.Visible = true;
             saveCageButton.Visible = false;
-
-            //cageValue.ReadOnly = true;
-            //materialValue.ReadOnly = true;
-            //lengthValue.ReadOnly = true;
-            //widthValue.ReadOnly = true;
-            //heightValue.ReadOnly = true;
 
             cageValue.Enabled = false;
             materialValue.Enabled = false;
@@ -356,16 +333,9 @@ namespace ProjectTesting
 
         public void setUnedited()
         {
+            // reserting bird more details
             editBirdButton.Show();
             saveBirdButton.Hide();
-
-            //idLabel.ReadOnly = true;
-            //typeLabel.ReadOnly = true;
-            //subTypeLabel.ReadOnly = true;
-            //genderLabel.ReadOnly = true;
-            //cageIdLabel.ReadOnly = true;
-            //dadIdLabel.ReadOnly = true;
-            //momIdLabel.ReadOnly = true;
 
             idLabel.Enabled = false;
             typeLabel.Enabled = false;
@@ -375,6 +345,16 @@ namespace ProjectTesting
             cageIdLabel.Enabled = false;
             dadIdLabel.Enabled = false;
             momIdLabel.Enabled = false;
+
+            // reseting cage more details
+            editCageButton.Show();
+            saveCageButton.Hide();
+
+            cageValue.Enabled = false;
+            materialValue.Enabled = false;
+            lengthValue.Enabled = false;
+            widthValue.Enabled = false;
+            heightValue.Enabled = false;
         }
 
         private void typeCombobox_ItemClicked(object sender, EventArgs e)

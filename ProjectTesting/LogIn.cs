@@ -82,7 +82,8 @@ namespace ProjectTesting
                 ((MainWindow)this.Parent).showTopBar();
                 ((MainWindow)this.Parent).showTopPanel();
                 ((MainWindow)this.Parent).addCage1.setWelcome_lable(true);
-                ((MainWindow)this.Parent).addCage1.addButton.Location = new System.Drawing.Point(168, 358);
+                ((MainWindow)this.Parent).addCage1.setTypeCombobox();
+                ((MainWindow)this.Parent).addCage1.addButton.Location = new System.Drawing.Point(158, 348); 
                 ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 124);
                 ((MainWindow)this.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 115);
                 ((MainWindow)this.Parent).addCage1.Show();
