@@ -181,7 +181,7 @@
             ID_textbox.PlaceholderColor = Color.DarkGray;
             ID_textbox.PlaceholderText = "9 digit number";
             ID_textbox.Size = new Size(300, 40);
-            ID_textbox.TabIndex = 2;
+            ID_textbox.TabIndex = 3;
             ID_textbox.Texts = "";
             ID_textbox.UnderlinedStyle = false;
             // 
@@ -243,7 +243,7 @@
             Password_textbox2.PlaceholderColor = Color.DarkGray;
             Password_textbox2.PlaceholderText = "Between 8 - 10 characters";
             Password_textbox2.Size = new Size(300, 40);
-            Password_textbox2.TabIndex = 3;
+            Password_textbox2.TabIndex = 2;
             Password_textbox2.Texts = "";
             Password_textbox2.UnderlinedStyle = false;
             // 
