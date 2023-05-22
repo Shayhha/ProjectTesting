@@ -116,10 +116,11 @@
             SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.FlatAppearance.BorderSize = 0;
             SignUp_button.FlatStyle = FlatStyle.Flat;
-            SignUp_button.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            SignUp_button.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             SignUp_button.ForeColor = Color.Black;
             SignUp_button.Location = new Point(38, 396);
             SignUp_button.Name = "SignUp_button";
+            SignUp_button.Padding = new Padding(0, 0, 0, 2);
             SignUp_button.Size = new Size(155, 55);
             SignUp_button.TabIndex = 4;
             SignUp_button.Text = "Sign Up";
@@ -137,10 +138,11 @@
             Cancel_button.Cursor = Cursors.Hand;
             Cancel_button.FlatAppearance.BorderSize = 0;
             Cancel_button.FlatStyle = FlatStyle.Flat;
-            Cancel_button.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            Cancel_button.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             Cancel_button.ForeColor = Color.Black;
             Cancel_button.Location = new Point(224, 396);
             Cancel_button.Name = "Cancel_button";
+            Cancel_button.Padding = new Padding(0, 0, 0, 2);
             Cancel_button.Size = new Size(155, 55);
             Cancel_button.TabIndex = 5;
             Cancel_button.Text = "Cancel";
