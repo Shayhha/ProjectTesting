@@ -53,7 +53,7 @@
             Password_label.AutoSize = true;
             Password_label.BackColor = Color.Transparent;
             Password_label.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Password_label.Location = new Point(58, 210);
+            Password_label.Location = new Point(58, 211);
             Password_label.Name = "Password_label";
             Password_label.Size = new Size(108, 30);
             Password_label.TabIndex = 21;
@@ -85,7 +85,7 @@
             // 
             // Question_pictureBox
             // 
-            Question_pictureBox.BackColor = Color.FromArgb(230, 97, 135, 110);
+            Question_pictureBox.BackColor = Color.Transparent;
             Question_pictureBox.Cursor = Cursors.Help;
             Question_pictureBox.Image = (Image)resources.GetObject("Question_pictureBox.Image");
             Question_pictureBox.Location = new Point(365, 11);
@@ -100,7 +100,7 @@
             ID_label.AutoSize = true;
             ID_label.BackColor = Color.Transparent;
             ID_label.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            ID_label.Location = new Point(58, 293);
+            ID_label.Location = new Point(58, 294);
             ID_label.Name = "ID_label";
             ID_label.Size = new Size(39, 30);
             ID_label.TabIndex = 22;
