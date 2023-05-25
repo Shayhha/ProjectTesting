@@ -42,7 +42,7 @@
             ID_textbox = new RJControls.RJTextBox();
             UserName_textbox = new RJControls.RJTextBox();
             panel1 = new Panel();
-            Password_textbox2 = new RJControls.RJTextBox();
+            Password_textbox = new RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Question_pictureBox).BeginInit();
             panel1.SuspendLayout();
@@ -210,7 +210,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(230, 97, 135, 110);
-            panel1.Controls.Add(Password_textbox2);
+            panel1.Controls.Add(Password_textbox);
             panel1.Controls.Add(Cancel_button);
             panel1.Controls.Add(SignUp_button);
             panel1.Controls.Add(ID_label);
@@ -225,27 +225,27 @@
             panel1.Size = new Size(415, 480);
             panel1.TabIndex = 45;
             // 
-            // Password_textbox2
+            // Password_textbox
             // 
-            Password_textbox2.BackColor = SystemColors.Window;
-            Password_textbox2.BorderColor = Color.FromArgb(145, 199, 136);
-            Password_textbox2.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            Password_textbox2.BorderRadius = 5;
-            Password_textbox2.BorderSize = 2;
-            Password_textbox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Password_textbox2.ForeColor = Color.FromArgb(64, 64, 64);
-            Password_textbox2.Location = new Point(58, 242);
-            Password_textbox2.Margin = new Padding(4);
-            Password_textbox2.Multiline = false;
-            Password_textbox2.Name = "Password_textbox2";
-            Password_textbox2.Padding = new Padding(10, 7, 10, 7);
-            Password_textbox2.PasswordChar = false;
-            Password_textbox2.PlaceholderColor = Color.DarkGray;
-            Password_textbox2.PlaceholderText = "Between 8 - 10 characters";
-            Password_textbox2.Size = new Size(300, 40);
-            Password_textbox2.TabIndex = 2;
-            Password_textbox2.Texts = "";
-            Password_textbox2.UnderlinedStyle = false;
+            Password_textbox.BackColor = SystemColors.Window;
+            Password_textbox.BorderColor = Color.FromArgb(145, 199, 136);
+            Password_textbox.BorderFocusColor = Color.FromArgb(97, 135, 110);
+            Password_textbox.BorderRadius = 5;
+            Password_textbox.BorderSize = 2;
+            Password_textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_textbox.ForeColor = Color.FromArgb(64, 64, 64);
+            Password_textbox.Location = new Point(58, 242);
+            Password_textbox.Margin = new Padding(4);
+            Password_textbox.Multiline = false;
+            Password_textbox.Name = "Password_textbox";
+            Password_textbox.Padding = new Padding(10, 7, 10, 7);
+            Password_textbox.PasswordChar = false;
+            Password_textbox.PlaceholderColor = Color.DarkGray;
+            Password_textbox.PlaceholderText = "Between 8 - 10 characters";
+            Password_textbox.Size = new Size(300, 40);
+            Password_textbox.TabIndex = 2;
+            Password_textbox.Texts = "";
+            Password_textbox.UnderlinedStyle = false;
             // 
             // SignUp
             // 
@@ -266,7 +266,6 @@
 
         #endregion
         private BindingSource bindingSource1;
-        private TextBox Password_textbox;
         private Label Password_label;
         private Label UserName_label;
         private Label SignUp_label;
@@ -278,6 +277,6 @@
         private RJControls.RJTextBox ID_textbox;
         private RJControls.RJTextBox UserName_textbox;
         private Panel panel1;
-        private RJControls.RJTextBox Password_textbox2;
+        private RJControls.RJTextBox Password_textbox;
     }
 }
