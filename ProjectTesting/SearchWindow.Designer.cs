@@ -1,6 +1,6 @@
 ﻿namespace ProjectTesting
 {
-    partial class SearchBird
+    partial class SearchWindow
     {
         /// <summary> 
         /// Required designer variable.

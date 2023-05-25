@@ -40,7 +40,7 @@
             appIcon = new PictureBox();
             contentPanel = new Panel();
             moreDetails1 = new MoreDetails();
-            searchBird1 = new SearchBird();
+            searchBird1 = new SearchWindow();
             addCage1 = new AddCage();
             addBird1 = new AddBird();
             homePage1 = new HomePage();
@@ -293,7 +293,7 @@
         public Panel headlinePanel;
         public Panel contentPanel;
         public MoreDetails moreDetails1;
-        public SearchBird searchBird1;
+        public SearchWindow searchBird1;
         public AddCage addCage1;
         public AddBird addBird1;
         public HomePage homePage1;

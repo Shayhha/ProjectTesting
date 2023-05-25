@@ -48,7 +48,7 @@ namespace ProjectTesting
                     return;
                 else
                 {
-                    // if the username matches the pattern we need to check if the username already exists in the database, we do it by checking the Users hashtable
+                    // if the username matches the pattern we need to check if the username already exists in the hashtables, we do it by checking the Users hashtable
                     List<string[]> searchUser = MainWindow.HashTable.SearchUserHashtable(username);
                     List<string[]> searchID = MainWindow.HashTable.SearchUserHashtable(id);
                     if (searchUser[0][0] != "" && (searchUser[0][2] == username || searchUser[0][0].ToLower() == username.ToLower())) //if we found one that matches we open a messagebox and break
