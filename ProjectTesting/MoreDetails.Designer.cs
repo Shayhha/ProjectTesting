@@ -52,13 +52,12 @@ namespace ProjectTesting
             saveBirdButton = new RJControls.RJButton();
             editBirdButton = new RJControls.RJButton();
             label8 = new Label();
-            mainPic = new PictureBox();
             offspringList = new ListBox();
             offspringsPanel = new Panel();
             addOffspringButton = new RJControls.RJButton();
             fledglingLabel = new Label();
             birdPanel = new Panel();
-            myPic = new RJControls.RJCircularPictureBox();
+            mainPic = new RJControls.RJCircularPictureBox();
             cagePanel = new Panel();
             listLabel = new Label();
             birdList = new ListBox();
@@ -79,10 +78,9 @@ namespace ProjectTesting
             materialValue = new ComboBox();
             panel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             offspringsPanel.SuspendLayout();
             birdPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)myPic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mainPic).BeginInit();
             cagePanel.SuspendLayout();
             panel3.SuspendLayout();
             editPanel.SuspendLayout();
@@ -412,16 +410,6 @@ namespace ProjectTesting
             label8.TabIndex = 23;
             label8.Text = "Offsprings: ";
             // 
-            // mainPic
-            // 
-            mainPic.Location = new Point(1019, 423);
-            mainPic.Name = "mainPic";
-            mainPic.Size = new Size(450, 450);
-            mainPic.SizeMode = PictureBoxSizeMode.Zoom;
-            mainPic.TabIndex = 17;
-            mainPic.TabStop = false;
-            mainPic.Visible = false;
-            // 
             // offspringList
             // 
             offspringList.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -478,7 +466,6 @@ namespace ProjectTesting
             birdPanel.Controls.Add(panel1);
             birdPanel.Controls.Add(fledglingLabel);
             birdPanel.Controls.Add(offspringsPanel);
-            birdPanel.Controls.Add(myPic);
             birdPanel.Controls.Add(mainPic);
             birdPanel.Controls.Add(flowLayoutPanel2);
             birdPanel.Location = new Point(15, 22);
@@ -486,28 +473,28 @@ namespace ProjectTesting
             birdPanel.Size = new Size(1233, 586);
             birdPanel.TabIndex = 28;
             // 
-            // myPic
+            // mainPic
             // 
-            myPic.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Round;
-            myPic.BorderColor = Color.FromArgb(145, 199, 136);
-            myPic.BorderColor2 = Color.FromArgb(50, 80, 57);
-            myPic.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            myPic.BorderSize = 6;
-            myPic.GradientAngle = 20F;
-            myPic.Image = (Image)resources.GetObject("myPic.Image");
-            myPic.Location = new Point(755, 45);
-            myPic.Name = "myPic";
-            myPic.Size = new Size(475, 475);
-            myPic.SizeMode = PictureBoxSizeMode.Zoom;
-            myPic.TabIndex = 28;
-            myPic.TabStop = false;
+            mainPic.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Round;
+            mainPic.BorderColor = Color.FromArgb(145, 199, 136);
+            mainPic.BorderColor2 = Color.FromArgb(50, 80, 57);
+            mainPic.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            mainPic.BorderSize = 6;
+            mainPic.GradientAngle = 20F;
+            mainPic.Image = (Image)resources.GetObject("mainPic.Image");
+            mainPic.Location = new Point(755, 45);
+            mainPic.Name = "mainPic";
+            mainPic.Size = new Size(475, 475);
+            mainPic.SizeMode = PictureBoxSizeMode.Zoom;
+            mainPic.TabIndex = 28;
+            mainPic.TabStop = false;
             // 
             // cagePanel
             // 
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(6, 13);
+            cagePanel.Location = new Point(6, 21);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1242, 581);
@@ -790,12 +777,11 @@ namespace ProjectTesting
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)mainPic).EndInit();
             offspringsPanel.ResumeLayout(false);
             offspringsPanel.PerformLayout();
             birdPanel.ResumeLayout(false);
             birdPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)myPic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mainPic).EndInit();
             cagePanel.ResumeLayout(false);
             cagePanel.PerformLayout();
             panel3.ResumeLayout(false);
@@ -816,7 +802,6 @@ namespace ProjectTesting
         private Label label6;
         private Label label2;
         private Label label8;
-        private PictureBox mainPic;
         private ListBox offspringList;
         public Panel offspringsPanel;
         public Label fledglingLabel;
@@ -839,7 +824,7 @@ namespace ProjectTesting
         private RJControls.RJButton saveBirdButton;
         private RJControls.RJButton editBirdButton;
         private RJControls.RJButton addOffspringButton;
-        private RJControls.RJCircularPictureBox myPic;
+        private RJControls.RJCircularPictureBox mainPic;
         private RJControls.RJTextBox cageValue;
         private RJControls.RJTextBox heightValue;
         private RJControls.RJTextBox widthValue;

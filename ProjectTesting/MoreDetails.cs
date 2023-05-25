@@ -1,24 +1,18 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+﻿
 namespace ProjectTesting
 {
+    /// <summary>
+    /// This class is a UserControl that is used in our app to show additional information about a bird OR a cage.
+    /// This UserControl has two sides that so that only one is visable to the user, that way we can re-use our code and keep the
+    /// file system a little bit cleaner. When the user clicks a bird from a list he will see the full information about the bird and
+    /// when he clicks a cage he will see full information about the cage. 
+    /// This page also allows the user to modify the bird's or cage's info but with some limitations because of logic constraints, for 
+    /// example a user cannot edit a bird's gender if this bird already has offsprings, how even a regular adult bird can have its gender 
+    /// changed because there might have been an input error by the user.
+    /// </summary>
     public partial class MoreDetails : UserControl
     {
-
+        // these objects will be used later in this class to see what information the user edited
         private Bird infoFromDatabaseBird;
         private Cage infoFromDatabaseCage;
 
@@ -27,7 +21,7 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        public void setCageTypeCombobox()
+        public void setCageTypeCombobox() // Setting the options into the ComboBox with cage material options
         {
             string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
             materialValue.Items.Clear();
@@ -35,13 +29,12 @@ namespace ProjectTesting
             materialValue.SelectedItem = "WOOD";
         }
 
-        public void setImages()
+        public void setImages() // setting the image of the bird to a random image of a bird from our files.
         {
             this.mainPic.Image = getRandomImage();
-            this.myPic.Image = getRandomImage();
         }
 
-        private Image getRandomImage()
+        private Image getRandomImage() // taking a random image from the files and returning it as an Image object
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 19);
@@ -49,7 +42,7 @@ namespace ProjectTesting
             return temp;
         }
 
-        private void setSubTypeCombobox()
+        private void setSubTypeCombobox() // setting subtypes for birds based on the selected type
         {
             subTypeLabel.Items.Clear();
 
@@ -73,6 +66,13 @@ namespace ProjectTesting
             }
         }
 
+        /// <summary>
+        /// This function is perponsible for inputing all of the information into the MoreDetails page.
+        /// The function has two halfs, the top half is when the user clicked a bird in the list, and the bottom one is when the user
+        /// clicked a cage in the list.
+        /// </summary>
+        /// <param name="id">can be a bird id or a cage id, we will search for it in the hashtables and put the information onto the screen</param>
+        /// <param name="birdOrCage">by default is bird, but we pass in cage when we need to search for a cage</param>
         public void initLabels(string id, string birdOrCage = "bird")
         {
             cleanLabels();// needs to recive a param and clean based on that param
@@ -84,24 +84,28 @@ namespace ProjectTesting
                 saveBirdButton.Hide();
                 setImages();
 
+                // input the bird types into the combobox
                 string[] typeOptions = { "American Gouldian", "European Gouldian", "Australian Gouldian" };
                 typeLabel.Items.Clear();
                 typeLabel.Items.AddRange(typeOptions);
 
+                // searching for the bird in the hashtable 
                 List<Bird> birdInfo = MainWindow.HashTable.SearchBirdHashtable(id); //search bird in hashtable
                 infoFromDatabaseBird = birdInfo[0];//save the bird for later use
+
                 //initializing the fields
                 idLabel.Texts = birdInfo[0].Id;
                 typeLabel.SelectedItem = birdInfo[0].Type;
-                setSubTypeCombobox();
+                setSubTypeCombobox(); // init the subtype combobox
                 subTypeLabel.SelectedItem = birdInfo[0].SubType;
                 string[] date = birdInfo[0].DateOfBirth.Split("/");
                 int d = int.Parse(date[0]), m = int.Parse(date[1]), y = int.Parse(date[2]);
-                datePicker.Value = new DateTime(y, m, d); //yyyy,mm,dd
+                datePicker.Value = new DateTime(y, m, d); //the date is in the following format: yyyy,mm,dd
                 genderLabel.Texts = birdInfo[0].Gender;
                 cageIdLabel.Texts = birdInfo[0].CageId;
                 dadIdLabel.Texts = birdInfo[0].DadId;
                 momIdLabel.Texts = birdInfo[0].MomId;
+
                 //checks if offspring, if not we show a list of offsprings
                 if (birdInfo[0].isOffspring)
                 {
@@ -123,7 +127,7 @@ namespace ProjectTesting
             }
             else if (birdOrCage.Equals("cage")) //else we initialize cage's info
             {
-                setCageTypeCombobox();
+                setCageTypeCombobox(); //inputing the cage types into the combobox
                 cagePanel.Visible = true;
                 List<Cage> cageInfo = MainWindow.HashTable.SearchCageHashtable(id); //search cage in hashtable
                 infoFromDatabaseCage = cageInfo[0]; //saving cage for later use
@@ -162,11 +166,11 @@ namespace ProjectTesting
 
         private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
         {
-            restorInfo();
-            setUnedited();
+            restoreInfo(); // inputing old information incase the user edited the bird but did not save before clicking away
+            setUnedited(); // set the textboxes to the un-edited mode
             ((MainWindow)this.Parent.Parent).addBird1.setTypeCombobox();
             ((MainWindow)this.Parent.Parent).addBird1.setSubTypeCombobox();
-            ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly(
+            ((MainWindow)this.Parent.Parent).addBird1.makeReadOnly( // this function will decide what textboxes need to be disabled and what to input into them
                 typeLabel.Text, subTypeLabel.Text, cageIdLabel.Texts, genderLabel.Texts, idLabel.Texts
             );
 
@@ -175,14 +179,18 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).hideBackBtn();
         }
 
+        /// <summary>
+        /// Gets all of the text from the screen from the bird side
+        /// </summary>
+        /// <returns>returns a Bird object with all of the information based on the CURRENT Bird object</returns>
         private Bird getTextFromUiBird()
         {
             Bird newBird = new Bird(infoFromDatabaseBird);
 
             string[] temp = new string[] {
                 idLabel.Texts.ToString(),
-                typeLabel.Text,
-                subTypeLabel.Text,
+                typeLabel.Text,// this is a combobox
+                subTypeLabel.Text,// this is a combobox
                 datePicker.Text.ToString(),
                 genderLabel.Texts.ToString(),
                 cageIdLabel.Texts.ToString(),
@@ -194,6 +202,10 @@ namespace ProjectTesting
             return newBird;
         }
 
+        /// <summary>
+        /// Gets all of the text from the screen from the cage side 
+        /// </summary>
+        /// <returns>returns a Cage object with all of the information based on the CURRENT Cage object</returns>
         private Cage getTextFromUiCage()
         {
             Cage newCage = new Cage(infoFromDatabaseCage);
@@ -202,18 +214,18 @@ namespace ProjectTesting
                 lengthValue.Texts,
                 widthValue.Texts,
                 heightValue.Texts,
-                materialValue.SelectedItem.ToString()
+                materialValue.SelectedItem.ToString() // this is a combobox
             };
             newCage.EditFields(temp);
 
             return newCage;
         }
 
+        // the user wants to edit the bird
         private void editBirdButton_Click(object sender, EventArgs e)
         {
             editBirdButton.Hide();
             saveBirdButton.Show();
-            //infoFromDatabaseBird = getTextFromUi();
 
             ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
 
@@ -233,13 +245,12 @@ namespace ProjectTesting
             }
 
             if (infoFromDatabaseBird.OffspringList.Count > 0 || infoFromDatabaseBird.isOffspring)
-            {
-                //cageIdLabel.ReadOnly = true;
+            { // if the bird has offsprings OR is itself an offspring then we cannot allow the user to change the cage id of this bird
                 cageIdLabel.Enabled = false;
             }
         }
 
-        private void restorInfo()
+        private void restoreInfo() // restores the information on the screen back to the original information from the database (hashtable)
         {
             idLabel.Texts = infoFromDatabaseBird.Id;
             typeLabel.SelectedItem = infoFromDatabaseBird.Type;
@@ -253,7 +264,9 @@ namespace ProjectTesting
             momIdLabel.Texts = infoFromDatabaseBird.MomId;
         }
 
-        private void saveBirdButton_Click(object sender, EventArgs e) //change implementation with hashtable
+        // when the save button was clicked for the Bird side, the program will check the new information and if everything
+        // checks out then it will update the screen and the database
+        private void saveBirdButton_Click(object sender, EventArgs e) 
         {
             setUnedited();
 
@@ -273,14 +286,15 @@ namespace ProjectTesting
                 if (((MainWindow)this.Parent.Parent).addBird1.getInfoFromUser(getTextFromUiBird(), true, infoFromDatabaseBird.Id) == true)
                     infoFromDatabaseBird = getTextFromUiBird();
                 else
-                    restorInfo();
+                    restoreInfo();
             }
 
             if (flag == 1)
-                restorInfo();
+                restoreInfo();
         }
 
-        private void editCageButton_Click(object sender, EventArgs e) // for cage 
+        // the user wants to edit the cage
+        private void editCageButton_Click(object sender, EventArgs e)  
         {
             editCageButton.Visible = false;
             saveCageButton.Visible = true;
@@ -294,6 +308,8 @@ namespace ProjectTesting
             heightValue.Enabled = true;
         }
 
+        // when the save button was clicked for the Cage side, the program will check the new information and if everything
+        // checks out then it will update the screen and the database
         private void saveCageButton_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
             editCageButton.Visible = true;
