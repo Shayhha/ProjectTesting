@@ -40,7 +40,7 @@
             appIcon = new PictureBox();
             contentPanel = new Panel();
             moreDetails1 = new MoreDetails();
-            searchBird1 = new SearchWindow();
+            searchWindow1 = new SearchWindow();
             addCage1 = new AddCage();
             addBird1 = new AddBird();
             homePage1 = new HomePage();
@@ -192,7 +192,7 @@
             // 
             contentPanel.BackColor = Color.FromArgb(210, 230, 200);
             contentPanel.Controls.Add(moreDetails1);
-            contentPanel.Controls.Add(searchBird1);
+            contentPanel.Controls.Add(searchWindow1);
             contentPanel.Controls.Add(addCage1);
             contentPanel.Controls.Add(addBird1);
             contentPanel.Controls.Add(homePage1);
@@ -211,14 +211,14 @@
             moreDetails1.TabIndex = 6;
             moreDetails1.Visible = false;
             // 
-            // searchBird1
+            // searchWindow1
             // 
-            searchBird1.BackColor = Color.FromArgb(210, 230, 200);
-            searchBird1.Location = new Point(0, 0);
-            searchBird1.Name = "searchBird1";
-            searchBird1.Size = new Size(1264, 611);
-            searchBird1.TabIndex = 5;
-            searchBird1.Visible = false;
+            searchWindow1.BackColor = Color.FromArgb(210, 230, 200);
+            searchWindow1.Location = new Point(0, 0);
+            searchWindow1.Name = "searchWindow1";
+            searchWindow1.Size = new Size(1264, 611);
+            searchWindow1.TabIndex = 5;
+            searchWindow1.Visible = false;
             // 
             // addCage1
             // 
@@ -293,7 +293,7 @@
         public Panel headlinePanel;
         public Panel contentPanel;
         public MoreDetails moreDetails1;
-        public SearchWindow searchBird1;
+        public SearchWindow searchWindow1;
         public AddCage addCage1;
         public AddBird addBird1;
         public HomePage homePage1;

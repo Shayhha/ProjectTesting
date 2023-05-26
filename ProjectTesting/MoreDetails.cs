@@ -227,7 +227,7 @@ namespace ProjectTesting
             editBirdButton.Hide();
             saveBirdButton.Show();
 
-            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+            ((MainWindow)this.Parent.Parent).searchWindow1.ClearList();
 
             datePicker.Enabled = true;
 
@@ -299,7 +299,7 @@ namespace ProjectTesting
             editCageButton.Visible = false;
             saveCageButton.Visible = true;
 
-            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+            ((MainWindow)this.Parent.Parent).searchWindow1.ClearList();
 
             cageValue.Enabled = true;
             materialValue.Enabled = true;

@@ -55,13 +55,13 @@ namespace ProjectTesting
             stopwatch.Start();
 
             string name = Search_textbox.Text;
-            ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+            ((MainWindow)this.Parent.Parent).searchWindow1.ClearList();
             bool searchSwitch = searchBySwitch.Checked;
-            int SearchResult = ((MainWindow)this.Parent.Parent).searchBird1.Search(name, searchSwitch);
+            int SearchResult = ((MainWindow)this.Parent.Parent).searchWindow1.Search(name, searchSwitch);
             if (SearchResult == 0)
             {
-                ((MainWindow)this.Parent.Parent).searchBird1.setTextAndSwitch(name, searchSwitch);
-                ((MainWindow)this.Parent.Parent).searchBird1.Show();
+                ((MainWindow)this.Parent.Parent).searchWindow1.setTextAndSwitch(name, searchSwitch);
+                ((MainWindow)this.Parent.Parent).searchWindow1.Show();
                 ((MainWindow)this.Parent.Parent).showBackBtn();
                 //Search_textbox.Text = "";
                 //comboBox.SelectedIndex = 0;
@@ -71,10 +71,10 @@ namespace ProjectTesting
             else if (SearchResult == 1)
             {
                 OneOption = true;
-                string text = ((MainWindow)this.Parent.Parent).searchBird1.birdList.Items[0].ToString(); //gets text in selected index
+                string text = ((MainWindow)this.Parent.Parent).searchWindow1.birdList.Items[0].ToString(); //gets text in selected index
                 ItemSelected(text);
                 ((MainWindow)this.Parent.Parent).showBackBtn();
-                ((MainWindow)this.Parent.Parent).searchBird1.ClearList();
+                ((MainWindow)this.Parent.Parent).searchWindow1.ClearList();
                 //Search_textbox.Text = "";
                 //comboBox.SelectedIndex = 0;
                 //cleanTextbox();

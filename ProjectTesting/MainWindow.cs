@@ -114,7 +114,7 @@ namespace ProjectTesting
             // hide all of the user controls and show only the login page
             logIn1.Show();
             homePage1.Hide();
-            searchBird1.Hide();
+            searchWindow1.Hide();
             addBird1.Hide();
             addCage1.Hide();
             moreDetails1.Hide();
@@ -122,7 +122,7 @@ namespace ProjectTesting
             // clean and clear all of the information that was entered into the text boxes
             // this means clearing the homepage textbox, the searchBird textbox and the addBird and addCage textboxes
             homePage1.cleanTextbox();
-            searchBird1.cleanTextboxAndList();
+            searchWindow1.cleanTextboxAndList();
             addBird1.makeNotReadOnly();
             addBird1.cleanTextBoxes();
             addCage1.cleanTextBoxes();
@@ -179,11 +179,11 @@ namespace ProjectTesting
             // the Back button has only a limited number of actions, there for we have wrote them our by hand
 
             // if the user is in the SearchWindow page, we want to show him the HomePage screen
-            if (searchBird1.Visible == true)
+            if (searchWindow1.Visible == true)
             {
-                searchBird1.Hide();
+                searchWindow1.Hide();
                 hideBackBtn();
-                homePage1.setTextAndSwitch(searchBird1.Search_textbox.Text, searchBird1.searchBySwitch.Checked);
+                homePage1.setTextAndSwitch(searchWindow1.Search_textbox.Text, searchWindow1.searchBySwitch.Checked);
                 homePage1.Show();
             }
             else if (moreDetails1.Visible == true)
@@ -202,7 +202,7 @@ namespace ProjectTesting
                 else // but if there where many search results then the user would have been in the SearchWindow
                 {
                     moreDetails1.Hide();
-                    searchBird1.Show();
+                    searchWindow1.Show();
                 }
             }
         }
