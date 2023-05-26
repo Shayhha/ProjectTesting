@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ProjectTesting
 {
+    /// <summary>
+    /// This class represents a bird in our program, it has all the necessary parameters and methods 
+    /// </summary>
     public class Bird
     {
         // Fields
@@ -18,10 +16,10 @@ namespace ProjectTesting
         public string DadId { get; set; }
         public string MomId { get; set; }
         public bool isOffspring { get; set; }
-        public List<Bird> OffspringList { get; set; }
+        public List<Bird> OffspringList { get; set; } // a list of Birds that are the offsprings of the current bird
 
-        // Constructors
-        public Bird(string[] birdInfo) //ctor
+        // Constructor
+        public Bird(string[] birdInfo) // birdInfo is a string array that holds all of the important info about the bird
         {
             Id = birdInfo[0];
             Type = birdInfo[1];
@@ -37,7 +35,7 @@ namespace ProjectTesting
             else
                 isOffspring = false;
 
-            OffspringList = new List<Bird>();
+            OffspringList = new List<Bird>(); // when creating a new bird it doesnt have any offsprings
         }
 
         public Bird(Bird bird) //copy ctor
@@ -54,12 +52,12 @@ namespace ProjectTesting
             OffspringList = bird.OffspringList.Select(b => new Bird(b)).ToList(); //copys the list to current object
         }
 
-        public void AddOffspring(Bird offspring)
+        public void AddOffspring(Bird offspring) // adding an offspring into the list of offsprings
         {
             OffspringList.Add(offspring);
         }
 
-        public string[] ToStringArray() //string array representation of class
+        public string[] ToStringArray() // turning the bird object into a string array representation
         {
             string[] birdInfo;
             if (OffspringList.Count == 0) {
@@ -84,7 +82,7 @@ namespace ProjectTesting
             return birdInfo;
         }
 
-        public void EditFields(string[] bird)
+        public void EditFields(string[] bird) // allows us to edit the bird object
         {
             Id = bird[0];
             Type = bird[1];
