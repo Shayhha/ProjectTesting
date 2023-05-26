@@ -149,7 +149,6 @@
             Controls.Add(Cage_pictureBox);
             Name = "HomePage";
             Size = new Size(1264, 611);
-            Load += HomePage_Load;
             ((System.ComponentModel.ISupportInitialize)Cage_pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)Bird_pictureBox).EndInit();
             ResumeLayout(false);
