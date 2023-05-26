@@ -1,19 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Dynamic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text.RegularExpressions;
 
 namespace ProjectTesting
 {
@@ -71,13 +56,13 @@ namespace ProjectTesting
         /// <param name="edited">A boolean parameter that tells the function wheter or not the cage we want to add is a new cage or an existing cage.
         /// edited = true -> means that the cage we want to add already exists in the database.</param>
         /// <returns>true if the cage has correct parameters and was successfuly added to the database, false otherwise</returns>
-        public bool getInfoFromUser(Cage cage, bool edited = false, string oldCageId = "", string oldCageMaterial = "")
+        public bool AddCageToDatabase(Cage cage, bool edited = false, string oldCageId = "", string oldCageMaterial = "")
         {
             // Variables:
             string[] cageInfo = cage.ToStringArray(); //convert the given cage into a string array
             int flag = 0, currentCageRow = 0;
             string errorMessage = "";
-            string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for atleast one letter AND atleast one number
+            string idPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$"; // checks for at least one letter AND at least one number
 
             // Checking that the user has inputed all of the fields, else show a message box with error
             for (int j = 0; j < 5; j++)
@@ -347,7 +332,7 @@ namespace ProjectTesting
         /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (getInfoFromUser(getTextFromUi()))
+            if (AddCageToDatabase(getTextFromUi()))
             {
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();

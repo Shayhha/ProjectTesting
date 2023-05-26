@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
-using System.Drawing;
-using System.Dynamic;
-using System.Globalization;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection.Emit;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using System.Text.RegularExpressions;
 
 namespace ProjectTesting
 {
+    // This class is responsible for adding birds into the data base. This class has helper functions that help us determin
+    // whether or not the information about the bird is correct or not (the info entered by the user)
+
+    /// <summary>
+    /// This class is responsible for adding birds into the data base. This class has helper functions that help us determin 
+    /// whether or not the information about the bird is correct or not (the info entered by the user).
+    /// </summary>
     public partial class AddBird : UserControl
     {
         public AddBird()
@@ -28,17 +16,23 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds the bird type options of birds to combobox
+        /// </summary>
         public void setTypeCombobox()
         {
             string[] typeOptions = { "American Gouldian", "European Gouldian", "Australian Gouldian" };
-            typeBox.Items.Clear();
+            typeBox.Items.Clear(); //clear combobox
             typeBox.Items.AddRange(typeOptions);
             typeBox.SelectedItem = "American Gouldian";
         }
 
+        /// <summary>
+        /// Adds the bird subtype options of birds to combobox
+        /// </summary>
         public void setSubTypeCombobox()
         {
-            subTypeBox.Items.Clear();
+            subTypeBox.Items.Clear(); //clear combobox
 
             if (typeBox.SelectedItem.ToString() == "American Gouldian")
             {
@@ -60,6 +54,11 @@ namespace ProjectTesting
             }
         }
 
+        /// <summary>
+        /// Getting all of the information that the user has enters into the textboxes on the screen.
+        /// Creates a Bird object and give the constructor all of the data from the text box.
+        /// </summary>
+        /// <returns>A Bird object that holds all of the data the user has entered</returns>
         private Bird getTextFromUi(bool isOffspring)
         {
             string resultOffspring = "";
@@ -83,16 +82,24 @@ namespace ProjectTesting
             return birdInfo;
         }
 
-        public bool getInfoFromUser(Bird bird, bool edited = false, string oldBirdId = "")
+        /// <summary>
+        /// This is the main function of the AddBird class. It is responsible for actually adding new birds into the database and checking 
+        /// their validity in the proccess. This function uses a few helper functions to perform all of the necessary tests.
+        /// </summary>
+        /// <param name="bird">Is the object we want to check and add to the database</param>
+        /// <param name="edited">A boolean parameter that tells the function wheter or not the bird we want to add is a new bird or an existing bird.
+        /// edited = true -> means that the bird we want to add already exists in the database.</param>
+        /// <returns>true if the bird has correct parameters and was successfuly added to the database, false otherwise</returns>
+        public bool AddBirdToDatabase(Bird bird, bool edited = false, string oldBirdId = "")
         {
             string[] birdInfo = bird.ToStringArray(); //convert bird to string array
             int currentBirdRow = 0; //index of current bird
             Bird newBird = null; // bird object for the new bird (shared with everyone) 
             int flag = 0;
-            string errorMessage = "";
-            string idPattern = "^[0-9]+$";
+            string errorMessage = ""; //for our error message
+            string idPattern = "^[0-9]+$"; //regex for valid id 
 
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 6; j++) //check all parameters validity
             {
                 if (birdInfo[j] == "")
                 {
@@ -118,11 +125,12 @@ namespace ProjectTesting
 
             if (flag == 0)
             {
-                if (!(Regex.IsMatch(birdInfo[0], idPattern)))
+                if (!(Regex.IsMatch(birdInfo[0], idPattern)))// checking if the bird id matches the allowed pattern
                 {
                     errorMessage = "The bird id must ONLY contain numbers.";
                     flag = 1;
                 }
+                // Checking if the bird parameters are valid and matche the allowed pattern
                 else if (!checkType(birdInfo[1]) || !checkSubType(birdInfo[1], birdInfo[2]) || !checkGender(birdInfo[4])) { return false; }
                 else if (((MainWindow)this.Parent.Parent).addCage1.checkCageId(birdInfo[5]))
                 {
@@ -131,15 +139,14 @@ namespace ProjectTesting
                     return false;
                 }
 
-
-                if (birdInfo[6] != "")
+                if (birdInfo[6] != "") //checks if bird's dad id isnt empty
                 {
-                    if (!(Regex.IsMatch(birdInfo[6], idPattern)))
+                    if (!(Regex.IsMatch(birdInfo[6], idPattern))) //check dad id validity
                     {
                         errorMessage = "The dad's id must ONLY contain numbers.";
                         flag = 1;
                     }
-                    else if (birdInfo[6] == birdInfo[0])
+                    else if (birdInfo[6] == birdInfo[0]) //checks if id's are similar
                     {
                         errorMessage = "The bird's id and dad's id must be different.";
                         flag = 1;
@@ -149,14 +156,14 @@ namespace ProjectTesting
 
                 }
 
-                if (birdInfo[7] != "")
+                if (birdInfo[7] != "") //checks if bird's mom id isnt empty
                 {
-                    if (!(Regex.IsMatch(birdInfo[7], idPattern)))
+                    if (!(Regex.IsMatch(birdInfo[7], idPattern))) // check mom id validity
                     {
                         errorMessage = "The mom's id must ONLY contain numbers.";
                         flag = 1;
                     }
-                    else if (birdInfo[7] == birdInfo[0])
+                    else if (birdInfo[7] == birdInfo[0]) //checks if id's are similar
                     {
                         errorMessage = "The bird's id and mom's id must be different.";
                         flag = 1;
@@ -221,8 +228,7 @@ namespace ProjectTesting
                 }
             }
 
-
-            if (flag == 1)
+            if (flag == 1) //if we got an error indeicated by flag, then we print the error message
             {
                 CustomMessageBox.Show(errorMessage, "Error");
                 return false;
@@ -490,11 +496,9 @@ namespace ProjectTesting
             return offspringList; //retuens new sorted string
         }
 
-        public void cleanTextBoxes()
+        public void cleanTextBoxes() //method for cleaning the textboxes
         {
             idBox.Texts = "";
-            //typeBox.Texts = "";
-            //subTypeBox.Texts = "";
             dateBox.Text = "";
             genderBox.Texts = "";
             cageIdBox.Texts = "";
@@ -502,7 +506,7 @@ namespace ProjectTesting
             momBox.Texts = "";
         }
 
-        public bool checkDadId(string dadId)
+        public bool checkDadId(string dadId) //method for checking dad id
         {
             List<Bird> dadBird = MainWindow.HashTable.SearchBirdHashtable(dadId);
             if (dadBird.Count != 0)
@@ -522,7 +526,7 @@ namespace ProjectTesting
             return true;
         }
 
-        public bool checkMomId(string momId)
+        public bool checkMomId(string momId) //method for checking mom id
         {
             List<Bird> momBird = MainWindow.HashTable.SearchBirdHashtable(momId);
             if (momBird.Count != 0)
@@ -542,7 +546,7 @@ namespace ProjectTesting
             return true;
         }
 
-        public bool checkBirdId(string birdId)
+        public bool checkBirdId(string birdId) //method for checking bird id
         {
             List<Bird> currentBird = MainWindow.HashTable.SearchBirdHashtable(birdId);
             if (currentBird.Count != 0)
@@ -554,7 +558,7 @@ namespace ProjectTesting
             return true;
         }
 
-        private bool checkType(string type)
+        private bool checkType(string type) //method for checking bird type
         {
             if (type != "American Gouldian" && type != "European Gouldian" && type != "Australian Gouldian")
             {
@@ -564,7 +568,7 @@ namespace ProjectTesting
             return true;
         }
 
-        private bool checkSubType(string type, string subType)
+        private bool checkSubType(string type, string subType) //method for checking bird  subytpe
         {
             if (
                 (type == "American Gouldian" &&
@@ -582,7 +586,7 @@ namespace ProjectTesting
             return true;
         }
 
-        private bool checkGender(string gender)
+        private bool checkGender(string gender) //method for checking bird gender
         {
             if (gender != "Male" && gender != "Female")
             {
@@ -593,7 +597,7 @@ namespace ProjectTesting
             return true;
         }
 
-        private string findValidCageIds()
+        private string findValidCageIds() //method that helps user to write valid cage id
         {
             List<Cage> SomeCagesList = MainWindow.HashTable.SearchCageHashtable("WOOD");
             if (SomeCagesList.Count != 0)
@@ -687,7 +691,7 @@ namespace ProjectTesting
                     return;
             }
 
-            if (getInfoFromUser(getTextFromUi(isOffspring)))
+            if (AddBirdToDatabase(getTextFromUi(isOffspring)))
             {
                 cleanTextBoxes();
                 makeNotReadOnly();

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ProjectTesting
 {
+    /// <summary>
+    /// Class the represents Hashtable that uses chaining mechanism with linked list
+    /// </summary>
     public class CustomHashtable
     {
-        private Dictionary<string, List<Bird>> birdHashtable = new Dictionary<string, List<Bird>>();
-        private Dictionary<string, List<Cage>> cageHashtable = new Dictionary<string, List<Cage>>();
-        private Dictionary<string, List<string[]>> userHashtable = new Dictionary<string, List<string[]>>();
+        private Dictionary<string, List<Bird>> birdHashtable = new Dictionary<string, List<Bird>>(); //represents Bird hashtable
+        private Dictionary<string, List<Cage>> cageHashtable = new Dictionary<string, List<Cage>>(); //represents Cage hashtable
+        private Dictionary<string, List<string[]>> userHashtable = new Dictionary<string, List<string[]>>(); //represents User hashtable
 
         public void AddBirdToHashtable(Bird bird) //method to add bird to hashtable
         {
