@@ -11,6 +11,7 @@ namespace ProjectTesting
     /// </summary>
     public partial class AddBird : UserControl
     {
+        //constructor of AddBird class
         public AddBird()
         {
             InitializeComponent();
