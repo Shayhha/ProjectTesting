@@ -1,5 +1,4 @@
 
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace ProjectTesting
@@ -7,13 +6,16 @@ namespace ProjectTesting
 {
     public partial class MainWindow : Form
     {
-        public static string UserSheet = ""; //this represents the logged in user sheet name
-        public static CustomHashtable HashTable = null;
-        private Excel UserExcel = new Excel("users", "default");
+        // These are our main variavles that we use through out our program 
+        public static string UserSheet = ""; // this represents the logged in user's sheet name
+        public static CustomHashtable HashTable = null; // this represents the main HashTable object in our code, the database information is stored in it
+        private Excel UserExcel = new Excel("users", "default"); // this is the excel file that holds all of the users
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // adding an icon to the window and hiding all of the less important things
             this.Icon = new Icon(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\parrot.ico");
             Text = "Gouldian Finch Management"; //title of the window
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -22,6 +24,12 @@ namespace ProjectTesting
             hideTopPanel();
         }
 
+        /// <summary>
+        /// This function is used to build our database hashtable from scratch. 
+        /// It first sorts the database, then adds itmes to the hashtables based on a few 
+        /// hashing options, each option represents a different way the user can search for a bird/cage
+        /// in our program. 
+        /// </summary>
         public static void InitHashtable()
         {
             //sort the database first
@@ -78,7 +86,7 @@ namespace ProjectTesting
                 temp = UserExcel.ReadRange(i, 1, 3);
                 HashTable.AddUserToHashtable(temp);
             }
-            UserExcel.Quit();
+            UserExcel.Quit(); // closing the users excel file
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -99,12 +107,6 @@ namespace ProjectTesting
             }
         }
 
-        public void loginToSignUp()
-        {
-            logIn1.Hide();
-            signUp1.Show();
-        }
-
         private void logOutButton_Click(object sender, EventArgs e)
         {
             // when logout button is clicked we need to do a few things
@@ -112,7 +114,7 @@ namespace ProjectTesting
             // hide all of the user controls and show only the login page
             logIn1.Show();
             homePage1.Hide();
-            searchBird1.Hide();
+            searchWindow1.Hide();
             addBird1.Hide();
             addCage1.Hide();
             moreDetails1.Hide();
@@ -120,7 +122,7 @@ namespace ProjectTesting
             // clean and clear all of the information that was entered into the text boxes
             // this means clearing the homepage textbox, the searchBird textbox and the addBird and addCage textboxes
             homePage1.cleanTextbox();
-            searchBird1.cleanTextboxAndList();
+            searchWindow1.cleanTextboxAndList();
             addBird1.makeNotReadOnly();
             addBird1.cleanTextBoxes();
             addCage1.cleanTextBoxes();
@@ -137,7 +139,7 @@ namespace ProjectTesting
             HashTable.ClearBirdCageHashtable();
         }
 
-        public void showTopBar()
+        public void showTopBar() // showing the top nav bar
         {
             logOutButton.Show();
             Bird_label.Show();
@@ -145,7 +147,7 @@ namespace ProjectTesting
             dashboardButton.Show();
         }
 
-        public void hideTopBar()
+        public void hideTopBar() // hiding the top nav bar
         {
             logOutButton.Hide();
             Bird_label.Hide();
@@ -171,32 +173,36 @@ namespace ProjectTesting
             Cage_label.Text = "Cages: " + number;
         }
 
+
         private void Back_Button_Click(object sender, EventArgs e)
         {
-            if (searchBird1.Visible == true)
+            // the Back button has only a limited number of actions, there for we have wrote them our by hand
+
+            // if the user is in the SearchWindow page, we want to show him the HomePage screen
+            if (searchWindow1.Visible == true)
             {
-                if (searchBird1.Search_textbox.Text != "") { searchBird1.Search_textbox.Text = ""; }
-                searchBird1.Hide();
+                searchWindow1.Hide();
                 hideBackBtn();
+                homePage1.setTextAndSwitch(searchWindow1.Search_textbox.Text, searchWindow1.searchBySwitch.Checked);
                 homePage1.Show();
             }
             else if (moreDetails1.Visible == true)
             {
+                // if the user is in the MoreDetails page, we want to show him the either the HomePage or the SearchWindow, 
+                // it is based on what window he was prior to entering the MoreDetails window.
                 moreDetails1.setUnedited();
 
-                if (homePage1.OneOption == true)
+                if (homePage1.OneOption == true) // if there was one search result the user would have been in the HomePage
                 {
-                    searchBird1.Search_textbox.Text = "";
                     moreDetails1.Hide();
                     hideBackBtn();
                     homePage1.Show();
                     homePage1.OneOption = false;
                 }
-                else
+                else // but if there where many search results then the user would have been in the SearchWindow
                 {
-                    searchBird1.Search_textbox.Text = "";
                     moreDetails1.Hide();
-                    searchBird1.Show();
+                    searchWindow1.Show();
                 }
             }
         }

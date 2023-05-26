@@ -32,6 +32,14 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
+        public void setTypeCombobox()
+        {
+            string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
+            materialBox.Items.Clear();
+            materialBox.Items.AddRange(typeOptions);
+            materialBox.SelectedItem = "WOOD";
+        }
+
         /// <summary>
         /// Getting all of the information that the user has enters into the textboxes on the screen.
         /// Creates a Cage object and give the constructor all of the data from the text box.
@@ -45,7 +53,7 @@ namespace ProjectTesting
                 lengthBox.Texts.ToString(),
                 widthBox.Texts.ToString(),
                 heightBox.Texts.ToString(),
-                materialBox.Texts.ToString()
+                materialBox.Text.ToString()
             });
 
             return cageInfo;
@@ -115,6 +123,18 @@ namespace ProjectTesting
                 return false;
             }
 
+            // if the user is editing the cage AND has changed the cage id we need to do the following
+            if (edited && !(cageInfo[0].Equals(oldCageId)))
+            {
+                // we need to see if the new cage id is unique or not
+                List<Cage> cageMightExist = MainWindow.HashTable.SearchCageHashtable(cageInfo[0]);
+                if (cageMightExist.Count != 0) // if the cage id is not unique, it already exists, then we show an error message, else we continue
+                {
+                    CustomMessageBox.Show("The new cage id already exists in the database, try a different one.", "Cage Id Already Exists");
+                    return false;
+                }
+            }
+
             // If everything went well and there where no errors, we the open the database excel file,
             // add the new cage to the excel, sort the excel and then close it.
             LogIn.DataBaseExcel = new Excel("database", MainWindow.UserSheet); //open DataBaseExcel
@@ -127,6 +147,7 @@ namespace ProjectTesting
                 if (!checkCageId(cageInfo[0]))
                 {
                     CustomMessageBox.Show("The cage you are trying to add already exists in the database, try a different id.", "Error");
+                    LogIn.DataBaseExcel.Quit(); //close excel
                     return false;
                 }
                 LogIn.DataBaseExcel.WriteRange(LogIn.DataBaseExcel.GetLastRow(), 1, 5, cageInfo); //add cage to database excel
@@ -183,7 +204,7 @@ namespace ProjectTesting
                         }
                     }
                 }
-              
+
                 // edit cage in database
                 LogIn.DataBaseExcel.WriteRange(currentCageRow, 1, 5, cageInfo);
 
@@ -261,7 +282,7 @@ namespace ProjectTesting
             lengthBox.Texts = "";
             widthBox.Texts = "";
             heightBox.Texts = "";
-            materialBox.Texts = "";
+            //materialBox.Texts = "";
         }
 
         /// <summary>

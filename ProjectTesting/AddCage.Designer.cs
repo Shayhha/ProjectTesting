@@ -31,7 +31,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             label9 = new Label();
             panel1 = new Panel();
-            materialBox = new RJControls.RJTextBox();
+            materialBox = new ComboBox();
             label7 = new Label();
             heightBox = new RJControls.RJTextBox();
             label1 = new Label();
@@ -62,10 +62,10 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(118, 11);
+            label9.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
+            label9.Location = new Point(97, 11);
             label9.Name = "label9";
-            label9.Size = new Size(230, 50);
+            label9.Size = new Size(259, 46);
             label9.TabIndex = 1;
             label9.Text = "Add a Cage:";
             // 
@@ -88,31 +88,20 @@
             // 
             // materialBox
             // 
-            materialBox.BackColor = SystemColors.Window;
-            materialBox.BorderColor = Color.FromArgb(145, 199, 136);
-            materialBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
-            materialBox.BorderRadius = 5;
-            materialBox.BorderSize = 2;
+            materialBox.Cursor = Cursors.Hand;
+            materialBox.DropDownStyle = ComboBoxStyle.DropDownList;
             materialBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            materialBox.ForeColor = Color.FromArgb(64, 64, 64);
-            materialBox.Location = new Point(91, 217);
-            materialBox.Margin = new Padding(4);
-            materialBox.Multiline = false;
+            materialBox.FormattingEnabled = true;
+            materialBox.Location = new Point(91, 219);
             materialBox.Name = "materialBox";
-            materialBox.Padding = new Padding(10, 7, 10, 7);
-            materialBox.PasswordChar = false;
-            materialBox.PlaceholderColor = Color.DarkGray;
-            materialBox.PlaceholderText = "";
-            materialBox.Size = new Size(250, 40);
+            materialBox.Size = new Size(250, 33);
             materialBox.TabIndex = 13;
-            materialBox.Texts = "";
-            materialBox.UnderlinedStyle = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(2, 226);
+            label7.Location = new Point(2, 223);
             label7.Name = "label7";
             label7.Size = new Size(90, 25);
             label7.TabIndex = 18;
@@ -125,6 +114,7 @@
             heightBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             heightBox.BorderRadius = 5;
             heightBox.BorderSize = 2;
+            heightBox.Cursor = Cursors.IBeam;
             heightBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             heightBox.ForeColor = Color.FromArgb(64, 64, 64);
             heightBox.Location = new Point(91, 169);
@@ -157,6 +147,7 @@
             widthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             widthBox.BorderRadius = 5;
             widthBox.BorderSize = 2;
+            widthBox.Cursor = Cursors.IBeam;
             widthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             widthBox.ForeColor = Color.FromArgb(64, 64, 64);
             widthBox.Location = new Point(91, 121);
@@ -189,6 +180,7 @@
             lengthBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             lengthBox.BorderRadius = 5;
             lengthBox.BorderSize = 2;
+            lengthBox.Cursor = Cursors.IBeam;
             lengthBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lengthBox.ForeColor = Color.FromArgb(64, 64, 64);
             lengthBox.Location = new Point(91, 71);
@@ -221,6 +213,7 @@
             idBox.BorderFocusColor = Color.FromArgb(97, 135, 110);
             idBox.BorderRadius = 5;
             idBox.BorderSize = 2;
+            idBox.Cursor = Cursors.IBeam;
             idBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             idBox.ForeColor = Color.FromArgb(64, 64, 64);
             idBox.Location = new Point(91, 20);
@@ -248,10 +241,11 @@
             // 
             // Welcome_label
             // 
-            Welcome_label.Font = new Font("Comic Sans MS", 24F, FontStyle.Underline, GraphicsUnit.Point);
-            Welcome_label.Location = new Point(276, 32);
+            Welcome_label.AutoSize = true;
+            Welcome_label.Font = new Font("Arial Rounded MT Bold", 30F, FontStyle.Underline, GraphicsUnit.Point);
+            Welcome_label.Location = new Point(182, 37);
             Welcome_label.Name = "Welcome_label";
-            Welcome_label.Size = new Size(660, 64);
+            Welcome_label.Size = new Size(858, 46);
             Welcome_label.TabIndex = 5;
             Welcome_label.Text = "Welcome new user! please add a new cage";
             Welcome_label.Visible = false;
@@ -262,16 +256,17 @@
             addButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             addButton.BorderColor = Color.FromArgb(115, 165, 100);
             addButton.BorderRadius = 10;
-            addButton.BorderSize = 2;
+            addButton.BorderSize = 3;
             addButton.Cursor = Cursors.Hand;
             addButton.FlatAppearance.BorderSize = 0;
             addButton.FlatStyle = FlatStyle.Flat;
-            addButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            addButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             addButton.ForeColor = Color.Black;
-            addButton.Location = new Point(77, 358);
+            addButton.Location = new Point(73, 348);
             addButton.Name = "addButton";
-            addButton.Size = new Size(125, 45);
-            addButton.TabIndex = 6;
+            addButton.Padding = new Padding(0, 0, 0, 2);
+            addButton.Size = new Size(140, 50);
+            addButton.TabIndex = 14;
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
             addButton.UseVisualStyleBackColor = false;
@@ -283,16 +278,17 @@
             cancelButton.BackgroundColor = Color.FromArgb(145, 199, 136);
             cancelButton.BorderColor = Color.FromArgb(115, 165, 100);
             cancelButton.BorderRadius = 10;
-            cancelButton.BorderSize = 2;
+            cancelButton.BorderSize = 3;
             cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.Black;
-            cancelButton.Location = new Point(246, 358);
+            cancelButton.Location = new Point(242, 348);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(125, 45);
-            cancelButton.TabIndex = 7;
+            cancelButton.Padding = new Padding(0, 0, 0, 2);
+            cancelButton.Size = new Size(140, 50);
+            cancelButton.TabIndex = 15;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
             cancelButton.UseVisualStyleBackColor = false;
@@ -335,6 +331,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -348,14 +345,14 @@
         private Label label2;
         private Label label3;
         private Label Welcome_label;
-        private RJControls.RJButton addButton;
+        public RJControls.RJButton addButton;
         private RJControls.RJButton cancelButton;
         public Panel panel2;
-        private RJControls.RJTextBox materialBox;
         private RJControls.RJTextBox heightBox;
         private RJControls.RJTextBox widthBox;
         private RJControls.RJTextBox lengthBox;
         private RJControls.RJTextBox idBox;
         public Panel panel3;
+        private ComboBox materialBox;
     }
 }

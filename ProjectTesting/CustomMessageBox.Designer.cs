@@ -46,6 +46,7 @@
             // 
             // OK_button
             // 
+            OK_button.Cursor = Cursors.Hand;
             OK_button.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             OK_button.Location = new Point(437, 154);
             OK_button.Name = "OK_button";
