@@ -13,7 +13,7 @@ namespace ProjectTesting
             searchBySwitch.Checked = false;
 
             // This ToolTip helps the user know what he can search for and what he cant
-            string text = "( search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id )";
+            string text = "search by bird id, type, sub-type, date of birth (dd/mm/yyyy) , gender (Male, Female), cage id, dad's id, mom's id.";
             System.Windows.Forms.ToolTip SearchRequirementsToolTip = new System.Windows.Forms.ToolTip();
             SearchRequirementsToolTip.InitialDelay = 0; // Set the delay before the ToolTip appears
             SearchRequirementsToolTip.OwnerDraw = true; // Enable owner drawing of the ToolTip
