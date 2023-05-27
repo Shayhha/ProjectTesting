@@ -11,7 +11,7 @@ namespace ProjectTesting
     /// </summary>
     public partial class AddCage : UserControl
     {
-        // Constructor
+        //constructor of AddCage class
         public AddCage()
         {
             InitializeComponent();
