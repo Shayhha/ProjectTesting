@@ -76,7 +76,7 @@
             SignUp_label.BackColor = Color.Transparent;
             SignUp_label.Font = new Font("Arial Rounded MT Bold", 33.75F, FontStyle.Underline, GraphicsUnit.Point);
             SignUp_label.ForeColor = Color.WhiteSmoke;
-            SignUp_label.Location = new Point(626, 25);
+            SignUp_label.Location = new Point(627, 95);
             SignUp_label.Name = "SignUp_label";
             SignUp_label.Size = new Size(480, 129);
             SignUp_label.TabIndex = 19;
@@ -220,7 +220,7 @@
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(UserName_textbox);
             panel1.Controls.Add(Question_pictureBox);
-            panel1.Location = new Point(125, 95);
+            panel1.Location = new Point(127, 95);
             panel1.Name = "panel1";
             panel1.Size = new Size(415, 480);
             panel1.TabIndex = 45;

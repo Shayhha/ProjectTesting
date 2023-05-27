@@ -37,7 +37,7 @@ namespace ProjectTesting
             string[] userInfo = { username, pass, id };
 
             //if fields are empty we show an error message
-            if (pass == "" || username == "" || id == "") 
+            if (pass == "" || username == "" || id == "")
             {
                 CustomMessageBox.Show("Some fields are empty!", "ERROR");
                 return;
@@ -75,7 +75,7 @@ namespace ProjectTesting
             }
 
             // if everything went right and the function is still excecuting, then we add the user to file and send welcome message
-            
+
             // we add the new user to the users database
             Excel ex = new Excel("users", "default");
             ex.WriteRange(ex.GetLastRow(), 1, 3, userInfo);
