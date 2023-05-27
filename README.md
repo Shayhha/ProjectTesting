@@ -28,13 +28,13 @@ git clone https://github.com/Shayhha/ProjectTesting.git
 
 Here are some screenshots of the Bird Habitat Management App:
 
-![Screenshot 1](images/1.png)
+![Screenshot 1](ProjectTesting/images/1.jpg)
 *Login page*
 
-![Screenshot 2](ProjectTesting/images/2.png)
+![Screenshot 2](ProjectTesting/images/2.jpg)
 *Home page*
 
-![Screenshot 3](ProjectTesting/ProjectTesting/images/3.png)
+![Screenshot 3](ProjectTesting/images/3.jpg)
 *Additional information page*
 
 ## Acknowledgements
