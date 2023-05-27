@@ -591,14 +591,14 @@ namespace ProjectTesting
             string parentType = "", errorMessage = "-1", parentGender, parentId;
 
             // we want to know which parent's id we need to check
-            if (dadBox.Enabled == true)//if dad is locked, we know we need to check moms id
+            if (momBox.Enabled == true)//if dad is locked, we know we need to check moms id
             {
                 parentType = "mom";
                 parentId = momBox.Texts;
                 parentGender = "Female";
             }
 
-            else if (momBox.Enabled == true)
+            else if (dadBox.Enabled == true)
             {
                 parentType = "dad";
                 parentId = dadBox.Texts;
