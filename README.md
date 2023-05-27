@@ -24,6 +24,19 @@ git clone https://github.com/Shayhha/ProjectTesting.git
 4. Run the application within your IDE or by executing the compiled binary.
 5. The Bird Habitat Management App will launch, and you can start using it through the graphical user interface.
 
+## Screenshots
+
+Here are some screenshots of the Bird Habitat Management App:
+
+![Screenshot 1](images/1.png)
+*Login page*
+
+![Screenshot 2](ProjectTesting/images/2.png)
+*Home page*
+
+![Screenshot 3](ProjectTesting/ProjectTesting/images/3.png)
+*Additional information page*
+
 ## Acknowledgements
 
 We would like to thank the contributors who have helped develop and improve this project, as well
