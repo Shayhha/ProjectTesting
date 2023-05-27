@@ -50,7 +50,7 @@ If you have any questions, suggestions, or feedback, please feel free to reach o
 - Developer: Maxim Subotin
 - GitHub: [MaxSubotin](https://github.com/MaxSubotin)
 
-- Deceloper: Shay Hahiashvili 
+- Developer: Shay Hahiashvili 
 - GitHub: [Shayhha](https://github.com/Shayhha)
 - Project Repository: [https://github.com/Shayhha/ProjectTesting](https://github.com/Shayhha/ProjectTesting)
 
