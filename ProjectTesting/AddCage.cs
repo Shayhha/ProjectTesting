@@ -330,13 +330,13 @@ namespace ProjectTesting
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void addButton_Click(object sender, EventArgs e)
+        private void add_Button_Click(object sender, EventArgs e)
         {
             if (AddCageToDatabase(getTextFromUi()))
             {
                 cleanTextBoxes();
                 ((MainWindow)this.Parent.Parent).homePage1.Show();
-                setWelcome_lable(false);
+                set_Welcome_Lable(false);
                 this.Hide();
             }
         }
@@ -346,11 +346,11 @@ namespace ProjectTesting
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void cancel_Button_Click(object sender, EventArgs e)
         {
             cleanTextBoxes();
             ((MainWindow)this.Parent.Parent).homePage1.Show();
-            setWelcome_lable(false);
+            set_Welcome_Lable(false);
             this.Hide();
         }
 
@@ -360,7 +360,7 @@ namespace ProjectTesting
         /// a new cage we dont want to show the welcome label
         /// </summary>
         /// <param name="temp"></param>
-        public void setWelcome_lable(bool temp) //sets the welcome lable to visible/hidden
+        public void set_Welcome_Lable(bool temp) //sets the welcome lable to visible/hidden
         {
             if (temp == true)
             {

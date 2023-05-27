@@ -126,7 +126,7 @@
             SignUp_button.Text = "Sign Up";
             SignUp_button.TextColor = Color.Black;
             SignUp_button.UseVisualStyleBackColor = false;
-            SignUp_button.Click += SignUp_button_Click;
+            SignUp_button.Click += SignUp_Button_Click;
             // 
             // Cancel_button
             // 
@@ -148,7 +148,7 @@
             Cancel_button.Text = "Cancel";
             Cancel_button.TextColor = Color.Black;
             Cancel_button.UseVisualStyleBackColor = false;
-            Cancel_button.Click += Cancel_button_Click;
+            Cancel_button.Click += Cancel_Button_Click;
             // 
             // label1
             // 

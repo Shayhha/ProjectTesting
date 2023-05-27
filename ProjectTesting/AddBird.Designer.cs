@@ -333,7 +333,7 @@
             addButton.Text = "Add";
             addButton.TextColor = Color.Black;
             addButton.UseVisualStyleBackColor = false;
-            addButton.Click += addButton_Click;
+            addButton.Click += add_Button_Click;
             // 
             // cancelButton
             // 
@@ -355,7 +355,7 @@
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.Black;
             cancelButton.UseVisualStyleBackColor = false;
-            cancelButton.Click += cancelButton_Click;
+            cancelButton.Click += cancel_Button_Click;
             // 
             // panel2
             // 

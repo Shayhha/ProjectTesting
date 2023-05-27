@@ -30,7 +30,7 @@ namespace ProjectTesting
             messageBox.ShowDialog();
         }
 
-        private void OK_button_Click(object sender, EventArgs e) //closes the message box
+        private void OK_Button_Click(object sender, EventArgs e) //closes the message box
         {
             this.Close();
         }

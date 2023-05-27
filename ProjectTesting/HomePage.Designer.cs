@@ -51,8 +51,8 @@
             Cage_pictureBox.TabIndex = 6;
             Cage_pictureBox.TabStop = false;
             Cage_pictureBox.Tag = "";
-            Cage_pictureBox.Click += Cage_pictureBox_Click;
-            Cage_pictureBox.Paint += Cage_pictureBox_Paint;
+            Cage_pictureBox.Click += Cage_PictureBox_Click;
+            Cage_pictureBox.Paint += Cage_PictureBox_Paint;
             // 
             // Bird_pictureBox
             // 
@@ -65,8 +65,8 @@
             Bird_pictureBox.TabIndex = 7;
             Bird_pictureBox.TabStop = false;
             Bird_pictureBox.Tag = "";
-            Bird_pictureBox.Click += Bird_pictureBox_Click;
-            Bird_pictureBox.Paint += Bird_pictureBox_Paint;
+            Bird_pictureBox.Click += Bird_PictureBox_Click;
+            Bird_pictureBox.Paint += Bird_PictureBox_Paint;
             // 
             // searchBySwitch
             // 
@@ -102,7 +102,7 @@
             Search_button.Text = "Search";
             Search_button.TextColor = Color.Black;
             Search_button.UseVisualStyleBackColor = false;
-            Search_button.Click += Search_button_Click;
+            Search_button.Click += Search_Button_Click;
             // 
             // Search_textbox
             // 

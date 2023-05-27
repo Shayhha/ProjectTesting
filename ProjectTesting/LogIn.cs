@@ -21,7 +21,7 @@ namespace ProjectTesting
         /// This function performs all of the checks in order to determin if the user's information is correct
         /// and correlates to an existing user in the database, if not then errors will be shown to the user.
         /// </summary>
-        private void LogIn_button_Click(object sender, EventArgs e)
+        private void LogIn_Button_Click(object sender, EventArgs e)
         {
             // place holders for user's information from the gui
             string username = UserName_textbox.Texts;
@@ -80,7 +80,7 @@ namespace ProjectTesting
                 // as the first screen untill they have actualy added a cage inorder to make them use our app safly and not get bugged out
                 ((MainWindow)this.Parent).showTopBar();
                 ((MainWindow)this.Parent).showTopPanel();
-                ((MainWindow)this.Parent).addCage1.setWelcome_lable(true);
+                ((MainWindow)this.Parent).addCage1.set_Welcome_Lable(true);
                 ((MainWindow)this.Parent).addCage1.setTypeCombobox();
                 ((MainWindow)this.Parent).addCage1.addButton.Location = new System.Drawing.Point(158, 348); 
                 ((MainWindow)this.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 124);
@@ -99,7 +99,7 @@ namespace ProjectTesting
             this.Hide();
         }
 
-        private void SignUp_button_Click(object sender, EventArgs e)
+        private void SignUp_Button_Click(object sender, EventArgs e)
         {
             ((MainWindow)this.Parent).signUp1.Show();
             ((MainWindow)this.Parent).logIn1.Hide();

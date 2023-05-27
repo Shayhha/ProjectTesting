@@ -54,7 +54,7 @@
             OK_button.TabIndex = 4;
             OK_button.Text = "OK";
             OK_button.UseVisualStyleBackColor = true;
-            OK_button.Click += OK_button_Click;
+            OK_button.Click += OK_Button_Click;
             // 
             // Error_picture
             // 

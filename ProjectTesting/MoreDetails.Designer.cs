@@ -377,7 +377,7 @@ namespace ProjectTesting
             saveBirdButton.TextColor = Color.Black;
             saveBirdButton.UseVisualStyleBackColor = false;
             saveBirdButton.Visible = false;
-            saveBirdButton.Click += saveBirdButton_Click;
+            saveBirdButton.Click += saveBird_Button_Click;
             // 
             // editBirdButton
             // 
@@ -398,7 +398,7 @@ namespace ProjectTesting
             editBirdButton.Text = "Edit";
             editBirdButton.TextColor = Color.Black;
             editBirdButton.UseVisualStyleBackColor = false;
-            editBirdButton.Click += editBirdButton_Click;
+            editBirdButton.Click += editBird_Button_Click;
             // 
             // label8
             // 
@@ -449,7 +449,7 @@ namespace ProjectTesting
             addOffspringButton.Text = "Add an Offspring";
             addOffspringButton.TextColor = Color.Black;
             addOffspringButton.UseVisualStyleBackColor = false;
-            addOffspringButton.Click += addOffspringButton_Click;
+            addOffspringButton.Click += addOffspring_Button_Click;
             // 
             // fledglingLabel
             // 
@@ -623,7 +623,7 @@ namespace ProjectTesting
             saveCageButton.TextColor = Color.Black;
             saveCageButton.UseVisualStyleBackColor = false;
             saveCageButton.Visible = false;
-            saveCageButton.Click += saveCageButton_Click;
+            saveCageButton.Click += saveCage_Button_Click;
             // 
             // editCageButton
             // 
@@ -645,7 +645,7 @@ namespace ProjectTesting
             editCageButton.Text = "Edit";
             editCageButton.TextColor = Color.Black;
             editCageButton.UseVisualStyleBackColor = false;
-            editCageButton.Click += editCageButton_Click;
+            editCageButton.Click += editCage_Button_Click;
             // 
             // flowLayoutPanel5
             // 

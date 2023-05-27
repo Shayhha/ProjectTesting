@@ -21,14 +21,6 @@ namespace ProjectTesting
             InitializeComponent();
         }
 
-        public void setCageTypeCombobox() // Setting the options into the ComboBox with cage material options
-        {
-            string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
-            materialValue.Items.Clear();
-            materialValue.Items.AddRange(typeOptions);
-            materialValue.SelectedItem = "WOOD";
-        }
-
         public void setImages() // setting the image of the bird to a random image of a bird from our files.
         {
             this.mainPic.Image = getRandomImage();
@@ -40,6 +32,14 @@ namespace ProjectTesting
             int randomNumber = random.Next(1, 19);
             Image temp = Image.FromFile(Directory.GetCurrentDirectory().Split("bin")[0] + "images\\" + randomNumber.ToString() + ".jpg");
             return temp;
+        }
+
+        public void setCageTypeCombobox() // Setting the options into the ComboBox with cage material options
+        {
+            string[] typeOptions = { "WOOD", "METAL", "PLASTIC" };
+            materialValue.Items.Clear();
+            materialValue.Items.AddRange(typeOptions);
+            materialValue.SelectedItem = "WOOD";
         }
 
         private void setSubTypeCombobox() // setting subtypes for birds based on the selected type
@@ -164,7 +164,7 @@ namespace ProjectTesting
             offspringList.Items.Clear();
         }
 
-        private void addOffspringButton_Click(object sender, EventArgs e) //changed to add offspring page
+        private void addOffspring_Button_Click(object sender, EventArgs e) //changed to add offspring page
         {
             restoreInfo(); // inputing old information incase the user edited the bird but did not save before clicking away
             setUnedited(); // set the textboxes to the un-edited mode
@@ -222,7 +222,7 @@ namespace ProjectTesting
         }
 
         // the user wants to edit the bird
-        private void editBirdButton_Click(object sender, EventArgs e)
+        private void editBird_Button_Click(object sender, EventArgs e)
         {
             editBirdButton.Hide();
             saveBirdButton.Show();
@@ -230,7 +230,6 @@ namespace ProjectTesting
             ((MainWindow)this.Parent.Parent).searchWindow1.ClearList();
 
             datePicker.Enabled = true;
-
             idLabel.Enabled = true;
             cageIdLabel.Enabled = true;
             dadIdLabel.Enabled = true;
@@ -266,7 +265,7 @@ namespace ProjectTesting
 
         // when the save button was clicked for the Bird side, the program will check the new information and if everything
         // checks out then it will update the screen and the database
-        private void saveBirdButton_Click(object sender, EventArgs e) 
+        private void saveBird_Button_Click(object sender, EventArgs e) 
         {
             setUnedited();
 
@@ -294,7 +293,7 @@ namespace ProjectTesting
         }
 
         // the user wants to edit the cage
-        private void editCageButton_Click(object sender, EventArgs e)  
+        private void editCage_Button_Click(object sender, EventArgs e)  
         {
             editCageButton.Visible = false;
             saveCageButton.Visible = true;
@@ -310,7 +309,7 @@ namespace ProjectTesting
 
         // when the save button was clicked for the Cage side, the program will check the new information and if everything
         // checks out then it will update the screen and the database
-        private void saveCageButton_Click(object sender, EventArgs e) // for cage //edit to hashtables
+        private void saveCage_Button_Click(object sender, EventArgs e) // for cage //edit to hashtables
         {
             editCageButton.Visible = true;
             saveCageButton.Visible = false;

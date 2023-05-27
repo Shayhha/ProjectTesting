@@ -46,7 +46,7 @@ namespace ProjectTesting
         /// This function has a stopwatch functionality in comments, if you want to see the runtimes you can 
         /// remove them from the comments.
         /// </summary>
-        private void Search_button_Click(object sender, EventArgs e)
+        private void Search_Button_Click(object sender, EventArgs e)
         {
             //// Start the stopwatch
             //Stopwatch stopwatch = new Stopwatch();
@@ -110,7 +110,7 @@ namespace ProjectTesting
             }
         }
 
-        private void Cage_pictureBox_Paint(object sender, PaintEventArgs e) // adding text over the cage image
+        private void Cage_PictureBox_Paint(object sender, PaintEventArgs e) // adding text over the cage image
         {
             using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
@@ -130,7 +130,7 @@ namespace ProjectTesting
             }
         }
 
-        private void Bird_pictureBox_Paint(object sender, PaintEventArgs e) // adding text over the bird image
+        private void Bird_PictureBox_Paint(object sender, PaintEventArgs e) // adding text over the bird image
         {
             using (Font myFont = new Font("Arial", 28, FontStyle.Bold))
             {
@@ -150,7 +150,7 @@ namespace ProjectTesting
             }
         }
 
-        private void Cage_pictureBox_Click(object sender, EventArgs e) // showing the AddCage page
+        private void Cage_PictureBox_Click(object sender, EventArgs e) // showing the AddCage page
         {
             ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(73, 348);
             ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
@@ -160,7 +160,7 @@ namespace ProjectTesting
             this.Hide();
         }
 
-        private void Bird_pictureBox_Click(object sender, EventArgs e) // showing the AddBird page
+        private void Bird_PictureBox_Click(object sender, EventArgs e) // showing the AddBird page
         {
             ((MainWindow)this.Parent.Parent).addBird1.Show();
             ((MainWindow)this.Parent.Parent).addBird1.setTypeCombobox();

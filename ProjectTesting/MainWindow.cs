@@ -105,7 +105,7 @@ namespace ProjectTesting
             }
         }
 
-        private void logOutButton_Click(object sender, EventArgs e)
+        private void logOut_Button_Click(object sender, EventArgs e)
         {
             // when logout button is clicked we need to do a few things
 
@@ -124,7 +124,7 @@ namespace ProjectTesting
             addBird1.makeNotReadOnly();
             addBird1.cleanTextBoxes();
             addCage1.cleanTextBoxes();
-            addCage1.setWelcome_lable(false);
+            addCage1.set_Welcome_Lable(false);
             moreDetails1.setUnedited();
 
             // clear and clean and hide the top navigation bar
@@ -205,7 +205,7 @@ namespace ProjectTesting
             }
         }
 
-        private void dashboardButton_Click(object sender, EventArgs e)
+        private void dashboard_Button_Click(object sender, EventArgs e)
         {
             UserDash dash = new UserDash();
             dash.initDash();

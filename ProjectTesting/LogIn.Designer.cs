@@ -93,7 +93,7 @@
             SignUp_button.Text = "Sign Up";
             SignUp_button.TextColor = Color.Black;
             SignUp_button.UseVisualStyleBackColor = false;
-            SignUp_button.Click += SignUp_button_Click;
+            SignUp_button.Click += SignUp_Button_Click;
             // 
             // LogIn_button
             // 
@@ -115,7 +115,7 @@
             LogIn_button.Text = "Log In";
             LogIn_button.TextColor = Color.Black;
             LogIn_button.UseVisualStyleBackColor = false;
-            LogIn_button.Click += LogIn_button_Click;
+            LogIn_button.Click += LogIn_Button_Click;
             // 
             // panel1
             // 

@@ -83,7 +83,7 @@
             Search_button.Text = "Search";
             Search_button.TextColor = Color.Black;
             Search_button.UseVisualStyleBackColor = false;
-            Search_button.Click += Search_button_Click;
+            Search_button.Click += Search_Button_Click;
             // 
             // Search_textbox
             // 

@@ -98,7 +98,7 @@
             logOutButton.Text = "Log-out";
             logOutButton.TextColor = Color.White;
             logOutButton.UseVisualStyleBackColor = false;
-            logOutButton.Click += logOutButton_Click;
+            logOutButton.Click += logOut_Button_Click;
             // 
             // Back_Button
             // 
@@ -143,7 +143,7 @@
             dashboardButton.Text = "Dashboard";
             dashboardButton.TextColor = Color.Black;
             dashboardButton.UseVisualStyleBackColor = false;
-            dashboardButton.Click += dashboardButton_Click;
+            dashboardButton.Click += dashboard_Button_Click;
             // 
             // countersPanel
             // 

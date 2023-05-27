@@ -154,7 +154,6 @@ namespace ProjectTesting
                     }
                     else if (!checkDadId(birdInfo[6]))
                         return false;
-
                 }
 
                 if (birdInfo[7] != "") //checks if bird's mom id isnt empty
@@ -628,14 +627,14 @@ namespace ProjectTesting
             string parentType = "", errorMessage = "-1", parentGender, parentId;
 
             // we want to know which parent's id we need to check
-            if (dadBox.Enabled == true)//if dad is locked, we know we need to check moms id
+            if (momBox.Enabled == true)//if dad is locked, we know we need to check moms id
             {
                 parentType = "mom";
                 parentId = momBox.Texts;
                 parentGender = "Female";
             }
 
-            else if (momBox.Enabled == true)
+            else if (dadBox.Enabled == true)
             {
                 parentType = "dad";
                 parentId = dadBox.Texts;
@@ -650,6 +649,7 @@ namespace ProjectTesting
 
             if (parentBird.Count != 0)
             {
+
                 if (parentBird[0].Gender != parentGender)
                 {
                     errorMessage = "Other parent must be " + parentGender.ToLower() + "!";
@@ -681,7 +681,7 @@ namespace ProjectTesting
         }
 
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void add_Button_Click(object sender, EventArgs e)
         {
             bool isOffspring = false; //default is no for addBird
 
@@ -701,7 +701,7 @@ namespace ProjectTesting
             }
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void cancel_Button_Click(object sender, EventArgs e)
         {
             if (AddBird_label.Text == "Add an Offspring:")
             {

@@ -28,7 +28,7 @@ namespace ProjectTesting
             passwordRequirementsToolTip.SetToolTip(Question_pictureBox, text);
         }
 
-        private void SignUp_button_Click(object sender, EventArgs e)
+        private void SignUp_Button_Click(object sender, EventArgs e)
         {
             // our variables
             string pass = Password_textbox.Texts;
@@ -173,7 +173,7 @@ namespace ProjectTesting
             return true;
         }
 
-        private void Cancel_button_Click(object sender, EventArgs e) //returns to sign in
+        private void Cancel_Button_Click(object sender, EventArgs e) //returns to sign in
         {
             Password_textbox.Texts = "";
             UserName_textbox.Texts = "";

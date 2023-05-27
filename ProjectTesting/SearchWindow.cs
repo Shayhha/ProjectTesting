@@ -117,7 +117,7 @@ namespace ProjectTesting
             return 0;
         }
 
-        private void Search_button_Click(object sender, EventArgs e)
+        private void Search_Button_Click(object sender, EventArgs e)
         {
             string name = Search_textbox.Text;
             ClearList();
