@@ -276,6 +276,8 @@
             Controls.Add(contentPanel);
             Controls.Add(signUp1);
             Controls.Add(logIn1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainWindow";
             Text = "MainWindow";
             FormClosing += MainWindow_FormClosing;

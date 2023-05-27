@@ -101,6 +101,8 @@
             Controls.Add(birdsLabel);
             Controls.Add(birdsList);
             Controls.Add(cagesList);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "UserDash";
             Text = "UserDash";
             ResumeLayout(false);

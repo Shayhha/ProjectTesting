@@ -75,6 +75,8 @@
             Controls.Add(OK_button);
             Controls.Add(Error_picture);
             Controls.Add(Message_label);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "CustomMessageBox";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CustomMessageBox";
