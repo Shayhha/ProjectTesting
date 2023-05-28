@@ -210,6 +210,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(230, 97, 135, 110);
+            panel1.Controls.Add(Question_pictureBox);
             panel1.Controls.Add(Password_textbox);
             panel1.Controls.Add(Cancel_button);
             panel1.Controls.Add(SignUp_button);
@@ -219,7 +220,6 @@
             panel1.Controls.Add(Password_label);
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(UserName_textbox);
-            panel1.Controls.Add(Question_pictureBox);
             panel1.Location = new Point(127, 95);
             panel1.Name = "panel1";
             panel1.Size = new Size(415, 480);
