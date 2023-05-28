@@ -76,7 +76,7 @@
             SignUp_label.BackColor = Color.Transparent;
             SignUp_label.Font = new Font("Arial Rounded MT Bold", 33.75F, FontStyle.Underline, GraphicsUnit.Point);
             SignUp_label.ForeColor = Color.WhiteSmoke;
-            SignUp_label.Location = new Point(627, 74);
+            SignUp_label.Location = new Point(627, 45);
             SignUp_label.Name = "SignUp_label";
             SignUp_label.Size = new Size(480, 129);
             SignUp_label.TabIndex = 19;
