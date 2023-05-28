@@ -116,7 +116,7 @@ namespace ProjectTesting
             {
                 string text = "Click To Add Cage";
                 SizeF textSize = e.Graphics.MeasureString(text, myFont);
-                int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2 + 35;
+                int x = (Cage_pictureBox.Width - (int)textSize.Width) / 2 + 87;
                 int y = (Cage_pictureBox.Height - (int)textSize.Height) + 12;
 
                 GraphicsPath path = new GraphicsPath();
@@ -136,7 +136,7 @@ namespace ProjectTesting
             {
                 string text = "Click To Add Bird";
                 SizeF textSize = e.Graphics.MeasureString(text, myFont);
-                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2 + 46;
+                int x = (Bird_pictureBox.Width - (int)textSize.Width) / 2 + 87;
                 int y = (Bird_pictureBox.Height - (int)textSize.Height) + 12;//5
 
                 GraphicsPath path = new GraphicsPath();
@@ -152,9 +152,9 @@ namespace ProjectTesting
 
         private void Cage_PictureBox_Click(object sender, EventArgs e) // showing the AddCage page
         {
-            ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(73, 348);
-            ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(381, 72);
-            ((MainWindow)this.Parent.Parent).addCage1.panel3.Location = new System.Drawing.Point(389, 63);
+            ((MainWindow)this.Parent.Parent).addCage1.addButton.Location = new System.Drawing.Point(83, 464);
+            ((MainWindow)this.Parent.Parent).addCage1.panel2.Location = new System.Drawing.Point(471, 89);
+            ((MainWindow)this.Parent.Parent).addCage1.panel3.Location = new System.Drawing.Point(480, 80);
             ((MainWindow)this.Parent.Parent).addCage1.Show();
             ((MainWindow)this.Parent.Parent).addCage1.setTypeCombobox();
             this.Hide();

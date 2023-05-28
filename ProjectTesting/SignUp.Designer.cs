@@ -76,9 +76,9 @@
             SignUp_label.BackColor = Color.Transparent;
             SignUp_label.Font = new Font("Arial Rounded MT Bold", 33.75F, FontStyle.Underline, GraphicsUnit.Point);
             SignUp_label.ForeColor = Color.WhiteSmoke;
-            SignUp_label.Location = new Point(615, 119);
+            SignUp_label.Location = new Point(616, 4);
             SignUp_label.Name = "SignUp_label";
-            SignUp_label.Size = new Size(819, 172);
+            SignUp_label.Size = new Size(600, 172);
             SignUp_label.TabIndex = 19;
             SignUp_label.Text = "Welcome New User Sign Up Now!";
             SignUp_label.TextAlign = ContentAlignment.MiddleCenter;

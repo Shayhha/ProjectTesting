@@ -265,7 +265,7 @@ namespace ProjectTesting
 
         // when the save button was clicked for the Bird side, the program will check the new information and if everything
         // checks out then it will update the screen and the database
-        private void saveBird_Button_Click(object sender, EventArgs e) 
+        private void saveBird_Button_Click(object sender, EventArgs e)
         {
             setUnedited();
 
@@ -293,7 +293,7 @@ namespace ProjectTesting
         }
 
         // the user wants to edit the cage
-        private void editCage_Button_Click(object sender, EventArgs e)  
+        private void editCage_Button_Click(object sender, EventArgs e)
         {
             editCageButton.Visible = false;
             saveCageButton.Visible = true;
