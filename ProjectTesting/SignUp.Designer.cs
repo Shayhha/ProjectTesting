@@ -112,7 +112,7 @@
             SignUp_button.BackgroundColor = Color.FromArgb(145, 199, 136);
             SignUp_button.BorderColor = Color.FromArgb(115, 165, 100);
             SignUp_button.BorderRadius = 10;
-            SignUp_button.BorderSize = 2;
+            SignUp_button.BorderSize = 3;
             SignUp_button.Cursor = Cursors.Hand;
             SignUp_button.FlatAppearance.BorderSize = 0;
             SignUp_button.FlatStyle = FlatStyle.Flat;
@@ -134,7 +134,7 @@
             Cancel_button.BackgroundColor = Color.FromArgb(145, 199, 136);
             Cancel_button.BorderColor = Color.FromArgb(115, 165, 100);
             Cancel_button.BorderRadius = 10;
-            Cancel_button.BorderSize = 2;
+            Cancel_button.BorderSize = 3;
             Cancel_button.Cursor = Cursors.Hand;
             Cancel_button.FlatAppearance.BorderSize = 0;
             Cancel_button.FlatStyle = FlatStyle.Flat;
