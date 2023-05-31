@@ -257,7 +257,7 @@ namespace ProjectTesting
             nameLabel.Anchor = AnchorStyles.Right;
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            nameLabel.Location = new Point(139, 41);
+            nameLabel.Location = new Point(139, 37);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(51, 32);
             nameLabel.TabIndex = 6;
@@ -505,7 +505,7 @@ namespace ProjectTesting
             cagePanel.Controls.Add(listLabel);
             cagePanel.Controls.Add(birdList);
             cagePanel.Controls.Add(panel3);
-            cagePanel.Location = new Point(13, 21);
+            cagePanel.Location = new Point(12, 22);
             cagePanel.Margin = new Padding(1);
             cagePanel.Name = "cagePanel";
             cagePanel.Size = new Size(1419, 775);
