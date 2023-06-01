@@ -115,11 +115,12 @@ namespace ProjectTesting
                 if (momBox.Texts == "") { birdInfo[7] = "0"; }
             }
 
-            if (birdInfo[4] == "m" || birdInfo[4] == "male")
+            // allowing the user to write both genders in a short format
+            if (birdInfo[4] == "m" || birdInfo[4] == "M" || birdInfo[4] == "male")
             {
                 birdInfo[4] = "Male";
             }
-            else if (birdInfo[4] == "f" || birdInfo[4] == "female")
+            else if (birdInfo[4] == "f" || birdInfo[4] == "F" || birdInfo[4] == "female")
             {
                 birdInfo[4] = "Female";
             }

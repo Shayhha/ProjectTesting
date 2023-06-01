@@ -247,6 +247,12 @@ namespace ProjectTesting
             { // if the bird has offsprings OR is itself an offspring then we cannot allow the user to change the cage id of this bird
                 cageIdLabel.Enabled = false;
             }
+
+            if (infoFromDatabaseBird.isOffspring)
+            {
+                dadIdLabel.Enabled = false;
+                momIdLabel.Enabled = false;
+            }
         }
 
         private void restoreInfo() // restores the information on the screen back to the original information from the database (hashtable)

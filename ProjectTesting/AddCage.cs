@@ -272,39 +272,43 @@ namespace ProjectTesting
 
         /// <summary>
         /// Checking that the dimentions of the cage are numeric and are positive, if not show and error message
+        /// If the values are correct we reasign the given array of values to the parsed values because this handels the 
+        /// removal of 0 in the beggining, for example the length '0023' that is inputed by the user will become '23' after 
+        /// we reasign the parsed value back into the array like we do in line 290 (inside the first else statement)
         /// </summary>
         /// <param name="info"></param>
         /// <returns>true if the dimentios are valid, false otherwise</returns>
         private bool checkDimentions(string[] info)
         {
-            int flag = 0;
             int lengthVal, widthVal, heightVal;
-            string errorMessage = "";
 
-            if (!(int.TryParse(info[1], out lengthVal)))
-            {
-                errorMessage = "Invalid Length, try agian.";
-                flag = 1;
-            }
-            else if (!(int.TryParse(info[2], out widthVal)))
-            {
-                errorMessage = "Invalid Width, try agian.";
-                flag = 1;
-            }
-            else if (!(int.TryParse(info[3], out heightVal)))
-            {
-                errorMessage = "Invalid Height, try agian.";
-                flag = 1;
-            }
-            else if (lengthVal <= 0 || widthVal <= 0 || heightVal <= 0)
-            {
-                errorMessage = "Oops, You have entered incorrect dimentions, try again.";
-                flag = 1;
+            if (!(int.TryParse(info[1], out lengthVal))) {
+                CustomMessageBox.Show("Invalid Length, try agian.", "Error");
+                return false;
+            } 
+            else {
+                info[1] = lengthVal.ToString();
             }
 
-            if (flag == 1)
+            if (!(int.TryParse(info[2], out widthVal))) {
+                CustomMessageBox.Show("Invalid Width, try agian.", "Error");
+                return false;
+            }
+            else {
+                info[2] = widthVal.ToString();
+            }
+
+            if (!(int.TryParse(info[3], out heightVal))) {
+                CustomMessageBox.Show("Invalid Height, try agian.", "Error");
+                return false;
+            }
+            else {
+                info[3] = heightVal.ToString();
+            }
+
+            if (lengthVal <= 0 || widthVal <= 0 || heightVal <= 0)
             {
-                CustomMessageBox.Show(errorMessage, "Error");
+                CustomMessageBox.Show("Oops, You have entered incorrect dimentions, try again.", "Error");
                 return false;
             }
 
