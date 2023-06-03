@@ -220,7 +220,7 @@
             panel1.Controls.Add(Password_label);
             panel1.Controls.Add(ID_textbox);
             panel1.Controls.Add(UserName_textbox);
-            panel1.Location = new Point(127, 95);
+            panel1.Location = new Point(125, 95);
             panel1.Name = "panel1";
             panel1.Size = new Size(415, 480);
             panel1.TabIndex = 45;
