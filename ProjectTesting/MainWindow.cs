@@ -293,7 +293,7 @@ namespace ProjectTesting
             if (Start < End)
             {
                 int pr = Partition(arr, Start, End); //represends the pivot in sorting
-                                                     //calls recursivly for first part until pr and from pr+1 to end
+                //calls recursivly for first part until pr and from pr+1 to end
                 Sort(arr, Start, pr - 1);
                 Sort(arr, pr + 1, End);
             }
